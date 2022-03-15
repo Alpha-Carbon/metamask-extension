@@ -33,7 +33,7 @@ cleanContextForImports();
 /* eslint-disable import/first */
 import log from 'loglevel';
 import { WindowPostMessageStream } from '@metamask/post-message-stream';
-import { initializeProvider } from '@metamask/providers/dist/initializeInpageProvider';
+import { initializeProvider } from '@alphacarbon/inpage-provider';
 
 restoreContextAfterImports();
 
@@ -44,13 +44,14 @@ log.setDefaultLevel(process.env.METAMASK_DEBUG ? 'debug' : 'warn');
 //
 
 // setup background connection
-const metamaskStream = new WindowPostMessageStream({
-  name: 'metamask-inpage',
-  target: 'metamask-contentscript',
+const carbonStream = new WindowPostMessageStream({
+  name: 'carbon-inpage',
+  target: 'carbon-contentscript',
 });
 
 initializeProvider({
-  connectionStream: metamaskStream,
+  connectionStream: carbonStream,
+  // jsonRpcStreamName: 'carbon-provider',
   logger: log,
-  shouldShimWeb3: true,
+  // shouldShimWeb3: true,
 });
