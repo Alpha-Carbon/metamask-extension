@@ -361,8 +361,7 @@ export default class Routes extends Component {
           // className="main-container-wrapper"
           className={
             classnames('main-container-wrapper', {
-              'main-container-wrapper--filter': isAccountMenuOpen && getEnvironmentType() != ENVIRONMENT_TYPE_FULLSCREEN,
-              'main-container-wrapper--filter': networkDropdownOpen && getEnvironmentType() != ENVIRONMENT_TYPE_FULLSCREEN,
+              'main-container-wrapper--filter': (isAccountMenuOpen || networkDropdownOpen) && getEnvironmentType() != ENVIRONMENT_TYPE_FULLSCREEN,
             })}
         >
           {isLoading ? <Loading loadingMessage={loadMessage} /> : null}
