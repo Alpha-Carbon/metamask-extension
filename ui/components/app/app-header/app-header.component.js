@@ -1,11 +1,16 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+// import { useSelector } from 'react-redux';
 import Identicon from '../../ui/identicon';
-import MetaFoxLogo from '../../ui/metafox-logo';
-import { DEFAULT_ROUTE } from '../../../helpers/constants/routes';
+// import MetaFoxLogo from '../../ui/metafox-logo';
+import AlphaCarbonLogoGradient from '../../ui/alpha-carbon-logo-gradient';
+import { DEFAULT_ROUTE, UNLOCK_ROUTE } from '../../../helpers/constants/routes';
 import NetworkDisplay from '../network-display';
-
+import MenuIcon from '../../ui/icon/menu-icon.component';
+import { getEnvironmentType } from '../../../../app/scripts/lib/util';
+import { ENVIRONMENT_TYPE_FULLSCREEN } from '../../../../shared/constants/app';
+// import { getAccountMenuState } from '../../../ducks/metamask/metamask';
 export default class AppHeader extends PureComponent {
   static propTypes = {
     history: PropTypes.object,
@@ -65,7 +70,8 @@ export default class AppHeader extends PureComponent {
       disabled,
       isAccountMenuOpen,
     } = this.props;
-
+    // const accountMenuState = useSelector(getAccountMenuState);
+    // console.log(accountMenuState, 'getAccountMenuState');
     return (
       isUnlocked && (
         <div
@@ -86,7 +92,8 @@ export default class AppHeader extends PureComponent {
             }
           }}
         >
-          <Identicon address={selectedAddress} diameter={32} addBorder />
+          {/* <Identicon address={selectedAddress} diameter={32} addBorder /> */}
+          <MenuIcon />
         </div>
       )
     );
@@ -96,6 +103,8 @@ export default class AppHeader extends PureComponent {
     const {
       history,
       isUnlocked,
+      isAccountMenuOpen,
+      networkDropdownOpen,
       hideNetworkIndicator,
       disableNetworkIndicator,
       disabled,
@@ -106,10 +115,11 @@ export default class AppHeader extends PureComponent {
       <div
         className={classnames('app-header', {
           'app-header--back-drop': isUnlocked,
+          'app-header--filter': (isAccountMenuOpen || networkDropdownOpen) && getEnvironmentType() != ENVIRONMENT_TYPE_FULLSCREEN,
         })}
       >
         <div className="app-header__contents">
-          <MetaFoxLogo
+          {/* <MetaFoxLogo
             unsetIconHeight
             onClick={async () => {
               if (onClick) {
@@ -117,7 +127,19 @@ export default class AppHeader extends PureComponent {
               }
               history.push(DEFAULT_ROUTE);
             }}
-          />
+          /> */}
+          {isUnlocked && (
+            <AlphaCarbonLogoGradient
+              unsetIconHeight
+              onClick={async () => {
+                if (onClick) {
+                  await onClick();
+                }
+                history.push(DEFAULT_ROUTE);
+              }}
+            />
+          )}
+
           <div className="app-header__account-menu-container">
             {!hideNetworkIndicator && (
               <div className="app-header__network-component-wrapper">

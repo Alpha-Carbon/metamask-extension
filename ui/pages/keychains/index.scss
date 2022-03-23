@@ -11,6 +11,15 @@
     justify-content: flex-start;
   }
 }
+.first-view-main-wrapper.restore{
+  & .create-new-vault__txt{
+    color:var(--black);
+  }
+  & .create-new-vault__form #password-label,.create-new-vault__form #confirm-password-label{
+    color:var(--black);
+  }
+}
+
 
 
 @media screen and (min-width: 1281px) {

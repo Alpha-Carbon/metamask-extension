@@ -4,7 +4,7 @@ import { debounce } from 'lodash';
 import Fuse from 'fuse.js';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import classnames from 'classnames';
-import { ENVIRONMENT_TYPE_POPUP } from '../../../../shared/constants/app';
+import { ENVIRONMENT_TYPE_POPUP, ENVIRONMENT_TYPE_FULLSCREEN } from '../../../../shared/constants/app';
 import { getEnvironmentType } from '../../../../app/scripts/lib/util';
 import Identicon from '../../ui/identicon';
 import SiteIcon from '../../ui/site-icon';
@@ -25,6 +25,7 @@ import {
 } from '../../../helpers/constants/routes';
 import TextField from '../../ui/text-field';
 import SearchIcon from '../../ui/search-icon';
+import ExpandIcon from '../../ui/icon/expend-icon.component';
 import Button from '../../ui/button';
 import KeyRingLabel from './keyring-label';
 
@@ -206,6 +207,8 @@ export default class AccountMenu extends Component {
             ) : null}
           </div>
           <Identicon address={identity.address} diameter={24} />
+          {/* <img className='account-menu__img' src="./images/alphaCarbon/avatar.svg" alt="" /> */}
+
           <div className="account-menu__account-info">
             <div className="account-menu__name">{identity.name || ''}</div>
             <UserPreferencedCurrencyDisplay
@@ -307,15 +310,14 @@ export default class AccountMenu extends Component {
         <div className="account-menu__close-area" onClick={toggleAccountMenu} />
         <AccountMenuItem className="account-menu__header">
           {t('myAccounts')}
-          <Button
-            className="account-menu__lock-button"
-            onClick={() => {
-              lockMetamask();
-              history.push(DEFAULT_ROUTE);
-            }}
-          >
-            {t('lock')}
-          </Button>
+          {getEnvironmentType() === ENVIRONMENT_TYPE_FULLSCREEN ? null : (
+            <button className='account-menu__expend-button' onClick={() => {
+              global.platform.openExtensionInBrowser();
+              onClose();
+            }} >
+              <ExpandIcon />
+            </button>
+          )}
         </AccountMenuItem>
         <div className="account-menu__divider" />
         <div className="account-menu__accounts-container">
@@ -347,7 +349,7 @@ export default class AccountMenu extends Component {
           icon={
             <img
               className="account-menu__item-icon"
-              src="images/plus-btn-white.svg"
+              src="images/alphaCarbon/add.svg"
               alt={t('createAccount')}
             />
           }
@@ -368,7 +370,7 @@ export default class AccountMenu extends Component {
           icon={
             <img
               className="account-menu__item-icon"
-              src="images/import-account.svg"
+              src="images/alphaCarbon/exit_to_app.svg"
               alt={t('importAccount')}
             />
           }
@@ -393,20 +395,20 @@ export default class AccountMenu extends Component {
           icon={
             <img
               className="account-menu__item-icon"
-              src="images/connect-icon.svg"
+              src="images/alphaCarbon/usb.svg"
               alt={t('connectHardwareWallet')}
             />
           }
           text={t('connectHardwareWallet')}
         />
-        <div className="account-menu__divider" />
-        <AccountMenuItem
+        {/* <div className="account-menu__divider" /> */}
+        {/* <AccountMenuItem
           onClick={() => {
             global.platform.openTab({ url: supportLink });
           }}
-          icon={<img src="images/support.svg" alt={supportText} />}
+        icon={<img src="images/support.svg" alt={supportText} />}
           text={supportText}
-        />
+        /> */}
 
         <AccountMenuItem
           onClick={() => {
@@ -423,11 +425,23 @@ export default class AccountMenu extends Component {
           icon={
             <img
               className="account-menu__item-icon"
-              src="images/settings.svg"
+              src="images/alphaCarbon/settings.svg"
             />
           }
           text={t('settings')}
         />
+        <div className='account-menu__lock-wrap'>
+          <Button
+            className="account-menu__lock-button"
+            onClick={() => {
+              lockMetamask();
+              history.push(DEFAULT_ROUTE);
+            }}
+          >
+            {t('lock')}
+          </Button>
+        </div>
+
       </div>
     );
   }

@@ -5,6 +5,7 @@ import {
   INITIALIZE_END_OF_FLOW_ROUTE,
 } from '../../../../helpers/constants/routes';
 import CreateNewVault from '../../../../components/app/create-new-vault';
+import BackIcon from '../../../../components/ui/icon/back-icon.component';
 
 export default class ImportWithSeedPhrase extends PureComponent {
   static contextTypes = {
@@ -81,11 +82,11 @@ export default class ImportWithSeedPhrase extends PureComponent {
             }}
             href="#"
           >
-            {`< ${t('back')}`}
+            <BackIcon className="mr-2" />{t('back')}
           </a>
         </div>
         <div className="first-time-flow__header">
-          {t('importAccountSeedPhrase')}
+          {t('importFromSeed')}
         </div>
         <div className="first-time-flow__text-block">{t('secretPhrase')}</div>
         <CreateNewVault

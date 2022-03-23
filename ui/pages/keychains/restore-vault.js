@@ -8,6 +8,7 @@ import {
 } from '../../store/actions';
 import { DEFAULT_ROUTE } from '../../helpers/constants/routes';
 import CreateNewVault from '../../components/app/create-new-vault';
+import BackIcon from '../../components/ui/icon/back-icon.component';
 
 class RestoreVaultPage extends Component {
   static contextTypes = {
@@ -51,7 +52,7 @@ class RestoreVaultPage extends Component {
     const { isLoading } = this.props;
 
     return (
-      <div className="first-view-main-wrapper">
+      <div className="first-view-main-wrapper restore">
         <div className="first-view-main">
           <div className="import-account">
             <a
@@ -63,7 +64,8 @@ class RestoreVaultPage extends Component {
               }}
               href="#"
             >
-              {`< ${t('back')}`}
+              <BackIcon className='mr-2' />
+              {t('back')}
             </a>
             <div className="import-account__title">
               {this.context.t('restoreAccountWithSeed')}
