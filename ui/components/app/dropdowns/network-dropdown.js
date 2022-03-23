@@ -22,7 +22,7 @@ import {
   ADVANCED_ROUTE,
 } from '../../../helpers/constants/routes';
 import { Dropdown, DropdownMenuItem } from './dropdown';
-import NetWorkTreeIcon from '../../ui/icon/network-tree-icon.component';
+import NetworkTreeIcon from '../../ui/icon/network-tree-icon.component';
 import CheckIcon from '../../ui/icon/check-icon.component';
 import CloseIcon from '../../ui/icon/close-icon.component';
 
@@ -360,7 +360,7 @@ class NetworkDropdown extends Component {
           <CloseIcon />
         </div>
         <div className="network-dropdown-header">
-          <NetWorkTreeIcon />
+          <NetworkTreeIcon />
           <div className="network-dropdown-title">{t('networks')}</div>
           <div className="network-dropdown-divider" />
           {/* {showTestnetMessageInDropdown ? (

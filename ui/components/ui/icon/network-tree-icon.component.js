@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function NetWorkTreeIcon({
+export default function NetworkTreeIcon({
   className,
   width = '40',
   height = '40',
@@ -19,7 +19,7 @@ export default function NetWorkTreeIcon({
   );
 }
 
-NetWorkTreeIcon.propTypes = {
+NetworkTreeIcon.propTypes = {
   className: PropTypes.object,
   /**
    * Width of the icon
