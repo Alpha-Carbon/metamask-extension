@@ -251,7 +251,7 @@ export default function CreateNewVault({
               setConfirmPasswordShow(!confirmPasswordShow);
             }}
           >
-            {showSeedPhrase ? t('hide') : t('show')}
+            {confirmPasswordShow ? t('hide') : t('show')}
           </button>
         </div>
       </div>
