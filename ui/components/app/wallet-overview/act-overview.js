@@ -29,7 +29,7 @@ import CopyIcon from '../../ui/icon/copy-icon.component';
 import SendIcon from '../../ui/icon/send-icon.component';
 import ReceiveIcon from '../../ui/icon/receive-icon.component';
 import { I18nContext } from '../../../contexts/i18n';
-
+import Identicon from '../../ui/identicon';
 
 const ActOverview = () => {
     // const dispatch = useDispatch();
@@ -59,7 +59,8 @@ const ActOverview = () => {
         <div className='act-overview__wrapper'>
             <div className="act-overview__balance">
                 <div className="act-overview__balance-head">
-                    <img src="./images/alphaCarbon/avatar.svg" height='50' alt="TACT" />
+                    {/* <img src="./images/alphaCarbon/avatar.svg" height='50' alt="TACT" /> */}
+                    <Identicon address={selectedIdentity.address} diameter={36} />
                 </div>
                 <div className="act-overview__balance-info">
                     <div className="act-overview__balance-info-account">
