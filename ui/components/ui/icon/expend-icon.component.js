@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function ExpendIcon({
+export default function ExpandIcon({
   width = '16',
   height = '16',
   color = 'white',
@@ -21,7 +21,7 @@ export default function ExpendIcon({
   );
 }
 
-ExpendIcon.propTypes = {
+ExpandIcon.propTypes = {
   /**
    * Width of the icon
    */

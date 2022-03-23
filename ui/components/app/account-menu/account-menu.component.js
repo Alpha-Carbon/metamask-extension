@@ -25,7 +25,7 @@ import {
 } from '../../../helpers/constants/routes';
 import TextField from '../../ui/text-field';
 import SearchIcon from '../../ui/search-icon';
-import ExpendIcon from '../../ui/icon/expend-icon.component';
+import ExpandIcon from '../../ui/icon/expend-icon.component';
 import Button from '../../ui/button';
 import KeyRingLabel from './keyring-label';
 
@@ -315,7 +315,7 @@ export default class AccountMenu extends Component {
               global.platform.openExtensionInBrowser();
               onClose();
             }} >
-              <ExpendIcon />
+              <ExpandIcon />
             </button>
           )}
         </AccountMenuItem>
