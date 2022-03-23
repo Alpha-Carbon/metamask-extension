@@ -6,7 +6,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import classnames from 'classnames';
 import { ENVIRONMENT_TYPE_POPUP, ENVIRONMENT_TYPE_FULLSCREEN } from '../../../../shared/constants/app';
 import { getEnvironmentType } from '../../../../app/scripts/lib/util';
-// import Identicon from '../../ui/identicon';
+import Identicon from '../../ui/identicon';
 import SiteIcon from '../../ui/site-icon';
 import UserPreferencedCurrencyDisplay from '../user-preferenced-currency-display';
 import {
@@ -206,8 +206,8 @@ export default class AccountMenu extends Component {
               <div className="account-menu__check-mark-icon" />
             ) : null}
           </div>
-          {/* <Identicon address={identity.address} diameter={24} /> */}
-          <img className='account-menu__img' src="./images/alphaCarbon/avatar.svg" alt="" />
+          <Identicon address={identity.address} diameter={24} />
+          {/* <img className='account-menu__img' src="./images/alphaCarbon/avatar.svg" alt="" /> */}
 
           <div className="account-menu__account-info">
             <div className="account-menu__name">{identity.name || ''}</div>
