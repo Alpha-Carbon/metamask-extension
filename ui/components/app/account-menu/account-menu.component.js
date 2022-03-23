@@ -425,7 +425,7 @@ export default class AccountMenu extends Component {
           icon={
             <img
               className="account-menu__item-icon"
-              src="./images/alphaCarbon/settings.svg"
+              src="images/alphaCarbon/settings.svg"
             />
           }
           text={t('settings')}
