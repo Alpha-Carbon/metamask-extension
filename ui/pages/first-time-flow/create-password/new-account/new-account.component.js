@@ -181,7 +181,7 @@ export default class NewAccount extends PureComponent {
         </div>
         <div className="first-time-flow__header">{t('createPassword')}</div>
         <form className="first-time-flow__form" onSubmit={this.handleCreate}>
-          <div className='first-time-flow__inputWrap'>
+          <div className='first-time-flow__input-wrap'>
             <TextField
               inputRef={this.createPasswordRef}
               id="create-password"
@@ -212,7 +212,7 @@ export default class NewAccount extends PureComponent {
               {passwordShow ? t('hide') : t('show')}
             </button>
           </div>
-          <div className='first-time-flow__inputWrap'>
+          <div className='first-time-flow__input-wrap'>
             <TextField
               id="confirm-password"
               label={t('confirmPassword')}
