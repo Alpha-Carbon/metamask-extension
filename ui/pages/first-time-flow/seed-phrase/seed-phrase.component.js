@@ -22,9 +22,11 @@ export default class SeedPhrase extends PureComponent {
     seedPhrase: PropTypes.string,
     verifySeedPhrase: PropTypes.func,
   };
+
   static contextTypes = {
     t: PropTypes.func,
   };
+
   state = {
     verifiedSeedPhrase: '',
   };
@@ -54,7 +56,9 @@ export default class SeedPhrase extends PureComponent {
       pathname === INITIALIZE_SEED_PHRASE_ROUTE ? 'seedPhrase' : '';
     return (
       <DragDropContextProvider backend={HTML5Backend}>
-        <div className={`first-time-flow__wrapper ${introClass} ${seedPhraseClass}`}>
+        <div
+          className={`first-time-flow__wrapper ${introClass} ${seedPhraseClass}`}
+        >
           {/* <MetaFoxLogo /> */}
           <div className="first-time-flow__logo-wrap">
             <AlphaCarbonLogo />

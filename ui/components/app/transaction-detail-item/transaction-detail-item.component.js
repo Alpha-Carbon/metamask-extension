@@ -75,7 +75,7 @@ export default function TransactionDetailItem({
         >
           {subText}
         </Typography> */}
-        <div className='d-flex justify-content-space-between align-items-center w-100'>
+        <div className="d-flex justify-content-space-between align-items-center w-100">
           {subText}
         </div>
       </div>

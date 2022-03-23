@@ -111,7 +111,10 @@ export default class SendContent extends Component {
         >
           {t('newAccountDetectedDialogMessage')}
         </Dialog> */}
-        <button className="send__dialog" onClick={() => this.setState({ showNicknamePopovers: true })}>
+        <button
+          className="send__dialog"
+          onClick={() => this.setState({ showNicknamePopovers: true })}
+        >
           {t('newAccountDetectedDialogMessage')}
         </button>
         {showNicknamePopovers ? (

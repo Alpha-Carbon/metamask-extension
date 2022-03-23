@@ -41,7 +41,7 @@ export default class PageContainerHeader extends Component {
             onClick={() => onClose()}
           >
             {/* {headerCloseText} */}
-            <BackIcon width='17' height='11' />
+            <BackIcon width="17" height="11" />
           </Button>
         )
       );

@@ -88,7 +88,7 @@ export default class UnlockPage extends Component {
         newState.participateInMetaMetrics === null ||
         newState.participateInMetaMetrics === undefined
       ) {
-        //close MetaMetricsOptInModal 
+        // close MetaMetricsOptInModal
         // showOptInModal();
       }
     } catch ({ message }) {
@@ -166,7 +166,10 @@ export default class UnlockPage extends Component {
               width="120"
               height="120"
             /> */}
-            <img src="./images/alphaCarbon/logo_gradient.svg" alt="AlphaCarbon" />
+            <img
+              src="./images/alphaCarbon/logo_gradient.svg"
+              alt="AlphaCarbon"
+            />
           </div>
           <h1 className="unlock-page__title">{t('carbonWallet')}</h1>
           {/* <div>{t('unlockMessage')}</div> */}

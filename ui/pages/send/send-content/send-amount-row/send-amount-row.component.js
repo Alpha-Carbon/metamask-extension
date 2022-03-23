@@ -5,8 +5,8 @@ import UserPreferencedCurrencyInput from '../../../../components/app/user-prefer
 import UserPreferencedTokenInput from '../../../../components/app/user-preferenced-token-input';
 import UserPreferencedCurrencyDisplay from '../../../../components/app/user-preferenced-currency-display';
 import { ASSET_TYPES } from '../../../../ducks/send';
-import AmountMaxButton from './amount-max-button';
 import ArrowIcon from '../../../../components/ui/icon/arrow-icon.component';
+import AmountMaxButton from './amount-max-button';
 
 export default class SendAmountRow extends Component {
   static propTypes = {
@@ -44,34 +44,28 @@ export default class SendAmountRow extends Component {
   }
 
   renderAmount() {
-    const {
-      accounts,
-      selectedAddress,
-      inError,
-      nativeCurrency,
-    } = this.props;
+    const { accounts, selectedAddress, inError, nativeCurrency } = this.props;
     const { t } = this.context;
     const balanceValue = accounts[selectedAddress]
       ? accounts[selectedAddress].balance
       : '';
     return (
-      <div className='send-v2__amount__wrapper'>
-        <button className='send-v2__amount__switch'>
+      <div className="send-v2__amount__wrapper">
+        <button className="send-v2__amount__switch">
           <p>{nativeCurrency}</p>
-          <ArrowIcon color='#FFFFFF' />
+          <ArrowIcon color="#FFFFFF" />
         </button>
         {this.renderInput()}
-        <p className='send-v2__amount__balance'>
+        <p className="send-v2__amount__balance">
           <span>{t('balance')} : </span>
           <UserPreferencedCurrencyDisplay
             ethNumberOfDecimals={4}
             value={balanceValue}
           />
-
         </p>
         <AmountMaxButton inError={inError} />
       </div>
-    )
+    );
   }
 
   render() {
@@ -81,9 +75,8 @@ export default class SendAmountRow extends Component {
       return null;
     }
 
-    return (
-      this.renderAmount()
-      /* <SendRowWrapper
+    return this.renderAmount();
+    /* <SendRowWrapper
         label={`${this.context.t('amount')}:`}
         showError={inError}
         errorType="amount"
@@ -91,6 +84,5 @@ export default class SendAmountRow extends Component {
         <AmountMaxButton inError={inError} />
         {this.renderInput()}
       </SendRowWrapper> */
-    );
   }
 }

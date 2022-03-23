@@ -9,12 +9,12 @@ import AccountMismatchWarning from '../account-mismatch-warning/account-mismatch
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import { toChecksumHexAddress } from '../../../../shared/modules/hexstring-utils';
 import NicknamePopovers from '../../app/modals/nickname-popovers';
+import EastIcon from '../icon/east-icon.component';
 import {
   DEFAULT_VARIANT,
   CARDS_VARIANT,
   FLAT_VARIANT,
 } from './sender-to-recipient.constants';
-import EastIcon from '../icon/east-icon.component';
 
 const variantHash = {
   [DEFAULT_VARIANT]: 'sender-to-recipient--default',
@@ -124,12 +124,12 @@ export function RecipientWithAddress({
         <div className="sender-to-recipient__name">
           {addressOnly
             ? recipientNickname ||
-            recipientEns ||
-            shortenAddress(checksummedRecipientAddress)
+              recipientEns ||
+              shortenAddress(checksummedRecipientAddress)
             : recipientNickname ||
-            recipientEns ||
-            recipientName ||
-            t('newContract')}
+              recipientEns ||
+              recipientName ||
+              t('newContract')}
         </div>
       </div>
       {showNicknamePopovers ? (

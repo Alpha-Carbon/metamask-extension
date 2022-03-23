@@ -25,8 +25,8 @@ export default function SendHeader() {
     if (stage === SEND_STAGES.DRAFT) {
       dispatch(resetRecipientInput());
     } else {
-      dispatch(resetSendState())
-      history.push(mostRecentOverviewPage)
+      dispatch(resetSendState());
+      history.push(mostRecentOverviewPage);
     }
   };
 
@@ -46,7 +46,7 @@ export default function SendHeader() {
       headerCloseText={
         stage === SEND_STAGES.EDIT ? t('cancelEdit') : t('cancel')
       }
-    // hideClose={stage === SEND_STAGES.DRAFT}
+      // hideClose={stage === SEND_STAGES.DRAFT}
     />
   );
 }

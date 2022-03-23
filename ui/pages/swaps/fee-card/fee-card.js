@@ -84,7 +84,7 @@ export default function FeeCard({
               key="gas-item"
               detailTitle={
                 supportsEIP1559V2 &&
-                  (!smartTransactionsEnabled || !smartTransactionsOptInStatus) ? (
+                (!smartTransactionsEnabled || !smartTransactionsOptInStatus) ? (
                   <GasDetailsItemTitle />
                 ) : (
                   <>

@@ -360,10 +360,11 @@ export default class Routes extends Component {
         <AccountMenu />
         <div
           // className="main-container-wrapper"
-          className={
-            classnames('main-container-wrapper', {
-              'main-container-wrapper--filter': (isAccountMenuOpen || networkDropdownOpen) && getEnvironmentType() != ENVIRONMENT_TYPE_FULLSCREEN,
-            })}
+          className={classnames('main-container-wrapper', {
+            'main-container-wrapper--filter':
+              (isAccountMenuOpen || networkDropdownOpen) &&
+              getEnvironmentType() != ENVIRONMENT_TYPE_FULLSCREEN,
+          })}
         >
           {isLoading ? <Loading loadingMessage={loadMessage} /> : null}
           {!isLoading && isNetworkLoading ? <LoadingNetwork /> : null}

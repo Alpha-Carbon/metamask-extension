@@ -18,7 +18,7 @@ import ConnectedAccounts from '../connected-accounts';
 import { Tabs, Tab } from '../../components/ui/tabs';
 import {
   // EthOverview,
-  ActOverview
+  ActOverview,
 } from '../../components/app/wallet-overview';
 import WhatsNewPopup from '../../components/app/whats-new-popup';
 import RecoveryPhraseReminder from '../../components/app/recovery-phrase-reminder';
@@ -276,36 +276,36 @@ export default class Home extends PureComponent {
           ///: BEGIN:ONLY_INCLUDE_IN(flask)
           shouldShowErrors
             ? Object.entries(errorsToShow).map(([errorId, error]) => {
-              return (
-                <HomeNotification
-                  classNames={['home__error-message']}
-                  infoText={error.data.snapId}
-                  descriptionText={
-                    <>
-                      <Typography
-                        color={COLORS.UI1}
-                        variant={TYPOGRAPHY.H5}
-                        fontWeight={FONT_WEIGHT.NORMAL}
-                      >
-                        {t('somethingWentWrong')}
-                      </Typography>
-                      <Typography
-                        color={COLORS.UI1}
-                        variant={TYPOGRAPHY.H7}
-                        fontWeight={FONT_WEIGHT.NORMAL}
-                      >
-                        {t('snapError', [error.message, error.code])}
-                      </Typography>
-                    </>
-                  }
-                  onIgnore={async () => {
-                    await removeSnapError(errorId);
-                  }}
-                  ignoreText="Dismiss"
-                  key="home-error-message"
-                />
-              );
-            })
+                return (
+                  <HomeNotification
+                    classNames={['home__error-message']}
+                    infoText={error.data.snapId}
+                    descriptionText={
+                      <>
+                        <Typography
+                          color={COLORS.UI1}
+                          variant={TYPOGRAPHY.H5}
+                          fontWeight={FONT_WEIGHT.NORMAL}
+                        >
+                          {t('somethingWentWrong')}
+                        </Typography>
+                        <Typography
+                          color={COLORS.UI1}
+                          variant={TYPOGRAPHY.H7}
+                          fontWeight={FONT_WEIGHT.NORMAL}
+                        >
+                          {t('snapError', [error.message, error.code])}
+                        </Typography>
+                      </>
+                    }
+                    onIgnore={async () => {
+                      await removeSnapError(errorId);
+                    }}
+                    ignoreText="Dismiss"
+                    key="home-error-message"
+                  />
+                );
+              })
             : null
           ///: END:ONLY_INCLUDE_IN
         }
@@ -328,8 +328,8 @@ export default class Home extends PureComponent {
                   {newCollectibleAddedMessage === 'success'
                     ? t('newCollectibleAddedMessage')
                     : t('newCollectibleAddFailed', [
-                      newCollectibleAddedMessage,
-                    ])}
+                        newCollectibleAddedMessage,
+                      ])}
                 </Typography>
                 <button
                   className="fas fa-times home__close"
@@ -585,7 +585,7 @@ export default class Home extends PureComponent {
             </Tabs>
 
             <div className="home__import-token">
-              <p className='mr-1'>{t('missingToken')}</p>
+              <p className="mr-1">{t('missingToken')}</p>
               <Button
                 className="import-token-link__link mr-1"
                 type="link"

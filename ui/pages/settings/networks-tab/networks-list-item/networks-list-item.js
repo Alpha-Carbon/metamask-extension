@@ -59,14 +59,11 @@ const NetworksListItem = ({ network, networkIsSelected, selectedRpcUrl }) => {
         className={classnames('networks-tab__networks-list-name', {
           'networks-tab__networks-list-name--selected': displayNetworkListItemAsSelected,
           'networks-tab__networks-list-name--disabled':
-            viewOnly &&
-            !displayNetworkListItemAsSelected,
+            viewOnly && !displayNetworkListItemAsSelected,
         })}
       >
         {label || t(labelKey)}
-        {viewOnly && (
-          <LockIcon width="14px" height="17px" fill="#cdcdcd" />
-        )}
+        {viewOnly && <LockIcon width="14px" height="17px" fill="#cdcdcd" />}
       </div>
       <div className="networks-tab__networks-list-arrow" />
     </div>

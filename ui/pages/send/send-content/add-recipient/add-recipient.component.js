@@ -57,9 +57,10 @@ export default class AddRecipient extends Component {
       ],
     });
     this.state = {
-      isMyAccountShow: true
-    }
+      isMyAccountShow: true,
+    };
   }
+
   static contextTypes = {
     t: PropTypes.func,
     metricsEvent: PropTypes.func,
@@ -124,16 +125,18 @@ export default class AddRecipient extends Component {
 
     return (
       <div className="send__select-recipient-wrapper">
-        {isMyAccountShow ? <Button
-          type="link"
-          className="send__select-recipient-wrapper__list__link"
-          onClick={() => {
-            useMyAccountsForRecipientSearch();
-            this.setState({ isMyAccountShow: !isMyAccountShow })
-          }}
-        >
-          {t('transferBetweenAccounts')}
-        </Button> : null}
+        {isMyAccountShow ? (
+          <Button
+            type="link"
+            className="send__select-recipient-wrapper__list__link"
+            onClick={() => {
+              useMyAccountsForRecipientSearch();
+              this.setState({ isMyAccountShow: !isMyAccountShow });
+            }}
+          >
+            {t('transferBetweenAccounts')}
+          </Button>
+        ) : null}
 
         {this.renderDialogs()}
 

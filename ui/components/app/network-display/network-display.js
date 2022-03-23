@@ -33,9 +33,9 @@ export default function NetworkDisplay({
     nickname: state.metamask.provider.nickname,
     type: state.metamask.provider.type,
   }));
-  const frequentRpcListDetail = useSelector((state) => (
-    state.metamask.frequentRpcListDetail
-  ));
+  const frequentRpcListDetail = useSelector(
+    (state) => state.metamask.frequentRpcListDetail,
+  );
   // const selectedNetwork = frequentRpcListDetail.filter((network) => network.nickname === currentNetwork.nickname)[0]
   // const labelKey = selectedNetwork ? selectedNetwork.labelKey : COLORS.UI4
 

@@ -244,7 +244,7 @@ export default function EditGasPopover({
         showEducationContent ? null : (
           <>
             <Button
-              className='edit-gas-popover__save'
+              className="edit-gas-popover__save"
               type="primaryGradient"
               onClick={onSubmit}
               disabled={
@@ -260,7 +260,7 @@ export default function EditGasPopover({
         )
       }
     >
-      <div className='edit-gas-popover__title'>
+      <div className="edit-gas-popover__title">
         <TuneIcon />
         <p>{title}</p>
       </div>

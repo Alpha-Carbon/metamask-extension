@@ -5,14 +5,15 @@ import {
   sendAmountIsInError,
   getSendAsset,
 } from '../../../../ducks/send';
-import {
-  getMetaMaskAccounts,
-} from '../../../../selectors';
+import { getMetaMaskAccounts } from '../../../../selectors';
 import SendAmountRow from './send-amount-row.component';
+
 export default connect(mapStateToProps, mapDispatchToProps)(SendAmountRow);
 
 function mapStateToProps(state) {
-  const { metamask: { nativeCurrency } } = state;
+  const {
+    metamask: { nativeCurrency },
+  } = state;
   const { metamask } = state;
   return {
     metamask,
@@ -22,7 +23,6 @@ function mapStateToProps(state) {
     amount: getSendAmount(state),
     inError: sendAmountIsInError(state),
     asset: getSendAsset(state),
-
   };
 }
 

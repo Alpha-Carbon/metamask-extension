@@ -344,7 +344,7 @@ export default class ConfirmTransactionBase extends Component {
       ) {
         // Native Send
         return (
-          <div className='confirm-page-container-content__currency-container-balance'>
+          <div className="confirm-page-container-content__currency-container-balance">
             <UserPreferencedCurrencyDisplay
               type={PRIMARY}
               key="total-max-amount"
@@ -504,10 +504,12 @@ export default class ConfirmTransactionBase extends Component {
             )
           }
           detailTotal={
-            <div className="
+            <div
+              className="
               confirm-page-container-content__currency-container 
               confirm-page-container-content__currency-container-title
-            ">
+            "
+            >
               {renderHeartBeatIfNotInTest()}
               <UserPreferencedCurrencyDisplay
                 type={PRIMARY}
@@ -520,8 +522,10 @@ export default class ConfirmTransactionBase extends Component {
           subText={
             !isMultiLayerFeeNetwork && (
               <>
-                <p className='transaction-detail-item__row-subText-title'
-                  key="editGasSubTextFeeLabel">
+                <p
+                  className="transaction-detail-item__row-subText-title"
+                  key="editGasSubTextFeeLabel"
+                >
                   {t('editGasSubTextFeeLabel')}
                 </p>
                 <div
@@ -559,7 +563,7 @@ export default class ConfirmTransactionBase extends Component {
                 <GasTiming
                   maxPriorityFeePerGas={hexWEIToDecGWEI(
                     maxPriorityFeePerGas ||
-                    txData.txParams.maxPriorityFeePerGas,
+                      txData.txParams.maxPriorityFeePerGas,
                   )}
                   maxFeePerGas={hexWEIToDecGWEI(
                     maxFeePerGas || txData.txParams.maxFeePerGas,
@@ -620,7 +624,7 @@ export default class ConfirmTransactionBase extends Component {
                 subText={
                   <>
                     <p
-                      className='transaction-detail-item__row-subText-title'
+                      className="transaction-detail-item__row-subText-title"
                       key="editGasSubTextAmountLabel"
                     >
                       {t('editGasSubTextAmountLabel')}

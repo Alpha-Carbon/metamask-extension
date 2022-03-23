@@ -7,8 +7,8 @@ import {
   INITIALIZE_SEED_PHRASE_ROUTE,
 } from '../../../../helpers/constants/routes';
 import { exportAsFile } from '../../../../helpers/utils/util';
-import DraggableSeed from './draggable-seed.component';
 import BackIcon from '../../../../components/ui/icon/back-icon.component';
+import DraggableSeed from './draggable-seed.component';
 
 const EMPTY_SEEDS = Array(12).fill(null);
 
@@ -141,7 +141,8 @@ export default class ConfirmSeedPhrase extends PureComponent {
             }}
             href="#"
           >
-            <BackIcon className="mr-2" />{t('back')}
+            <BackIcon className="mr-2" />
+            {t('back')}
           </a>
         </div>
         <div className="first-time-flow__header">

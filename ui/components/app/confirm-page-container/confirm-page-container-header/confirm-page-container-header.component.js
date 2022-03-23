@@ -49,7 +49,10 @@ export default function ConfirmPageContainerHeader({
             }}
           >
             {/* <img src="./images/caret-left.svg" alt="" /> */}
-            <div className='confirm-page-container-header__back-icon' onClick={() => onEdit()}>
+            <div
+              className="confirm-page-container-header__back-icon"
+              onClick={() => onEdit()}
+            >
               <BackIcon />
             </div>
             <span

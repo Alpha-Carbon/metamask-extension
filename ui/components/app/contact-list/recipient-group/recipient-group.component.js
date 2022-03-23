@@ -56,7 +56,7 @@ export default function RecipientGroup({
           })}
         >
           <Identicon address={address} diameter={28} />
-          {isMyAccount ?
+          {isMyAccount ? (
             <div
               className="send__select-recipient-wrapper__group-item__content"
               data-testid="recipient"
@@ -70,7 +70,7 @@ export default function RecipientGroup({
                 </div>
               )}
             </div>
-            :
+          ) : (
             <div
               className="send__select-recipient-wrapper__group-item__content"
               data-testid="recipient"
@@ -85,7 +85,7 @@ export default function RecipientGroup({
                 </div>
               )}
             </div>
-          }
+          )}
         </div>
       ))}
     </div>

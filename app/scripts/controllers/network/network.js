@@ -302,7 +302,7 @@ export default class NetworkController extends EventEmitter {
     assert.ok(
       INFURA_PROVIDER_TYPES.includes(type),
       `Unknown Infura provider type "${type}".`,
-    )
+    );
     const { chainId } = NETWORK_TYPE_TO_ID_MAP[type];
     this.setProviderConfig({
       type,

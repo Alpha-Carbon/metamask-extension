@@ -91,13 +91,14 @@ export default class EnsInput extends Component {
       <div className={classnames('ens-input', className)}>
         <div
           className={classnames(
-            // 'ens-input__wrapper', 
+            // 'ens-input__wrapper',
             {
               'ens-input__wrapper': !hasSelectedAddress,
               'ens-input__wrapper__status-icon--error': false,
               'ens-input__wrapper__status-icon--valid': false,
               'ens-input__wrapper--valid': !hasSelectedAddress,
-            })}
+            },
+          )}
         >
           {/* <div
             className={classnames('ens-input__wrapper__status-icon', {

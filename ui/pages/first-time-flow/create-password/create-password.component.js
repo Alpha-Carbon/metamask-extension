@@ -36,8 +36,8 @@ export default class CreatePassword extends PureComponent {
     return (
       <div className="first-time-flow__wrapper">
         {/* <MetaFoxLogo /> */}
-        <div className='first-time-flow__logo'>
-          <img src='./images/alphaCarbon/logo.png' alt="alpha-carbon-logo" />
+        <div className="first-time-flow__logo">
+          <img src="./images/alphaCarbon/logo.png" alt="alpha-carbon-logo" />
           <p>{t('carbonWallet')}</p>
         </div>
         <Switch>
