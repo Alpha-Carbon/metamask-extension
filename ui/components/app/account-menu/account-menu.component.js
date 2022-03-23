@@ -6,7 +6,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import classnames from 'classnames';
 import { ENVIRONMENT_TYPE_POPUP, ENVIRONMENT_TYPE_FULLSCREEN } from '../../../../shared/constants/app';
 import { getEnvironmentType } from '../../../../app/scripts/lib/util';
-// import Identicon from '../../ui/identicon';
+import Identicon from '../../ui/identicon';
 import SiteIcon from '../../ui/site-icon';
 import UserPreferencedCurrencyDisplay from '../user-preferenced-currency-display';
 import {
@@ -25,7 +25,7 @@ import {
 } from '../../../helpers/constants/routes';
 import TextField from '../../ui/text-field';
 import SearchIcon from '../../ui/search-icon';
-import ExpendIcon from '../../ui/icon/expend-icon.component';
+import ExpandIcon from '../../ui/icon/expend-icon.component';
 import Button from '../../ui/button';
 import KeyRingLabel from './keyring-label';
 
@@ -206,8 +206,8 @@ export default class AccountMenu extends Component {
               <div className="account-menu__check-mark-icon" />
             ) : null}
           </div>
-          {/* <Identicon address={identity.address} diameter={24} /> */}
-          <img className='account-menu__img' src="./images/alphaCarbon/avatar.svg" alt="" />
+          <Identicon address={identity.address} diameter={24} />
+          {/* <img className='account-menu__img' src="./images/alphaCarbon/avatar.svg" alt="" /> */}
 
           <div className="account-menu__account-info">
             <div className="account-menu__name">{identity.name || ''}</div>
@@ -315,7 +315,7 @@ export default class AccountMenu extends Component {
               global.platform.openExtensionInBrowser();
               onClose();
             }} >
-              <ExpendIcon />
+              <ExpandIcon />
             </button>
           )}
         </AccountMenuItem>
@@ -425,7 +425,7 @@ export default class AccountMenu extends Component {
           icon={
             <img
               className="account-menu__item-icon"
-              src="./images/alphaCarbon/settings.svg"
+              src="images/alphaCarbon/settings.svg"
             />
           }
           text={t('settings')}

@@ -33,7 +33,7 @@ export default function ListItem({
         }
       }}
     >
-      <div className="list-item__topWrap">
+      <div className="list-item__top-wrap">
         {icon ? <div className="list-item__icon">{icon}</div> : null}
         <div className="list-item__heading">
           {React.isValidElement(title) ? (

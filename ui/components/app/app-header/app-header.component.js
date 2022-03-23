@@ -117,8 +117,7 @@ export default class AppHeader extends PureComponent {
       <div
         className={classnames('app-header', {
           'app-header--back-drop': isUnlocked,
-          'app-header--filter': isAccountMenuOpen && getEnvironmentType() != ENVIRONMENT_TYPE_FULLSCREEN,
-          'app-header--filter': networkDropdownOpen && getEnvironmentType() != ENVIRONMENT_TYPE_FULLSCREEN,
+          'app-header--filter': (isAccountMenuOpen || networkDropdownOpen) && getEnvironmentType() != ENVIRONMENT_TYPE_FULLSCREEN,
         })}
       >
         <div className="app-header__contents">
@@ -131,15 +130,17 @@ export default class AppHeader extends PureComponent {
               history.push(DEFAULT_ROUTE);
             }}
           /> */}
-          {!logoShow ? <AlphaCarbonLogoGradient
-            unsetIconHeight
-            onClick={async () => {
-              if (onClick) {
-                await onClick();
-              }
-              history.push(DEFAULT_ROUTE);
-            }}
-          /> : null}
+          {isUnlocked && (
+            <AlphaCarbonLogoGradient
+              unsetIconHeight
+              onClick={async () => {
+                if (onClick) {
+                  await onClick();
+                }
+                history.push(DEFAULT_ROUTE);
+              }}
+            />
+          )}
 
           <div className="app-header__account-menu-container">
             {!hideNetworkIndicator && (
