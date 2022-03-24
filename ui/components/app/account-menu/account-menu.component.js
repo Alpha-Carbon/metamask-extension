@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { debounce } from 'lodash';
 import Fuse from 'fuse.js';
+import { getAccountLink } from '@metamask/etherscan-link';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import classnames from 'classnames';
 import {
@@ -25,12 +26,15 @@ import {
   IMPORT_ACCOUNT_ROUTE,
   CONNECT_HARDWARE_ROUTE,
   DEFAULT_ROUTE,
+  CONNECTED_ROUTE,
 } from '../../../helpers/constants/routes';
 import TextField from '../../ui/text-field';
 import SearchIcon from '../../ui/search-icon';
 import ExpandIcon from '../../ui/icon/expend-icon.component';
+import EastIcon from '../../ui/icon/east-icon.component';
 import Button from '../../ui/button';
 import KeyRingLabel from './keyring-label';
+import { getURLHostName } from '../../../helpers/utils/util';
 
 export function AccountMenuItem(props) {
   const { icon, children, text, subText, className, onClick } = props;
@@ -60,12 +64,17 @@ AccountMenuItem.propTypes = {
   subText: PropTypes.node,
   onClick: PropTypes.func,
   className: PropTypes.string,
+  rpcPrefs: PropTypes.object,
+  chainId: PropTypes.string,
+  selectedIdentity: PropTypes.object,
+  provider: PropTypes.object,
 };
 
 export default class AccountMenu extends Component {
   static contextTypes = {
     t: PropTypes.func,
     metricsEvent: PropTypes.func,
+    trackEvent: PropTypes.func,
   };
 
   static propTypes = {
@@ -288,15 +297,19 @@ export default class AccountMenu extends Component {
   }
 
   render() {
-    const { t, metricsEvent } = this.context;
+    const { t, metricsEvent, trackEvent } = this.context;
     const {
       shouldShowAccountsSearch,
       isAccountMenuOpen,
       toggleAccountMenu,
       lockMetamask,
       history,
+      rpcPrefs,
+      selectedIdentity,
+      chainId,
+      provider,
     } = this.props;
-
+    const { address } = selectedIdentity;
     if (!isAccountMenuOpen) {
       return null;
     }
@@ -313,17 +326,14 @@ export default class AccountMenu extends Component {
         <div className="account-menu__close-area" onClick={toggleAccountMenu} />
         <AccountMenuItem className="account-menu__header">
           {t('myAccounts')}
-          {getEnvironmentType() === ENVIRONMENT_TYPE_FULLSCREEN ? null : (
-            <button
-              className="account-menu__expend-button"
-              onClick={() => {
-                global.platform.openExtensionInBrowser();
-                onClose();
-              }}
-            >
-              <ExpandIcon />
-            </button>
-          )}
+          <button
+            className="account-menu__back-button"
+            onClick={() => {
+              toggleAccountMenu();
+            }}
+          >
+            <EastIcon color="#FFFFFF" opacity="1" />
+          </button>
         </AccountMenuItem>
         <div className="account-menu__divider" />
         <div className="account-menu__accounts-container">
@@ -407,6 +417,68 @@ export default class AccountMenu extends Component {
           }
           text={t('connectHardwareWallet')}
         />
+        <AccountMenuItem
+          onClick={() => {
+            const accountLink = getAccountLink(address, chainId, rpcPrefs);
+            trackEvent({
+              category: 'Navigation',
+              event: 'Clicked Block Explorer Link',
+              properties: {
+                link_type: 'Account Tracker',
+                action: 'Account Details Modal',
+                block_explorer_domain: getURLHostName(accountLink),
+              },
+            });
+            global.platform.openTab({
+              url: accountLink,
+            });
+            toggleAccountMenu();
+          }}
+          icon={
+            <img
+              className="account-menu__item-icon"
+              src="images/alphaCarbon/remove_red_eye.svg"
+              alt={t('etherscanViewOn')}
+            />
+          }
+          text={rpcPrefs.blockExplorerUrl
+            ? t('blockExplorerView', [
+              // getURLHostName(rpcPrefs.blockExplorerUrl),
+              provider.nickname
+            ])
+            : t('etherscanViewOn')}
+        />
+        <AccountMenuItem
+          onClick={() => {
+            openConnectedSitesEvent();
+            history.push(CONNECTED_ROUTE);
+            toggleAccountMenu();
+          }}
+          icon={
+            <img
+              className="account-menu__item-icon"
+              src="images/alphaCarbon/account_tree.svg"
+              alt={t('connectedSites')}
+            />
+          }
+          text={t('connectedSites')}
+        />
+        {getEnvironmentType() === ENVIRONMENT_TYPE_FULLSCREEN ? null : (
+          <AccountMenuItem
+            onClick={() => {
+              global.platform.openExtensionInBrowser();
+              onClose();
+            }}
+            icon={
+              <img
+                className="account-menu__item-icon"
+                src="images/alphaCarbon/open_in_full.svg"
+                alt={t('expandView')}
+              />
+            }
+            text={t('expandView')}
+          />
+        )}
         {/* <div className="account-menu__divider" /> */}
         {/* <AccountMenuItem
           onClick={() => {

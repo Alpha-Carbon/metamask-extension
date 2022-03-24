@@ -13,6 +13,9 @@ import {
   getMetaMaskKeyrings,
   getOriginOfCurrentTab,
   getSelectedAddress,
+  getRpcPrefsForCurrentProvider,
+  getCurrentChainId,
+  getSelectedIdentity,
 } from '../../../selectors';
 import AccountMenu from './account-menu.component';
 
@@ -23,12 +26,11 @@ const SHOW_SEARCH_ACCOUNTS_MIN_COUNT = 5;
 
 function mapStateToProps(state) {
   const {
-    metamask: { isAccountMenuOpen },
+    metamask: { isAccountMenuOpen, provider },
   } = state;
   const accounts = getMetaMaskAccountsOrdered(state);
   const origin = getOriginOfCurrentTab(state);
   const selectedAddress = getSelectedAddress(state);
-
   return {
     isAccountMenuOpen,
     addressConnectedSubjectMap: getAddressConnectedSubjectMap(state),
@@ -37,6 +39,10 @@ function mapStateToProps(state) {
     keyrings: getMetaMaskKeyrings(state),
     accounts,
     shouldShowAccountsSearch: accounts.length >= SHOW_SEARCH_ACCOUNTS_MIN_COUNT,
+    rpcPrefs: getRpcPrefsForCurrentProvider(state),
+    chainId: getCurrentChainId(state),
+    selectedIdentity: getSelectedIdentity(state),
+    provider,
   };
 }
 

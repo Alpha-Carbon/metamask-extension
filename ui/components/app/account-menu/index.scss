@@ -103,8 +103,9 @@
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
+    padding: 24px 15px 24px 24px;
   }
-  &__expend-button{
+  &__back-button{
     background: transparent;
     &>svg{
       vertical-align: middle;
