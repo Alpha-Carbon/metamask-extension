@@ -58,6 +58,17 @@
     }
   }
 
+  &__main-view &__tab--active.activity{
+    &>button{
+      background: linear-gradient(111.99deg, var(--secondary-2-start) 9.4%, var(--secondary-2-end) 92.26%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    &::before{
+      background: linear-gradient(111.99deg, var(--secondary-2-start) 9.4%, var(--secondary-2-end) 92.26%);
+    }
+  }
+
   &__main-view &__tab button {
     padding: 16px 8px;
     width: auto;

@@ -5,7 +5,9 @@
 
   & > details[open] > summary {
     &::before {
-      background-image: url("images/icons/collapse.svg");
+      // background-image: url("images/icons/collapse.svg");
+      background-image: url("images/alphaCarbon/remove_circle_outline.svg");
+      
     }
   }
 
@@ -26,7 +28,8 @@
       flex: 0 0 auto;
       height: 16px;
       width: 16px;
-      background-image: url("images/icons/expand.svg");
+      // background-image: url("images/icons/expand.svg");
+      background-image: url("images/alphaCarbon/control_point.svg");
       background-size: contain;
       background-repeat: no-repeat;
       cursor: pointer;
@@ -36,7 +39,7 @@
   }
 
   &__content {
-    margin-left: 12px;
+    // margin-left: 12px;
     font-size: 14px;
 
     &.small {

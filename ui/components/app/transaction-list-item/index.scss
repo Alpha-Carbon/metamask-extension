@@ -1,4 +1,12 @@
 .transaction-list-item {
+  padding: 8px 16px;
+  border-top: 1px solid var(--gray-3);
+  cursor: pointer;
+  margin: 0px 25px;
+
+  &:hover{
+    background-color: var(--Grey-000);
+  }
   &__primary-currency {
     color: var(--Black-100);
     overflow: hidden;
@@ -63,5 +71,43 @@
   &__origin {
     /*rtl:ignore*/
     direction: rtl;
+  }
+
+  &__time{
+    color: var(--gray-3);
+    @include H6;
+  }
+  &__info{
+    display: flex;
+    align-items: center;
+    &>svg{
+      margin-right: 15px;
+    }
+    &-status{
+      &-title{
+        &-send{
+          color: var(--function-2);
+        }
+        &-receive{
+          color: var(--secondary-3);
+        }
+      }
+    }
+  }
+  &__balance{
+    @include H4;
+    @include roundeBold;
+    flex: 1;
+    text-align: right;
+    padding-top: 20px;
+    &>span:nth-child(2){
+      @include roundeNormal;
+    }
+    &-send{
+      color: var(--function-2);
+    }
+    &-receive{
+      color: var(--secondary-3);
+    }
   }
 }

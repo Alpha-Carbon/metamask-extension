@@ -5,13 +5,14 @@
     padding-bottom: 4px;
     padding-top: 8px;
     font-size: 14px;
-    color: var(--Black-100);
+    color: var(--gray-1);
     font-weight: bold;
     text-transform: capitalize;
   }
 
   &__row-title {
     text-transform: capitalize;
+    color: var(--gray-2);
   }
 
   &__value {
@@ -20,15 +21,21 @@
     text-align: end;
     overflow: hidden;
     text-overflow: ellipsis;
+    
 
     &--eth-total {
       font-weight: bold;
-      color: var(--Black-100);
+      color: var(--gray-2);
     }
 
     &--amount {
       font-weight: bold;
-      color: var(--Black-100);
+      color: var(--gray-2);
+    }
+    &.linear-gradient{
+      background: var(--secondary-2-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   }
 }

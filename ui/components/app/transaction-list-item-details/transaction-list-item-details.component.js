@@ -15,6 +15,9 @@ import { SECOND } from '../../../../shared/constants/time';
 import { TRANSACTION_TYPES } from '../../../../shared/constants/transaction';
 import { getURLHostName } from '../../../helpers/utils/util';
 import TransactionDecoding from '../transaction-decoding';
+import { shortenAddress } from '../../../helpers/utils/util';
+import TransactionIcon from '../transaction-icon';
+
 
 export default class TransactionListItemDetails extends PureComponent {
   static contextTypes = {
@@ -134,16 +137,27 @@ export default class TransactionListItemDetails extends PureComponent {
       recipientNickname,
       showCancel,
       transactionStatus: TransactionStatus,
+      category,
+      status,
+      nativeCurrency,
     } = this.props;
     const {
       primaryTransaction: transaction,
       initialTransaction: { type },
     } = transactionGroup;
     const { hash } = transaction;
-
     return (
-      <Popover title={title} onClose={onClose}>
+      <Popover onClose={onClose} className="transaction-list-popover">
         <div className="transaction-list-item-details">
+          <div className="transaction-list-item-details-title">
+            <TransactionIcon category={category} status={status} />
+            <div className='transaction-list-item-details-title-txt'>
+              <span className='mr-2'>{title}</span>
+              <span>{nativeCurrency}</span>
+            </div>
+          </div>
+
+
           <div className="transaction-list-item-details__operations">
             <div className="transaction-list-item-details__header-buttons">
               {showSpeedUp && (
@@ -210,7 +224,18 @@ export default class TransactionListItemDetails extends PureComponent {
             </div>
           </div>
           <div className="transaction-list-item-details__body">
-            <div className="transaction-list-item-details__sender-to-recipient-header">
+            <div className="transaction-list-item-details__address">
+              <div className="transaction-list-item-details__address-from">
+                <div>{t('from')}</div>
+                <p>{shortenAddress(senderAddress)}</p>
+              </div>
+              <div className="transaction-list-item-details__address-to">
+                <div>{t('to')}</div>
+                <p>{shortenAddress(recipientAddress)}</p>
+              </div>
+              <div className="transaction-list-item-details__address-line"></div>
+            </div>
+            {/* <div className="transaction-list-item-details__sender-to-recipient-header">
               <div>{t('from')}</div>
               <div>{t('to')}</div>
             </div>
@@ -243,7 +268,7 @@ export default class TransactionListItemDetails extends PureComponent {
                   });
                 }}
               />
-            </div>
+            </div> */}
             <div className="transaction-list-item-details__cards-container">
               <TransactionBreakdown
                 nonce={transactionGroup.initialTransaction.txParams.nonce}
@@ -254,16 +279,16 @@ export default class TransactionListItemDetails extends PureComponent {
               />
               {transactionGroup.initialTransaction.type !==
                 TRANSACTION_TYPES.INCOMING && (
-                <Disclosure title={t('activityLog')} size="small">
-                  <TransactionActivityLog
-                    transactionGroup={transactionGroup}
-                    className="transaction-list-item-details__transaction-activity-log"
-                    onCancel={this.handleCancel}
-                    onRetry={this.handleRetry}
-                    isEarliestNonce={isEarliestNonce}
-                  />
-                </Disclosure>
-              )}
+                  <Disclosure title={t('activityLog')} size="small">
+                    <TransactionActivityLog
+                      transactionGroup={transactionGroup}
+                      className="transaction-list-item-details__transaction-activity-log"
+                      onCancel={this.handleCancel}
+                      onRetry={this.handleRetry}
+                      isEarliestNonce={isEarliestNonce}
+                    />
+                  </Disclosure>
+                )}
               {transactionGroup.initialTransaction?.txParams?.data ? (
                 <Disclosure title="Transaction data" size="small">
                   <TransactionDecoding

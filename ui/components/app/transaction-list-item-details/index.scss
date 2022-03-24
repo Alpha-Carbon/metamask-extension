@@ -1,3 +1,14 @@
+.transaction-list-popover{
+  &>header{ 
+    padding: 0 !important;
+    & .popover-header__title{
+      padding-bottom: 0 !important;
+    }
+    & .popover-header__button{
+      padding: 13px 13px 0px 0px !important;
+    }
+  }
+}
 .transaction-list-item-details {
   div.disclosure + div.disclosure {
     margin-top: 0;
@@ -34,7 +45,7 @@
 
     & > div:first-child {
       font-size: 14px;
-      color: var(--Black-100);
+      color: var(--gray-1);
       font-weight: bold;
     }
 
@@ -62,7 +73,7 @@
   &__operations {
     margin: 0 0 16px 16px;
     display: flex;
-    justify-content: end;
+    justify-content: center;
   }
 
   &__header {
@@ -141,5 +152,50 @@
     .transaction-activity-log__title {
       display: none;
     }
+  }
+
+  &-title{
+    text-align: center;
+    &-txt{
+      @include H3;
+      @include roundeBold;
+      background: linear-gradient(147.15deg, var(--primary-start) 29.03%, var(--primary-end) 84.89%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+  &__address{
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--gray-4);
+    border-bottom: 1px solid var(--gray-4);
+    padding:16px 0px;
+    position: relative;
+    &>div{
+      color:var(--gray-1);
+      @include H5;
+      @include roundeBold;
+      &>div{
+        margin-bottom: 8px;
+      }
+      &>p{
+        background: linear-gradient(91.07deg, var(--secondary-1-start) 4.72%, var(--secondary-1-end) 73%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+    &-to{
+      text-align: right;
+    }
+    &-line{
+      position: absolute;
+      left: 50%;
+      height: calc(100% - 32px);
+      background-color: var(--gray-4);
+      width: 1px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
   }
 }
