@@ -109,5 +109,8 @@
     &-receive{
       color: var(--secondary-3);
     }
+    @media screen and (max-width: $break-small) {
+      @include H5;
+    }
   }
 }

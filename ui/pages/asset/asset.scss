@@ -1,6 +1,10 @@
 .asset {
   &__container {
     background-color: white;
+    border-radius: 4px;
+    @media screen and (max-width: $break-small) {
+      margin: 15px;
+    }
   }
 
   &__overview {
