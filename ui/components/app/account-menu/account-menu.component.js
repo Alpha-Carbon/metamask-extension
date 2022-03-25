@@ -450,7 +450,6 @@ export default class AccountMenu extends Component {
         />
         <AccountMenuItem
           onClick={() => {
-            openConnectedSitesEvent();
             history.push(CONNECTED_ROUTE);
             toggleAccountMenu();
           }}

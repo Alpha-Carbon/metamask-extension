@@ -36,7 +36,6 @@ export default class AccountDetailsModal extends Component {
       accounts,
     } = this.props;
     const { name, address } = selectedIdentity;
-    console.log(accounts, selectedIdentity, 'old ');
     const keyring = keyrings.find((kr) => {
       return kr.accounts.includes(address);
     });
