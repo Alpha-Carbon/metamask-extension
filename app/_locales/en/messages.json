@@ -3792,5 +3792,8 @@
   },
   "importFromSeed":{
     "message": "Import from seed"
+  },
+  "rename":{
+    "message": "Rename"
   }
 }

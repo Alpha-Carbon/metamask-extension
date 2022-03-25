@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 // import PropTypes from 'prop-types';
 import {
-  // useDispatch,
+  useDispatch,
   useSelector,
 } from 'react-redux';
 // import classnames from 'classnames';
@@ -12,6 +12,7 @@ import {
   getSelectedIdentity,
 } from '../../../selectors/selectors';
 import { useMetricEvent } from '../../../hooks/useMetricEvent';
+import { showModal } from '../../../store/actions';
 import {
   SEND_ROUTE,
   // BUILD_QUOTE_ROUTE,
@@ -30,7 +31,7 @@ import { I18nContext } from '../../../contexts/i18n';
 import Identicon from '../../ui/identicon';
 
 const ActOverview = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const t = useContext(I18nContext);
   const history = useHistory();
   const [copied, setCopied] = useState(false);
@@ -61,7 +62,11 @@ const ActOverview = () => {
           <Identicon address={selectedIdentity.address} diameter={36} />
         </div>
         <div className="act-overview__balance-info">
-          <div className="act-overview__balance-info-account">
+          <div className="act-overview__balance-info-account"
+            onClick={() => {
+              dispatch(showModal({ name: 'ACCOUNT_NAME_EDIT' }));
+            }}
+          >
             <span>{selectedIdentity.name}</span>
             <span>
               <EditIcon />
@@ -97,7 +102,11 @@ const ActOverview = () => {
         <span>{parts.value}</span>
       </div>
       <div className="act-overview__buttons">
-        <button className="act-overview__buttons-receive">
+        <button className="act-overview__buttons-receive"
+          onClick={() => {
+            dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
+          }}
+        >
           <ReceiveIcon
             className="act-overview__buttons-icon"
             size={24}

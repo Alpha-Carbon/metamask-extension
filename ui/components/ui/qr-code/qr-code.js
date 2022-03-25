@@ -7,6 +7,7 @@ import { useCopyToClipboard } from '../../../hooks/useCopyToClipboard';
 import { toChecksumHexAddress } from '../../../../shared/modules/hexstring-utils';
 import Tooltip from '../tooltip';
 import CopyIcon from '../icon/copy-icon.component';
+import CopyGradient from '../icon/copy-gradient-icon.component';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 
 export default connect(mapStateToProps)(QrCodeView);
@@ -23,9 +24,8 @@ function mapStateToProps(state) {
 function QrCodeView(props) {
   const { Qr, warning } = props;
   const { message, data } = Qr;
-  const address = `${
-    isHexPrefixed(data) ? 'ethereum:' : ''
-  }${toChecksumHexAddress(data)}`;
+  const address = `${isHexPrefixed(data) ? 'ethereum:' : ''
+    }${toChecksumHexAddress(data)}`;
   const [copied, handleCopy] = useCopyToClipboard();
   const t = useI18nContext();
   const qrImage = qrCode(4, 'M');
@@ -67,10 +67,11 @@ function QrCodeView(props) {
             handleCopy(toChecksumHexAddress(data));
           }}
         >
+          <CopyGradient size={12} />
           <div className="qr-code__address">{toChecksumHexAddress(data)}</div>
-          <div className="qr-code__copy-icon">
+          {/* <div className="qr-code__copy-icon">
             <CopyIcon size={11} className="qr-code__copy-icon__svg" color="" />
-          </div>
+          </div> */}
         </div>
       </Tooltip>
     </div>

@@ -13,6 +13,7 @@ import ConfirmCustomizeGasModal from '../gas-customization/gas-modal-page-contai
 import SwapsGasCustomizationModal from '../../../pages/swaps/swaps-gas-customization-modal';
 import DepositEtherModal from './deposit-ether-modal';
 import AccountDetailsModal from './account-details-modal';
+import AccountNameEdit from './account-name-edit-modal';
 import ExportPrivateKeyModal from './export-private-key-modal';
 import HideTokenConfirmationModal from './hide-token-confirmation-modal';
 import QRScanner from './qr-scanner';
@@ -57,7 +58,7 @@ const accountModalStyle = {
     width: '95%',
     // top: isPopupOrNotification() === 'popup' ? '52vh' : '36.5vh',
     boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 2px 2px',
-    borderRadius: '4px',
+    borderRadius: '10px',
     top: '10%',
     transform: 'none',
     left: '0',
@@ -68,7 +69,7 @@ const accountModalStyle = {
     width: '335px',
     // top: 'calc(33% + 45px)',
     boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 2px 2px',
-    borderRadius: '4px',
+    borderRadius: '10px',
     top: '10%',
     transform: 'none',
     left: '0',
@@ -76,7 +77,7 @@ const accountModalStyle = {
     margin: '0 auto',
   },
   contentStyle: {
-    borderRadius: '4px',
+    borderRadius: '10px',
   },
 };
 
@@ -170,6 +171,10 @@ const MODALS = {
 
   ACCOUNT_DETAILS: {
     contents: <AccountDetailsModal />,
+    ...accountModalStyle,
+  },
+  ACCOUNT_NAME_EDIT: {
+    contents: <AccountNameEdit />,
     ...accountModalStyle,
   },
 

@@ -28,9 +28,34 @@
   &__address-container {
     display: flex;
     justify-content: center;
-
+    align-items: center;
+    background: var(--secondary-3-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    margin: 0px 40px 80px 40px;
+    &::before{
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background: inherit;
+      background-origin: border-box;
+      background-clip: border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      -webkit-mask-repeat: no-repeat;
+    }
     &__tooltip-wrapper {
       width: 100%;
+      margin-top: 10px;
     }
 
     &:hover {
@@ -45,11 +70,11 @@
   &__address {
     @include H7;
 
-    background-color: var(--Grey-000);
+    // background-color: var(--Grey-000);
     width: 76%;
     padding: 8px 12px;
     word-break: break-all;
-    text-align: center;
+    text-align: left;
   }
 
   &__copy-icon {

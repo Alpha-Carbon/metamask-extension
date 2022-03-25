@@ -2,6 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import Identicon from '../../../ui/identicon';
+import CloseIcon from '../../../ui/icon/close-icon.component';
+import ReceiveGradient from '../../../ui/icon/receive-gradient-icon.component';
+import RenameGradientIcon from '../../../ui/icon/rename-gradient-icon.component';
 
 export default function AccountModalContainer(props, context) {
   const {
@@ -11,17 +14,30 @@ export default function AccountModalContainer(props, context) {
     backButtonAction,
     hideModal,
     children,
+    type,
   } = props;
 
   return (
     <div
       className={classnames(className, 'account-modal')}
-      style={{ borderRadius: '4px' }}
+      style={{ borderRadius: '10px' }}
     >
       <div className="account-modal__container">
-        <div>
+        {/* <div>
           <Identicon address={selectedIdentity.address} diameter={64} />
-        </div>
+        </div> */}
+        {type === 'edit' ?
+          <div className="account-modal__title">
+            <RenameGradientIcon size={40} />
+            <p>{context.t('rename')}</p>
+          </div>
+
+          : <div className="account-modal__title">
+            <ReceiveGradient size={40} />
+            <p> {context.t('receive')}</p>
+          </div>}
+
+
         {showBackButton && (
           <div className="account-modal__back" onClick={backButtonAction}>
             <i className="fa fa-angle-left fa-lg" />
@@ -30,7 +46,9 @@ export default function AccountModalContainer(props, context) {
             </span>
           </div>
         )}
-        <button className="account-modal__close" onClick={hideModal} />
+        <button className="account-modal__close" onClick={hideModal}>
+          <CloseIcon />
+        </button>
         {children}
       </div>
     </div>
@@ -45,6 +63,7 @@ AccountModalContainer.defaultProps = {
   showBackButton: false,
   children: null,
   backButtonAction: undefined,
+  type: null,
 };
 
 AccountModalContainer.propTypes = {
@@ -54,4 +73,5 @@ AccountModalContainer.propTypes = {
   backButtonAction: PropTypes.func,
   hideModal: PropTypes.func.isRequired,
   children: PropTypes.node,
+  type: PropTypes.string,
 };

@@ -100,7 +100,9 @@ export default function NativeAsset({ nativeCurrency }) {
           hideTitle
         />
         <div className="asset-native__wrapper-buttons">
-          <button className='asset-native__wrapper-buttons-receive'>
+          <button className='asset-native__wrapper-buttons-receive' onClick={() => {
+            dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
+          }}>
             <ReceiveIcon size={18} color="#FFFFFF" />
             <p>{t('receive')}</p>
           </button>

@@ -148,6 +148,7 @@
   &__balance{
     display: flex;
     align-items: center;
+
     &-head{
       margin-right: 10px;
       &>img{
@@ -159,6 +160,7 @@
         display: flex;
         align-items: center;
         color:var(--white);
+        cursor: pointer;
         &>span:nth-child(1){
           margin-right: 5px;
         }

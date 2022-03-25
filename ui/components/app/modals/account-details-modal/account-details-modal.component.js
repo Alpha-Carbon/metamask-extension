@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getAccountLink } from '@metamask/etherscan-link';
+// import { getAccountLink } from '@metamask/etherscan-link';
 
 import AccountModalContainer from '../account-modal-container';
 import QrView from '../../../ui/qr-code';
-import EditableLabel from '../../../ui/editable-label';
-import Button from '../../../ui/button';
-import { getURLHostName } from '../../../../helpers/utils/util';
+// import EditableLabel from '../../../ui/editable-label';
+// import Button from '../../../ui/button';
+// import { getURLHostName } from '../../../../helpers/utils/util';
 import { isHardwareKeyring } from '../../../../helpers/utils/hardware';
 
 export default class AccountDetailsModal extends Component {
@@ -28,15 +28,15 @@ export default class AccountDetailsModal extends Component {
   render() {
     const {
       selectedIdentity,
-      chainId,
-      showExportPrivateKeyModal,
-      setAccountLabel,
+      // chainId,
+      // showExportPrivateKeyModal,
+      // setAccountLabel,
       keyrings,
-      rpcPrefs,
+      // rpcPrefs,
       accounts,
     } = this.props;
     const { name, address } = selectedIdentity;
-
+    console.log(accounts, selectedIdentity, 'old ');
     const keyring = keyrings.find((kr) => {
       return kr.accounts.includes(address);
     });
@@ -55,12 +55,12 @@ export default class AccountDetailsModal extends Component {
 
     return (
       <AccountModalContainer className="account-details-modal">
-        <EditableLabel
+        {/* <EditableLabel
           className="account-details-modal__name"
           defaultValue={name}
           onSubmit={(label) => setAccountLabel(address, label)}
           accountsNames={getAccountsNames(accounts, name)}
-        />
+        /> */}
 
         <QrView
           Qr={{
@@ -68,9 +68,9 @@ export default class AccountDetailsModal extends Component {
           }}
         />
 
-        <div className="account-details-modal__divider" />
+        {/* <div className="account-details-modal__divider" /> */}
 
-        <Button
+        {/* <Button
           type="secondary"
           className="account-details-modal__button"
           onClick={() => {
@@ -91,8 +91,8 @@ export default class AccountDetailsModal extends Component {
         >
           {rpcPrefs.blockExplorerUrl
             ? this.context.t('blockExplorerView', [
-                getURLHostName(rpcPrefs.blockExplorerUrl),
-              ])
+              getURLHostName(rpcPrefs.blockExplorerUrl),
+            ])
             : this.context.t('etherscanViewOn')}
         </Button>
 
@@ -104,7 +104,7 @@ export default class AccountDetailsModal extends Component {
           >
             {this.context.t('exportPrivateKey')}
           </Button>
-        ) : null}
+        ) : null} */}
       </AccountModalContainer>
     );
   }
