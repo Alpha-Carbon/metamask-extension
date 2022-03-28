@@ -146,6 +146,12 @@ input.form-control {
 .w-100{
   width: 100%;
 }
+
+.txt-linear-secondary-gradient-2{
+  background: var(--secondary-2-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 /** Default Typography on base elements **/
 * {
   font-family: $font-family;

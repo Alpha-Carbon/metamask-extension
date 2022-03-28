@@ -2,11 +2,12 @@
   display: flex;
   justify-content: space-between;
   height: 100%;
+  // position: relative;
 }
 
 .address-book {
   flex: 0.4 1 100%;
-
+  padding-top: 15px;
   @media screen and (max-width: $break-small) {
     flex: 1;
     max-width: 100%;
@@ -15,7 +16,14 @@
       min-height: 100%;
     }
   }
-
+  & .send__select-recipient-wrapper__list{
+    background-color: var(--white);
+    margin-top: 65px;
+    @media screen and (max-width: $break-small) {
+      margin-top: 0px;
+      background-color: var(--background);
+    }
+  }
   &__entry {
     display: flex;
     flex-flow: row nowrap;
@@ -81,7 +89,7 @@
 
   &__link {
     background-color: #fff;
-    color: #037dd6;
+    color: var(--secondary-3);
   }
 
   &__input {
@@ -177,6 +185,9 @@
         max-width: 100%;
         width: 100%;
       }
+      &>button{
+        height: 40px;
+      }
     }
   }
 
@@ -264,12 +275,19 @@
     position: absolute;
     top: 85px;
     right: 16px;
+    // bottom: 15px;
+    // left: 0px;
     width: auto;
+    height: 40px;
 
     @media screen and (max-width: $break-small) {
-      top: 16px;
-      right: 60px;
-
+      // top: 16px;
+      // right: 60px;
+      bottom: 15px;
+      top: unset;
+      left: 50%;
+      transform: translateX(-50%);
+      right: unset;
       &--hidden {
         display: none;
       }
@@ -283,8 +301,16 @@
 
 .address-book-contact-content {
   flex: 0.4 1 100%;
-
+  margin-top: 70px;
   @media screen and (max-width: $break-small) {
     flex: 1;
+    margin-top: 0px;
+  }
+  & .settings-page__content-row{
+    & .page-container__footer{
+      &>footer{
+        background-color: var(--white);
+      }
+    }
   }
 }

@@ -85,8 +85,7 @@ export default class AdvancedTab extends PureComponent {
         <div className="settings-page__content-item">
           <div className="settings-page__content-item-col">
             <Button
-              type="secondary"
-              large
+              type="primaryGradient"
               onClick={(event) => {
                 event.preventDefault();
                 history.push(MOBILE_SYNC_ROUTE);
@@ -118,8 +117,7 @@ export default class AdvancedTab extends PureComponent {
         <div className="settings-page__content-item">
           <div className="settings-page__content-item-col">
             <Button
-              type="secondary"
-              large
+              type="primaryGradient"
               onClick={() => {
                 window.logStateString((err, result) => {
                   if (err) {
@@ -156,8 +154,7 @@ export default class AdvancedTab extends PureComponent {
         <div className="settings-page__content-item">
           <div className="settings-page__content-item-col">
             <Button
-              type="warning"
-              large
+              type="danger"
               className="settings-tab__button--red"
               onClick={(event) => {
                 event.preventDefault();
@@ -379,7 +376,7 @@ export default class AdvancedTab extends PureComponent {
               min={0}
             />
             <Button
-              type="primary"
+              type="primaryGradient"
               className="settings-tab__rpc-save-button"
               disabled={lockTimeError !== ''}
               onClick={() => {
@@ -598,7 +595,7 @@ export default class AdvancedTab extends PureComponent {
               margin="dense"
             />
             <Button
-              type="primary"
+              type="primaryGradient"
               className="settings-tab__rpc-save-button"
               disabled={Boolean(ipfsGatewayError)}
               onClick={() => {

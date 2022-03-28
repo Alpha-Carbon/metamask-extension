@@ -172,7 +172,7 @@ class SettingsPage extends PureComponent {
     return (
       !currentPath.startsWith(NETWORKS_ROUTE) && (
         <div className="settings-page__subheader">
-          <div
+          {/* <div
             className={classnames({
               'settings-page__subheader--link': initialBreadCrumbRoute,
             })}
@@ -193,7 +193,7 @@ class SettingsPage extends PureComponent {
               <span>{' > '}</span>
               {addressName}
             </div>
-          )}
+          )} */}
         </div>
       )
     );
@@ -207,54 +207,54 @@ class SettingsPage extends PureComponent {
       <TabBar
         tabs={[
           {
-            icon: <img src="images/general-icon.svg" alt="" />,
+            // icon: <img src="images/general-icon.svg" alt="" />,
             content: t('general'),
             key: GENERAL_ROUTE,
           },
           {
-            icon: <img src="images/advanced-icon.svg" alt="" />,
+            // icon: <img src="images/advanced-icon.svg" alt="" />,
             content: t('advanced'),
             key: ADVANCED_ROUTE,
           },
           {
-            icon: <img src="images/contacts-icon.svg" alt="" />,
+            // icon: <img src="images/contacts-icon.svg" alt="" />,
             content: t('contacts'),
             key: CONTACT_LIST_ROUTE,
           },
           ///: BEGIN:ONLY_INCLUDE_IN(flask)
           {
-            icon: (
-              <img
-                src="images/experimental-icon.svg"
-                alt={t('snapsSettingsDescription')}
-              />
-            ),
+            // icon: (
+            //   <img
+            //     src="images/experimental-icon.svg"
+            //     alt={t('snapsSettingsDescription')}
+            //   />
+            // ),
             content: t('snaps'),
             key: SNAPS_LIST_ROUTE,
           },
           ///: END:ONLY_INCLUDE_IN
           {
-            icon: <img src="images/security-icon.svg" alt="" />,
+            // icon: <img src="images/security-icon.svg" alt="" />,
             content: t('securityAndPrivacy'),
             key: SECURITY_ROUTE,
           },
           {
-            icon: <img src="images/alerts-icon.svg" alt="" />,
+            // icon: <img src="images/alerts-icon.svg" alt="" />,
             content: t('alerts'),
             key: ALERTS_ROUTE,
           },
           {
-            icon: <img src="images/network-icon.svg" alt="" />,
+            // icon: <img src="images/network-icon.svg" alt="" />,
             content: t('networks'),
             key: NETWORKS_ROUTE,
           },
           {
-            icon: <img src="images/experimental-icon.svg" alt="" />,
+            // icon: <img src="images/experimental-icon.svg" alt="" />,
             content: t('experimental'),
             key: EXPERIMENTAL_ROUTE,
           },
           {
-            icon: <img src="images/info-icon.svg" alt="" />,
+            // icon: <img src="images/info-icon.svg" alt="" />,
             content: t('about'),
             key: ABOUT_US_ROUTE,
           },

@@ -34,7 +34,6 @@ export default class SecurityTab extends PureComponent {
           <div className="settings-page__content-item-col">
             <Button
               type="danger"
-              large
               onClick={(event) => {
                 event.preventDefault();
                 this.context.metricsEvent({

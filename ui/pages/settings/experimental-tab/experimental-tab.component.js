@@ -160,7 +160,7 @@ export default class ExperimentalTab extends PureComponent {
             {t('enableEIP1559V2Description', [
               <a
                 key="eip_page_link"
-                href="https://metamask.io/1559.html"
+                href="#"
                 rel="noopener noreferrer"
                 target="_blank"
               >

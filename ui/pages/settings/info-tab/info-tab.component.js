@@ -105,17 +105,18 @@ export default class InfoTab extends PureComponent {
                 {isBeta() ? t('betaMetamaskVersion') : t('metamaskVersion')}
               </div>
               <div className="info-tab__version-number">
-                {this.state.version}
+                {/* {this.state.version} */}
+                1.0
               </div>
             </div>
             <div className="info-tab__item">
               <div className="info-tab__about">{t('builtAroundTheWorld')}</div>
             </div>
           </div>
-          {this.renderInfoLinks()}
+          {/* {this.renderInfoLinks()} */}
         </div>
         <div className="info-tab__logo-wrapper">
-          <img src="./images/info-logo.png" className="info-tab__logo" alt="" />
+          <img src="./images/alphaCarbon/alpha-gradient-logo.png" className="info-tab__logo" alt="" />
         </div>
       </div>
     );

@@ -11,7 +11,9 @@
   background: var(--white);
   display: flex;
   flex-flow: column nowrap;
-
+  @media screen and (max-width: $break-small) {
+    background: var(--background) !important;
+  }
   &__header {
     display: flex;
     flex-flow: row nowrap;
@@ -21,7 +23,8 @@
 
     &__title {
       @include H3;
-
+      @include roundeBold;
+      color:var(--black);
       flex: 1 0 auto;
 
       @media screen and (max-width: $break-small) {
@@ -37,10 +40,10 @@
   &__subheader--link {
     @include H4;
 
-    padding: 16px 4px;
-    border-bottom: 1px solid var(--alto);
+    padding: 5px 4px;
+    // border-bottom: 1px solid var(--alto);
     margin-right: 24px;
-    height: 72px;
+    // height: 72px;
     align-items: center;
     display: flex;
     flex-flow: row nowrap;
@@ -116,8 +119,8 @@
 
   &__close-button::after {
     content: '\00D7';
-    font-size: 40px;
-    color: var(--ui-4);
+    font-size: 24px;
+    color: var(--gray-1);
     cursor: pointer;
   }
 
@@ -187,7 +190,12 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
-
+    &>span:first-child{
+      @include roundeBold;
+      background: var(--secondary-2-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
     @media screen and (max-width: $break-small) {
       height: initial;
       padding: 5px 0;
@@ -259,10 +267,15 @@
     max-width: 300px;
     display: flex;
     flex-direction: column;
-
+    & .dropdown{
+      border-color:var(--gray-2);
+    }
     @media screen and (max-width: $break-small) {
       max-width: 100%;
       width: 100%;
+    }
+    & .btn-danger{
+      height: 40px;
     }
   }
 

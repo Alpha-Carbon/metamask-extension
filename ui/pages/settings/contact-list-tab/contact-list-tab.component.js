@@ -79,7 +79,7 @@ export default class ContactListTab extends Component {
             'address-book-add-button__button--hidden':
               viewingContact || editingContact,
           })}
-          type="secondary"
+          type="primaryGradient"
           onClick={() => {
             history.push(CONTACT_ADD_ROUTE);
           }}

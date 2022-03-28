@@ -68,8 +68,8 @@ export default class SettingsTab extends PureComponent {
           <span className="settings-page__content-description">
             {lastFetchedConversionDate
               ? t('updatedWithDate', [
-                  new Date(lastFetchedConversionDate * 1000).toString(),
-                ])
+                new Date(lastFetchedConversionDate * 1000).toString(),
+              ])
               : t('noConversionDateAvailable')}
           </span>
         </div>
@@ -296,7 +296,7 @@ export default class SettingsTab extends PureComponent {
         {this.renderCurrentConversion()}
         {this.renderUsePrimaryCurrencyOptions()}
         {this.renderCurrentLocale()}
-        {this.renderBlockieOptIn()}
+        {/* {this.renderBlockieOptIn()} */}
         {this.renderHideZeroBalanceTokensOptIn()}
       </div>
     );

@@ -42,7 +42,7 @@ function ViewContact({
         </div>
         <div className="address-book__view-contact__group">
           <Button
-            type="secondary"
+            type="primaryGradient"
             onClick={() => {
               history.push(`${editRoute}/${address}`);
             }}
