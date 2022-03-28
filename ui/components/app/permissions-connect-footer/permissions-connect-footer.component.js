@@ -10,7 +10,7 @@ export default class PermissionsConnectFooter extends Component {
     const { t } = this.context;
     return (
       <div className="permissions-connect-footer">
-        <div className="permissions-connect-footer__text">
+        {/* <div className="permissions-connect-footer__text">
           <div>{t('onlyConnectTrust')}</div>
           <div
             className="permissions-connect-footer__text--link"
@@ -23,7 +23,7 @@ export default class PermissionsConnectFooter extends Component {
           >
             {t('learnMoreUpperCase')}
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }

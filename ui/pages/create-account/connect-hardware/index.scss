@@ -7,11 +7,11 @@
 
 .hw-connect {
   width: 100%;
-
+  color: var(--gray-1);
   &__header {
+    text-align: center;
     &__title {
       @include H3;
-
       margin-top: 5px;
       margin-bottom: 15px;
     }
@@ -19,7 +19,7 @@
     &__msg {
       @include H6;
 
-      color: #9b9b9b;
+      color: var(--gray-1);
       margin-top: 10px;
       margin-bottom: 20px;
     }
@@ -29,11 +29,14 @@
     flex: 1;
     flex-direction: row;
     display: flex;
+    width: 100%;
   }
 
   &__connect-btn {
-    width: 315px;
+    width: 272px;
+    height: 32px;
     margin: 20px;
+    border-radius: 20px;
   }
 
   &__connect-btn.disabled {
@@ -42,15 +45,15 @@
   }
 
   &__btn {
-    background: #fbfbfb;
-    border: 1px solid #e5e5e5;
+    background: var(--gray-5);
+    border: 1px solid var(--gray-2);
     height: 100px;
     width: 150px;
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 0;
     margin-right: 15px;
 

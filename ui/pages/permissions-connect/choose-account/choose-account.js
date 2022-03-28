@@ -76,13 +76,13 @@ const ChooseAccount = ({
         <div className="permissions-connect-choose-account__bottom-buttons">
           <Button
             onClick={() => cancelPermissionsRequest(permissionsRequestId)}
-            type="secondary"
+            type="cancel"
           >
             {t('cancel')}
           </Button>
           <Button
             onClick={() => selectAccounts(selectedAccounts)}
-            type="primary"
+            type="primaryGradient"
             disabled={selectedAccounts.size === 0}
           >
             {t('next')}

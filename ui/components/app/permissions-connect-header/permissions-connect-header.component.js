@@ -9,6 +9,7 @@ import {
 ///: BEGIN:ONLY_INCLUDE_IN(flask)
 import SnapsAuthorshipPill from '../flask/snaps-authorship-pill';
 ///: END:ONLY_INCLUDE_IN
+import ErrorOutlineIcon from '../../ui/icon/error-outline-icon.component';
 
 export default class PermissionsConnectHeader extends Component {
   static propTypes = {
@@ -21,6 +22,7 @@ export default class PermissionsConnectHeader extends Component {
     ///: BEGIN:ONLY_INCLUDE_IN(flask)
     npmPackageName: PropTypes.string,
     ///: END:ONLY_INCLUDE_IN
+    errorIcon: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -28,6 +30,7 @@ export default class PermissionsConnectHeader extends Component {
     headerTitle: '',
     headerText: '',
     boxProps: {},
+    errorIcon: false,
   };
 
   renderHeaderIcon() {
@@ -48,10 +51,12 @@ export default class PermissionsConnectHeader extends Component {
       ///: BEGIN:ONLY_INCLUDE_IN(flask)
       npmPackageName,
       ///: END:ONLY_INCLUDE_IN
+      errorIcon,
     } = this.props;
     ///: BEGIN:ONLY_INCLUDE_IN(flask)
     const npmPackageUrl = `https://www.npmjs.com/package/${npmPackageName}`;
     ///: END:ONLY_INCLUDE_IN
+
     return (
       <Box
         className="permissions-connect-header"
@@ -71,6 +76,11 @@ export default class PermissionsConnectHeader extends Component {
           ) : null
           ///: END:ONLY_INCLUDE_IN
         }
+        {errorIcon && (
+          <div className="permissions-connect-header__error-icon">
+            <ErrorOutlineIcon color="#CF3939" />
+          </div>
+        )}
         <div className="permissions-connect-header__subtitle">{headerText}</div>
       </Box>
     );

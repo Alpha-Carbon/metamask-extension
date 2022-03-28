@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import ConnectedSitesList from '../../components/app/connected-sites-list';
 import Popover from '../../components/ui/popover/popover.component';
 import Button from '../../components/ui/button';
+import AccountTreeGradientIcon from '../../components/ui/icon/account-tree-gradient-icon.component';
 
 export default class ConnectedSites extends Component {
   static contextTypes = {
@@ -88,12 +89,12 @@ export default class ConnectedSites extends Component {
     return (
       <Popover
         className="connected-sites"
-        title={t('connectedSites')}
-        subtitle={
-          connectedSubjects.length
-            ? t('connectedSitesDescription', [accountLabel])
-            : t('connectedSitesEmptyDescription', [accountLabel])
-        }
+        // title={t('connectedSites')}
+        // subtitle={
+        //   connectedSubjects.length
+        //     ? t('connectedSitesDescription', [accountLabel])
+        //     : t('connectedSitesEmptyDescription', [accountLabel])
+        // }
         onClose={closePopover}
         footer={
           tabToConnect ? (
@@ -107,6 +108,17 @@ export default class ConnectedSites extends Component {
         }
         footerClassName="connected-sites__add-site-manually"
       >
+        <div className="connected-sites-icon">
+          <AccountTreeGradientIcon />
+        </div>
+        <h3 className="connected-sites-title">{t('connectedSites')}</h3>
+        <p className="connected-sites-subtitle">
+          {
+            connectedSubjects.length
+              ? t('connectedSitesDescription', [accountLabel])
+              : t('connectedSitesEmptyDescription', [accountLabel])
+          }
+        </p>
         {this.renderConnectedSitesList()}
       </Popover>
     );
@@ -124,16 +136,16 @@ export default class ConnectedSites extends Component {
     return (
       <Popover
         className="connected-sites"
-        title={t('disconnectPrompt', [subjectKey])}
-        subtitle={t('disconnectAllAccountsConfirmationDescription')}
+        // title={t('disconnectPrompt', [subjectKey])}
+        // subtitle={t('disconnectAllAccountsConfirmationDescription')}
         onClose={closePopover}
         footer={
           <>
             <div className="connected-sites__footer-row">
-              <Button type="secondary" onClick={this.clearPendingDisconnect}>
+              <Button type="cancel" onClick={this.clearPendingDisconnect}>
                 {t('cancel')}
               </Button>
-              <Button type="primary" onClick={this.disconnectAccount}>
+              <Button type="primaryGradient" onClick={this.disconnectAccount}>
                 {t('disconnect')}
               </Button>
             </div>
@@ -150,7 +162,13 @@ export default class ConnectedSites extends Component {
           </>
         }
         footerClassName="connected-sites__confirmation"
-      />
+      >
+        <div className="connected-sites-icon">
+          <AccountTreeGradientIcon />
+        </div>
+        <h3 className="connected-sites-title">{t('disconnectPrompt', [subjectKey])}</h3>
+        <p className="connected-sites-subtitle">{t('disconnectAllAccountsConfirmationDescription')}</p>
+      </Popover>
     );
   }
 

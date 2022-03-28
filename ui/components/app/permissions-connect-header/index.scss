@@ -1,18 +1,38 @@
 .permissions-connect-header {
   flex: 0;
   width: 92%;
-
+  & .site-origin{
+    & .chip{
+      background: 
+      linear-gradient(var(--background) 0 0) padding-box, 
+      linear-gradient(to right, var(--secondary-1-start), var(--secondary-1-end)) border-box;
+      padding: 8px 15px;
+      border: 1px solid transparent;
+      border-radius: 30px;
+    }
+  }
   &__icon {
     display: flex;
     flex-direction: column;
     align-items: center;
+    & .site-origin{
+      & .chip{
+        background: 
+      linear-gradient(var(--background) 0 0) padding-box, 
+      linear-gradient(to right, var(--secondary-1-start), var(--secondary-1-end)) border-box;
+      padding: 8px;
+      border: 1px solid transparent;
+      border-radius: 30px;
+
+      }
+    }
   }
 
   &__title {
     @include H3;
 
     text-align: center;
-    color: var(--Black-100);
+    color: var(--gray-1);
     margin-top: 16px;
     font-weight: bold;
   }
@@ -21,10 +41,13 @@
     @include H6;
 
     text-align: center;
-    color: var(--Black-100);
+    color: var(--gray-1);
   }
 
   &__subtitle {
     margin-top: 4px;
+  }
+  &__error-icon{
+    text-align: center;
   }
 }

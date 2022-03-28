@@ -62,6 +62,7 @@ const AccountList = ({
               }
             >
               <i className="fa fa-info-circle" />
+
             </Tooltip>
           </div>
         ) : null}
@@ -80,7 +81,7 @@ const AccountList = ({
       <div className="choose-account-list__wrapper">
         <div className="choose-account-list__list">
           {accounts.map((account, index) => {
-            const { address, addressLabel, balance } = account;
+            const { address, addressLabel, balance, label } = account;
             const isSelectedAccount = selectedAccounts.has(address);
             return (
               <div
@@ -97,7 +98,7 @@ const AccountList = ({
                   <Identicon diameter={34} address={address} />
                   <div className="choose-account-list__account__info">
                     <div className="choose-account-list__account__label">
-                      {addressLabel}
+                      {label}
                     </div>
                     <UserPreferencedCurrencyDisplay
                       className="choose-account-list__account__balance"
@@ -110,9 +111,8 @@ const AccountList = ({
                 </div>
                 {addressLastConnectedMap[address] ? (
                   <Tooltip
-                    title={`${t('lastConnected')} ${
-                      addressLastConnectedMap[address]
-                    }`}
+                    title={`${t('lastConnected')} ${addressLastConnectedMap[address]
+                      }`}
                   >
                     <i className="fa fa-info-circle" />
                   </Tooltip>
@@ -128,6 +128,7 @@ const AccountList = ({
   return (
     <div className="choose-account-list">
       <Header />
+      <div className="choose-account-list-line"></div>
       <List />
     </div>
   );
@@ -143,6 +144,7 @@ AccountList.propTypes = {
       addressLabel: PropTypes.string,
       lastConnectedDate: PropTypes.string,
       balance: PropTypes.string,
+      label: PropTypes.string,
     }),
   ).isRequired,
   /**

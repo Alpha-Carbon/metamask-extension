@@ -47,16 +47,21 @@
     }
 
     button {
-      width: 124px;
+      width: 150px;
+      height: 40px;
     }
 
-    .btn-secondary {
-      background: white;
+    .btn-cancel {
+      background: var(--background);
+      border:1px solid var(--gray-3);
+      color:var(--gray-3);
       margin-left: 16px;
+      margin-right: 8px;
     }
 
-    .btn-primary {
+    .btn-primary-gradient {
       margin-right: 16px;
+      margin-left: 8px;
     }
   }
 }

@@ -109,7 +109,13 @@
       justify-content: space-between;
 
       button {
-        width: 124px;
+        width: 150px;
+        height: 40px;
+      }
+      & .btn-default{
+        color: var(--gray-3);
+        background-color: var(--background);
+        border-color: var(--gray-3); 
       }
     }
   }

@@ -14,7 +14,7 @@ export default function PermissionsConnectPermissionList({ permissions }) {
 
         return (
           <div className="permission" key={permission}>
-            <i className={leftIcon} />
+            {/* <i className={leftIcon} /> */}
             {label}
             {rightIcon && <i className={rightIcon} />}
           </div>

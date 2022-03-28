@@ -118,8 +118,7 @@ export default class SelectHardware extends Component {
   renderContinueButton() {
     return (
       <Button
-        type="primary"
-        large
+        type="secondaryGradient"
         className="hw-connect__connect-btn"
         onClick={this.connect}
         disabled={!this.state.selectedDevice}

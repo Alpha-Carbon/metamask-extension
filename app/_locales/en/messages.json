@@ -3795,5 +3795,8 @@
   },
   "rename":{
     "message": "Rename"
+  },
+  "connectToSite":{
+    "message":"Connect to "
   }
 }
