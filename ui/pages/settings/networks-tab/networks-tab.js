@@ -104,11 +104,12 @@ const NetworksTab = ({ addNewNetwork }) => {
               providerUrl={provider.rpcUrl}
               selectedNetwork={selectedNetwork}
               shouldRenderNetworkForm={shouldRenderNetworkForm}
+              isFullScreen={isFullScreen}
             />
             {!isFullScreen && !shouldRenderNetworkForm ? (
               <div className="networks-tab__networks-list-popup-footer">
                 <Button
-                  type="primary"
+                  type="primaryGradient"
                   onClick={(event) => {
                     event.preventDefault();
                     global.platform.openExtensionInBrowser(ADD_NETWORK_ROUTE);

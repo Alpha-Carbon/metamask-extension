@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import NetworksForm from '../networks-form';
+import NetworksFormModal from '../networks-form-modal/networks-form-modal';
 import NetworksList from '../networks-list';
 import { getProvider } from '../../../../selectors';
 
@@ -11,6 +12,7 @@ const NetworksTabContent = ({
   networksToRender,
   selectedNetwork,
   shouldRenderNetworkForm,
+  isFullScreen,
 }) => {
   const provider = useSelector(getProvider);
 
@@ -21,14 +23,23 @@ const NetworksTabContent = ({
         networkIsSelected={networkIsSelected}
         networksToRender={networksToRender}
         selectedRpcUrl={selectedNetwork.rpcUrl}
+        selectedNetwork={selectedNetwork}
       />
-      {shouldRenderNetworkForm ? (
+      {isFullScreen && (
         <NetworksForm
           isCurrentRpcTarget={provider.rpcUrl === selectedNetwork.rpcUrl}
           networksToRender={networksToRender}
           selectedNetwork={selectedNetwork}
         />
-      ) : null}
+      )}
+      {/* {shouldRenderNetworkForm ? (
+        <NetworksForm
+          isCurrentRpcTarget={provider.rpcUrl === selectedNetwork.rpcUrl}
+          networksToRender={networksToRender}
+          selectedNetwork={selectedNetwork}
+        />
+      ) : null} */}
+
     </>
   );
 };

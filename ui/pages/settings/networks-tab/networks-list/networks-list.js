@@ -8,6 +8,7 @@ const NetworksList = ({
   networksToRender,
   networkDefaultedToProvider,
   selectedRpcUrl,
+  selectedNetwork
 }) => {
   return (
     <div
@@ -22,6 +23,8 @@ const NetworksList = ({
           network={network}
           networkIsSelected={networkIsSelected}
           selectedRpcUrl={selectedRpcUrl}
+          networksToRender={networksToRender}
+          selectedNetwork={selectedNetwork}
         />
       ))}
     </div>

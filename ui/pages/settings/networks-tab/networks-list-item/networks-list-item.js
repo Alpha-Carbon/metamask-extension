@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,12 +9,20 @@ import { SIZES } from '../../../../helpers/constants/design-system';
 import ColorIndicator from '../../../../components/ui/color-indicator';
 import LockIcon from '../../../../components/ui/lock-icon';
 import { NETWORKS_FORM_ROUTE } from '../../../../helpers/constants/routes';
-import { setSelectedSettingsRpcUrl } from '../../../../store/actions';
+import { setSelectedSettingsRpcUrl, showModal, showNetworksFormModal } from '../../../../store/actions';
 import { getEnvironmentType } from '../../../../../app/scripts/lib/util';
 import { ENVIRONMENT_TYPE_FULLSCREEN } from '../../../../../shared/constants/app';
 import { getProvider } from '../../../../selectors';
 
-const NetworksListItem = ({ network, networkIsSelected, selectedRpcUrl }) => {
+
+
+const NetworksListItem = ({
+  network,
+  networkIsSelected,
+  selectedRpcUrl,
+  networksToRender,
+  selectedNetwork,
+}) => {
   const t = useI18nContext();
   const history = useHistory();
   const dispatch = useDispatch();
@@ -46,15 +54,21 @@ const NetworksListItem = ({ network, networkIsSelected, selectedRpcUrl }) => {
       onClick={() => {
         dispatch(setSelectedSettingsRpcUrl(rpcUrl));
         if (!isFullScreen) {
-          history.push(NETWORKS_FORM_ROUTE);
+          // history.push(NETWORKS_FORM_ROUTE);
+          dispatch(showModal({
+            name: 'NETWORKS_FORM_MODAL',
+            networksToRender,
+            isCurrentRpcTarget: network == selectedNetwork,
+            selectedNetwork: network,
+          }));
         }
       }}
     >
-      <ColorIndicator
+      {/* <ColorIndicator
         color={labelKey}
         type={ColorIndicator.TYPES.FILLED}
         size={SIZES.LG}
-      />
+      /> */}
       <div
         className={classnames('networks-tab__networks-list-name', {
           'networks-tab__networks-list-name--selected': displayNetworkListItemAsSelected,
@@ -75,5 +89,10 @@ NetworksListItem.propTypes = {
   networkIsSelected: PropTypes.bool,
   selectedRpcUrl: PropTypes.string,
 };
+
+// export default compose(
+//   withRouter,
+//   connect(mapDispatchToProps),
+// )(NetworksListItem);
 
 export default NetworksListItem;
