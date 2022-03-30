@@ -14,9 +14,7 @@ function mapStateToProps(state) {
   const {
     metamask: { nativeCurrency },
   } = state;
-  const { metamask } = state;
   return {
-    metamask,
     nativeCurrency,
     accounts: getMetaMaskAccounts(state),
     selectedAddress: state.metamask.selectedAddress,
