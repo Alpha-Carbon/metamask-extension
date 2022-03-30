@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { useI18nContext } from '../../../../hooks/useI18nContext';
@@ -12,6 +12,9 @@ import {
   getMetaMaskAccounts,
   getMetaMaskAccountsOrdered,
 } from '../../../../selectors';
+
+import Identicon from '../../../../components/ui/identicon/identicon.component';
+import { getSelectedIdentity } from '../../../../selectors/selectors';
 
 function mapStateToProps(state) {
   return {
@@ -26,11 +29,14 @@ function SendFrom({ accounts, selectedAddress, accountsList }) {
     ? accounts[selectedAddress].balance
     : '';
   const t = useI18nContext();
+  const selectedIdentity = useSelector(getSelectedIdentity);
   return (
     <div className={classnames('send-v2__from-wrap')}>
-      <div className="send-v2__from-title">from</div>
+      <div className="send-v2__from-title">{t('from')}</div>
       <div className="send-v2__from-cont">
-        <div className="send-v2__from-cont-img">pic</div>
+        <div className="send-v2__from-cont-img">
+          <Identicon address={selectedIdentity.address} diameter={30} />
+        </div>
         <div className="send-v2__from-cont-info">
           {accountsList.map((identity) => {
             const isSelected = identity.address === selectedAddress;

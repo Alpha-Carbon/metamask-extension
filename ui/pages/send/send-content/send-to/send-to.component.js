@@ -8,20 +8,23 @@ import { useI18nContext } from '../../../../hooks/useI18nContext';
 import CloseIcon from '../../../../components/ui/icon/close-icon.component';
 import { getRecipient, resetRecipientInput } from '../../../../ducks/send';
 import { ellipsify } from '../../send.utils';
+import Identicon from '../../../../components/ui/identicon/identicon.component';
 
 function mapStateToProps(state) {
   return {};
 }
 
-function SendTo({}) {
+function SendTo({ }) {
   const t = useI18nContext();
   const dispatch = useDispatch();
   const recipient = useSelector(getRecipient);
   return (
     <div className={classnames('send-v2__to-wrap')}>
-      <div className="send-v2__to-title">To</div>
+      <div className="send-v2__to-title">{t('to')}</div>
       <div className="send-v2__to-cont">
-        <div className="send-v2__to-cont-img">pic</div>
+        <div className="send-v2__to-cont-img">
+          <Identicon address={recipient.address} diameter={30} />
+        </div>
         <div className="send-v2__to-cont-address">
           {ellipsify(recipient.address)}
         </div>
