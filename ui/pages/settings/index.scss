@@ -11,6 +11,8 @@
   background: var(--white);
   display: flex;
   flex-flow: column nowrap;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
   @media screen and (max-width: $break-small) {
     background: var(--background) !important;
   }
