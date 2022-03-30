@@ -208,9 +208,9 @@
       transition: ease-in-out .4s;
     }
     &-receive{
-      background: linear-gradient(91.07deg, var(--secondary-2-start) 4.72%, var(--secondary-2-end) 73%);
+      background: var(--secondary-3-gradient);
       &:hover{
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(91.07deg, var(--secondary-2-start) 4.72%, var(--secondary-2-end) 73%);
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), var(--secondary-3-gradient);
       }
     }
     &-send{

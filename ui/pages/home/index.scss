@@ -41,7 +41,7 @@
     position: relative;
    
     &>button{
-      background: linear-gradient(91.07deg, var(--secondary-1-start) 4.72%, var(--secondary-1-end) 73%);
+      background: var(--secondary-2-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -52,7 +52,7 @@
       bottom: -2px;
       left: 50%;
       height: 2px;
-      background: linear-gradient(91.07deg, var(--secondary-1-start) 4.72%, var(--secondary-1-end) 73%);
+      background: var(--secondary-2-gradient);
       border-radius: 10px;
       transform: translateX(-50%);
     }
