@@ -60,7 +60,7 @@ import {
 
 import Typography from '../../components/ui/typography/typography';
 import { MIN_GAS_LIMIT_DEC } from '../send/send.constants';
-import HelpOutLineIcon from '../../components/ui/icon/help-outline-icon.component';
+import HelpOutlineIcon from '../../components/ui/icon/help-outline-icon.component';
 
 import TransactionAlerts from './transaction-alerts';
 
@@ -485,7 +485,7 @@ export default class ConfirmTransactionBase extends Component {
                   position="top"
                 >
                   {/* <i className="fa fa-info-circle" /> */}
-                  <HelpOutLineIcon />
+                  <HelpOutlineIcon />
                 </InfoTooltip>
               </>
             )
@@ -563,7 +563,7 @@ export default class ConfirmTransactionBase extends Component {
                 <GasTiming
                   maxPriorityFeePerGas={hexWEIToDecGWEI(
                     maxPriorityFeePerGas ||
-                      txData.txParams.maxPriorityFeePerGas,
+                    txData.txParams.maxPriorityFeePerGas,
                   )}
                   maxFeePerGas={hexWEIToDecGWEI(
                     maxFeePerGas || txData.txParams.maxFeePerGas,

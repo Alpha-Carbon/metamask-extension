@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Tooltip from '../tooltip';
-import HelpOutLine from '../icon/help-outline-icon.component';
+import HelpOutlineIcon from '../icon/help-outline-icon.component';
 import InfoTooltipIcon from './info-tooltip-icon';
 
 const positionArrowClassMap = {
@@ -36,7 +36,7 @@ export default function InfoTooltip({
         theme={wide ? 'tippy-tooltip-wideInfo' : 'tippy-tooltip-info'}
       >
         {/* <InfoTooltipIcon fillColor={iconFillColor} /> */}
-        <HelpOutLine color="#222222" />
+        <HelpOutlineIcon color="#222222" />
       </Tooltip>
     </div>
   );
