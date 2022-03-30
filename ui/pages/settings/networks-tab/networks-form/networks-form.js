@@ -614,14 +614,14 @@ const NetworksForm = ({
               </Button>
             )}
             <Button
-              type="secondary"
+              type="secondaryGradient"
               onClick={onCancel}
               disabled={stateUnchanged}
             >
               {t('cancel')}
             </Button>
             <Button
-              type="primary"
+              type="primaryGradient"
               disabled={isSubmitDisabled}
               onClick={onSubmit}
             >
