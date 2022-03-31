@@ -110,8 +110,6 @@ export default class AppHeader extends PureComponent {
       disabled,
       onClick,
     } = this.props;
-    const pathname = history?.location?.pathname;
-    const logoShow = pathname === UNLOCK_ROUTE;
 
     return (
       <div
