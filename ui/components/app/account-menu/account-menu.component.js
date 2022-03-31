@@ -4,7 +4,10 @@ import { debounce } from 'lodash';
 import Fuse from 'fuse.js';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import classnames from 'classnames';
-import { ENVIRONMENT_TYPE_POPUP, ENVIRONMENT_TYPE_FULLSCREEN } from '../../../../shared/constants/app';
+import {
+  ENVIRONMENT_TYPE_POPUP,
+  ENVIRONMENT_TYPE_FULLSCREEN,
+} from '../../../../shared/constants/app';
 import { getEnvironmentType } from '../../../../app/scripts/lib/util';
 import Identicon from '../../ui/identicon';
 import SiteIcon from '../../ui/site-icon';
@@ -311,10 +314,13 @@ export default class AccountMenu extends Component {
         <AccountMenuItem className="account-menu__header">
           {t('myAccounts')}
           {getEnvironmentType() === ENVIRONMENT_TYPE_FULLSCREEN ? null : (
-            <button className='account-menu__expend-button' onClick={() => {
-              global.platform.openExtensionInBrowser();
-              onClose();
-            }} >
+            <button
+              className="account-menu__expend-button"
+              onClick={() => {
+                global.platform.openExtensionInBrowser();
+                onClose();
+              }}
+            >
               <ExpandIcon />
             </button>
           )}
@@ -430,7 +436,7 @@ export default class AccountMenu extends Component {
           }
           text={t('settings')}
         />
-        <div className='account-menu__lock-wrap'>
+        <div className="account-menu__lock-wrap">
           <Button
             className="account-menu__lock-button"
             onClick={() => {
@@ -441,7 +447,6 @@ export default class AccountMenu extends Component {
             {t('lock')}
           </Button>
         </div>
-
       </div>
     );
   }

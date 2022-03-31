@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function NetworkTreeIcon({
+export default function EastIcon({
   className,
-  width = '40',
-  height = '40',
-  color = '#3CBB50',
+  width = '24',
+  height = '24',
+  color = '#323232',
 }) {
   return (
     <svg
@@ -16,15 +16,17 @@ export default function NetworkTreeIcon({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path
-        d="M36.6668 18.3333V5H25.0002V10H15.0002V5H3.3335V18.3333H15.0002V13.3333H18.3335V30H25.0002V35H36.6668V21.6667H25.0002V26.6667H21.6668V13.3333H25.0002V18.3333H36.6668ZM11.6668 15H6.66683V8.33333H11.6668V15ZM28.3335 25H33.3335V31.6667H28.3335V25ZM28.3335 8.33333H33.3335V15H28.3335V8.33333Z"
-        fill={color}
-      />
+      <g opacity="0.44">
+        <path
+          d="M14.29 5.70998C13.9 6.09998 13.9 6.72998 14.29 7.11998L18.17 11H3C2.45 11 2 11.45 2 12C2 12.55 2.45 13 3 13H18.18L14.3 16.88C13.91 17.27 13.91 17.9 14.3 18.29C14.69 18.68 15.32 18.68 15.71 18.29L21.3 12.7C21.69 12.31 21.69 11.68 21.3 11.29L15.7 5.70998C15.32 5.31998 14.68 5.31998 14.29 5.70998Z"
+          fill={color}
+        />
+      </g>
     </svg>
   );
 }
 
-NetworkTreeIcon.propTypes = {
+EastIcon.propTypes = {
   className: PropTypes.object,
   /**
    * Width of the icon

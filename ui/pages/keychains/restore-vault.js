@@ -64,7 +64,7 @@ class RestoreVaultPage extends Component {
               }}
               href="#"
             >
-              <BackIcon className='mr-2' />
+              <BackIcon className="mr-2" />
               {t('back')}
             </a>
             <div className="import-account__title">

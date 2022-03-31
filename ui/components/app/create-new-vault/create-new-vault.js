@@ -181,7 +181,7 @@ export default function CreateNewVault({
             {seedPhraseError}
           </Typography>
         ) : null}
-        <div className='create-new-vault__show-btn'>
+        <div className="create-new-vault__show-btn">
           <button onClick={toggleShowSeedPhrase}>
             {showSeedPhrase ? t('hide') : t('show')}
           </button>
@@ -201,7 +201,7 @@ export default function CreateNewVault({
           </label>
         </div> */}
       </div>
-      <div className='create-new-vault__password-wrap'>
+      <div className="create-new-vault__password-wrap">
         <TextField
           id="password"
           label={t('newPassword')}
@@ -214,19 +214,21 @@ export default function CreateNewVault({
           largeLabel
           placeholder={t('newPassword')}
         />
-        <div className='create-new-vault__password-wrap-btn'>
-          <button onClick={(e) => {
-            e.preventDefault();
-            !passwordShow ?
-              setPasswordType('text') :
-              setPasswordType('password')
-            setPasswordShow(!passwordShow)
-          }}>
+        <div className="create-new-vault__password-wrap-btn">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              !passwordShow
+                ? setPasswordType('text')
+                : setPasswordType('password');
+              setPasswordShow(!passwordShow);
+            }}
+          >
             {passwordShow ? t('hide') : t('show')}
           </button>
         </div>
       </div>
-      <div className='create-new-vault__password-wrap'>
+      <div className="create-new-vault__password-wrap">
         <TextField
           id="confirm-password"
           label={t('confirmPassword')}
@@ -239,14 +241,16 @@ export default function CreateNewVault({
           largeLabel
           placeholder={t('confirmPassword')}
         />
-        <div className='create-new-vault__password-wrap-btn'>
-          <button onClick={(e) => {
-            e.preventDefault();
-            !confirmPasswordShow ?
-              setConfirmPasswordType('text') :
-              setConfirmPasswordType('password')
-            setConfirmPasswordShow(!confirmPasswordShow)
-          }}>
+        <div className="create-new-vault__password-wrap-btn">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              !confirmPasswordShow
+                ? setConfirmPasswordType('text')
+                : setConfirmPasswordType('password');
+              setConfirmPasswordShow(!confirmPasswordShow);
+            }}
+          >
             {showSeedPhrase ? t('hide') : t('show')}
           </button>
         </div>

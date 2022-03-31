@@ -265,9 +265,9 @@ export default class Routes extends Component {
       return true;
     }
 
-    if (windowType === ENVIRONMENT_TYPE_POPUP && this.onConfirmPage()) {
-      return true;
-    }
+    // if (windowType === ENVIRONMENT_TYPE_POPUP && this.onConfirmPage()) {
+    //   return true;
+    // }
 
     const isHandlingPermissionsRequest = Boolean(
       matchPath(location.pathname, {
@@ -276,14 +276,15 @@ export default class Routes extends Component {
       }),
     );
 
-    const isHandlingAddEthereumChainRequest = Boolean(
-      matchPath(location.pathname, {
-        path: CONFIRMATION_V_NEXT_ROUTE,
-        exact: false,
-      }),
-    );
+    // const isHandlingAddEthereumChainRequest = Boolean(
+    //   matchPath(location.pathname, {
+    //     path: CONFIRMATION_V_NEXT_ROUTE,
+    //     exact: false,
+    //   }),
+    // );
 
-    return isHandlingPermissionsRequest || isHandlingAddEthereumChainRequest;
+    // return isHandlingPermissionsRequest || isHandlingAddEthereumChainRequest;
+    return isHandlingPermissionsRequest;
   }
 
   showOnboardingHeader() {
@@ -359,10 +360,11 @@ export default class Routes extends Component {
         <AccountMenu />
         <div
           // className="main-container-wrapper"
-          className={
-            classnames('main-container-wrapper', {
-              'main-container-wrapper--filter': (isAccountMenuOpen || networkDropdownOpen) && getEnvironmentType() != ENVIRONMENT_TYPE_FULLSCREEN,
-            })}
+          className={classnames('main-container-wrapper', {
+            'main-container-wrapper--filter':
+              (isAccountMenuOpen || networkDropdownOpen) &&
+              getEnvironmentType() != ENVIRONMENT_TYPE_FULLSCREEN,
+          })}
         >
           {isLoading ? <Loading loadingMessage={loadMessage} /> : null}
           {!isLoading && isNetworkLoading ? <LoadingNetwork /> : null}

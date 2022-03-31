@@ -72,11 +72,14 @@ export default class EndOfFlowScreen extends PureComponent {
         {/* <MetaFoxLogo /> */}
         <div className="end-of-flow-logo-wrap">
           <AlphaCarbonLogo />
-          <span className='ml-2'>{t('carbonWallet')}</span>
+          <span className="ml-2">{t('carbonWallet')}</span>
         </div>
 
         <div className="end-of-flow__emoji">
-          <img src="./images/alphaCarbon/congratulations.png" alt="congratulations" />
+          <img
+            src="./images/alphaCarbon/congratulations.png"
+            alt="congratulations"
+          />
         </div>
         <div className="first-time-flow__header">{t('congratulations')}</div>
         <div className="first-time-flow__text-block end-of-flow__text-1">

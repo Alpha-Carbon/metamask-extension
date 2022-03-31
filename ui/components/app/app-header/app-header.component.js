@@ -115,7 +115,9 @@ export default class AppHeader extends PureComponent {
       <div
         className={classnames('app-header', {
           'app-header--back-drop': isUnlocked,
-          'app-header--filter': (isAccountMenuOpen || networkDropdownOpen) && getEnvironmentType() != ENVIRONMENT_TYPE_FULLSCREEN,
+          'app-header--filter':
+            (isAccountMenuOpen || networkDropdownOpen) &&
+            getEnvironmentType() != ENVIRONMENT_TYPE_FULLSCREEN,
         })}
       >
         <div className="app-header__contents">

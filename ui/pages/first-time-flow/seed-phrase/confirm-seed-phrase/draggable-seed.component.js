@@ -66,7 +66,9 @@ class DraggableSeed extends Component {
           onClick={onClick}
           data-testid={`draggable-seed-${selected ? 'selected-' : ''}${word}`}
         >
-          {indexShow && (<span className='confirm-seed-phrase__index'>{index + 1}.</span>)}
+          {indexShow && (
+            <span className="confirm-seed-phrase__index">{index + 1}.</span>
+          )}
           {word}
         </div>,
       ),

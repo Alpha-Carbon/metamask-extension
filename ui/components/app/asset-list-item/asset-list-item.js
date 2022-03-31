@@ -122,7 +122,7 @@ const AssetListItem = ({
       subtitle={secondary ? <h3 title={secondary}>{secondary}</h3> : null}
       onClick={onClick}
       icon={
-        tokenAddress ?
+        tokenAddress ? (
           <Identicon
             className={iconClassName}
             diameter={24}
@@ -131,8 +131,9 @@ const AssetListItem = ({
             alt={`${primary} ${tokenSymbol}`}
             imageBorder={identiconBorder}
           />
-          :
+        ) : (
           <ActAvatar />
+        )
       }
       midContent={midContent}
       rightContent={

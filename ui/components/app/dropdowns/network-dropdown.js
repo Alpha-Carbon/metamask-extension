@@ -21,10 +21,10 @@ import {
   ADD_NETWORK_ROUTE,
   ADVANCED_ROUTE,
 } from '../../../helpers/constants/routes';
-import { Dropdown, DropdownMenuItem } from './dropdown';
 import NetworkTreeIcon from '../../ui/icon/network-tree-icon.component';
 import CheckIcon from '../../ui/icon/check-icon.component';
 import CloseIcon from '../../ui/icon/close-icon.component';
+import { Dropdown, DropdownMenuItem } from './dropdown';
 
 // classes from nodes of the toggle element.
 const notToggleElementClassnames = [
@@ -157,11 +157,17 @@ class NetworkDropdown extends Component {
   }
 
   renderCustomRpcList(rpcListDetail, provider, opts = {}) {
-    //#TODO: Make sure should the networks in dropdown be reversed
+    // #TODO: Make sure should the networks in dropdown be reversed
     const reversedRpcListDetail = rpcListDetail.slice().reverse();
 
     return reversedRpcListDetail.map((entry) => {
-      const { rpcUrl, chainId, ticker = 'ETH', nickname = '', labelKey } = entry;
+      const {
+        rpcUrl,
+        chainId,
+        ticker = 'ETH',
+        nickname = '',
+        labelKey,
+      } = entry;
       const isCurrentRpcTarget =
         provider.type === NETWORK_TYPE_RPC && rpcUrl === provider.rpcUrl;
 
@@ -191,7 +197,7 @@ class NetworkDropdown extends Component {
               padding: '12px 0',
             }}
           >
-            <div className='network-check__wrap'>
+            <div className="network-check__wrap">
               {isCurrentRpcTarget ? (
                 // <i className="fa fa-check" />
                 <CheckIcon />
@@ -208,9 +214,11 @@ class NetworkDropdown extends Component {
             /> */}
             <span
               className="network-name-item"
-              style={{
-                // color: isCurrentRpcTarget ? '#ffffff' : '#9b9b9b',
-              }}
+              style={
+                {
+                  // color: isCurrentRpcTarget ? '#ffffff' : '#9b9b9b',
+                }
+              }
             >
               {nickname || rpcUrl}
             </span>
@@ -229,7 +237,6 @@ class NetworkDropdown extends Component {
           </DropdownMenuItem>
           <div className="network-dropdown-divider" />
         </div>
-
       );
     });
   }
@@ -356,7 +363,10 @@ class NetworkDropdown extends Component {
           'z-index': '55',
         }}
       >
-        <div className='network-dropdown-close' onClick={() => hideNetworkDropdown()}>
+        <div
+          className="network-dropdown-close"
+          onClick={() => hideNetworkDropdown()}
+        >
           <CloseIcon />
         </div>
         <div className="network-dropdown-header">

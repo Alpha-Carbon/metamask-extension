@@ -97,16 +97,14 @@ export default class RevealSeedPhrase extends PureComponent {
             },
           )}
         >
-          {
-            seedPhraseArr.map((item, i) => {
-              return (
-                <div className="reveal-seed-phrase__secret-words-item">
-                  <span>{i + 1}.</span>
-                  <span>{item}</span>
-                </div>
-              )
-            })
-          }
+          {seedPhraseArr.map((item, i) => {
+            return (
+              <div className="reveal-seed-phrase__secret-words-item">
+                <span>{i + 1}.</span>
+                <span>{item}</span>
+              </div>
+            );
+          })}
         </div>
         {!isShowingSeedPhrase && (
           <div
@@ -150,7 +148,8 @@ export default class RevealSeedPhrase extends PureComponent {
                     history.push(INITIALIZE_SEED_PHRASE_INTRO_ROUTE);
                   }}
                 >
-                  <BackIcon className="mr-2" />{t('back')}
+                  <BackIcon className="mr-2" />
+                  {t('back')}
                 </a>
               </Box>
               <div className="first-time-flow__header">

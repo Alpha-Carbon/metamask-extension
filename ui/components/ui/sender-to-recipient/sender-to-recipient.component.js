@@ -9,6 +9,7 @@ import AccountMismatchWarning from '../account-mismatch-warning/account-mismatch
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import { toChecksumHexAddress } from '../../../../shared/modules/hexstring-utils';
 import NicknamePopovers from '../../app/modals/nickname-popovers';
+import EastIcon from '../icon/east-icon.component';
 import {
   DEFAULT_VARIANT,
   CARDS_VARIANT,
@@ -153,9 +154,10 @@ RecipientWithAddress.propTypes = {
 function Arrow({ variant }) {
   return variant === DEFAULT_VARIANT ? (
     <div className="sender-to-recipient__arrow-container">
-      <div className="sender-to-recipient__arrow-circle">
+      {/* <div className="sender-to-recipient__arrow-circle">
         <img height="15" width="15" src="./images/arrow-right.svg" alt="" />
-      </div>
+      </div> */}
+      <EastIcon />
     </div>
   ) : (
     <div className="sender-to-recipient__arrow-container">

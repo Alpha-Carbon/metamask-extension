@@ -53,7 +53,7 @@ export default class Welcome extends PureComponent {
             width="125"
             height="125"
           /> */}
-          <img src='./images/alphaCarbon/logo.png' alt="alpha-carbon-logo" />
+          <img src="./images/alphaCarbon/logo.png" alt="alpha-carbon-logo" />
           {isBeta() ? <BetaWelcomeFooter /> : <WelcomeFooter />}
           <div className="first-time-flow__button-wrap">
             <Button
@@ -64,7 +64,6 @@ export default class Welcome extends PureComponent {
               {t('getStarted')}
             </Button>
           </div>
-
         </div>
       </div>
     );

@@ -82,12 +82,11 @@ export default class ImportWithSeedPhrase extends PureComponent {
             }}
             href="#"
           >
-            <BackIcon className="mr-2" />{t('back')}
+            <BackIcon className="mr-2" />
+            {t('back')}
           </a>
         </div>
-        <div className="first-time-flow__header">
-          {t('importFromSeed')}
-        </div>
+        <div className="first-time-flow__header">{t('importFromSeed')}</div>
         <div className="first-time-flow__text-block">{t('secretPhrase')}</div>
         <CreateNewVault
           includeTerms

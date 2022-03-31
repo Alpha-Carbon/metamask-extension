@@ -159,11 +159,11 @@ export default function CurrencyInput({
       suffix={shouldUseFiat() ? secondarySuffix : primarySuffix}
       onChange={handleChange}
       value={decimalValue}
-      actionComponent={
-        <div className="currency-input__swap-component" onClick={swap} />
-      }
+      // actionComponent={
+      //   <div className="currency-input__swap-component" onClick={swap} />
+      // }
     >
-      {renderConversionComponent()}
+      {/* {renderConversionComponent()} */}
     </UnitInput>
   );
 }

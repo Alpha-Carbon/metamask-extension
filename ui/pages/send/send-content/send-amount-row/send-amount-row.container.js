@@ -5,12 +5,19 @@ import {
   sendAmountIsInError,
   getSendAsset,
 } from '../../../../ducks/send';
+import { getMetaMaskAccounts } from '../../../../selectors';
 import SendAmountRow from './send-amount-row.component';
 
 export default connect(mapStateToProps, mapDispatchToProps)(SendAmountRow);
 
 function mapStateToProps(state) {
+  const {
+    metamask: { nativeCurrency },
+  } = state;
   return {
+    nativeCurrency,
+    accounts: getMetaMaskAccounts(state),
+    selectedAddress: state.metamask.selectedAddress,
     amount: getSendAmount(state),
     inError: sendAmountIsInError(state),
     asset: getSendAsset(state),

@@ -12,7 +12,7 @@ const CLASSNAME_ROUNDED = 'btn--rounded';
 const CLASSNAME_FIRST_TIME = 'btn--first-time';
 const CLASSNAME_INLINE = 'btn--inline';
 const CLASSNAME_CANCEL = 'btn-cancel';
-//add linear gradient button
+// add linear gradient button
 const CLASSNAME_PRIMARY_GRADIENT = 'btn-primary-gradient';
 const CLASSNAME_SECONDARY_GRADIENT = 'btn-secondary-gradient';
 

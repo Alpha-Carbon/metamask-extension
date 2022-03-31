@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ActAvatar = ({ className, txtClassName, width = '24', height = '24', text = 'T' }) => (
+const ActAvatar = ({
+  className,
+  txtClassName,
+  width = '24',
+  height = '24',
+  text = 'T',
+}) => (
   <div
     className={className}
     style={{
-      width: width + 'px',
-      height: height + 'px',
+      width: `${width}px`,
+      height: `${height}px`,
       background: 'linear-gradient(91.07deg, #227BFF 4.72%, #451DFF 73%)',
       'border-radius': '50%',
       display: 'flex',
@@ -16,12 +22,12 @@ const ActAvatar = ({ className, txtClassName, width = '24', height = '24', text 
   >
     <p
       className={txtClassName}
-      style=
-      {{
+      style={{
         'text-align': 'center',
         color: 'white',
-        lineHeight: '1rem'
-      }}>
+        lineHeight: '1rem',
+      }}
+    >
       {text}
     </p>
   </div>

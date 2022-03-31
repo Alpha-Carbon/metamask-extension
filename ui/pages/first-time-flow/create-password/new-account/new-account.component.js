@@ -4,7 +4,7 @@ import Button from '../../../../components/ui/button';
 import {
   INITIALIZE_SEED_PHRASE_INTRO_ROUTE,
   INITIALIZE_SELECT_ACTION_ROUTE,
-  INITIALIZE_SEED_PHRASE_ROUTE
+  INITIALIZE_SEED_PHRASE_ROUTE,
 } from '../../../../helpers/constants/routes';
 import TextField from '../../../../components/ui/text-field';
 import BackIcon from '../../../../components/ui/icon/back-icon.component';
@@ -33,6 +33,7 @@ export default class NewAccount extends PureComponent {
   };
 
   createPasswordRef = React.createRef();
+
   confirmPasswordRef = React.createRef();
 
   isValid() {
@@ -119,7 +120,6 @@ export default class NewAccount extends PureComponent {
 
       // history.push(INITIALIZE_SEED_PHRASE_INTRO_ROUTE);
       history.push(INITIALIZE_SEED_PHRASE_ROUTE);
-
     } catch (error) {
       this.setState({ passwordError: error.message });
     }
@@ -176,12 +176,13 @@ export default class NewAccount extends PureComponent {
             }}
             href="#"
           >
-            <BackIcon className="mr-2" />{t('back')}
+            <BackIcon className="mr-2" />
+            {t('back')}
           </a>
         </div>
         <div className="first-time-flow__header">{t('createPassword')}</div>
         <form className="first-time-flow__form" onSubmit={this.handleCreate}>
-          <div className='first-time-flow__input-wrap'>
+          <div className="first-time-flow__input-wrap">
             <TextField
               inputRef={this.createPasswordRef}
               id="create-password"
@@ -189,7 +190,9 @@ export default class NewAccount extends PureComponent {
               type={passwordHide}
               className="first-time-flow__input"
               value={password}
-              onChange={(event) => this.handlePasswordChange(event.target.value)}
+              onChange={(event) =>
+                this.handlePasswordChange(event.target.value)
+              }
               error={passwordError}
               autoFocus
               autoComplete="new-password"
@@ -198,21 +201,24 @@ export default class NewAccount extends PureComponent {
               largeLabel
               placeholder={t('newPassword')}
             />
-            <button className='first-time-flow__show_btn' onClick={(e) => {
-              e.preventDefault();
-              !passwordShow ?
-                this.setState({
-                  passwordHide: 'text'
-                }) :
-                this.setState({
-                  passwordHide: 'password'
-                })
-              this.setState({ passwordShow: !passwordShow })
-            }}>
+            <button
+              className="first-time-flow__show_btn"
+              onClick={(e) => {
+                e.preventDefault();
+                !passwordShow
+                  ? this.setState({
+                      passwordHide: 'text',
+                    })
+                  : this.setState({
+                      passwordHide: 'password',
+                    });
+                this.setState({ passwordShow: !passwordShow });
+              }}
+            >
               {passwordShow ? t('hide') : t('show')}
             </button>
           </div>
-          <div className='first-time-flow__input-wrap'>
+          <div className="first-time-flow__input-wrap">
             <TextField
               id="confirm-password"
               label={t('confirmPassword')}
@@ -229,17 +235,20 @@ export default class NewAccount extends PureComponent {
               largeLabel
               placeholder={t('confirmPassword')}
             />
-            <button className='first-time-flow__show_btn' onClick={(e) => {
-              e.preventDefault();
-              !confirmPasswordShow ?
-                this.setState({
-                  confirmPasswordHide: 'text'
-                }) :
-                this.setState({
-                  confirmPasswordHide: 'password'
-                })
-              this.setState({ confirmPasswordShow: !confirmPasswordShow })
-            }}>
+            <button
+              className="first-time-flow__show_btn"
+              onClick={(e) => {
+                e.preventDefault();
+                !confirmPasswordShow
+                  ? this.setState({
+                      confirmPasswordHide: 'text',
+                    })
+                  : this.setState({
+                      confirmPasswordHide: 'password',
+                    });
+                this.setState({ confirmPasswordShow: !confirmPasswordShow });
+              }}
+            >
               {confirmPasswordShow ? t('hide') : t('show')}
             </button>
           </div>

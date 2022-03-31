@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function NetworkTreeIcon({
+export default function ArrowIcon({
   className,
-  width = '40',
-  height = '40',
-  color = '#3CBB50',
+  width = '24',
+  height = '24',
+  color = '#525252',
 }) {
   return (
     <svg
@@ -17,14 +17,14 @@ export default function NetworkTreeIcon({
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M36.6668 18.3333V5H25.0002V10H15.0002V5H3.3335V18.3333H15.0002V13.3333H18.3335V30H25.0002V35H36.6668V21.6667H25.0002V26.6667H21.6668V13.3333H25.0002V18.3333H36.6668ZM11.6668 15H6.66683V8.33333H11.6668V15ZM28.3335 25H33.3335V31.6667H28.3335V25ZM28.3335 8.33333H33.3335V15H28.3335V8.33333Z"
+        d="M8.12021 9.29006L12.0002 13.1701L15.8802 9.29006C16.2702 8.90006 16.9002 8.90006 17.2902 9.29006C17.6802 9.68006 17.6802 10.3101 17.2902 10.7001L12.7002 15.2901C12.3102 15.6801 11.6802 15.6801 11.2902 15.2901L6.70021 10.7001C6.31021 10.3101 6.31021 9.68006 6.70021 9.29006C7.09021 8.91006 7.73021 8.90006 8.12021 9.29006Z"
         fill={color}
       />
     </svg>
   );
 }
 
-NetworkTreeIcon.propTypes = {
+ArrowIcon.propTypes = {
   className: PropTypes.object,
   /**
    * Width of the icon
