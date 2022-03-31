@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function HelpOutLineIcon({
+export default function HelpOutlineIcon({
   className,
   width = '16',
   height = '16',
@@ -24,7 +24,7 @@ export default function HelpOutLineIcon({
   );
 }
 
-HelpOutLineIcon.propTypes = {
+HelpOutlineIcon.propTypes = {
   className: PropTypes.object,
   /**
    * Width of the icon

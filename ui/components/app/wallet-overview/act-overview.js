@@ -129,7 +129,7 @@ const ActOverview = () => {
           {t('send')}
         </button>
       </div>
-    </div>
+    </div >
   );
 };
 
