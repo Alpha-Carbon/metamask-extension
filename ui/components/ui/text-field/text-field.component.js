@@ -68,7 +68,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     '&$inputFocused': {
-      border: '1px solid #2f9ae0',
+      border: '1px solid #227BFF',
     },
   },
   largeInputLabel: {
