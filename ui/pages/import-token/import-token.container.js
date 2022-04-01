@@ -9,6 +9,7 @@ import { getMostRecentOverviewPage } from '../../ducks/history/history';
 import {
   getRpcPrefsForCurrentProvider,
   getIsMainnet,
+  getIsTokenDetectionSupported
 } from '../../selectors/selectors';
 import ImportToken from './import-token.component';
 
@@ -26,8 +27,10 @@ const mapStateToProps = (state) => {
   } = state;
   const showSearchTabCustomNetwork =
     useTokenDetection && Boolean(Object.keys(tokenList).length);
+  // const showSearchTab =
+  //   getIsMainnet(state) || showSearchTabCustomNetwork || process.env.IN_TEST;
   const showSearchTab =
-    getIsMainnet(state) || showSearchTabCustomNetwork || process.env.IN_TEST;
+    getIsTokenDetectionSupported(state) || process.env.IN_TEST;
   return {
     identities,
     mostRecentOverviewPage: getMostRecentOverviewPage(state),

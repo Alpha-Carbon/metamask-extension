@@ -22,6 +22,9 @@
 
   &__search-token {
     padding: 16px 16px 16px 16px;
+    & .MuiFormControl-root{
+      background-color: var(--white);
+    }
   }
 
   &__token-list {

@@ -11,6 +11,10 @@ import {
   OPTIMISM_CHAIN_ID,
   OPTIMISM_TESTNET_CHAIN_ID,
   BUYABLE_CHAINS_MAP,
+  POLYGON_CHAIN_ID,
+  BSC_CHAIN_ID,
+  AVALANCHE_CHAIN_ID,
+  AMINO_CHAIN_ID,
 } from '../../shared/constants/network';
 import {
   KEYRING_TYPES,
@@ -401,11 +405,10 @@ export function getAccountsWithLabels(state) {
   return getMetaMaskAccountsOrdered(state).map(
     ({ address, name, balance }) => ({
       address,
-      addressLabel: `${
-        name.length < TRUNCATED_NAME_CHAR_LIMIT
-          ? name
-          : `${name.slice(0, TRUNCATED_NAME_CHAR_LIMIT - 1)}...`
-      } (${shortenAddress(address)})`,
+      addressLabel: `${name.length < TRUNCATED_NAME_CHAR_LIMIT
+        ? name
+        : `${name.slice(0, TRUNCATED_NAME_CHAR_LIMIT - 1)}...`
+        } (${shortenAddress(address)})`,
       label: name,
       balance,
     }),
@@ -882,4 +885,15 @@ export function getIsAdvancedGasFeeDefault(state) {
   return (
     Boolean(advancedGasFee?.maxBaseFee) && Boolean(advancedGasFee?.priorityFee)
   );
+}
+
+export function getIsTokenDetectionSupported(state) {
+  const chainId = getCurrentChainId(state);
+  return [
+    MAINNET_CHAIN_ID,
+    BSC_CHAIN_ID,
+    POLYGON_CHAIN_ID,
+    AVALANCHE_CHAIN_ID,
+    AMINO_CHAIN_ID,
+  ].includes(chainId);
 }

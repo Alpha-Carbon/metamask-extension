@@ -26,6 +26,7 @@ export const POLYGON_CHAIN_ID = '0x89';
 export const AVALANCHE_CHAIN_ID = '0xa86a';
 export const FANTOM_CHAIN_ID = '0xfa';
 export const CELO_CHAIN_ID = '0xa4ec';
+export const AMINO_CHAIN_ID = '0x7a69';
 
 /**
  * The largest possible chain ID we can handle.

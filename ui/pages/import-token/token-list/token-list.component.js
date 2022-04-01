@@ -27,7 +27,8 @@ export default class TokenList extends Component {
     } = this.props;
 
     return results.length === 0 ? (
-      <TokenListPlaceholder />
+      // <TokenListPlaceholder />
+      null
     ) : (
       <div className="token-list">
         <div className="token-list__title">

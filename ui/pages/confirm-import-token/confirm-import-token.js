@@ -83,14 +83,14 @@ const ConfirmImportToken = () => {
       </div>
       <div className="page-container__content">
         <div className="confirm-import-token">
-          <div className="confirm-import-token__header">
+          {/* <div className="confirm-import-token__header">
             <div className="confirm-import-token__token">{t('token')}</div>
             <div className="confirm-import-token__balance">{t('balance')}</div>
-          </div>
+          </div> */}
           <div className="confirm-import-token__token-list">
             {Object.entries(pendingTokens).map(([address, token]) => {
               const { name, symbol } = token;
-
+              const importTokenName = getTokenName(name, symbol);
               return (
                 <div
                   className="confirm-import-token__token-list-item"
@@ -103,7 +103,12 @@ const ConfirmImportToken = () => {
                       address={address}
                     />
                     <div className="confirm-import-token__name">
-                      {getTokenName(name, symbol)}
+                      {/* {getTokenName(name, symbol)} */}
+                      {importTokenName.split(' ')[0]}
+                      <br />
+                      <span>
+                        {importTokenName.split(' ')[2]}
+                      </span>
                     </div>
                   </div>
                   <div className="confirm-import-token__balance">
@@ -118,16 +123,14 @@ const ConfirmImportToken = () => {
       <div className="page-container__footer">
         <footer>
           <Button
-            type="secondary"
-            large
+            type="secondaryGradient"
             className="page-container__footer-button"
             onClick={() => history.push(IMPORT_TOKEN_ROUTE)}
           >
             {t('back')}
           </Button>
           <Button
-            type="primary"
-            large
+            type="primaryGradient"
             className="page-container__footer-button"
             onClick={handleAddTokens}
           >

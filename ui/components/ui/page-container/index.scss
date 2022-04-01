@@ -130,8 +130,25 @@
     min-width: 5rem;
     color: var(--dusty-gray);
     border-bottom: none;
-    margin-right: 16px;
-
+    // margin-right: 16px;
+    flex: 1;
+    position: relative;
+    &.tab--active{
+      background: linear-gradient(91.07deg, #227BFF 4.72%, #451DFF 73%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      &::before{
+        content: "";
+        position: absolute;
+        width: calc(100% - 30px);
+        bottom: -1px;
+        left: 50%;
+        height: 2px;
+        border-radius: 10px;
+        transform: translateX(-50%);
+        background: var(--secondary-2-gradient);
+      }
+    }
     &:last-of-type {
       margin-right: 0;
     }

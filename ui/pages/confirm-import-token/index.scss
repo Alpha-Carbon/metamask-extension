@@ -15,6 +15,17 @@
   &__balance {
     flex: 0 0 30%;
     min-width: 0;
+   
+    & .currency-display-component{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &__text{
+        @include H3;
+        @include roundeBold;
+        color:var(--gray-1);
+      }
+    }
   }
 
   &__token-list {
@@ -47,11 +58,13 @@
     align-items: center;
     margin-top: 8px;
     box-sizing: border-box;
+    flex-direction: column;
   }
 
   &__data {
     display: flex;
     align-items: center;
+    flex-direction: column;
     padding: 8px;
   }
 
@@ -60,10 +73,15 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: center;
+    &>span{
+      font-style: 17px;
+    }
   }
 
   &__token-icon {
-    margin-right: 12px;
+    // margin-right: 12px;
+    margin-bottom: 5px;
     flex: 0 0 auto;
   }
 }

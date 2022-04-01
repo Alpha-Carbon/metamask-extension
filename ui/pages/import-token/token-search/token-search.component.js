@@ -79,7 +79,7 @@ export default class TokenSearch extends Component {
         fullWidth
         autoFocus
         autoComplete="off"
-        startAdornment={this.renderAdornment()}
+      // startAdornment={this.renderAdornment()}
       />
     );
   }

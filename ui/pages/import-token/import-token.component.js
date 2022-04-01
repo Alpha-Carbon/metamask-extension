@@ -352,7 +352,7 @@ class ImportToken extends Component {
 
     return (
       <div className="import-token__custom-token-form">
-        <ActionableMessage
+        {/* <ActionableMessage
           message={this.context.t('fakeTokenWarning', [
             <Button
               type="link"
@@ -369,7 +369,7 @@ class ImportToken extends Component {
           withRightButton
           useIcon
           iconFillColor="#f8c000"
-        />
+        /> */}
         <TextField
           id="custom-address"
           label={this.context.t('tokenContractAddress')}
@@ -464,7 +464,7 @@ class ImportToken extends Component {
     const { tokenSelectorError, selectedTokens, searchResults } = this.state;
     return (
       <div className="import-token__search-token">
-        {!useTokenDetection && (
+        {/* {!useTokenDetection && (
           <ActionableMessage
             message={this.context.t('tokenDetectionAnnouncement', [
               <Button
@@ -481,7 +481,7 @@ class ImportToken extends Component {
             iconFillColor="#037DD6"
             className="import-token__token-detection-announcement"
           />
-        )}
+        )} */}
         <TokenSearch
           onSearch={({ results = [] }) =>
             this.setState({ searchResults: results })
@@ -517,7 +517,7 @@ class ImportToken extends Component {
       </Tab>,
     );
 
-    return <Tabs>{tabs}</Tabs>;
+    return <Tabs tabsClassName="home__tabs" >{tabs}</Tabs>;
   }
 
   render() {
@@ -528,9 +528,13 @@ class ImportToken extends Component {
         title={this.context.t('importTokensCamelCase')}
         tabsComponent={this.renderTabs()}
         onSubmit={() => this.handleNext()}
-        hideCancel
+        // hideCancel
         disabled={Boolean(this.hasError()) || !this.hasSelected()}
-        onClose={() => {
+        // onClose={() => {
+        //   clearPendingTokens();
+        //   history.push(mostRecentOverviewPage);
+        // }}
+        onCancel={() => {
           clearPendingTokens();
           history.push(mostRecentOverviewPage);
         }}

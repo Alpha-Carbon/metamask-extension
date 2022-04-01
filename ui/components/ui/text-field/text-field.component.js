@@ -13,13 +13,13 @@ const inputLabelBase = {
 const styles = {
   materialLabel: {
     '&$materialFocused': {
-      color: '#aeaeae',
+      color: '#BABABA',
     },
     '&$materialError': {
-      color: '#aeaeae',
+      color: '#BABABA',
     },
     fontWeight: '400',
-    color: '#aeaeae',
+    color: '#BABABA',
   },
   materialFocused: {},
   materialUnderline: {
@@ -29,13 +29,13 @@ const styles = {
   },
   materialError: {},
   materialWhitePaddedRoot: {
-    color: '#aeaeae',
+    color: '#BABABA',
   },
   materialWhitePaddedInput: {
     padding: '8px',
 
     '&::placeholder': {
-      color: '#aeaeae',
+      color: '#BABABA',
     },
   },
   materialWhitePaddedFocused: {
@@ -61,9 +61,9 @@ const styles = {
     'label + &': {
       marginTop: '9px',
     },
-    border: '1px solid #BBC0C5',
-    height: '48px',
-    borderRadius: '6px',
+    border: '1px solid #222222',
+    height: '40px',
+    borderRadius: '4px',
     padding: '0 16px',
     display: 'flex',
     alignItems: 'center',
