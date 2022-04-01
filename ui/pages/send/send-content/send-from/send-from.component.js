@@ -54,6 +54,7 @@ function SendFrom({ accounts, selectedAddress, accountsList }) {
               className="send-v2__from-cont-info-balance"
               ethNumberOfDecimals={2}
               value={balanceValue}
+              type='PRIMARY'
             />
           </div>
         </div>
