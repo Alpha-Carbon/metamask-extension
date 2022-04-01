@@ -257,12 +257,33 @@ export default class SettingsTab extends PureComponent {
                   }
                   checked={Boolean(useNativeCurrencyAsPrimaryCurrency)}
                 />
-                <label
+                {/* <label
                   htmlFor="native-primary-currency"
                   className="settings-tab__radio-label"
                 >
                   {nativeCurrency}
-                </label>
+                </label> */}
+                <div className="radio-wrap">
+                  <div className={
+                    classnames('radio', {
+                      'radio-enable': useNativeCurrencyAsPrimaryCurrency,
+                      'radio-disable': !useNativeCurrencyAsPrimaryCurrency,
+                    })
+                  } onClick={() => {
+                    setUseNativeCurrencyAsPrimaryCurrencyPreference(true)
+                  }}>
+                  </div>
+                  <label
+                    htmlFor="native-primary-currency"
+                    className={
+                      classnames('radio-label', {
+                        'radio-label-enable': useNativeCurrencyAsPrimaryCurrency,
+                        'radio-label-disable': !useNativeCurrencyAsPrimaryCurrency
+                      })
+                    }>
+                    {nativeCurrency}
+                  </label>
+                </div>
               </div>
               <div className="settings-tab__radio-button">
                 <input
@@ -273,12 +294,33 @@ export default class SettingsTab extends PureComponent {
                   }
                   checked={!useNativeCurrencyAsPrimaryCurrency}
                 />
-                <label
+                {/* <label
                   htmlFor="fiat-primary-currency"
                   className="settings-tab__radio-label"
                 >
                   {t('fiat')}
-                </label>
+                </label> */}
+                <div className="radio-wrap">
+                  <div className={
+                    classnames('radio', {
+                      'radio-enable': !useNativeCurrencyAsPrimaryCurrency,
+                      'radio-disable': useNativeCurrencyAsPrimaryCurrency,
+                    })
+                  } onClick={() => {
+                    setUseNativeCurrencyAsPrimaryCurrencyPreference(false)
+                  }}>
+                  </div>
+                  <label
+                    htmlFor="fiat-primary-currency"
+                    className={
+                      classnames('radio-label', {
+                        'radio-label-enable': !useNativeCurrencyAsPrimaryCurrency,
+                        'radio-label-disable': useNativeCurrencyAsPrimaryCurrency
+                      })
+                    }>
+                    {t('fiat')}
+                  </label>
+                </div>
               </div>
             </div>
           </div>

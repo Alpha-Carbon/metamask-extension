@@ -38,6 +38,58 @@
     &:not(:last-child) {
       margin-right: 16px;
     }
+    & #native-primary-currency, & #fiat-primary-currency{
+      display: none;
+    }
+    & .radio-wrap{
+      position: relative;
+      cursor: pointer;
+    }
+    & .radio{
+      position: absolute;
+      left: 0px;
+      top: 2px;
+      color: #313149;
+      padding: 7px;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      display: inline-block;
+      transition: ease-in-out .2s;
+      
+      &-disable{
+        border: 2px solid var(--gray-1);
+
+      }
+      &-enable{
+        background: linear-gradient(#ffffff 0 0) padding-box, linear-gradient(to right, #227BFF, #451DFF) border-box;
+        &::before{
+          background: linear-gradient(91.07deg, #227BFF 4.72%, #451DFF 73%);
+        }
+      }
+      &::before{
+        content: "";
+        position: absolute;
+        left: 2px;
+        top: 2px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        transition: ease-in-out .2s;
+      }
+      &-label{
+        margin-left: 20px;
+        cursor: pointer;
+        &-enable{
+          background: var(--secondary-2-gradient);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        &-disable{
+          background: none;
+          color:var(--gray-2);
+        }
+      }
+    }
   }
 
   &__radio-label {
