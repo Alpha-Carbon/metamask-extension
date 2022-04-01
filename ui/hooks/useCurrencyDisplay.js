@@ -45,11 +45,14 @@ import { conversionUtil } from '../../shared/modules/conversion.utils';
  */
 export function useCurrencyDisplay(
   inputValue,
-  { displayValue, prefix, numberOfDecimals, denomination, currency, ...opts },
+  { displayValue, prefix, numberOfDecimals, denomination, currency, conversionRate, ...opts },
 ) {
   const currentCurrency = useSelector(getCurrentCurrency);
   const nativeCurrency = useSelector(getNativeCurrency);
-  const conversionRate = useSelector(getConversionRate);
+  // const conversionRate = useSelector(getConversionRate);
+  if (conversionRate === null || undefined) {
+    conversionRate = useSelector(getConversionRate);
+  }
   const isUserPreferredCurrency = currency === currentCurrency;
 
   const value = useMemo(() => {

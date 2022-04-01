@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import {
   useDispatch,
@@ -10,6 +10,7 @@ import copyToClipboard from 'copy-to-clipboard';
 import {
   getSelectedAccount,
   getSelectedIdentity,
+  getCurrentCurrency,
 } from '../../../selectors/selectors';
 import { useMetricEvent } from '../../../hooks/useMetricEvent';
 import { showModal } from '../../../store/actions';
@@ -43,9 +44,17 @@ const ActOverview = () => {
   const selectedAccount = useSelector(getSelectedAccount);
   const { balance } = selectedAccount;
   // get currency
-  const { currency } = useUserPreferencedCurrency('PRIMARY', {});
-  const [title, parts] = useCurrencyDisplay(balance, { currency });
+  // const { currency } = useUserPreferencedCurrency('PRIMARY', {});
+  // const [title, parts] = useCurrencyDisplay(balance, { currency });
+  const currentCurrency = useSelector(getCurrentCurrency);
+  const [conversionRate, setConversionRate] = useState('');
+  const [title, parts] = useCurrencyDisplay(balance, { currency: currentCurrency, conversionRate });
+  let tokenArr = title.split(' ')[0];
+  let valueArr = tokenArr.split('');
+  let value = valueArr;
+  let symbol = value.shift();
 
+  console.log(title, parts);
   // send method
   const sendEvent = useMetricEvent({
     eventOpts: {
@@ -54,6 +63,15 @@ const ActOverview = () => {
       name: 'Clicked Send: TACT',
     },
   });
+  useEffect(() => {
+    fetch(`https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0xdAC17F958D2ee523a2206206994597C13D831ec7&vs_currencies=${currentCurrency}`)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (myJson) {
+        setConversionRate(myJson['0xdac17f958d2ee523a2206206994597c13d831ec7'][currentCurrency])
+      });
+  }, [currentCurrency])
   return (
     <div className="act-overview__wrapper">
       <div className="act-overview__balance">
@@ -97,9 +115,9 @@ const ActOverview = () => {
       </div>
       <div className="act-overview__balance-token">
         <span className="act-overview__balance-token-currency">
-          {parts.suffix}
+          {symbol}
         </span>
-        <span>{parts.value}</span>
+        <span>{value.join('')}</span>
       </div>
       <div className="act-overview__buttons">
         <button className="act-overview__buttons-receive"

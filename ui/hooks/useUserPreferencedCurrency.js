@@ -49,7 +49,7 @@ export function useUserPreferencedCurrency(type, opts = {}) {
 
   let currency, numberOfDecimals;
   if (
-    !showFiat ||
+    // !showFiat ||
     (type === PRIMARY && useNativeCurrencyAsPrimaryCurrency) ||
     (type === SECONDARY && !useNativeCurrencyAsPrimaryCurrency)
   ) {
