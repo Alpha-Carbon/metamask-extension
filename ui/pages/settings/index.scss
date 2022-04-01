@@ -22,7 +22,9 @@
     padding: 12px 24px;
     align-items: center;
     flex: 0 0 auto;
-
+    @media screen and (max-width: $break-small){
+      position: relative;
+    }
     &__title {
       @include H3;
       @include roundeBold;
@@ -34,6 +36,9 @@
         overflow: hidden;
         white-space: nowrap;
         max-width: 250px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
   }
