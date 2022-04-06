@@ -140,7 +140,7 @@ const AssetListItem = ({
         !isERC721 && (
           <>
             {/* <i className="fas fa-chevron-right asset-list-item__chevron-right" /> */}
-            {sendTokenButton}
+            {/* {sendTokenButton} */}
             <span className="asset-list-item__token-value">{primary}</span>
           </>
         )

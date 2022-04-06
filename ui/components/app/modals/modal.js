@@ -186,6 +186,9 @@ const MODALS = {
 
   HIDE_TOKEN_CONFIRMATION: {
     contents: <HideTokenConfirmationModal />,
+    contentStyle: {
+      borderRadius: '10px',
+    },
     mobileModalStyle: {
       width: '95%',
       top: getEnvironmentType() === ENVIRONMENT_TYPE_POPUP ? '52vh' : '36.5vh',

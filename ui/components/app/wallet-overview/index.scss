@@ -112,6 +112,9 @@
     margin: 16px 0;
     padding: 0 16px;
     max-width: 100%;
+    background: var(--secondary-2-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   &__primary-balance {

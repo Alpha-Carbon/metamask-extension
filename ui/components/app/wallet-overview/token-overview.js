@@ -27,11 +27,14 @@ import {
 
 import SwapIcon from '../../ui/icon/swap-icon.component';
 import SendIcon from '../../ui/icon/overview-send-icon.component';
+import ReceiveIcon from '../../ui/icon/receive-icon.component';
 
 import IconButton from '../../ui/icon-button';
 import { INVALID_ASSET_TYPE } from '../../../helpers/constants/error-keys';
 import { showModal } from '../../../store/actions';
 import WalletOverview from './wallet-overview';
+
+
 
 const TokenOverview = ({ className, token }) => {
   const dispatch = useDispatch();
@@ -60,7 +63,6 @@ const TokenOverview = ({ className, token }) => {
     properties: { source: 'Token View', active_currency: token.symbol },
     category: 'swaps',
   });
-
   useEffect(() => {
     if (token.isERC721 && process.env.COLLECTIBLES_V1) {
       dispatch(
@@ -92,7 +94,7 @@ const TokenOverview = ({ className, token }) => {
       }
       buttons={
         <>
-          <IconButton
+          {/* <IconButton
             className="token-overview__button"
             onClick={async () => {
               sendTokenEvent();
@@ -114,8 +116,8 @@ const TokenOverview = ({ className, token }) => {
             label={t('send')}
             data-testid="eth-overview-send"
             disabled={token.isERC721}
-          />
-          <IconButton
+          /> */}
+          {/* <IconButton
             className="token-overview__button"
             disabled={!isSwapsChain}
             Icon={SwapIcon}
@@ -147,12 +149,42 @@ const TokenOverview = ({ className, token }) => {
                 {contents}
               </Tooltip>
             )}
-          />
+          /> */}
+          <div className="asset-native__wrapper-buttons">
+            <button className='asset-native__wrapper-buttons-receive' onClick={() => {
+              dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
+            }}>
+              <ReceiveIcon size={18} color="#FFFFFF" />
+              <p>{t('receive')}</p>
+            </button>
+            <button
+              className='asset-native__wrapper-buttons-send'
+              onClick={async () => {
+                sendTokenEvent();
+                try {
+                  await dispatch(
+                    updateSendAsset({
+                      type: ASSET_TYPES.TOKEN,
+                      details: token,
+                    }),
+                  );
+                  history.push(SEND_ROUTE);
+                } catch (err) {
+                  if (!err.message.includes(INVALID_ASSET_TYPE)) {
+                    throw err;
+                  }
+                }
+              }}
+            >
+              <SendIcon size={19} color="#FFFFFF" />
+              <p>{t('send')}</p>
+            </button>
+          </div>
         </>
       }
       className={className}
       icon={
-        <Identicon diameter={32} address={token.address} image={token.image} />
+        <Identicon diameter={56} address={token.address} image={token.image} />
       }
     />
   );

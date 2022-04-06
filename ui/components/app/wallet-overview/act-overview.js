@@ -53,8 +53,6 @@ const ActOverview = () => {
   let valueArr = tokenArr.split('');
   let value = valueArr;
   let symbol = value.shift();
-
-  console.log(title, parts);
   // send method
   const sendEvent = useMetricEvent({
     eventOpts: {
