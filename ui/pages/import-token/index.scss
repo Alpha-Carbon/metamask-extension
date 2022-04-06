@@ -18,6 +18,11 @@
     & #{$self}__decimal-warning {
       margin-top: 5px;
     }
+    & .MuiFormControl-root{
+      & .MuiInputBase-root{
+        background-color: var(--white);
+      }
+    }
   }
 
   &__search-token {
