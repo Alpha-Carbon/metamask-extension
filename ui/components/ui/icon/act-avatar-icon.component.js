@@ -14,16 +14,16 @@ const ActAvatar = ({
       width: `${width}px`,
       height: `${height}px`,
       background: 'linear-gradient(91.07deg, #227BFF 4.72%, #451DFF 73%)',
-      'border-radius': '50%',
+      borderRadius: '50%',
       display: 'flex',
-      'align-items': 'center',
-      'justify-content': 'center',
+      alignItems: 'center',
+      justifyContent: 'center',
     }}
   >
     <p
       className={txtClassName}
       style={{
-        'text-align': 'center',
+        textAlign: 'center',
         color: 'white',
         lineHeight: '1rem',
       }}
