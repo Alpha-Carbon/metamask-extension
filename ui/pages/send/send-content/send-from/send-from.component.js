@@ -15,6 +15,7 @@ import {
 
 import Identicon from '../../../../components/ui/identicon/identicon.component';
 import { getSelectedIdentity } from '../../../../selectors/selectors';
+import { PRIMARY } from '../../../../helpers/constants/common';
 
 function mapStateToProps(state) {
   return {
@@ -54,7 +55,7 @@ function SendFrom({ accounts, selectedAddress, accountsList }) {
               className="send-v2__from-cont-info-balance"
               ethNumberOfDecimals={2}
               value={balanceValue}
-              type='PRIMARY'
+              type={PRIMARY}
             />
           </div>
         </div>

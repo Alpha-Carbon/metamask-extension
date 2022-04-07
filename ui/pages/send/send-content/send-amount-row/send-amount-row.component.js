@@ -7,6 +7,7 @@ import UserPreferencedCurrencyDisplay from '../../../../components/app/user-pref
 import { ASSET_TYPES } from '../../../../ducks/send';
 import ArrowIcon from '../../../../components/ui/icon/arrow-icon.component';
 import AmountMaxButton from './amount-max-button';
+import { PRIMARY } from '../../../../helpers/constants/common';
 
 export default class SendAmountRow extends Component {
   static propTypes = {
@@ -49,6 +50,7 @@ export default class SendAmountRow extends Component {
     const balanceValue = accounts[selectedAddress]
       ? accounts[selectedAddress].balance
       : '';
+
     return (
       <div className="send-v2__amount__wrapper">
         <button className="send-v2__amount__switch">
@@ -61,6 +63,7 @@ export default class SendAmountRow extends Component {
           <UserPreferencedCurrencyDisplay
             ethNumberOfDecimals={4}
             value={balanceValue}
+            type={PRIMARY}
           />
         </p>
         <AmountMaxButton inError={inError} />
