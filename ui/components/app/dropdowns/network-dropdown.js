@@ -349,18 +349,18 @@ class NetworkDropdown extends Component {
         innerStyle={{
           padding: '15px 13px',
           background: '#FFFFFF',
-          'border-radius': '10px',
-          'box-shadow:': 'none',
-          'min-height': '400px',
+          borderRadius: '10px',
+          boxShadow: 'none',
+          minHeight: '400px',
           display: 'flex',
-          'flex-direction': 'column',
+          flexDirection: 'column',
           position: 'absolute',
           top: '50%',
           transform: 'translate(-50%,-50%)',
           left: '50%',
-          'max-width': '352px',
+          maxWidth: '352px',
           width: '90%',
-          'z-index': '55',
+          zIndex: '55',
         }}
       >
         <div
