@@ -132,8 +132,10 @@ function TransactionListItemInner({
               )}
 
             >
-              {title}
-              <span className='ml-2'>{nativeCurrency}</span>
+              {/* {title} */}
+              {title.split(' ')[0]}
+              {/* <span className='ml-2'>{nativeCurrency}</span> */}
+              <span className='ml-2'>{isOtherTitle ? isOtherTitle : nativeCurrency}</span>
             </p>
             <p className={classnames(
               'transaction-status',
@@ -149,8 +151,8 @@ function TransactionListItemInner({
               'transaction-list-item__balance-swap': isSwap,
             }
             )}>
-            <span className='mr-2'>{token}</span>
-            <span>{nativeCurrency}</span>
+            <span className='mr-2'>{primaryToken[1]}</span>
+            <span>{primaryToken[2]}</span>
           </div>
         </div>
         <div className="transaction-list-item__pending-actions">
@@ -179,7 +181,9 @@ function TransactionListItemInner({
     isPending,
     senderAddress,
   } = useTransactionDisplayData(transactionGroup);
-  const token = primaryCurrency.split('-').join(' ').split(nativeCurrency).join('')
+  const primaryToken = primaryCurrency.split('-').join(' ').split(' ');
+  const OtherTitle = title.split(' ');
+  const isOtherTitle = OtherTitle?.[1];
   const isSend = category === TRANSACTION_GROUP_CATEGORIES.SEND;
   const isSignatureReq =
     category === TRANSACTION_GROUP_CATEGORIES.SIGNATURE_REQUEST;
