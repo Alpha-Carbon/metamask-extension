@@ -48,11 +48,8 @@ const ActOverview = () => {
   // const [title, parts] = useCurrencyDisplay(balance, { currency });
   const currentCurrency = useSelector(getCurrentCurrency);
   const [conversionRate, setConversionRate] = useState('');
-  const [title, parts] = useCurrencyDisplay(balance, { currency: currentCurrency, conversionRate });
-  let tokenArr = title.split(' ')[0];
-  let valueArr = tokenArr.split('');
-  let value = valueArr;
-  let symbol = value.shift();
+  const [title, parts] = useCurrencyDisplay(balance, { currency: currentCurrency });
+
   // send method
   const sendEvent = useMetricEvent({
     eventOpts: {
@@ -113,9 +110,11 @@ const ActOverview = () => {
       </div>
       <div className="act-overview__balance-token">
         <span className="act-overview__balance-token-currency">
-          {symbol}
+          {parts.value}
         </span>
-        <span>{value.join('')}</span>
+        <span>
+          {parts.suffix}
+        </span>
       </div>
       <div className="act-overview__buttons">
         <button className="act-overview__buttons-receive"

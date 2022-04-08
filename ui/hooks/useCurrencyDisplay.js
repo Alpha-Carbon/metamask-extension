@@ -83,7 +83,7 @@ export function useCurrencyDisplay(
         currency,
       );
     }
-    return null;
+    return 0;
   }, [
     inputValue,
     nativeCurrency,
