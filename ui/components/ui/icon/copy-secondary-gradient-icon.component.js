@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CopyGradient = ({ className, size }) => (
+const CopySecondaryGradientIcon = ({ className, size }) => (
   <svg className={className}
     width={size}
     height={size}
@@ -18,11 +18,11 @@ const CopyGradient = ({ className, size }) => (
   </svg>
 );
 
-CopyGradient.defaultProps = {
+CopySecondaryGradientIcon.defaultProps = {
   className: undefined,
 };
 
-CopyGradient.propTypes = {
+CopySecondaryGradientIcon.propTypes = {
   /**
    * Additional className
    */
@@ -36,4 +36,4 @@ CopyGradient.propTypes = {
    */
 };
 
-export default CopyGradient;
+export default CopySecondaryGradientIcon;
