@@ -3798,5 +3798,11 @@
   },
   "connectToSite":{
     "message":"Connect to "
+  },
+  "yourPrivateKey":{
+    "message":"Your privare key"
+  },
+  "saveYourPrivateKey":{
+    "message":"Save it somewhere safe and secret."
   }
 }

@@ -7,6 +7,7 @@ import {
   ALERTS_ROUTE,
   ADVANCED_ROUTE,
   SECURITY_ROUTE,
+  EXPORT_PRIVATE_KEY_ROUTE,
   GENERAL_ROUTE,
   ABOUT_US_ROUTE,
   SETTINGS_ROUTE,
@@ -293,6 +294,7 @@ class SettingsPage extends PureComponent {
         />
         <Route path={NETWORKS_ROUTE} component={NetworksTab} />
         <Route exact path={SECURITY_ROUTE} component={SecurityTab} />
+        <Route exact path={EXPORT_PRIVATE_KEY_ROUTE} component={SecurityTab} />
         <Route exact path={EXPERIMENTAL_ROUTE} component={ExperimentalTab} />
         <Route exact path={CONTACT_LIST_ROUTE} component={ContactListTab} />
         <Route exact path={CONTACT_ADD_ROUTE} component={ContactListTab} />

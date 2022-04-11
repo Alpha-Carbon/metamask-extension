@@ -253,6 +253,58 @@
       margin-bottom: 12px;
       color: var(--dusty-gray);
     }
+    &-private{
+      &-item{
+        max-width: 600px !important;
+      }
+      &-warning{
+        background: rgba(207, 57, 57,0.2);
+        border-radius: 4px;
+        color:var(--function-2);
+        padding:16px 24px;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+      }
+      &-inputWrap{
+        position: relative;
+        &__tooltip-wrapper{
+          position: absolute;
+          position: absolute;
+          right: 6px;
+          bottom: 29px;
+          z-index: 9;
+        }
+        &-copy{
+          background: none;
+        }
+        & .MuiFormControl-root{
+          margin-bottom: 24px;
+          & .MuiFormLabel-root{
+            @include H5;
+            @include roundeBold;
+  
+            color: var(--gray-1);
+          }
+          & .MuiInputBase-root{
+            height: 32px;
+          }
+        }
+        & .export-private-key{
+          & #export-private-key{
+            padding-right: 32px;
+          }
+          
+        }
+      }
+      &-buttons{
+        display: flex;
+        align-items: center;
+        &>button{
+          max-width: 312px;
+        }
+      }
+    }  
   }
 
   &__content-label {

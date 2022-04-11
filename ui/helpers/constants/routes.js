@@ -7,6 +7,7 @@ const GENERAL_ROUTE = '/settings/general';
 const ADVANCED_ROUTE = '/settings/advanced';
 const EXPERIMENTAL_ROUTE = '/settings/experimental';
 const SECURITY_ROUTE = '/settings/security';
+const EXPORT_PRIVATE_KEY_ROUTE = '/settings/security/export-private-key';
 const ABOUT_US_ROUTE = '/settings/about-us';
 const ALERTS_ROUTE = '/settings/alerts';
 const NETWORKS_ROUTE = '/settings/networks';
@@ -106,6 +107,7 @@ const PATH_NAME_MAP = {
   [ADVANCED_ROUTE]: 'Advanced Settings Page',
   [EXPERIMENTAL_ROUTE]: 'Experimental Settings Page',
   [SECURITY_ROUTE]: 'Security Settings Page',
+  [EXPORT_PRIVATE_KEY_ROUTE]: 'Export Private Key Page',
   [ABOUT_US_ROUTE]: 'About Us Page',
   [ALERTS_ROUTE]: 'Alerts Settings Page',
   [NETWORKS_ROUTE]: 'Network Settings Page',
@@ -209,6 +211,7 @@ export {
   ADVANCED_ROUTE,
   EXPERIMENTAL_ROUTE,
   SECURITY_ROUTE,
+  EXPORT_PRIVATE_KEY_ROUTE,
   GENERAL_ROUTE,
   ABOUT_US_ROUTE,
   SNAPS_LIST_ROUTE,
