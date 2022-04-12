@@ -44,7 +44,7 @@ const AssetOptions = ({
             }}
           >
             {t('accountDetails')}
-          </MenuItem>
+          </MenuItem> */}
           <MenuItem
             iconClassName="fas fa-external-link-alt asset-options__icon"
             data-testid="asset-options__etherscan"
@@ -56,7 +56,7 @@ const AssetOptions = ({
             {isEthNetwork
               ? t('viewOnEtherscan', [t('blockExplorerAssetAction')])
               : t('viewinExplorer', [t('blockExplorerAssetAction')])}
-          </MenuItem> */}
+          </MenuItem>
           {isNativeAsset ? null : (
             <MenuItem
               // iconClassName="fas fa-trash-alt asset-options__icon"
