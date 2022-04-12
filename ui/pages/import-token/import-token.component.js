@@ -504,17 +504,18 @@ class ImportToken extends Component {
     const { showSearchTab } = this.props;
     const tabs = [];
 
-    if (showSearchTab) {
-      tabs.push(
-        <Tab name={this.context.t('search')} key="search-tab">
-          {this.renderSearchToken()}
-        </Tab>,
-      );
-    }
+    // if (showSearchTab) {
+    //   tabs.push(
+    //     <Tab name={this.context.t('search')} key="search-tab">
+    //       {this.renderSearchToken()}
+    //     </Tab>,
+    //   );
+    // }
     tabs.push(
       <Tab name={this.context.t('customToken')} key="custom-tab">
         {this.renderCustomTokenForm()}
       </Tab>,
+
     );
 
     return <Tabs tabsClassName="home__tabs" >{tabs}</Tabs>;
