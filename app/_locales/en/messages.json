@@ -3804,5 +3804,14 @@
   },
   "saveYourPrivateKey":{
     "message":"Save it somewhere safe and secret."
+  },
+  "showPrivateKey":{
+    "message":"Show private key"
+  },
+  "showPrivateKeyTitle":{
+    "message":"Show private key for “$1”"
+  },
+  "showPrivateKeyDescription":{
+    "message":"This is the private key for the current selected account: $1. Never disclose this key. Anyone with your private key can fully control your account, including transferring away any of your funds."
   }
 }

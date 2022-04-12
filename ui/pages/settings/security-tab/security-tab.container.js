@@ -9,7 +9,10 @@ import {
 } from '../../../store/actions';
 import SecurityTab from './security-tab.component';
 import { EXPORT_PRIVATE_KEY_ROUTE } from '../../../helpers/constants/routes';
-import { getSelectedIdentity } from '../../../selectors';
+import {
+  getSelectedIdentity,
+  getMetaMaskAccountsOrdered,
+} from '../../../selectors';
 
 const mapStateToProps = (state, ownProps) => {
   const {
@@ -33,6 +36,8 @@ const mapStateToProps = (state, ownProps) => {
     usePhishDetect,
     isExportPrivateKey,
     selectedIdentity,
+    accountsList: getMetaMaskAccountsOrdered(state),
+    selectedAddress: state.metamask.selectedAddress,
   };
 };
 

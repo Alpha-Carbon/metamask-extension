@@ -162,14 +162,21 @@ export default class SecurityTab extends PureComponent {
 
   renderShowPrivateKey() {
     const { t } = this.context;
-    const { history } = this.props;
+    const {
+      history,
+      accountsList,
+      selectedAddress,
+    } = this.props;
+    const selectedAccount = accountsList.find((identity) => {
+      return identity.address === selectedAddress;
+    })
 
     return (
       <div className="settings-page__content-row">
         <div className="settings-page__content-item">
-          <span>{t('exportPrivateKey')}</span>
+          <span>{t('showPrivateKeyTitle', [selectedAccount.name])}</span>
           <div className="settings-page__content-description">
-            {t('usePhishingDetectionDescription')}
+            {t('showPrivateKeyDescription', [selectedAccount.name])}
           </div>
         </div>
         <div className="settings-page__content-item">
@@ -181,7 +188,7 @@ export default class SecurityTab extends PureComponent {
                 history.push(EXPORT_PRIVATE_KEY_ROUTE);
               }}
             >
-              {t('exportPrivateKey')}
+              {t('showPrivateKey')}
             </Button>
           </div>
         </div>
