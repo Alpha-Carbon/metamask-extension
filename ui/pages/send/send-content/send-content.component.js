@@ -81,8 +81,8 @@ export default class SendContent extends Component {
           {error ? this.renderError(error) : null}
           {warning ? this.renderWarning() : null}
 
-          {/* <SendAssetRow /> */}
-          <SendFrom />
+          <SendAssetRow />
+          {/* <SendFrom /> */}
           <SendTo />
           {this.maybeRenderAddContact()}
           <SendAmountRow />

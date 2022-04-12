@@ -402,6 +402,18 @@
 }
 
 .send-v2 {
+  &__asset-wrap{
+    position: relative;
+    margin-top: 14px;
+    &-title{
+      position: absolute;
+      left: 27px;
+      z-index: 1;
+      background-color: var(--background);
+      top: -10px;
+      padding: 0px 5px;
+    }
+  }
   &__container {
     width: 380px;
     border-radius: 8px;
@@ -604,9 +616,9 @@
     @include H7;
 
     width: 100%;
-    border: 1px solid var(--alto);
+    border: 1px solid var(--gray-3);
     border-radius: 4px;
-    background-color: var(--white);
+    background-color: var(--background);
     color: var(--tundora);
     position: relative;
 
@@ -638,8 +650,12 @@
     height: 73px;
   }
 
+  &__amount-dropdown__list{
+    top: 40px !important;
+  }
+
   &__asset-dropdown {
-    height: 54px;
+    height: 60px;
     border: none;
     position: relative;
 
@@ -663,8 +679,9 @@
       display: flex;
       flex-flow: row nowrap;
       align-items: center;
-      padding: 0 8px;
+      padding: 0 12px 0px 18px;
       cursor: pointer;
+      border-radius: 4px;
 
       &:hover {
         background-color: rgba($alto, 0.2);
@@ -691,9 +708,9 @@
     }
 
     &__symbol {
-      @include Paragraph;
-
-      margin-bottom: 2px;
+      color:var(--gray-1);
+      @include roundeBold;
+      @include H4;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -708,6 +725,16 @@
       &__label {
         margin-right: 0.25rem;
         min-width: 52px;
+        color:var(--gray-3);
+        @include H5;
+      }
+
+      & .currency-display-component{
+        line-height: normal;
+        &>span{
+          color:var(--gray-3);
+          @include H5;
+        }
       }
     }
 
@@ -722,7 +749,7 @@
       width: 100%;
       border: 1px solid var(--geyser);
       border-radius: 4px;
-      background-color: var(--white);
+      background-color: var(--background);
       box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.11);
       top: 65px;
       left: 0;
@@ -737,9 +764,10 @@
     }
 
     &__input-wrapper {
-      border: 1px solid var(--alto);
+      border: 1px solid var(--gray-3);
       border-radius: 4px;
       height: 100%;
+      margin: 0px 15px;
 
       &--opened {
         position: relative;
@@ -748,9 +776,10 @@
 
       .send-v2__asset-dropdown__asset {
         height: 100%;
+        background-color: var(--background);
 
         &:hover {
-          background-color: var(--white);
+          // background-color: var(--white);
         }
       }
     }
@@ -1221,6 +1250,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
     }
     &__switch{
       background: var(--secondary-2-gradient);
@@ -1234,7 +1264,6 @@
       &>icon{
         margin-left: 10px;
       }
-
     }
     &__input{
       border: none;

@@ -6,9 +6,11 @@ import {
 import {
   getMetaMaskAccounts,
   getNativeCurrencyImage,
+  getMetaMaskAccountsOrdered,
 } from '../../../../selectors';
 import { updateSendAsset, getSendAsset } from '../../../../ducks/send';
 import SendAssetRow from './send-asset-row.component';
+import { showAccountDetail } from '../../../../store/actions';
 
 function mapStateToProps(state) {
   return {
@@ -19,6 +21,7 @@ function mapStateToProps(state) {
     accounts: getMetaMaskAccounts(state),
     nativeCurrency: getNativeCurrency(state),
     nativeCurrencyImage: getNativeCurrencyImage(state),
+    accountsList: getMetaMaskAccountsOrdered(state),
   };
 }
 
@@ -26,6 +29,9 @@ function mapDispatchToProps(dispatch) {
   return {
     updateSendAsset: ({ type, details }) =>
       dispatch(updateSendAsset({ type, details })),
+    showAccountDetail: (address) => {
+      dispatch(showAccountDetail(address));
+    },
   };
 }
 
