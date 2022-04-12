@@ -268,8 +268,7 @@ export default class SendAmountRow extends Component {
         </div>
         <div className="send-v2__asset-dropdown__asset-data">
           <div className="send-v2__asset-dropdown__symbol">
-            {/* {nativeCurrency} */}
-            {selectedAccount.name}
+            {nativeCurrency}
           </div>
           <div className="send-v2__asset-dropdown__name">
             <span className="send-v2__asset-dropdown__name__label">
