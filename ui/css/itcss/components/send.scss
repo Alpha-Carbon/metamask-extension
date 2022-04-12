@@ -763,6 +763,17 @@
       .send-v2__asset-dropdown__asset {
         padding: 8px;
       }
+      & .token-list-item{
+        &__symbol{
+          color:var(--gray-1);
+          @include roundeBold;
+          @include H5;
+        }
+        &__balance{
+          color:var(--gray-3);
+          @include H5;
+        }
+      }
     }
 
     &__input-wrapper {
