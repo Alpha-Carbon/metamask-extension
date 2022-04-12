@@ -223,7 +223,7 @@ export default class SendAssetRow extends Component {
                         {`${t('balance')}:`}
                       </span>
                       <UserPreferencedCurrencyDisplay
-                        value={balanceValue}
+                        value={identity.balance}
                         type={PRIMARY}
                       />
                     </div>
