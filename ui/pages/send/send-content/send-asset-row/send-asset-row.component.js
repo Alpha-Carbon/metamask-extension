@@ -271,7 +271,7 @@ export default class SendAssetRow extends Component {
           <Identicon
             diameter={30}
             image={nativeCurrencyImage}
-            address={nativeCurrency}
+            address={selectedAccount.address}
           />
         </div>
         <div className="send-v2__asset-dropdown__asset-data">
