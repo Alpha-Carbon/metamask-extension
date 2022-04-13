@@ -309,7 +309,8 @@ export default class AccountMenu extends Component {
       chainId,
       provider,
     } = this.props;
-    const { address } = selectedIdentity;
+    const { address } = selectedIdentity || {};
+
     if (!isAccountMenuOpen) {
       return null;
     }
@@ -420,6 +421,7 @@ export default class AccountMenu extends Component {
         <AccountMenuItem
           onClick={() => {
             const accountLink = getAccountLink(address, chainId, rpcPrefs);
+
             trackEvent({
               category: 'Navigation',
               event: 'Clicked Block Explorer Link',
@@ -444,9 +446,9 @@ export default class AccountMenu extends Component {
           text={
             rpcPrefs.blockExplorerUrl
               ? t('blockExplorerView', [
-                  // getURLHostName(rpcPrefs.blockExplorerUrl),
-                  provider.nickname,
-                ])
+                // getURLHostName(rpcPrefs.blockExplorerUrl),
+                provider.nickname,
+              ])
               : t('etherscanViewOn')
           }
         />
