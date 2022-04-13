@@ -122,7 +122,6 @@ export default class SendAmountRow extends Component {
 
   renderInput() {
     const { amount, inError, asset } = this.props;
-
     return asset.type === ASSET_TYPES.TOKEN ? (
       <UserPreferencedTokenInput
         error={inError}
@@ -140,13 +139,13 @@ export default class SendAmountRow extends Component {
   }
 
   renderAmount() {
-    const { accounts, selectedAddress, inError, nativeCurrency, tokens, sendAsset: { details } } = this.props;
+    const { accounts, selectedAddress, inError, nativeCurrency, tokens, sendAsset: { details, type } } = this.props;
     const { t } = this.context;
     const balanceValue = accounts[selectedAddress]
       ? accounts[selectedAddress].balance
       : '';
     let token;
-    if (details) {
+    if (type === ASSET_TYPES.TOKEN) {
       token = tokens.find(({ address }) =>
         isEqualCaseInsensitive(address, details.address),
       );
@@ -166,7 +165,7 @@ export default class SendAmountRow extends Component {
         {this.renderInput()}
         <p className="send-v2__amount__balance">
           <span>{t('balance')} : </span>
-          {details ?
+          {token ?
             <TokenBalance token={token} />
             :
             <UserPreferencedCurrencyDisplay
@@ -205,6 +204,8 @@ export default class SendAmountRow extends Component {
 
 
   renderMountDropdown() {
+    const { tokens } = this.props;
+
     return (
       this.state.isShowingDropdown && (
         <div>
@@ -214,12 +215,13 @@ export default class SendAmountRow extends Component {
           />
           <div className="send-v2__asset-dropdown__list send-v2__amount-dropdown__list">
             {this.renderNativeCurrency(true)}
-            <TokenListDisplay
-              clickHandler={(token) =>
-                this.selectToken(ASSET_TYPES.TOKEN, token)
-              }
-            />
-
+            {tokens && (
+              <TokenListDisplay
+                clickHandler={(token) =>
+                  this.selectToken(ASSET_TYPES.TOKEN, token)
+                }
+              />
+            )}
             {this.state.sendableCollectibles.map((collectible) =>
               this.renderCollectible(collectible, true),
             )}

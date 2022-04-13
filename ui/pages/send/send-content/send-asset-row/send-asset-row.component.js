@@ -171,11 +171,20 @@ export default class SendAssetRow extends Component {
       selectedAddress,
       nativeCurrency,
       nativeCurrencyImage,
+      sendAsset: { details, type },
+      updateSendAsset,
+      tokens,
     } = this.props;
     const { t } = this.context;
     const balanceValue = accounts[selectedAddress]
       ? accounts[selectedAddress].balance
       : '';
+    let token;
+    if (type === ASSET_TYPES.TOKEN) {
+      token = tokens.find(({ address }) =>
+        isEqualCaseInsensitive(address, details.address),
+      );
+    }
     return (
       this.state.isShowingDropdown && (
         <div>
@@ -201,7 +210,7 @@ export default class SendAssetRow extends Component {
                 <div
                   className="send-v2__asset-dropdown__asset"
                   onClick={() => {
-                    showAccountDetail(identity.address)
+                    showAccountDetail(identity.address);
                     this.closeDropdown();
                   }}
                   key={identity.address}
