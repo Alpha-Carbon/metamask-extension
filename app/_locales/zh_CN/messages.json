@@ -3399,5 +3399,38 @@
   },
   "zeroGasPriceOnSpeedUpError": {
     "message": "加速时无燃料价格"
+  },
+  "carbonWallet":{
+    "message": "Carbon Wallet"
+  },
+  "extension":{
+    "message": "Extension"
+  },
+  "createGetStart":{
+    "message": "欢迎, 请创建一个新钱包或使用您已拥有的钱包"
+  },
+  "importFromSeed":{
+    "message": "引入帐号"
+  },
+  "rename":{
+    "message": "重新命名"
+  },
+  "connectToSite":{
+    "message":"连接到 "
+  },
+  "yourPrivateKey":{
+    "message":"您的私钥"
+  },
+  "saveYourPrivateKey":{
+    "message":"储存在安全和秘密的地方"
+  },
+  "showPrivateKey":{
+    "message":"显示私钥"
+  },
+  "showPrivateKeyTitle":{
+    "message":"显示 “$1” 私钥"
+  },
+  "showPrivateKeyDescription":{
+    "message":"这是目前所选帐户的私钥：“$1”。请勿泄露此密钥。任何取得这把私钥的人都可以窃取这个帐户中的所有资产。"
   }
 }

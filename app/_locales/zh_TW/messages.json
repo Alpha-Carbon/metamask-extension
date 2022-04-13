@@ -1092,5 +1092,38 @@
   },
   "zeroGasPriceOnSpeedUpError": {
     "message": "加速的 Gas 價格為 0"
+  },
+  "carbonWallet":{
+    "message": "Carbon Wallet"
+  },
+  "extension":{
+    "message": "Extension"
+  },
+  "createGetStart":{
+    "message": "歡迎, 請創建一個新錢包或使用您已擁有的錢包"
+  },
+  "importFromSeed":{
+    "message": "引入帳號"
+  },
+  "rename":{
+    "message": "重新命名"
+  },
+  "connectToSite":{
+    "message":"連接到 "
+  },
+  "yourPrivateKey":{
+    "message":"您的私鑰"
+  },
+  "saveYourPrivateKey":{
+    "message":"儲存在安全和秘密的地方"
+  },
+  "showPrivateKey":{
+    "message":"顯示私鑰"
+  },
+  "showPrivateKeyTitle":{
+    "message":"顯示 “$1” 私鑰"
+  },
+  "showPrivateKeyDescription":{
+    "message":"這是目前所選帳戶的私鑰：“$1”。請勿洩露此密鑰。 任何取得這把私鑰的人都可以竊取這個帳戶中的所有資產。"
   }
 }
