@@ -63,7 +63,7 @@ import {
 
 import {
   ENVIRONMENT_TYPE_NOTIFICATION,
-  ENVIRONMENT_TYPE_POPUP,
+  // ENVIRONMENT_TYPE_POPUP,
   ENVIRONMENT_TYPE_FULLSCREEN,
 } from '../../../shared/constants/app';
 import { getEnvironmentType } from '../../../app/scripts/lib/util';
@@ -363,7 +363,7 @@ export default class Routes extends Component {
           className={classnames('main-container-wrapper', {
             'main-container-wrapper--filter':
               (isAccountMenuOpen || networkDropdownOpen) &&
-              getEnvironmentType() != ENVIRONMENT_TYPE_FULLSCREEN,
+              getEnvironmentType() !== ENVIRONMENT_TYPE_FULLSCREEN,
           })}
         >
           {isLoading ? <Loading loadingMessage={loadMessage} /> : null}

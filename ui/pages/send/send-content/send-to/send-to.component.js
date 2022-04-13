@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { connect, useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -10,11 +10,11 @@ import { getRecipient, resetRecipientInput } from '../../../../ducks/send';
 import { ellipsify } from '../../send.utils';
 import Identicon from '../../../../components/ui/identicon/identicon.component';
 
-function mapStateToProps(state) {
+function mapStateToProps() {
   return {};
 }
 
-function SendTo({}) {
+function SendTo() {
   const t = useI18nContext();
   const dispatch = useDispatch();
   const recipient = useSelector(getRecipient);
@@ -38,5 +38,5 @@ function SendTo({}) {
     </div>
   );
 }
-SendTo.propTypes = {};
+// SendTo.PropTypes = {};
 export default compose(withRouter, connect(mapStateToProps))(SendTo);

@@ -17,7 +17,7 @@ class EditableLabel extends Component {
   };
 
   state = {
-    isEditing: false,
+    // isEditing: false,
     value: this.props.defaultValue || '',
   };
 
@@ -29,9 +29,10 @@ class EditableLabel extends Component {
       return;
     }
 
-    Promise.resolve(this.props.onSubmit(value)).then(() =>
-      this.setState({ isEditing: false }),
-    );
+    // Promise.resolve(this.props.onSubmit(value)).then(() =>
+    //   this.setState({ isEditing: false }),
+    // );
+    Promise.resolve(this.props.onSubmit(value));
   }
 
   renderEditing() {
@@ -75,7 +76,7 @@ class EditableLabel extends Component {
       <button
         key={2}
         className="editable-label__icon-button"
-        onClick={() => this.setState({ isEditing: true })}
+        // onClick={() => this.setState({ isEditing: true })}
       >
         <i className="fas fa-pencil-alt editable-label__icon" />
       </button>,
@@ -83,7 +84,10 @@ class EditableLabel extends Component {
   }
 
   render() {
-    const { isEditing, value } = this.state;
+    const {
+      // isEditing,
+      value,
+    } = this.state;
     const { className, accountsNames, onClose } = this.props;
 
     return (

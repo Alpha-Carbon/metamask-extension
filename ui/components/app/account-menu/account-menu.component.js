@@ -15,9 +15,9 @@ import SiteIcon from '../../ui/site-icon';
 import UserPreferencedCurrencyDisplay from '../user-preferenced-currency-display';
 import {
   PRIMARY,
-  SUPPORT_LINK,
+  // SUPPORT_LINK,
   ///: BEGIN:ONLY_INCLUDE_IN(beta,flask)
-  SUPPORT_REQUEST_LINK,
+  // SUPPORT_REQUEST_LINK,
   ///: END:ONLY_INCLUDE_IN
 } from '../../../helpers/constants/common';
 import {
@@ -30,7 +30,7 @@ import {
 } from '../../../helpers/constants/routes';
 import TextField from '../../ui/text-field';
 import SearchIcon from '../../ui/search-icon';
-import ExpandIcon from '../../ui/icon/expend-icon.component';
+// import ExpandIcon from '../../ui/icon/expend-icon.component';
 import EastIcon from '../../ui/icon/east-icon.component';
 import Button from '../../ui/button';
 import { getURLHostName } from '../../../helpers/utils/util';
@@ -64,10 +64,6 @@ AccountMenuItem.propTypes = {
   subText: PropTypes.node,
   onClick: PropTypes.func,
   className: PropTypes.string,
-  rpcPrefs: PropTypes.object,
-  chainId: PropTypes.string,
-  selectedIdentity: PropTypes.object,
-  provider: PropTypes.object,
 };
 
 export default class AccountMenu extends Component {
@@ -89,6 +85,10 @@ export default class AccountMenu extends Component {
     toggleAccountMenu: PropTypes.func,
     addressConnectedSubjectMap: PropTypes.object,
     originOfCurrentTab: PropTypes.string,
+    rpcPrefs: PropTypes.object,
+    chainId: PropTypes.string,
+    selectedIdentity: PropTypes.object,
+    provider: PropTypes.object,
   };
 
   accountsRef;
@@ -314,11 +314,11 @@ export default class AccountMenu extends Component {
       return null;
     }
 
-    let supportText = t('support');
-    let supportLink = SUPPORT_LINK;
+    // let supportText = t('support');
+    // let supportLink = SUPPORT_LINK;
     ///: BEGIN:ONLY_INCLUDE_IN(beta,flask)
-    supportText = t('needHelpSubmitTicket');
-    supportLink = SUPPORT_REQUEST_LINK;
+    // supportText = t('needHelpSubmitTicket');
+    // supportLink = SUPPORT_REQUEST_LINK;
     ///: END:ONLY_INCLUDE_IN
 
     return (
@@ -468,7 +468,6 @@ export default class AccountMenu extends Component {
           <AccountMenuItem
             onClick={() => {
               global.platform.openExtensionInBrowser();
-              onClose();
             }}
             icon={
               <img

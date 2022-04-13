@@ -34,8 +34,9 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
     position: relative;
-    margin: 0px 40px 80px 40px;
-    &::before{
+    margin: 0 40px 80px 40px;
+
+    &::before {
       content: "";
       position: absolute;
       z-index: -1;
@@ -53,6 +54,7 @@
       mask-composite: exclude;
       -webkit-mask-repeat: no-repeat;
     }
+
     &__tooltip-wrapper {
       width: 100%;
       margin-top: 10px;

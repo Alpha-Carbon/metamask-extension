@@ -1,16 +1,16 @@
-import {
-  GOERLI,
-  GOERLI_CHAIN_ID,
-  KOVAN,
-  KOVAN_CHAIN_ID,
-  MAINNET,
-  MAINNET_CHAIN_ID,
-  RINKEBY,
-  RINKEBY_CHAIN_ID,
-  ROPSTEN,
-  ROPSTEN_CHAIN_ID,
-  getRpcUrl,
-} from '../../../../shared/constants/network';
+// import {
+//   GOERLI,
+//   GOERLI_CHAIN_ID,
+//   KOVAN,
+//   KOVAN_CHAIN_ID,
+//   MAINNET,
+//   MAINNET_CHAIN_ID,
+//   RINKEBY,
+//   RINKEBY_CHAIN_ID,
+//   ROPSTEN,
+//   ROPSTEN_CHAIN_ID,
+//   getRpcUrl,
+// } from '../../../../shared/constants/network';
 
 const defaultNetworksData = [
   // {

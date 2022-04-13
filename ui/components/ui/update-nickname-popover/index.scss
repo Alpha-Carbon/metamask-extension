@@ -18,16 +18,19 @@
       height: 96%;
     }
   }
-  &__add{
-    &>header{
+
+  &__add {
+    & > header {
       padding: 8px 13px;
-      margin-bottom: 0px !important;
+      margin-bottom: 0 !important;
       border-bottom: none !important;
-      &.popover-header__title{
+
+      &.popover-header__title {
         padding-bottom: 0 !important;
       }
     }
-    &>footer{
+
+    & > footer {
       border-top: none !important;
     }
   }
@@ -36,12 +39,15 @@
     margin-right: 16px;
     height: 40px;
   }
+
   &__save {
     height: 40px;
   }
-  &__icon{
+
+  &__icon {
     text-align: center;
   }
+
   &__content {
     padding: 0 20px 20px 20px;
     position: relative;
@@ -57,17 +63,21 @@
     &__text-area {
       line-height: initial !important;
     }
-    &__title{
+
+    &__title {
       text-align: center;
+
       @include H3;
       @include roundeBold;
-      background: linear-gradient(147.15deg, #19113E 29.03%, #041D75 84.89%);
+
+      background: linear-gradient(147.15deg, #19113e 29.03%, #041d75 84.89%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       text-fill-color: transparent;
       margin-bottom: 24px;
     }
+
     &__address {
       margin-top: 8px;
       font-size: 13px;
@@ -82,6 +92,7 @@
       margin-top: 16px;
       color: var(--gray-1);
       font-size: 14px;
+
       @include roundeBold;
     }
 
@@ -89,11 +100,13 @@
       margin-bottom: 8px;
       color: var(--gray-1);
       font-size: 14px;
+
       @include roundeBold;
     }
-    & .MuiFormControl-root{
-      &>div{
-        border-color:var(--gray-1);
+
+    & .MuiFormControl-root {
+      & > div {
+        border-color: var(--gray-1);
       }
     }
   }

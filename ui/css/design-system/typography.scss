@@ -74,6 +74,7 @@ $fa-font-path: 'fonts/fontawesome';
   font-weight: 100;
   src: url('fonts/M_PLUS_Rounded_1c/MPLUSRounded1c-Thin.ttf') format('truetype');
 }
+
 @font-face {
   font-family: 'Rounded';
   font-style: italic;
@@ -191,12 +192,12 @@ $font-size-h9: map-get($typography-variants, 'h9');
   @include typography('h9');
 }
 
-@mixin roundeNormal{
+@mixin roundeNormal {
   font-family: Rounded;
   font-weight: 400;
 }
 
-@mixin roundeBold{
+@mixin roundeBold {
   font-family: Rounded;
   font-weight: 700;
 }

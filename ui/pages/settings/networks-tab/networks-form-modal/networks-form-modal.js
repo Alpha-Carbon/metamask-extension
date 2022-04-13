@@ -27,7 +27,7 @@ import {
 } from '../../../../store/actions';
 import {
   DEFAULT_ROUTE,
-  NETWORKS_ROUTE,
+  // NETWORKS_ROUTE,
 } from '../../../../helpers/constants/routes';
 import fetchWithCache from '../../../../helpers/utils/fetch-with-cache';
 import { usePrevious } from '../../../../hooks/usePrevious';

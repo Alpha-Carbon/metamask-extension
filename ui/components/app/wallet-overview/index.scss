@@ -139,87 +139,107 @@
     margin-right: 0;
   }
 }
-.act-overview{
-  &__wrapper{
+
+.act-overview {
+  &__wrapper {
     background: var(--gray-1);
     max-width: 360px;
     width: calc(100% - 40px);
     border-radius: 10px;
     padding: 15px;
-    margin: 20px 0px;
+    margin: 20px 0;
   }
-  &__balance{
+
+  &__balance {
     display: flex;
     align-items: center;
 
-    &-head{
+    &-head {
       margin-right: 10px;
-      &>img{
+
+      & > img {
         vertical-align: middle;
       }
     }
-    &-info{
-      &-account{
+
+    &-info {
+      &-account {
         display: flex;
         align-items: center;
-        color:var(--white);
+        color: var(--white);
         cursor: pointer;
-        &>span:nth-child(1){
+
+        & > span:nth-child(1) {
           margin-right: 5px;
         }
       }
-      &-address{
-        color:var(--secondary-4);
-        &>span:nth-child(1){
+
+      &-address {
+        color: var(--secondary-4);
+
+        & > span:nth-child(1) {
           margin-right: 5px;
         }
       }
-      &-copy{
+
+      &-copy {
         background: transparent;
         padding: 0;
       }
     }
-    &-token{
+
+    &-token {
       text-align: right;
-      color:var(--white);
+      color: var(--white);
       margin-top: 8px;
       margin-bottom: 16px;
+
       @include roundeNormal;
-      &-currency{
+
+      &-currency {
         margin-right: 3px;
         // position: relative;
         // bottom:4px;
       }
     }
   }
-  &__buttons{
+
+  &__buttons {
     display: flex;
     justify-content: space-between;
-    &-icon{
+
+    &-icon {
       margin-right: 12px;
     }
-    &>button{
-      width:45%;
+
+    & > button {
+      width: 45%;
       height: 32px;
-      color:var(--white);
+      color: var(--white);
       border-radius: 4px;
       display: flex;
       align-items: center;
       padding-left: 12px;
+
       @include H5;
       @include roundeNormal;
-      transition: ease-in-out .4s;
+
+      transition: ease-in-out 0.4s;
     }
-    &-receive{
+
+    &-receive {
       background: var(--secondary-3-gradient);
-      &:hover{
+
+      &:hover {
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), var(--secondary-3-gradient);
       }
     }
-    &-send{
+
+    &-send {
       background: linear-gradient(111.99deg, var(--secondary-1-start) 9.4%, var(--secondary-1-end) 92.26%);
-      &:hover{
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(111.99deg,var(--secondary-1-start) 9.4%, var(--secondary-1-end) 92.26%);
+
+      &:hover {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(111.99deg, var(--secondary-1-start) 9.4%, var(--secondary-1-end) 92.26%);
       }
     }
   }

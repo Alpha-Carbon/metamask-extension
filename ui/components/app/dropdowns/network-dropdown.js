@@ -19,7 +19,7 @@ import { getEnvironmentType } from '../../../../app/scripts/lib/util';
 import { ENVIRONMENT_TYPE_POPUP } from '../../../../shared/constants/app';
 import {
   ADD_NETWORK_ROUTE,
-  ADVANCED_ROUTE,
+  // ADVANCED_ROUTE,
 } from '../../../helpers/constants/routes';
 import NetworkTreeIcon from '../../ui/icon/network-tree-icon.component';
 import CheckIcon from '../../ui/icon/check-icon.component';
@@ -94,12 +94,12 @@ class NetworkDropdown extends Component {
     setRpcTarget: PropTypes.func.isRequired,
     hideNetworkDropdown: PropTypes.func.isRequired,
     frequentRpcListDetail: PropTypes.array.isRequired,
-    shouldShowTestNetworks: PropTypes.bool,
+    // shouldShowTestNetworks: PropTypes.bool,
     networkDropdownOpen: PropTypes.bool.isRequired,
     displayInvalidCustomNetworkAlert: PropTypes.func.isRequired,
     showConfirmDeleteNetworkModal: PropTypes.func.isRequired,
-    showTestnetMessageInDropdown: PropTypes.bool.isRequired,
-    hideTestNetMessage: PropTypes.func.isRequired,
+    // showTestnetMessageInDropdown: PropTypes.bool.isRequired,
+    // hideTestNetMessage: PropTypes.func.isRequired,
     history: PropTypes.object,
   };
 
@@ -156,7 +156,11 @@ class NetworkDropdown extends Component {
     );
   }
 
-  renderCustomRpcList(rpcListDetail, provider, opts = {}) {
+  renderCustomRpcList(
+    rpcListDetail,
+    provider,
+    // opts = {}
+  ) {
     // #TODO: Make sure should the networks in dropdown be reversed
     const reversedRpcListDetail = rpcListDetail.slice().reverse();
 
@@ -166,21 +170,21 @@ class NetworkDropdown extends Component {
         chainId,
         ticker = 'ETH',
         nickname = '',
-        labelKey,
+        // labelKey,
       } = entry;
       const isCurrentRpcTarget =
         provider.type === NETWORK_TYPE_RPC && rpcUrl === provider.rpcUrl;
 
-      let borderColor = COLORS.UI2;
-      if (isCurrentRpcTarget) {
-        borderColor = COLORS.WHITE;
-      }
-      if (opts.isLocalHost) {
-        borderColor = 'localhost';
-      }
+      // let borderColor = COLORS.UI2;
+      // if (isCurrentRpcTarget) {
+      //   borderColor = COLORS.WHITE;
+      // }
+      // if (opts.isLocalHost) {
+      //   borderColor = 'localhost';
+      // }
 
       return (
-        <div>
+        <div key={`common${rpcUrl}`}>
           <DropdownMenuItem
             key={`common${rpcUrl}`}
             closeMenu={() => this.props.hideNetworkDropdown()}
@@ -304,19 +308,19 @@ class NetworkDropdown extends Component {
 
   render() {
     const {
-      history,
+      // history,
       hideNetworkDropdown,
-      shouldShowTestNetworks,
-      showTestnetMessageInDropdown,
-      hideTestNetMessage,
+      // shouldShowTestNetworks,
+      // showTestnetMessageInDropdown,
+      // hideTestNetMessage,
     } = this.props;
     const rpcListDetail = this.props.frequentRpcListDetail;
     const rpcListDetailWithoutLocalHost = rpcListDetail.filter(
       (rpc) => rpc.rpcUrl !== LOCALHOST_RPC_URL,
     );
-    const rpcListDetailForLocalHost = rpcListDetail.filter(
-      (rpc) => rpc.rpcUrl === LOCALHOST_RPC_URL,
-    );
+    // const rpcListDetailForLocalHost = rpcListDetail.filter(
+    //   (rpc) => rpc.rpcUrl === LOCALHOST_RPC_URL,
+    // );
     const isOpen = this.props.networkDropdownOpen;
     const { t } = this.context;
 

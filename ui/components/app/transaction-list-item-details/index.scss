@@ -1,14 +1,17 @@
-.transaction-list-popover{
-  &>header{ 
+.transaction-list-popover {
+  & > header {
     padding: 0 !important;
-    & .popover-header__title{
+
+    & .popover-header__title {
       padding-bottom: 0 !important;
     }
-    & .popover-header__button{
-      padding: 13px 13px 0px 0px !important;
+
+    & .popover-header__button {
+      padding: 13px 13px 0 0 !important;
     }
   }
 }
+
 .transaction-list-item-details {
   div.disclosure + div.disclosure {
     margin-top: 0;
@@ -154,40 +157,49 @@
     }
   }
 
-  &-title{
+  &-title {
     text-align: center;
-    &-txt{
+
+    &-txt {
       @include H3;
       @include roundeBold;
+
       background: linear-gradient(147.15deg, var(--primary-start) 29.03%, var(--primary-end) 84.89%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
   }
-  &__address{
+
+  &__address {
     display: flex;
     justify-content: space-between;
     border-top: 1px solid var(--gray-4);
     border-bottom: 1px solid var(--gray-4);
-    padding:16px 0px;
+    padding: 16px 0;
     position: relative;
-    &>div{
-      color:var(--gray-1);
+
+    & > div {
+      color: var(--gray-1);
+
       @include H5;
       @include roundeBold;
-      &>div{
+
+      & > div {
         margin-bottom: 8px;
       }
-      &>p{
+
+      & > p {
         background: var(--secondary-2-gradient);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
     }
-    &-to{
+
+    &-to {
       text-align: right;
     }
-    &-line{
+
+    &-line {
       position: absolute;
       left: 50%;
       height: calc(100% - 32px);
@@ -196,6 +208,5 @@
       top: 50%;
       transform: translateY(-50%);
     }
-    
   }
 }

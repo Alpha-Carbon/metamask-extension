@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
-import Identicon from '../../../ui/identicon';
+// import Identicon from '../../../ui/identicon';
 import CloseIcon from '../../../ui/icon/close-icon.component';
 import ReceiveGradient from '../../../ui/icon/receive-gradient-icon.component';
 import RenameGradientIcon from '../../../ui/icon/rename-gradient-icon.component';
@@ -9,7 +9,7 @@ import RenameGradientIcon from '../../../ui/icon/rename-gradient-icon.component'
 export default function AccountModalContainer(props, context) {
   const {
     className,
-    selectedIdentity,
+    // selectedIdentity,
     showBackButton,
     backButtonAction,
     hideModal,
@@ -68,7 +68,7 @@ AccountModalContainer.defaultProps = {
 
 AccountModalContainer.propTypes = {
   className: PropTypes.string,
-  selectedIdentity: PropTypes.object.isRequired,
+  // selectedIdentity: PropTypes.object.isRequired,
   showBackButton: PropTypes.bool,
   backButtonAction: PropTypes.func,
   hideModal: PropTypes.func.isRequired,

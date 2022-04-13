@@ -8,10 +8,13 @@
 .hw-connect {
   width: 100%;
   color: var(--gray-1);
+
   &__header {
     text-align: center;
+
     &__title {
       @include H3;
+
       margin-top: 5px;
       margin-bottom: 15px;
     }

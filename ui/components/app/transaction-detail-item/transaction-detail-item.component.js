@@ -15,10 +15,10 @@ import {
 
 export default function TransactionDetailItem({
   detailTitle = '',
-  detailText = '',
+  // detailText = '',
   detailTitleColor = COLORS.BLACK,
   detailTotal = '',
-  subTitle = '',
+  // subTitle = '',
   subText = '',
   boldHeadings = true,
   flexWidthValues = false,
@@ -95,7 +95,7 @@ TransactionDetailItem.propTypes = {
   /**
    * Text to show on the left of the detailTotal. Wrapped in Typography component.
    */
-  detailText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  // detailText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * Total amount to show. Wrapped in Typography component. Will be bold if boldHeadings is true
    */
@@ -103,7 +103,7 @@ TransactionDetailItem.propTypes = {
   /**
    * Subtitle text. Checks if React.isValidElement before displaying. Displays under detailTitle
    */
-  subTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  // subTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * Text to show under detailTotal. Wrapped in Typography component.
    */

@@ -5,7 +5,7 @@
   margin-top: 15px;
   background: #fff;
   padding: 8px;
-  box-shadow: 0px 4px 10px rgba(25, 17, 62, 0.1);
+  box-shadow: 0 4px 10px rgba(25, 17, 62, 0.1);
   border-radius: 4px;
 
   @include Paragraph;
@@ -26,10 +26,12 @@
   &:focus-within {
     background-color: var(--Grey-000);
   }
-  &__top-wrap{
+
+  &__top-wrap {
     display: flex;
     align-items: center;
   }
+
   &__icon {
     grid-area: icon;
     align-self: center;
@@ -121,6 +123,7 @@
   grid-template-areas: 'icon head     head     head     head     head     head     head     right right right right';
   align-items: center;
   display: block;
+
   @media (min-width: $break-large) {
     grid-template-areas: 'icon head     head     head     head     mid mid mid mid right right right';
   }

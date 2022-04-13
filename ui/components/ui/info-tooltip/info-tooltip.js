@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Tooltip from '../tooltip';
 import HelpOutlineIcon from '../icon/help-outline-icon.component';
-import InfoTooltipIcon from './info-tooltip-icon';
+// import InfoTooltipIcon from './info-tooltip-icon';
 
 const positionArrowClassMap = {
   top: 'info-tooltip__top-tooltip-arrow',
@@ -18,7 +18,7 @@ export default function InfoTooltip({
   containerClassName,
   wrapperClassName,
   wide,
-  iconFillColor = '#b8b8b8',
+  // iconFillColor = '#b8b8b8',
 }) {
   return (
     <div className="info-tooltip">
@@ -66,5 +66,5 @@ InfoTooltip.propTypes = {
   /**
    * Add color for the icon
    */
-  iconFillColor: PropTypes.string,
+  // iconFillColor: PropTypes.string,
 };

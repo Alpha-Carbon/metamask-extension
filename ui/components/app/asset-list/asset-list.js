@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 // import ImportTokenLink from '../import-token-link';
 import TokenList from '../token-list';
 // import { IMPORT_TOKEN_ROUTE } from '../../../helpers/constants/routes';
@@ -25,11 +25,11 @@ import { useCurrencyDisplay } from '../../../hooks/useCurrencyDisplay';
 //   FONT_WEIGHT,
 //   JUSTIFY_CONTENT,
 // } from '../../../helpers/constants/design-system';
-import { useI18nContext } from '../../../hooks/useI18nContext';
+// import { useI18nContext } from '../../../hooks/useI18nContext';
 
 const AssetList = ({ onClickAsset }) => {
-  const t = useI18nContext();
-  const history = useHistory();
+  // const t = useI18nContext();
+  // const history = useHistory();
   const selectedAccountBalance = useSelector(
     (state) => getCurrentAccountWithSendEtherInfo(state).balance,
   );

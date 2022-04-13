@@ -40,8 +40,4 @@ MenuIcon.propTypes = {
    * Height of the icon
    */
   height: PropTypes.string,
-  /**
-   * Color of the icon should be a valid design system color
-   */
-  color: PropTypes.string,
 };

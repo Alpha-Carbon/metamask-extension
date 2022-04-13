@@ -66,5 +66,9 @@ function SendFrom({ accounts, selectedAddress, accountsList }) {
     </div>
   );
 }
-SendFrom.propTypes = {};
+SendFrom.propTypes = {
+  accounts: PropTypes.object,
+  selectedAddress: PropTypes.string,
+  accountsList: PropTypes.array,
+};
 export default compose(withRouter, connect(mapStateToProps))(SendFrom);

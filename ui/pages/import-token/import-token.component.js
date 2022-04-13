@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getTokenTrackerLink } from '@metamask/etherscan-link';
 import contractMap from '@metamask/contract-metadata';
-import ZENDESK_URLS from '../../helpers/constants/zendesk-url';
+// import ZENDESK_URLS from '../../helpers/constants/zendesk-url';
 import {
   checkExistingAddresses,
   getURLHostName,
@@ -11,7 +11,7 @@ import { tokenInfoGetter } from '../../helpers/utils/token-util';
 import {
   ADD_COLLECTIBLE_ROUTE,
   CONFIRM_IMPORT_TOKEN_ROUTE,
-  EXPERIMENTAL_ROUTE,
+  // EXPERIMENTAL_ROUTE,
 } from '../../helpers/constants/routes';
 import TextField from '../../components/ui/text-field';
 import PageContainer from '../../components/ui/page-container';
@@ -42,12 +42,12 @@ class ImportToken extends Component {
     clearPendingTokens: PropTypes.func,
     tokens: PropTypes.array,
     identities: PropTypes.object,
-    showSearchTab: PropTypes.bool.isRequired,
+    // showSearchTab: PropTypes.bool.isRequired,
     mostRecentOverviewPage: PropTypes.string.isRequired,
     chainId: PropTypes.string,
     rpcPrefs: PropTypes.object,
     tokenList: PropTypes.object,
-    useTokenDetection: PropTypes.bool,
+    // useTokenDetection: PropTypes.bool,
     getTokenStandardAndDetails: PropTypes.func,
     selectedAddress: PropTypes.string,
   };
@@ -460,7 +460,11 @@ class ImportToken extends Component {
   }
 
   renderSearchToken() {
-    const { tokenList, history, useTokenDetection } = this.props;
+    const {
+      tokenList,
+      // history,
+      // useTokenDetection
+    } = this.props;
     const { tokenSelectorError, selectedTokens, searchResults } = this.state;
     return (
       <div className="import-token__search-token">
@@ -501,7 +505,7 @@ class ImportToken extends Component {
   }
 
   renderTabs() {
-    const { showSearchTab } = this.props;
+    // const { showSearchTab } = this.props;
     const tabs = [];
 
     // if (showSearchTab) {

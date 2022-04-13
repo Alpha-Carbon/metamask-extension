@@ -36,6 +36,7 @@ NetworksList.propTypes = {
   networkIsSelected: PropTypes.bool,
   networksToRender: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectedRpcUrl: PropTypes.string,
+  selectedNetwork: PropTypes.object,
 };
 
 export default NetworksList;

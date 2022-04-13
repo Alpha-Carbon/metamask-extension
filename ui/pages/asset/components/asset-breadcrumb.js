@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BackIcon from '../../../components/ui/icon/back-icon.component';
 
-const AssetBreadcrumb = ({ accountName, assetName, onBack }) => {
+const AssetBreadcrumb = ({
+  // accountName,
+  //  assetName,
+  onBack,
+}) => {
   return (
     <button className="asset-breadcrumb" onClick={onBack}>
       {/* <i
@@ -18,8 +22,8 @@ const AssetBreadcrumb = ({ accountName, assetName, onBack }) => {
 };
 
 AssetBreadcrumb.propTypes = {
-  accountName: PropTypes.string.isRequired,
-  assetName: PropTypes.string.isRequired,
+  // accountName: PropTypes.string.isRequired,
+  // assetName: PropTypes.string.isRequired,
   onBack: PropTypes.func.isRequired,
 };
 

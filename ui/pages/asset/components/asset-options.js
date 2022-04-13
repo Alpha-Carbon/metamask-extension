@@ -9,7 +9,7 @@ import ErrorOutlineIcon from '../../../components/ui/icon/error-outline-icon.com
 const AssetOptions = ({
   onRemove,
   onClickBlockExplorer,
-  onViewAccountDetails,
+  // onViewAccountDetails,
   onViewTokenDetails,
   tokenSymbol,
   isNativeAsset,
@@ -98,7 +98,7 @@ AssetOptions.propTypes = {
   isNativeAsset: PropTypes.bool,
   onRemove: PropTypes.func.isRequired,
   onClickBlockExplorer: PropTypes.func.isRequired,
-  onViewAccountDetails: PropTypes.func.isRequired,
+  // onViewAccountDetails: PropTypes.func.isRequired,
   onViewTokenDetails: PropTypes.func.isRequired,
   tokenSymbol: PropTypes.string,
 };

@@ -13,22 +13,27 @@
   flex-flow: column nowrap;
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+
   @media screen and (max-width: $break-small) {
     background: var(--background) !important;
   }
+
   &__header {
     display: flex;
     flex-flow: row nowrap;
     padding: 12px 24px;
     align-items: center;
     flex: 0 0 auto;
-    @media screen and (max-width: $break-small){
+
+    @media screen and (max-width: $break-small) {
       position: relative;
     }
+
     &__title {
       @include H3;
       @include roundeBold;
-      color:var(--black);
+
+      color: var(--black);
       flex: 1 0 auto;
 
       @media screen and (max-width: $break-small) {
@@ -197,12 +202,15 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
-    &>span:first-child{
+
+    & > span:first-child {
       @include roundeBold;
+
       background: var(--secondary-2-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
     @media screen and (max-width: $break-small) {
       height: initial;
       padding: 5px 0;
@@ -253,58 +261,68 @@
       margin-bottom: 12px;
       color: var(--dusty-gray);
     }
-    &-private{
-      &-item{
+
+    &-private {
+      &-item {
         max-width: 600px !important;
       }
-      &-warning{
-        background: rgba(207, 57, 57,0.2);
+
+      &-warning {
+        background: rgba(207, 57, 57, 0.2);
         border-radius: 4px;
-        color:var(--function-2);
-        padding:16px 24px;
+        color: var(--function-2);
+        padding: 16px 24px;
         margin-bottom: 24px;
         display: flex;
         align-items: center;
       }
-      &-inputWrap{
+
+      &-inputWrap {
         position: relative;
-        &__tooltip-wrapper{
+
+        &__tooltip-wrapper {
           position: absolute;
           position: absolute;
           right: 6px;
           bottom: 29px;
           z-index: 9;
         }
-        &-copy{
+
+        &-copy {
           background: none;
         }
-        & .MuiFormControl-root{
+
+        & .MuiFormControl-root {
           margin-bottom: 24px;
-          & .MuiFormLabel-root{
+
+          & .MuiFormLabel-root {
             @include H5;
             @include roundeBold;
-  
+
             color: var(--gray-1);
           }
-          & .MuiInputBase-root{
+
+          & .MuiInputBase-root {
             height: 32px;
           }
         }
-        & .export-private-key{
-          & #export-private-key{
+
+        & .export-private-key {
+          & #export-private-key {
             padding-right: 32px;
           }
-          
         }
       }
-      &-buttons{
+
+      &-buttons {
         display: flex;
         align-items: center;
-        &>button{
+
+        & > button {
           max-width: 312px;
         }
       }
-    }  
+    }
   }
 
   &__content-label {
@@ -326,14 +344,17 @@
     max-width: 300px;
     display: flex;
     flex-direction: column;
-    & .dropdown{
-      border-color:var(--gray-2);
+
+    & .dropdown {
+      border-color: var(--gray-2);
     }
+
     @media screen and (max-width: $break-small) {
       max-width: 100%;
       width: 100%;
     }
-    & .btn-danger{
+
+    & .btn-danger {
       height: 40px;
     }
   }

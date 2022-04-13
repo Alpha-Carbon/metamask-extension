@@ -29,7 +29,7 @@
     }
   }
 
-  &__back-icon{
+  &__back-icon {
     position: absolute;
     left: 24px;
     cursor: pointer;
@@ -38,6 +38,7 @@
   &__back-button {
     @include Paragraph;
     @include H4;
+
     color: var(--black);
   }
 

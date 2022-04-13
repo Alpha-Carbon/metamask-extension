@@ -112,10 +112,11 @@
         width: 150px;
         height: 40px;
       }
-      & .btn-default{
+
+      & .btn-default {
         color: var(--gray-3);
         background-color: var(--background);
-        border-color: var(--gray-3); 
+        border-color: var(--gray-3);
       }
     }
   }

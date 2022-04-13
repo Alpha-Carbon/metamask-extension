@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 // import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 // import classnames from 'classnames';
@@ -19,7 +19,7 @@ import { SECOND } from '../../../../shared/constants/time';
 import { shortenAddress } from '../../../helpers/utils/util';
 import { toChecksumHexAddress } from '../../../../shared/modules/hexstring-utils';
 import { useCurrencyDisplay } from '../../../hooks/useCurrencyDisplay';
-import { useUserPreferencedCurrency } from '../../../hooks/useUserPreferencedCurrency';
+// import { useUserPreferencedCurrency } from '../../../hooks/useUserPreferencedCurrency';
 import Tooltip from '../../ui/tooltip';
 import EditIcon from '../../ui/icon/edit-icon.component';
 import CopyIcon from '../../ui/icon/copy-icon.component';
@@ -33,7 +33,6 @@ const ActOverview = () => {
   const t = useContext(I18nContext);
   const history = useHistory();
   const [copied, setCopied] = useState(false);
-  let copyTimeout = null;
   // get address & account name
   const selectedIdentity = useSelector(getSelectedIdentity);
   const checksummedAddress = toChecksumHexAddress(selectedIdentity.address);
@@ -44,8 +43,8 @@ const ActOverview = () => {
   // const { currency } = useUserPreferencedCurrency('PRIMARY', {});
   // const [title, parts] = useCurrencyDisplay(balance, { currency });
   const currentCurrency = useSelector(getCurrentCurrency);
-  const [conversionRate, setConversionRate] = useState('');
-  const [title, parts] = useCurrencyDisplay(balance, {
+  // const [conversionRate, setConversionRate] = useState('');
+  const parts = useCurrencyDisplay(balance, {
     currency: currentCurrency,
   });
 
@@ -57,19 +56,19 @@ const ActOverview = () => {
       name: 'Clicked Send: TACT',
     },
   });
-  useEffect(() => {
-    fetch(
-      `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0xdAC17F958D2ee523a2206206994597C13D831ec7&vs_currencies=${currentCurrency}`,
-    )
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (myJson) {
-        setConversionRate(
-          myJson['0xdac17f958d2ee523a2206206994597c13d831ec7'][currentCurrency],
-        );
-      });
-  }, [currentCurrency]);
+  // useEffect(() => {
+  //   fetch(
+  //     `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0xdAC17F958D2ee523a2206206994597C13D831ec7&vs_currencies=${currentCurrency}`,
+  //   )
+  //     .then(function (response) {
+  //       return response.json();
+  //     })
+  //     .then(function (myJson) {
+  //       setConversionRate(
+  //         myJson['0xdac17f958d2ee523a2206206994597c13d831ec7'][currentCurrency],
+  //       );
+  //     });
+  // }, [currentCurrency]);
   return (
     <div className="act-overview__wrapper">
       <div className="act-overview__balance">
@@ -98,7 +97,7 @@ const ActOverview = () => {
               className="act-overview__balance-info-copy"
               onClick={() => {
                 setCopied(true);
-                copyTimeout = setTimeout(() => setCopied(true), SECOND * 3);
+                setTimeout(() => setCopied(true), SECOND * 3);
                 copyToClipboard(checksummedAddress);
               }}
             >
@@ -114,9 +113,9 @@ const ActOverview = () => {
       </div>
       <div className="act-overview__balance-token">
         <span className="act-overview__balance-token-currency">
-          {parts.value}
+          {parts[1].value}
         </span>
-        <span>{parts.suffix}</span>
+        <span>{parts[1].suffix}</span>
       </div>
       <div className="act-overview__buttons">
         <button

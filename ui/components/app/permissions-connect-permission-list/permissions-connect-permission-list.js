@@ -8,9 +8,11 @@ export default function PermissionsConnectPermissionList({ permissions }) {
   return (
     <div className="permissions-connect-permission-list">
       {Object.keys(permissions).map((permission) => {
-        const { label, leftIcon, rightIcon } = getPermissionDescription(
-          permission,
-        );
+        const {
+          label,
+          // leftIcon,
+          rightIcon,
+        } = getPermissionDescription(permission);
 
         return (
           <div className="permission" key={permission}>

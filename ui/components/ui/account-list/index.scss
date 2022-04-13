@@ -3,12 +3,14 @@
   flex-direction: column;
   width: 100%;
   align-items: center;
-  &-line{
+
+  &-line {
     height: 1px;
     width: 100%;
     background-color: var(--gray-4);
     margin-top: 10px;
   }
+
   &__header--one-item,
   &__header--multiple-items {
     display: flex;
@@ -31,7 +33,8 @@
     display: flex;
     margin-inline-start: 16px;
     align-items: center;
-    &>input{
+
+    & > input {
       color: var(--gray-3);
     }
   }
@@ -109,14 +112,15 @@
     justify-content: flex-start;
     align-items: center;
     min-width: 0;
-    &>input{
+
+    & > input {
       color: var(--gray-3);
     }
   }
 
   &__list-check-box {
     margin-inline-end: 16px;
-    
+
     i {
       font-size: 0.8rem;
     }
@@ -142,6 +146,7 @@
   &__text-blue {
     color: var(--secondary-3);
     cursor: pointer;
+
     @include roundeBold;
   }
 

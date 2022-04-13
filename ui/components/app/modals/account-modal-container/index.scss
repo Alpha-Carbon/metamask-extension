@@ -10,17 +10,21 @@
     border: 1px solid var(--silver);
     border-radius: 10px;
   }
-  &__title{
+
+  &__title {
     margin-top: 30px;
     text-align: center;
-    &>p{
+
+    & > p {
       @include H3;
       @include roundeBold;
+
       background: var(--primary-background);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
   }
+
   &__back {
     color: var(--dusty-gray);
     position: absolute;

@@ -51,16 +51,16 @@ export function useCurrencyDisplay(
     numberOfDecimals,
     denomination,
     currency,
-    conversionRate,
+    // conversionRate,
     ...opts
   },
 ) {
   const currentCurrency = useSelector(getCurrentCurrency);
   const nativeCurrency = useSelector(getNativeCurrency);
-  // const conversionRate = useSelector(getConversionRate);
-  if (conversionRate === null || undefined) {
-    conversionRate = useSelector(getConversionRate);
-  }
+  const conversionRate = useSelector(getConversionRate);
+  // if (conversionRate === 0 || null || undefined) {
+  //   conversionRate = useSelector(getConversionRate);
+  // }
   const isUserPreferredCurrency = currency === currentCurrency;
 
   const value = useMemo(() => {

@@ -36,7 +36,7 @@
     }
 
     &__content {
-      padding:8px 18px;
+      padding: 8px 18px;
       display: flex;
       flex-flow: row wrap;
       align-items: center;
@@ -45,6 +45,7 @@
       background: var(--secondary-2-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+
       @include roundeBold;
 
       &__title {
@@ -98,14 +99,14 @@
 
     &--active {
       opacity: 1 !important;
-      & .tab-bar__tab__content{
+
+      & .tab-bar__tab__content {
         @media screen and (min-width: $break-small) {
           background: var(--secondary-2-gradient);
           border-radius: 30px;
           color: var(--white);
           -webkit-text-fill-color: unset;
         }
-        
       }
     }
   }

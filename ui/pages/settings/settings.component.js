@@ -147,7 +147,7 @@ class SettingsPage extends PureComponent {
   }
 
   renderSubHeader() {
-    const { t } = this.context;
+    // const { t } = this.context;
     const {
       currentPath,
       // isPopup,

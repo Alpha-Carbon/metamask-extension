@@ -18,8 +18,9 @@
     & #{$self}__decimal-warning {
       margin-top: 5px;
     }
-    & .MuiFormControl-root{
-      & .MuiInputBase-root{
+
+    & .MuiFormControl-root {
+      & .MuiInputBase-root {
         background-color: var(--white);
       }
     }
@@ -27,7 +28,8 @@
 
   &__search-token {
     padding: 16px 16px 16px 16px;
-    & .MuiFormControl-root{
+
+    & .MuiFormControl-root {
       background-color: var(--white);
     }
   }

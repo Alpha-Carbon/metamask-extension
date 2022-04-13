@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import NetworksForm from '../networks-form';
-import NetworksFormModal from '../networks-form-modal/networks-form-modal';
+// import NetworksFormModal from '../networks-form-modal/networks-form-modal';
 import NetworksList from '../networks-list';
 import { getProvider } from '../../../../selectors';
 
@@ -11,7 +11,7 @@ const NetworksTabContent = ({
   networkIsSelected,
   networksToRender,
   selectedNetwork,
-  shouldRenderNetworkForm,
+  // shouldRenderNetworkForm,
   isFullScreen,
 }) => {
   const provider = useSelector(getProvider);
@@ -47,7 +47,8 @@ NetworksTabContent.propTypes = {
   networkIsSelected: PropTypes.bool,
   networksToRender: PropTypes.arrayOf(PropTypes.object).isRequired,
   selectedNetwork: PropTypes.object,
-  shouldRenderNetworkForm: PropTypes.bool.isRequired,
+  // shouldRenderNetworkForm: PropTypes.bool.isRequired,
+  isFullScreen: PropTypes.bool,
 };
 
 export default NetworksTabContent;

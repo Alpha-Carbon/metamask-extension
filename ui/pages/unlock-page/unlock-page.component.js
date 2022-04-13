@@ -5,7 +5,7 @@ import getCaretCoordinates from 'textarea-caret';
 import Button from '../../components/ui/button';
 import TextField from '../../components/ui/text-field';
 // import Mascot from '../../components/ui/mascot';
-import { SUPPORT_LINK } from '../../helpers/constants/common';
+// import { SUPPORT_LINK } from '../../helpers/constants/common';
 import { DEFAULT_ROUTE } from '../../helpers/constants/routes';
 
 export default class UnlockPage extends Component {
@@ -38,7 +38,7 @@ export default class UnlockPage extends Component {
     /**
      * Event handler to show metametrics modal
      */
-    showOptInModal: PropTypes.func,
+    // showOptInModal: PropTypes.func,
   };
 
   state = {
@@ -63,7 +63,11 @@ export default class UnlockPage extends Component {
     event.stopPropagation();
 
     const { password } = this.state;
-    const { onSubmit, forceUpdateMetamaskState, showOptInModal } = this.props;
+    const {
+      onSubmit,
+      forceUpdateMetamaskState,
+      // showOptInModal
+    } = this.props;
 
     if (password === '' || this.submitting) {
       return;

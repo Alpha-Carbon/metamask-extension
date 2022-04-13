@@ -1,14 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {
+  // useContext,
+  useEffect,
+  useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import UnitInput from '../../ui/unit-input';
-import CurrencyDisplay from '../../ui/currency-display';
+// import CurrencyDisplay from '../../ui/currency-display';
 import {
   getValueFromWeiHex,
   getWeiHexFromDecimalValue,
 } from '../../../helpers/utils/conversions.util';
 import { ETH } from '../../../helpers/constants/common';
-import { I18nContext } from '../../../contexts/i18n';
+// import { I18nContext } from '../../../contexts/i18n';
 import {
   getConversionRate,
   getNativeCurrency,
@@ -32,7 +36,7 @@ export default function CurrencyInput({
   onChange,
   onPreferenceToggle,
 }) {
-  const t = useContext(I18nContext);
+  // const t = useContext(I18nContext);
 
   const preferredCurrency = useSelector(getNativeCurrency);
   const secondaryCurrency = useSelector(getCurrentCurrency);
@@ -43,7 +47,7 @@ export default function CurrencyInput({
   const secondarySuffix = secondaryCurrency.toUpperCase();
 
   const [isSwapped, setSwapped] = useState(false);
-  const [newHexValue, setNewHexValue] = useState(hexValue);
+  // const [newHexValue, setNewHexValue] = useState(hexValue);
 
   const shouldUseFiat = () => {
     if (hideSecondary) {
@@ -74,16 +78,16 @@ export default function CurrencyInput({
   const [decimalValue, setDecimalValue] = useState(initialDecimalValue);
 
   useEffect(() => {
-    setNewHexValue(hexValue);
+    // setNewHexValue(hexValue);
     const newDecimalValue = getDecimalValue();
     setDecimalValue(newDecimalValue);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hexValue]);
 
-  const swap = async () => {
-    await onPreferenceToggle(!featureSecondary);
-    setSwapped(!isSwapped);
-  };
+  // const swap = async () => {
+  //   await onPreferenceToggle(!featureSecondary);
+  //   setSwapped(!isSwapped);
+  // };
 
   const handleChange = (newDecimalValue) => {
     const hexValueNew = shouldUseFiat()
@@ -100,7 +104,7 @@ export default function CurrencyInput({
           conversionRate,
         });
 
-    setNewHexValue(hexValueNew);
+    // setNewHexValue(hexValueNew);
     setDecimalValue(newDecimalValue);
     onChange(hexValueNew);
     setSwapped(!isSwapped);
@@ -113,36 +117,36 @@ export default function CurrencyInput({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSwapped]);
 
-  const renderConversionComponent = () => {
-    let currency, numberOfDecimals;
+  // const renderConversionComponent = () => {
+  //   let currency, numberOfDecimals;
 
-    if (hideSecondary) {
-      return (
-        <div className="currency-input__conversion-component">
-          {t('noConversionRateAvailable')}
-        </div>
-      );
-    }
+  //   if (hideSecondary) {
+  //     return (
+  //       <div className="currency-input__conversion-component">
+  //         {t('noConversionRateAvailable')}
+  //       </div>
+  //     );
+  //   }
 
-    if (shouldUseFiat()) {
-      // Display ETH
-      currency = preferredCurrency || ETH;
-      numberOfDecimals = 8;
-    } else {
-      // Display Fiat
-      currency = secondaryCurrency;
-      numberOfDecimals = 2;
-    }
+  //   if (shouldUseFiat()) {
+  //     // Display ETH
+  //     currency = preferredCurrency || ETH;
+  //     numberOfDecimals = 8;
+  //   } else {
+  //     // Display Fiat
+  //     currency = secondaryCurrency;
+  //     numberOfDecimals = 2;
+  //   }
 
-    return (
-      <CurrencyDisplay
-        className="currency-input__conversion-component"
-        currency={currency}
-        value={newHexValue}
-        numberOfDecimals={numberOfDecimals}
-      />
-    );
-  };
+  //   return (
+  //     <CurrencyDisplay
+  //       className="currency-input__conversion-component"
+  //       currency={currency}
+  //       value={newHexValue}
+  //       numberOfDecimals={numberOfDecimals}
+  //     />
+  //   );
+  // };
 
   return (
     <UnitInput

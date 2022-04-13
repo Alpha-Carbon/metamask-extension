@@ -38,35 +38,41 @@
     &:not(:last-child) {
       margin-right: 16px;
     }
-    & #native-primary-currency, & #fiat-primary-currency{
+
+    & #native-primary-currency,
+    & #fiat-primary-currency {
       display: none;
     }
-    & .radio-wrap{
+
+    & .radio-wrap {
       position: relative;
       cursor: pointer;
     }
-    & .radio{
+
+    & .radio {
       position: absolute;
-      left: 0px;
+      left: 0;
       top: 2px;
       color: #313149;
       padding: 7px;
       border: 2px solid transparent;
       border-radius: 50%;
       display: inline-block;
-      transition: ease-in-out .2s;
-      
-      &-disable{
-        border: 2px solid var(--gray-1);
+      transition: ease-in-out 0.2s;
 
+      &-disable {
+        border: 2px solid var(--gray-1);
       }
-      &-enable{
-        background: linear-gradient(#ffffff 0 0) padding-box, linear-gradient(to right, #227BFF, #451DFF) border-box;
-        &::before{
-          background: linear-gradient(91.07deg, #227BFF 4.72%, #451DFF 73%);
+
+      &-enable {
+        background: linear-gradient(#fff 0 0) padding-box, linear-gradient(to right, #227bff, #451dff) border-box;
+
+        &::before {
+          background: linear-gradient(91.07deg, #227bff 4.72%, #451dff 73%);
         }
       }
-      &::before{
+
+      &::before {
         content: "";
         position: absolute;
         left: 2px;
@@ -74,19 +80,22 @@
         width: 10px;
         height: 10px;
         border-radius: 50%;
-        transition: ease-in-out .2s;
+        transition: ease-in-out 0.2s;
       }
-      &-label{
+
+      &-label {
         margin-left: 20px;
         cursor: pointer;
-        &-enable{
+
+        &-enable {
           background: var(--secondary-2-gradient);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
-        &-disable{
+
+        &-disable {
           background: none;
-          color:var(--gray-2);
+          color: var(--gray-2);
         }
       }
     }

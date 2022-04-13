@@ -41,4 +41,5 @@ EastIcon.propTypes = {
    * Color of the icon should be a valid design system color
    */
   color: PropTypes.string,
+  opacity: PropTypes.string,
 };

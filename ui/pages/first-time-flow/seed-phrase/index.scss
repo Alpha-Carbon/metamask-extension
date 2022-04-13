@@ -23,12 +23,13 @@
   &__side {
     min-width: 0;
     max-width: 308px;
-    background:rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     margin-left: 40px;
+
     @media screen and (max-width: $break-normalpoint) {
       margin-top: 24px;
-      margin-left: 0px;
+      margin-left: 0;
       margin-bottom: 30px;
       max-width: 100%;
     }
@@ -36,16 +37,17 @@
     .first-time-flow__text-block {
       padding: 16px;
       color: var(--white);
+
       @media screen and (max-width: $break-normalpoint) {
         padding: 8px 16px;
-        margin-bottom: 0px;
+        margin-bottom: 0;
       }
-      &__bottom{
+
+      &__bottom {
         margin-bottom: 16px;
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #227BFF;;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #227bff;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
-        
       }
     }
   }

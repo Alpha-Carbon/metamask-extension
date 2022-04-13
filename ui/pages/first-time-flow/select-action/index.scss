@@ -1,10 +1,12 @@
 .select-action {
   display: flex;
   align-items: center;
+
   .app-header__logo-container {
     width: 742px;
     margin-top: 3%;
   }
+
   &__body {
     display: flex;
     flex-direction: column;
@@ -17,14 +19,18 @@
     text-align: center;
     margin-top: 28px;
     color: var(--white);
+
     @include roundeBold;
-    &-title{
-      color:var(--gray-3);
+
+    &-title {
+      color: var(--gray-3);
+
       @include H3;
       @include roundeNormal;
     }
-    &-description{
-      color:var(--gray-3);
+
+    &-description {
+      color: var(--gray-3);
     }
   }
 
@@ -53,9 +59,9 @@
       height: 40px;
       // transition: ease-in-out .4s;
       // transform-origin: center;
-      &:hover{
-      //   max-width: 316px;
-      // height: 44px;
+      &:hover {
+        //   max-width: 316px;
+        // height: 44px;
       }
     }
   }

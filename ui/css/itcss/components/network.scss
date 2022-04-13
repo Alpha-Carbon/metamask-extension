@@ -82,10 +82,11 @@
   white-space: nowrap;
 }
 
-.network-check__wrap{
+.network-check__wrap {
   width: 30px;
-  margin: 0px 10px;
-  &>svg{
+  margin: 0 10px;
+
+  & > svg {
     vertical-align: middle;
   }
 }
@@ -128,11 +129,13 @@
 .menu-icon-circle--active div {
   opacity: 1;
 }
+
 .network-dropdown-close {
   position: absolute;
   right: 13px;
   cursor: pointer;
 }
+
 .network-dropdown-header {
   display: flex;
   flex-direction: column;
@@ -213,6 +216,7 @@
     left: -6px;
   }
 }
+
 .network-dropdown__button{
 
 }

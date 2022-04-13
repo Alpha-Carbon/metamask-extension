@@ -7,7 +7,7 @@ export default class PermissionsConnectFooter extends Component {
   };
 
   render() {
-    const { t } = this.context;
+    // const { t } = this.context;
     return (
       <div className="permissions-connect-footer">
         {/* <div className="permissions-connect-footer__text">

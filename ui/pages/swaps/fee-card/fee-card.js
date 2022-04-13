@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { I18nContext } from '../../../contexts/i18n';
 import InfoTooltip from '../../../components/ui/info-tooltip';
-import { useNewMetricEvent } from '../../../hooks/useMetricEvent';
+// import { useNewMetricEvent } from '../../../hooks/useMetricEvent';
 import {
   MAINNET_CHAIN_ID,
   BSC_CHAIN_ID,
@@ -21,8 +21,8 @@ import {
 } from '../../../helpers/constants/design-system';
 import GasDetailsItemTitle from '../../../components/app/gas-details-item/gas-details-item-title';
 
-const GAS_FEES_LEARN_MORE_URL =
-  'https://community.metamask.io/t/what-is-gas-why-do-transactions-take-so-long/3172';
+// const GAS_FEES_LEARN_MORE_URL =
+//   'https://community.metamask.io/t/what-is-gas-why-do-transactions-take-so-long/3172';
 
 export default function FeeCard({
   primaryFee,
@@ -61,10 +61,10 @@ export default function FeeCard({
     }
   };
 
-  const gasFeesLearnMoreLinkClickedEvent = useNewMetricEvent({
-    category: 'Swaps',
-    event: 'Clicked "Gas Fees: Learn More" Link',
-  });
+  // const gasFeesLearnMoreLinkClickedEvent = useNewMetricEvent({
+  //   category: 'Swaps',
+  //   event: 'Clicked "Gas Fees: Learn More" Link',
+  // });
 
   const tokenApprovalTextComponent = (
     <span key="fee-card-approve-symbol" className="fee-card__bold">

@@ -10,7 +10,7 @@ import {
   INITIALIZE_SEED_PHRASE_INTRO_ROUTE,
   DEFAULT_ROUTE,
 } from '../../../helpers/constants/routes';
-import MetaFoxLogo from '../../../components/ui/metafox-logo';
+// import MetaFoxLogo from '../../../components/ui/metafox-logo';
 import AlphaCarbonLogo from '../../../components/ui/alpha-carbon-logo';
 import ConfirmSeedPhrase from './confirm-seed-phrase';
 import RevealSeedPhrase from './reveal-seed-phrase';

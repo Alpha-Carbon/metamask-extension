@@ -17,14 +17,14 @@ export default class EnsInput extends Component {
   static propTypes = {
     className: PropTypes.string,
     selectedAddress: PropTypes.string,
-    selectedName: PropTypes.string,
-    scanQrCode: PropTypes.func,
+    // selectedName: PropTypes.string,
+    // scanQrCode: PropTypes.func,
     onPaste: PropTypes.func,
     onValidAddressTyped: PropTypes.func,
     internalSearch: PropTypes.bool,
     userInput: PropTypes.string,
     onChange: PropTypes.func.isRequired,
-    onReset: PropTypes.func.isRequired,
+    // onReset: PropTypes.func.isRequired,
     lookupEnsName: PropTypes.func.isRequired,
     initializeEnsSlice: PropTypes.func.isRequired,
     resetEnsResolution: PropTypes.func.isRequired,
@@ -83,7 +83,12 @@ export default class EnsInput extends Component {
 
   render() {
     const { t } = this.context;
-    const { className, selectedAddress, selectedName, userInput } = this.props;
+    const {
+      className,
+      selectedAddress,
+      //  selectedName,
+      userInput,
+    } = this.props;
 
     const hasSelectedAddress = Boolean(selectedAddress);
 

@@ -9,7 +9,7 @@ import { isBeta } from '../../../helpers/utils/build-types';
 
 export default class InfoTab extends PureComponent {
   state = {
-    version: global.platform.getVersion(),
+    // version: global.platform.getVersion(),
   };
 
   static contextTypes = {

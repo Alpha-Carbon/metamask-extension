@@ -15,13 +15,14 @@
       .currency-display-component {
         margin-left: 4px;
       }
-      &-title{
-        color:var(--gray-2);
+
+      &-title {
+        color: var(--gray-2);
+
         @include H7;
         @include roundeBold;
       }
     }
-   
   }
 
   &__detail-values {

@@ -2,11 +2,12 @@
   padding: 8px 16px;
   border-top: 1px solid var(--gray-4);
   cursor: pointer;
-  margin: 0px 25px;
+  margin: 0 25px;
 
-  &:hover{
+  &:hover {
     background-color: var(--Grey-000);
   }
+
   &__primary-currency {
     color: var(--Black-100);
     overflow: hidden;
@@ -73,42 +74,53 @@
     direction: rtl;
   }
 
-  &__time{
+  &__time {
     color: var(--gray-3);
+
     @include H6;
   }
-  &__info{
+
+  &__info {
     display: flex;
     align-items: center;
-    &>svg{
+
+    & > svg {
       margin-right: 15px;
     }
-    &-status{
-      &-title{
-        &-send{
+
+    &-status {
+      &-title {
+        &-send {
           color: var(--function-2);
         }
-        &-receive{
+
+        &-receive {
           color: var(--secondary-3);
         }
       }
     }
   }
-  &__balance{
+
+  &__balance {
     @include H4;
     @include roundeBold;
+
     flex: 1;
     text-align: right;
     padding-top: 20px;
-    &>span:nth-child(2){
+
+    & > span:nth-child(2) {
       @include roundeNormal;
     }
-    &-send{
+
+    &-send {
       color: var(--function-2);
     }
-    &-receive{
+
+    &-receive {
       color: var(--secondary-3);
     }
+
     @media screen and (max-width: $break-small) {
       @include H5;
     }

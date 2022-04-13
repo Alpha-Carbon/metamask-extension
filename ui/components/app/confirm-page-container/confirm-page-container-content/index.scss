@@ -102,8 +102,10 @@
   &__total-value {
     position: relative;
   }
-  &__currency-container-balance{
+
+  &__currency-container-balance {
     @include H7;
+
     color: var(--black);
   }
 }

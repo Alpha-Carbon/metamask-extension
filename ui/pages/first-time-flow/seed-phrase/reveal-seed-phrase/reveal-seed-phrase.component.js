@@ -99,7 +99,7 @@ export default class RevealSeedPhrase extends PureComponent {
         >
           {seedPhraseArr.map((item, i) => {
             return (
-              <div className="reveal-seed-phrase__secret-words-item">
+              <div className="reveal-seed-phrase__secret-words-item" key={i}>
                 <span>{i + 1}.</span>
                 <span>{item}</span>
               </div>

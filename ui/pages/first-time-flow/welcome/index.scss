@@ -18,6 +18,7 @@
   &__header {
     @include H3;
     @include roundeBold;
+
     margin-top: 12px;
     margin-bottom: 16px;
     text-align: center;
@@ -25,7 +26,8 @@
 
   &__description {
     text-align: center;
-    color:var(--gray-3);
+    color: var(--gray-3);
+
     p {
       @include Paragraph;
 
@@ -43,19 +45,21 @@
   }
 
   .first-time-flow__button {
-    &-wrap{
+    &-wrap {
       margin-top: 44px;
       position: relative;
     }
+
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     width: 312px;
     height: 40px;
     font-weight: 500;
-    transition: ease-in-out .4s;
+    transition: ease-in-out 0.4s;
     transform-origin: center;
-    &:hover{
+
+    &:hover {
       // width: 316px;
       // height: 44px;
     }

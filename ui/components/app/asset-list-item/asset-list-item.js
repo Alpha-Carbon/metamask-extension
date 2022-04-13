@@ -1,19 +1,19 @@
-import React, { useMemo } from 'react';
+import React from 'react'; // { useMemo }
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+// import { useDispatch } from 'react-redux';
+// import { useHistory } from 'react-router-dom';
 import Identicon from '../../ui/identicon';
 import ListItem from '../../ui/list-item';
 import Tooltip from '../../ui/tooltip';
 import InfoIcon from '../../ui/icon/info-icon.component';
-import Button from '../../ui/button';
-import { useI18nContext } from '../../../hooks/useI18nContext';
-import { useMetricEvent } from '../../../hooks/useMetricEvent';
-import { ASSET_TYPES, updateSendAsset } from '../../../ducks/send';
-import { SEND_ROUTE } from '../../../helpers/constants/routes';
+// import Button from '../../ui/button';
+// import { useI18nContext } from '../../../hooks/useI18nContext';
+// import { useMetricEvent } from '../../../hooks/useMetricEvent';
+// import { ASSET_TYPES, updateSendAsset } from '../../../ducks/send';
+// import { SEND_ROUTE } from '../../../helpers/constants/routes';
 import { SEVERITIES } from '../../../helpers/constants/design-system';
-import { INVALID_ASSET_TYPE } from '../../../helpers/constants/error-keys';
+// import { INVALID_ASSET_TYPE } from '../../../helpers/constants/error-keys';
 import ActAvatar from '../../ui/icon/act-avatar-icon.component';
 
 const AssetListItem = ({
@@ -23,7 +23,7 @@ const AssetListItem = ({
   onClick,
   tokenAddress,
   tokenSymbol,
-  tokenDecimals,
+  // tokenDecimals,
   tokenImage,
   warning,
   primary,
@@ -31,16 +31,16 @@ const AssetListItem = ({
   identiconBorder,
   isERC721,
 }) => {
-  const t = useI18nContext();
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const sendTokenEvent = useMetricEvent({
-    eventOpts: {
-      category: 'Navigation',
-      action: 'Home',
-      name: 'Clicked Send: Token',
-    },
-  });
+  // const t = useI18nContext();
+  // const dispatch = useDispatch();
+  // const history = useHistory();
+  // const sendTokenEvent = useMetricEvent({
+  //   eventOpts: {
+  //     category: 'Navigation',
+  //     action: 'Home',
+  //     name: 'Clicked Send: Token',
+  //   },
+  // });
   const titleIcon = warning ? (
     <Tooltip
       wrapperClassName="asset-list-item__warning-tooltip"
@@ -59,48 +59,48 @@ const AssetListItem = ({
     </>
   ) : null;
 
-  const sendTokenButton = useMemo(() => {
-    if (tokenAddress === null || tokenAddress === undefined) {
-      return null;
-    }
-    return (
-      <Button
-        type="link"
-        className="asset-list-item__send-token-button"
-        onClick={async (e) => {
-          e.stopPropagation();
-          sendTokenEvent();
-          try {
-            await dispatch(
-              updateSendAsset({
-                type: ASSET_TYPES.TOKEN,
-                details: {
-                  address: tokenAddress,
-                  decimals: tokenDecimals,
-                  symbol: tokenSymbol,
-                },
-              }),
-            );
-            history.push(SEND_ROUTE);
-          } catch (err) {
-            if (!err.message.includes(INVALID_ASSET_TYPE)) {
-              throw err;
-            }
-          }
-        }}
-      >
-        {t('sendSpecifiedTokens', [tokenSymbol])}
-      </Button>
-    );
-  }, [
-    tokenSymbol,
-    sendTokenEvent,
-    tokenAddress,
-    tokenDecimals,
-    history,
-    t,
-    dispatch,
-  ]);
+  // const sendTokenButton = useMemo(() => {
+  //   if (tokenAddress === null || tokenAddress === undefined) {
+  //     return null;
+  //   }
+  //   return (
+  //     <Button
+  //       type="link"
+  //       className="asset-list-item__send-token-button"
+  //       onClick={async (e) => {
+  //         e.stopPropagation();
+  //         sendTokenEvent();
+  //         try {
+  //           await dispatch(
+  //             updateSendAsset({
+  //               type: ASSET_TYPES.TOKEN,
+  //               details: {
+  //                 address: tokenAddress,
+  //                 decimals: tokenDecimals,
+  //                 symbol: tokenSymbol,
+  //               },
+  //             }),
+  //           );
+  //           history.push(SEND_ROUTE);
+  //         } catch (err) {
+  //           if (!err.message.includes(INVALID_ASSET_TYPE)) {
+  //             throw err;
+  //           }
+  //         }
+  //       }}
+  //     >
+  //       {t('sendSpecifiedTokens', [tokenSymbol])}
+  //     </Button>
+  //   );
+  // }, [
+  //   tokenSymbol,
+  //   sendTokenEvent,
+  //   tokenAddress,
+  //   tokenDecimals,
+  //   history,
+  //   t,
+  //   dispatch,
+  // ]);
 
   return (
     <ListItem
@@ -156,7 +156,7 @@ AssetListItem.propTypes = {
   onClick: PropTypes.func.isRequired,
   tokenAddress: PropTypes.string,
   tokenSymbol: PropTypes.string,
-  tokenDecimals: PropTypes.number,
+  // tokenDecimals: PropTypes.number,
   tokenImage: PropTypes.string,
   warning: PropTypes.node,
   primary: PropTypes.string,

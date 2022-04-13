@@ -4,7 +4,7 @@ import AlphaCarbonLogo from '.';
 
 describe('MetaFoxLogo', () => {
   it('sets icon height and width to 42 by default', () => {
-    const wrapper = mount(<MetaFoxLogo />);
+    const wrapper = mount(<AlphaCarbonLogo />);
 
     expect(
       wrapper.find('img.app-header__metafox-logo--icon').prop('width'),
@@ -15,7 +15,7 @@ describe('MetaFoxLogo', () => {
   });
 
   it('does not set icon height and width when unsetIconHeight is true', () => {
-    const wrapper = mount(<MetaFoxLogo unsetIconHeight />);
+    const wrapper = mount(<AlphaCarbonLogo unsetIconHeight />);
 
     expect(
       wrapper.find('img.app-header__metafox-logo--icon').prop('width'),

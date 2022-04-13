@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../../../components/ui/button';
 import {
-  INITIALIZE_SEED_PHRASE_INTRO_ROUTE,
+  // INITIALIZE_SEED_PHRASE_INTRO_ROUTE,
   INITIALIZE_SELECT_ACTION_ROUTE,
   INITIALIZE_SEED_PHRASE_ROUTE,
 } from '../../../../helpers/constants/routes';
@@ -205,12 +205,12 @@ export default class NewAccount extends PureComponent {
               className="first-time-flow__show_btn"
               onClick={(e) => {
                 e.preventDefault();
-                !passwordShow
+                passwordShow
                   ? this.setState({
-                      passwordHide: 'text',
+                      passwordHide: 'password',
                     })
                   : this.setState({
-                      passwordHide: 'password',
+                      passwordHide: 'text',
                     });
                 this.setState({ passwordShow: !passwordShow });
               }}
@@ -239,12 +239,12 @@ export default class NewAccount extends PureComponent {
               className="first-time-flow__show_btn"
               onClick={(e) => {
                 e.preventDefault();
-                !confirmPasswordShow
+                confirmPasswordShow
                   ? this.setState({
-                      confirmPasswordHide: 'text',
+                      confirmPasswordHide: 'password',
                     })
                   : this.setState({
-                      confirmPasswordHide: 'password',
+                      confirmPasswordHide: 'text',
                     });
                 this.setState({ confirmPasswordShow: !confirmPasswordShow });
               }}

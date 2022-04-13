@@ -1,35 +1,38 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  useDispatch,
+  //  useSelector
+} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import Identicon from '../../ui/identicon';
-import Tooltip from '../../ui/tooltip';
+// import Tooltip from '../../ui/tooltip';
 import CurrencyDisplay from '../../ui/currency-display';
 import { I18nContext } from '../../../contexts/i18n';
-import { isHardwareKeyring } from '../../../helpers/utils/hardware';
+// import { isHardwareKeyring } from '../../../helpers/utils/hardware';
 import {
   SEND_ROUTE,
-  BUILD_QUOTE_ROUTE,
+  // BUILD_QUOTE_ROUTE,
 } from '../../../helpers/constants/routes';
 import {
   useMetricEvent,
-  useNewMetricEvent,
+  // useNewMetricEvent,
 } from '../../../hooks/useMetricEvent';
 import { useTokenTracker } from '../../../hooks/useTokenTracker';
 import { useTokenFiatAmount } from '../../../hooks/useTokenFiatAmount';
 import { ASSET_TYPES, updateSendAsset } from '../../../ducks/send';
-import { setSwapsFromToken } from '../../../ducks/swaps/swaps';
-import {
-  getCurrentKeyring,
-  getIsSwapsChain,
-} from '../../../selectors/selectors';
+// import { setSwapsFromToken } from '../../../ducks/swaps/swaps';
+// import {
+//   getCurrentKeyring,
+//   getIsSwapsChain,
+// } from '../../../selectors/selectors';
 
-import SwapIcon from '../../ui/icon/swap-icon.component';
+// import SwapIcon from '../../ui/icon/swap-icon.component';
 import SendIcon from '../../ui/icon/overview-send-icon.component';
 import ReceiveIcon from '../../ui/icon/receive-icon.component';
 
-import IconButton from '../../ui/icon-button';
+// import IconButton from '../../ui/icon-button';
 import { INVALID_ASSET_TYPE } from '../../../helpers/constants/error-keys';
 import { showModal } from '../../../store/actions';
 import WalletOverview from './wallet-overview';
@@ -45,22 +48,22 @@ const TokenOverview = ({ className, token }) => {
     },
   });
   const history = useHistory();
-  const keyring = useSelector(getCurrentKeyring);
-  const usingHardwareWallet = isHardwareKeyring(keyring.type);
+  // const keyring = useSelector(getCurrentKeyring);
+  // const usingHardwareWallet = isHardwareKeyring(keyring.type);
   const { tokensWithBalances } = useTokenTracker([token]);
   const balanceToRender = tokensWithBalances[0]?.string;
-  const balance = tokensWithBalances[0]?.balance;
+  // const balance = tokensWithBalances[0]?.balance;
   const formattedFiatBalance = useTokenFiatAmount(
     token.address,
     balanceToRender,
     token.symbol,
   );
-  const isSwapsChain = useSelector(getIsSwapsChain);
-  const enteredSwapsEvent = useNewMetricEvent({
-    event: 'Swaps Opened',
-    properties: { source: 'Token View', active_currency: token.symbol },
-    category: 'swaps',
-  });
+  // const isSwapsChain = useSelector(getIsSwapsChain);
+  // const enteredSwapsEvent = useNewMetricEvent({
+  //   event: 'Swaps Opened',
+  //   properties: { source: 'Token View', active_currency: token.symbol },
+  //   category: 'swaps',
+  // });
   useEffect(() => {
     if (token.isERC721 && process.env.COLLECTIBLES_V1) {
       dispatch(

@@ -80,7 +80,7 @@ const AccountList = ({
       <div className="choose-account-list__wrapper">
         <div className="choose-account-list__list">
           {accounts.map((account, index) => {
-            const { address, addressLabel, balance, label } = account;
+            const { address, balance, label } = account;
             const isSelectedAccount = selectedAccounts.has(address);
             return (
               <div

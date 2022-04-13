@@ -28,11 +28,13 @@
 
   &__dialog {
     margin: 1rem;
+
     @include H6;
+
     font-size: 12px;
     cursor: pointer;
     padding: 5px 12px;
-    background: linear-gradient(91.07deg, #227BFF 4.72%, #451DFF 73%);
+    background: linear-gradient(91.07deg, #227bff 4.72%, #451dff 73%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -42,34 +44,33 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    z-index:0;
+    z-index: 0;
     text-decoration: none;
-    &::before{
-      content:"";
-      position:absolute;
-      z-index:-1;
-      top:0;
-      left:0;
-      right:0;
-      bottom:0;
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       border-radius: 40px;
       border: 1px solid transparent;
       background: inherit;
-      background-origin:border-box;
-      background-clip:border-box;
+      background-origin: border-box;
+      background-clip: border-box;
       -webkit-mask:
         linear-gradient(#fff 0 0) padding-box,
         linear-gradient(#fff 0 0);
-      -webkit-mask-composite:destination-out;
+      -webkit-mask-composite: destination-out;
       mask-composite: exclude;
-      -webkit-mask-repeat:no-repeat;
-
+      -webkit-mask-repeat: no-repeat;
     }
   }
 
   &__error-dialog {
     margin: 1rem;
-    
   }
 
   &__to-row {
@@ -82,6 +83,7 @@
 
   &__select-recipient-wrapper {
     @extend %col-nowrap;
+
     background-color: var(--background);
     flex: 1 1 auto;
     height: 0;
@@ -90,6 +92,7 @@
       // overflow-y: auto;
       // overflow-x: hidden;
       background-color: var(--background);
+
       &__link {
         @include Paragraph;
 
@@ -100,7 +103,7 @@
         border-radius: 0;
         align-items: center;
         justify-content: flex-start;
-        background: linear-gradient(111.99deg, #451DFF 9.4%, #FF1D7C 92.26%);
+        background: linear-gradient(111.99deg, #451dff 9.4%, #ff1d7c 92.26%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
@@ -142,33 +145,34 @@
 
       background: linear-gradient(111.99deg, var(--secondary-1-start) 9.4%, var(--secondary-1-end) 92.26%);
       color: var(--white);
-      padding: 4px 0px;
+      padding: 4px 0;
       // border-bottom: 1px solid var(--alto);
       border-radius: 30px;
       text-align: center;
-      margin: 0px 15px;
+      margin: 0 15px;
 
       &:first-of-type {
         // border-top: 1px solid var(--alto);
       }
 
-      &.my-account{
+      &.my-account {
         background: linear-gradient(111.99deg, var(--secondary-2-start) 9.4%, var(--secondary-2-end) 92.26%);
         color: var(--white);
         margin-top: 25px;
       }
 
-      &.recent{
+      &.recent {
         background: linear-gradient(111.99deg, var(--secondary-1-start) 9.4%, var(--secondary-1-end) 92.26%);
         color: var(--white);
       }
 
-      &.is-address{
+      &.is-address {
         position: relative;
-        color:var(--gray-1);
+        color: var(--gray-1);
         background: transparent;
         text-align: left;
-        &::after{
+
+        &::after {
           content: "";
           position: absolute;
           width: calc(100% - 20px);
@@ -180,9 +184,11 @@
         }
       }
     }
-    &__group-item:nth-last-child(1){
+
+    &__group-item:nth-last-child(1) {
       border-bottom: none;
     }
+
     &__group-item,
     &__group-item--selected {
       @extend %row-nowrap;

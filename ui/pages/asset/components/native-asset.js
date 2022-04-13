@@ -2,21 +2,21 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { getAccountLink } from '@metamask/etherscan-link';
+// import { getAccountLink } from '@metamask/etherscan-link';
 import TransactionList from '../../../components/app/transaction-list';
-import { EthOverview } from '../../../components/app/wallet-overview';
+// import { EthOverview } from '../../../components/app/wallet-overview';
 import {
   getSelectedIdentity,
-  getCurrentChainId,
+  // getCurrentChainId,
   getRpcPrefsForCurrentProvider,
-  getSelectedAddress,
+  // getSelectedAddress,
   getSelectedAccount,
 } from '../../../selectors/selectors';
 import { showModal } from '../../../store/actions';
 import { DEFAULT_ROUTE, SEND_ROUTE } from '../../../helpers/constants/routes';
-import { getURLHostName } from '../../../helpers/utils/util';
+// import { getURLHostName } from '../../../helpers/utils/util';
 import {
-  useNewMetricEvent,
+  // useNewMetricEvent,
   useMetricEvent,
 } from '../../../hooks/useMetricEvent';
 import { I18nContext } from '../../../contexts/i18n';
@@ -25,7 +25,7 @@ import ReceiveIcon from '../../../components/ui/icon/receive-icon.component';
 import SendIcon from '../../../components/ui/icon/send-icon.component';
 import UserPreferencedCurrencyDisplay from '../../../components/app/user-preferenced-currency-display';
 import { PRIMARY } from '../../../helpers/constants/common';
-import AssetOptions from './asset-options';
+// import AssetOptions from './asset-options';
 import AssetNavigation from './asset-navigation';
 
 export default function NativeAsset({ nativeCurrency }) {
@@ -34,23 +34,23 @@ export default function NativeAsset({ nativeCurrency }) {
   );
   const dispatch = useDispatch();
   const t = useContext(I18nContext);
-  const chainId = useSelector(getCurrentChainId);
+  // const chainId = useSelector(getCurrentChainId);
   const rpcPrefs = useSelector(getRpcPrefsForCurrentProvider);
-  const address = useSelector(getSelectedAddress);
+  // const address = useSelector(getSelectedAddress);
   const history = useHistory();
-  const accountLink = getAccountLink(address, chainId, rpcPrefs);
+  // const accountLink = getAccountLink(address, chainId, rpcPrefs);
   const selectedAccount = useSelector(getSelectedAccount);
   const { balance } = selectedAccount;
 
-  const blockExplorerLinkClickedEvent = useNewMetricEvent({
-    category: 'Navigation',
-    event: 'Clicked Block Explorer Link',
-    properties: {
-      link_type: 'Account Tracker',
-      action: 'Asset Options',
-      block_explorer_domain: getURLHostName(accountLink),
-    },
-  });
+  // const blockExplorerLinkClickedEvent = useNewMetricEvent({
+  //   category: 'Navigation',
+  //   event: 'Clicked Block Explorer Link',
+  //   properties: {
+  //     link_type: 'Account Tracker',
+  //     action: 'Asset Options',
+  //     block_explorer_domain: getURLHostName(accountLink),
+  //   },
+  // });
 
   const sendEvent = useMetricEvent({
     eventOpts: {

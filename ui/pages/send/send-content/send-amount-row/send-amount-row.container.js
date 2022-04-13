@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {
   getCollectibles,
-  getNativeCurrency,
+  // getNativeCurrency,
 } from '../../../../ducks/metamask/metamask';
 import {
   updateSendAmount,

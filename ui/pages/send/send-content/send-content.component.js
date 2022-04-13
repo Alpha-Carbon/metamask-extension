@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import PageContainerContent from '../../../components/ui/page-container/page-container-content.component';
 import Dialog from '../../../components/ui/dialog';
@@ -14,8 +14,8 @@ import { ASSET_TYPES } from '../../../ducks/send';
 import SendAmountRow from './send-amount-row';
 import SendHexDataRow from './send-hex-data-row';
 import SendAssetRow from './send-asset-row';
-import SendGasRow from './send-gas-row';
-import SendFrom from './send-from';
+// import SendGasRow from './send-gas-row';
+// import SendFrom from './send-from';
 import SendTo from './send-to';
 
 export default class SendContent extends Component {
@@ -36,12 +36,12 @@ export default class SendContent extends Component {
     gasIsExcessive: PropTypes.bool.isRequired,
     isEthGasPrice: PropTypes.bool,
     noGasPrice: PropTypes.bool,
-    networkOrAccountNotSupports1559: PropTypes.bool,
+    // networkOrAccountNotSupports1559: PropTypes.bool,
     getIsBalanceInsufficient: PropTypes.bool,
     asset: PropTypes.object,
     to: PropTypes.string,
     assetError: PropTypes.string,
-    addToAddressBook: PropTypes.func,
+    // addToAddressBook: PropTypes.func,
   };
 
   render() {
@@ -51,7 +51,7 @@ export default class SendContent extends Component {
       gasIsExcessive,
       isEthGasPrice,
       noGasPrice,
-      networkOrAccountNotSupports1559,
+      // networkOrAccountNotSupports1559,
       getIsBalanceInsufficient,
       asset,
       assetError,

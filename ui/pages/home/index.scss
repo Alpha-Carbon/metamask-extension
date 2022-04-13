@@ -29,23 +29,25 @@
 
   &__main-view &__tab {
     @include H6;
+
     flex-grow: 1;
     color: var(--gray-3);
     font-weight: 500;
     display: flex;
-    padding: 0px 20px;
+    padding: 0 20px;
     cursor: pointer;
   }
 
   &__main-view &__tab--active {
     position: relative;
-   
-    &>button{
+
+    & > button {
       background: var(--secondary-2-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    &::before{
+
+    &::before {
       content: "";
       position: absolute;
       width: calc(100% - 30px);
@@ -58,13 +60,14 @@
     }
   }
 
-  &__main-view &__tab--active.activity{
-    &>button{
+  &__main-view &__tab--active.activity {
+    & > button {
       background: linear-gradient(111.99deg, var(--secondary-2-start) 9.4%, var(--secondary-2-end) 92.26%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    &::before{
+
+    &::before {
       background: linear-gradient(111.99deg, var(--secondary-2-start) 9.4%, var(--secondary-2-end) 92.26%);
     }
   }
@@ -73,6 +76,7 @@
     padding: 16px 8px;
     width: auto;
     margin: auto;
+
     @include roundeBold;
   }
 
@@ -159,7 +163,7 @@
     width: 100%;
   }
 
-  &__import-token{
+  &__import-token {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

@@ -4,7 +4,8 @@
   justify-content: center;
   position: relative;
   width: 100%;
-    padding: 0px 15px;
+  padding: 0 15px;
+
   &__value {
     max-width: 250px;
     overflow: hidden;
@@ -48,14 +49,15 @@
   &__error-amount {
     margin-top: 5px;
   }
-  
 }
-.editable__buttons{
+
+.editable__buttons {
   display: flex;
   width: 100%;
   margin: 15px;
-  padding: 0px 15px;
-  &>button{
-    margin: 0px 5px;
+  padding: 0 15px;
+
+  & > button {
+    margin: 0 5px;
   }
 }

@@ -8,7 +8,7 @@
     max-width: 600px;
     margin-bottom: 40px;
   }
-  
+
 
   &__seed-word {
     position: relative;
@@ -19,7 +19,7 @@
     padding: 8px 18px;
     width: 42%;
     height: 24px;
-    margin: 10px 0px;
+    margin: 10px 0;
     text-align: center;
     border-radius: 4px;
     cursor: move;
@@ -37,7 +37,8 @@
       color: var(--white);
       background: var(--gray-3);
       border: transparent;
-      &:hover{
+
+      &:hover {
         background: var(--gray-3);
         border: transparent;
       }
@@ -54,6 +55,7 @@
       border: 1px dashed var(--gray-4);
       cursor: default;
       margin-bottom: 12px;
+
       &:hover,
       &:active {
         background-color: transparent;
@@ -116,9 +118,10 @@
       }
     }
   }
-  &__index{
+
+  &__index {
     position: absolute;
     left: -32px;
-    color:var(--black);
+    color: var(--black);
   }
 }

@@ -6,7 +6,7 @@ import { isHexPrefixed } from 'ethereumjs-util';
 import { useCopyToClipboard } from '../../../hooks/useCopyToClipboard';
 import { toChecksumHexAddress } from '../../../../shared/modules/hexstring-utils';
 import Tooltip from '../tooltip';
-import CopyIcon from '../icon/copy-icon.component';
+// import CopyIcon from '../icon/copy-icon.component';
 import CopySecondaryGradientIcon from '../icon/copy-secondary-gradient-icon.component';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 

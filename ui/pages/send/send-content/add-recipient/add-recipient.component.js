@@ -15,14 +15,14 @@ export default class AddRecipient extends Component {
     ownedAccounts: PropTypes.array,
     addressBook: PropTypes.array,
     updateRecipient: PropTypes.func,
-    ensResolution: PropTypes.string,
+    // ensResolution: PropTypes.string,
     ensError: PropTypes.string,
     ensWarning: PropTypes.string,
-    addressBookEntryName: PropTypes.string,
+    // addressBookEntryName: PropTypes.string,
     contacts: PropTypes.array,
     nonContacts: PropTypes.array,
     useMyAccountsForRecipientSearch: PropTypes.func,
-    useContactListForRecipientSearch: PropTypes.func,
+    // useContactListForRecipientSearch: PropTypes.func,
     isUsingMyAccountsForRecipientSearch: PropTypes.bool,
     recipient: PropTypes.shape({
       address: PropTypes.string,
@@ -98,30 +98,30 @@ export default class AddRecipient extends Component {
 
   render() {
     const {
-      ensResolution,
-      recipient,
-      userInput,
+      // ensResolution,
+      // recipient,
+      // userInput,
       useMyAccountsForRecipientSearch,
-      addressBookEntryName,
+      // addressBookEntryName,
       isUsingMyAccountsForRecipientSearch,
     } = this.props;
     const { isMyAccountShow } = this.state;
     const { t } = this.context;
-    let content;
+    // let content;
 
-    if (recipient.address) {
-      content = this.renderExplicitAddress(
-        recipient.address,
-        recipient.nickname,
-      );
-    } else if (ensResolution) {
-      content = this.renderExplicitAddress(
-        ensResolution,
-        addressBookEntryName || userInput,
-      );
-    } else if (isUsingMyAccountsForRecipientSearch) {
-      content = this.renderTransfer();
-    }
+    // if (recipient.address) {
+    //   content = this.renderExplicitAddress(
+    //     recipient.address,
+    //     recipient.nickname,
+    //   );
+    // } else if (ensResolution) {
+    //   content = this.renderExplicitAddress(
+    //     ensResolution,
+    //     addressBookEntryName || userInput,
+    //   );
+    // } else if (isUsingMyAccountsForRecipientSearch) {
+    //   content = this.renderTransfer();
+    // }
 
     return (
       <div className="send__select-recipient-wrapper">
@@ -173,7 +173,7 @@ export default class AddRecipient extends Component {
     let { ownedAccounts } = this.props;
     const {
       userInput,
-      useContactListForRecipientSearch,
+      // useContactListForRecipientSearch,
       isUsingMyAccountsForRecipientSearch,
     } = this.props;
     const { t } = this.context;
@@ -207,12 +207,12 @@ export default class AddRecipient extends Component {
   }
 
   renderMain() {
-    const { t } = this.context;
+    // const { t } = this.context;
     const {
-      userInput,
-      ownedAccounts = [],
+      // userInput,
+      // ownedAccounts = [],
       addressBook,
-      useMyAccountsForRecipientSearch,
+      // useMyAccountsForRecipientSearch,
     } = this.props;
 
     return (

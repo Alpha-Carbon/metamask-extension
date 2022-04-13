@@ -8,6 +8,7 @@
 .address-book {
   flex: 0.4 1 100%;
   padding-top: 15px;
+
   @media screen and (max-width: $break-small) {
     flex: 1;
     max-width: 100%;
@@ -16,14 +17,17 @@
       min-height: 100%;
     }
   }
-  & .send__select-recipient-wrapper__list{
+
+  & .send__select-recipient-wrapper__list {
     background-color: var(--white);
     margin-top: 65px;
+
     @media screen and (max-width: $break-small) {
-      margin-top: 0px;
+      margin-top: 0;
       background-color: var(--background);
     }
   }
+
   &__entry {
     display: flex;
     flex-flow: row nowrap;
@@ -185,7 +189,8 @@
         max-width: 100%;
         width: 100%;
       }
-      &>button{
+
+      & > button {
         height: 40px;
       }
     }
@@ -288,6 +293,7 @@
       left: 50%;
       transform: translateX(-50%);
       right: unset;
+
       &--hidden {
         display: none;
       }
@@ -302,13 +308,15 @@
 .address-book-contact-content {
   flex: 0.4 1 100%;
   margin-top: 70px;
+
   @media screen and (max-width: $break-small) {
     flex: 1;
-    margin-top: 0px;
+    margin-top: 0;
   }
-  & .settings-page__content-row{
-    & .page-container__footer{
-      &>footer{
+
+  & .settings-page__content-row {
+    & .page-container__footer {
+      & > footer {
         background-color: var(--white);
       }
     }

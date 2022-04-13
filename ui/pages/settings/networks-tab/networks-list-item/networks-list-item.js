@@ -1,18 +1,18 @@
-import React, { useCallback } from 'react';
+import React from 'react'; // { useCallback }
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { useI18nContext } from '../../../../hooks/useI18nContext';
 import { NETWORK_TYPE_RPC } from '../../../../../shared/constants/network';
-import { SIZES } from '../../../../helpers/constants/design-system';
-import ColorIndicator from '../../../../components/ui/color-indicator';
+// import { SIZES } from '../../../../helpers/constants/design-system';
+// import ColorIndicator from '../../../../components/ui/color-indicator';
 import LockIcon from '../../../../components/ui/lock-icon';
-import { NETWORKS_FORM_ROUTE } from '../../../../helpers/constants/routes';
+// import { NETWORKS_FORM_ROUTE } from '../../../../helpers/constants/routes';
 import {
   setSelectedSettingsRpcUrl,
   showModal,
-  showNetworksFormModal,
+  // showNetworksFormModal,
 } from '../../../../store/actions';
 import { getEnvironmentType } from '../../../../../app/scripts/lib/util';
 import { ENVIRONMENT_TYPE_FULLSCREEN } from '../../../../../shared/constants/app';
@@ -26,7 +26,7 @@ const NetworksListItem = ({
   selectedNetwork,
 }) => {
   const t = useI18nContext();
-  const history = useHistory();
+  // const history = useHistory();
   const dispatch = useDispatch();
   const environmentType = getEnvironmentType();
   const isFullScreen = environmentType === ENVIRONMENT_TYPE_FULLSCREEN;
@@ -48,7 +48,6 @@ const NetworksListItem = ({
     (listItemUrlIsProviderUrl || listItemTypeIsProviderNonRpcType);
   const displayNetworkListItemAsSelected =
     listItemNetworkIsSelected || listItemNetworkIsCurrentProvider;
-
   return (
     <div
       key={`settings-network-list-item:${rpcUrl}`}
@@ -61,7 +60,7 @@ const NetworksListItem = ({
             showModal({
               name: 'NETWORKS_FORM_MODAL',
               networksToRender,
-              isCurrentRpcTarget: network == selectedNetwork,
+              isCurrentRpcTarget: network === selectedNetwork,
               selectedNetwork: network,
             }),
           );
@@ -92,6 +91,8 @@ NetworksListItem.propTypes = {
   network: PropTypes.object.isRequired,
   networkIsSelected: PropTypes.bool,
   selectedRpcUrl: PropTypes.string,
+  selectedNetwork: PropTypes.object,
+  networksToRender: PropTypes.array,
 };
 
 // export default compose(

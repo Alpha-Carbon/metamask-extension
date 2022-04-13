@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import log from 'loglevel';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import copyToClipboard from 'copy-to-clipboard';
@@ -22,6 +23,7 @@ export default class SecurityTab extends PureComponent {
   };
 
   static propTypes = {
+    accountsList: PropTypes.array,
     exportAccount: PropTypes.func.isRequired,
     warning: PropTypes.string,
     history: PropTypes.object,
@@ -33,13 +35,13 @@ export default class SecurityTab extends PureComponent {
     usePhishDetect: PropTypes.bool.isRequired,
     isExportPrivateKey: PropTypes.bool,
     selectedIdentity: PropTypes.object.isRequired,
+    selectedAddress: PropTypes.string,
   };
 
   state = {
     password: '',
     privateKey: null,
     copied: false,
-    copyTimeout: null,
   };
 
   renderSeedWords() {
@@ -236,11 +238,11 @@ export default class SecurityTab extends PureComponent {
                     onClick={() => {
                       this.setState({
                         copied: true,
-                        copyTimeout: setTimeout(
-                          () => this.setState({ copied: true }),
-                          SECOND * 3,
-                        ),
                       });
+                      this.copyTimeout = setTimeout(
+                        () => this.setState({ copied: false }),
+                        SECOND * 3,
+                      );
                       copyToClipboard(privateKey);
                     }}
                   >
@@ -306,7 +308,9 @@ export default class SecurityTab extends PureComponent {
 
     return (
       <div className="settings-page__body">
-        {!isExportPrivateKey ? (
+        {isExportPrivateKey ? (
+          <>{this.renderPrivateKeyContent()}</>
+        ) : (
           <>
             {warning ? (
               <div className="settings-tab__error">{warning}</div>
@@ -317,8 +321,6 @@ export default class SecurityTab extends PureComponent {
             {this.renderMetaMetricsOptIn()}
             {this.renderShowPrivateKey()}
           </>
-        ) : (
-          <>{this.renderPrivateKeyContent()}</>
         )}
       </div>
     );

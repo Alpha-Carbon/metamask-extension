@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import SendRowWrapper from '../send-row-wrapper';
+// import SendRowWrapper from '../send-row-wrapper';
 import Identicon from '../../../../components/ui/identicon';
-import TokenBalance from '../../../../components/ui/token-balance';
-import TokenListDisplay from '../../../../components/app/token-list-display';
+// import TokenBalance from '../../../../components/ui/token-balance';
+// import TokenListDisplay from '../../../../components/app/token-list-display';
 import UserPreferencedCurrencyDisplay from '../../../../components/app/user-preferenced-currency-display';
 import { ERC20, ERC721, PRIMARY } from '../../../../helpers/constants/common';
 import { ASSET_TYPES } from '../../../../ducks/send';
@@ -20,7 +20,7 @@ export default class SendAssetRow extends Component {
         image: PropTypes.string,
       }),
     ).isRequired,
-    accounts: PropTypes.object.isRequired,
+    // accounts: PropTypes.object.isRequired,
     selectedAddress: PropTypes.string.isRequired,
     accountsList: PropTypes.object,
     sendAsset: PropTypes.object,
@@ -164,26 +164,27 @@ export default class SendAssetRow extends Component {
 
   renderAssetDropdown() {
     const {
-      accounts,
+      // accounts,
       accountsList,
       showAccountDetail,
-      selectedAddress,
-      nativeCurrency,
+      // selectedAddress,
+      // nativeCurrency,
       nativeCurrencyImage,
-      sendAsset: { details, type },
-      updateSendAsset,
-      tokens,
+      // sendAsset: { details, type },
+      // updateSendAsset,
+      // tokens,
     } = this.props;
     const { t } = this.context;
-    const balanceValue = accounts[selectedAddress]
-      ? accounts[selectedAddress].balance
-      : '';
-    let token;
-    if (type === ASSET_TYPES.TOKEN) {
-      token = tokens.find(({ address }) =>
-        isEqualCaseInsensitive(address, details.address),
-      );
-    }
+    // const balanceValue = accounts[selectedAddress]
+    //   ? accounts[selectedAddress].balance
+    //   : '';
+
+    // if (type === ASSET_TYPES.TOKEN) {
+    //   const token = tokens.find(({ address }) =>
+    //     isEqualCaseInsensitive(address, details.address),
+    //   );
+    // }
+
     return (
       this.state.isShowingDropdown && (
         <div>
@@ -246,20 +247,20 @@ export default class SendAssetRow extends Component {
   }
 
   renderNativeCurrency(insideDropdown = false) {
-    const { t } = this.context;
+    // const { t } = this.context;
     const {
-      accounts,
+      // accounts,
       selectedAddress,
-      nativeCurrency,
+      // nativeCurrency,
       nativeCurrencyImage,
       accountsList,
     } = this.props;
 
     const { sendableTokens, sendableCollectibles } = this.state;
 
-    const balanceValue = accounts[selectedAddress]
-      ? accounts[selectedAddress].balance
-      : '';
+    // const balanceValue = accounts[selectedAddress]
+    //   ? accounts[selectedAddress].balance
+    //   : '';
 
     const sendableAssets = [...sendableTokens, ...sendableCollectibles];
     const selectedAccount = accountsList.find((identity) => {
@@ -306,8 +307,12 @@ export default class SendAssetRow extends Component {
   }
 
   renderToken(token, insideDropdown = false) {
-    const { address, symbol, image } = token;
-    const { t } = this.context;
+    const {
+      address,
+      // symbol,
+      image,
+    } = token;
+    // const { t } = this.context;
     const { accountsList, selectedAddress } = this.props;
     const selectedAccount = accountsList.find((identity) => {
       return identity.address === selectedAddress;
@@ -343,7 +348,12 @@ export default class SendAssetRow extends Component {
   }
 
   renderCollectible(collectible, insideDropdown = false) {
-    const { address, name, image, tokenId } = collectible;
+    const {
+      address,
+      //  name,
+      image,
+      tokenId,
+    } = collectible;
     const { accountsList, selectedAddress } = this.props;
     const { t } = this.context;
     const selectedAccount = accountsList.find((identity) => {

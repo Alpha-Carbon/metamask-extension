@@ -218,9 +218,9 @@ export default function CreateNewVault({
           <button
             onClick={(e) => {
               e.preventDefault();
-              !passwordShow
-                ? setPasswordType('text')
-                : setPasswordType('password');
+              passwordShow
+                ? setPasswordType('password')
+                : setPasswordType('text');
               setPasswordShow(!passwordShow);
             }}
           >
@@ -245,9 +245,9 @@ export default function CreateNewVault({
           <button
             onClick={(e) => {
               e.preventDefault();
-              !confirmPasswordShow
-                ? setConfirmPasswordType('text')
-                : setConfirmPasswordType('password');
+              confirmPasswordShow
+                ? setConfirmPasswordType('password')
+                : setConfirmPasswordType('text');
               setConfirmPasswordShow(!confirmPasswordShow);
             }}
           >

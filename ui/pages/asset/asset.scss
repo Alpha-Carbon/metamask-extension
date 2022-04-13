@@ -2,6 +2,7 @@
   &__container {
     background-color: white;
     border-radius: 4px;
+
     @media screen and (max-width: $break-small) {
       margin: 15px;
     }
@@ -49,62 +50,73 @@
   }
 }
 
-.asset-native{
-  &__wrapper{
+.asset-native {
+  &__wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 30px;
-    &-icon{
-      &-txt{
+
+    &-icon {
+      &-txt {
         @include H3;
         @include roundeBold;
       }
     }
-    &-balance{
-      margin: 13px 0px 25px 0px;
+
+    &-balance {
+      margin: 13px 0 25px 0;
       background: var(--secondary-2-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       align-items: unset;
       display: block;
       text-align: center;
-      & .currency-display-component__suffix{
+
+      & .currency-display-component__suffix {
         @include roundeBold;
+
         font-size: 12px;
         padding-left: 3px;
       }
     }
-    &-buttons{
+
+    &-buttons {
       display: flex;
       align-items: center;
       justify-content: center;
-      &>button{
-        margin: 0px 5px;
+
+      & > button {
+        margin: 0 5px;
         padding: 6px 8px;
         outline: none;
+
         @include H5;
         @include roundeBold;
+
         height: 40px;
         display: flex;
         align-items: center;
         border-radius: 30px;
         color: var(--white);
         width: 130px;
-        &>svg{
+
+        & > svg {
           margin-left: 5px;
         }
-        &>p{
+
+        & > p {
           flex: 1;
         }
       }
-      &-send{
+
+      &-send {
         background: var(--secondary-2-gradient);
       }
-      &-receive{
+
+      &-receive {
         background: var(--secondary-3-gradient);
       }
     }
   }
-  
 }

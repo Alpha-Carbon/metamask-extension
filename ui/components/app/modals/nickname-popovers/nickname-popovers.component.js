@@ -11,7 +11,7 @@ import {
 import NicknamePopover from '../../../ui/nickname-popover';
 import UpdateNicknamePopover from '../../../ui/update-nickname-popover/update-nickname-popover';
 
-const SHOW_NICKNAME_POPOVER = 'SHOW_NICKNAME_POPOVER';
+// const SHOW_NICKNAME_POPOVER = 'SHOW_NICKNAME_POPOVER';
 const ADD_NICKNAME_POPOVER = 'ADD_NICKNAME_POPOVER';
 
 const NicknamePopovers = ({ address, onClose }) => {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import SendRowWrapper from '../send-row-wrapper';
+// import SendRowWrapper from '../send-row-wrapper';
 import UserPreferencedCurrencyInput from '../../../../components/app/user-preferenced-currency-input';
 import UserPreferencedTokenInput from '../../../../components/app/user-preferenced-token-input';
 import UserPreferencedCurrencyDisplay from '../../../../components/app/user-preferenced-currency-display';
@@ -32,6 +32,7 @@ export default class SendAmountRow extends Component {
     accountsList: PropTypes.object,
     sendAsset: PropTypes.object,
     updateSendAsset: PropTypes.func.isRequired,
+    updateSendAmount: PropTypes.func,
     nativeCurrency: PropTypes.string,
     nativeCurrencyImage: PropTypes.string,
     collectibles: PropTypes.arrayOf(
@@ -194,7 +195,10 @@ export default class SendAmountRow extends Component {
   }
 
   render() {
-    const { inError, asset } = this.props;
+    const {
+      // inError,
+      asset,
+    } = this.props;
 
     if (asset.type === ASSET_TYPES.COLLECTIBLE) {
       return null;
@@ -249,7 +253,7 @@ export default class SendAmountRow extends Component {
       accountsList,
     } = this.props;
 
-    const { sendableTokens, sendableCollectibles, selectAccount } = this.state;
+    const { sendableTokens, sendableCollectibles } = this.state;
 
     const balanceValue = accounts[selectedAddress]
       ? accounts[selectedAddress].balance
@@ -299,7 +303,12 @@ export default class SendAmountRow extends Component {
   }
 
   renderCollectible(collectible, insideDropdown = false) {
-    const { address, name, image, tokenId } = collectible;
+    const {
+      address,
+      //  name,
+      image,
+      tokenId,
+    } = collectible;
     const { accountsList, selectedAddress } = this.props;
     const { t } = this.context;
     const selectedAccount = accountsList.find((identity) => {

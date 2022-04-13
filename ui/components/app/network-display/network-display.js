@@ -11,7 +11,7 @@ import LoadingIndicator from '../../ui/loading-indicator';
 // import ColorIndicator from '../../ui/color-indicator';
 import {
   COLORS,
-  SIZES,
+  // SIZES,
   TYPOGRAPHY,
 } from '../../../helpers/constants/design-system';
 import Chip from '../../ui/chip/chip';
@@ -22,7 +22,7 @@ export default function NetworkDisplay({
   colored,
   outline,
   iconClassName,
-  indicatorSize,
+  // indicatorSize,
   disabled,
   labelProps,
   targetNetwork,
@@ -33,9 +33,9 @@ export default function NetworkDisplay({
     nickname: state.metamask.provider.nickname,
     type: state.metamask.provider.type,
   }));
-  const frequentRpcListDetail = useSelector(
-    (state) => state.metamask.frequentRpcListDetail,
-  );
+  // const frequentRpcListDetail = useSelector(
+  //   (state) => state.metamask.frequentRpcListDetail,
+  // );
   // const selectedNetwork = frequentRpcListDetail.filter((network) => network.nickname === currentNetwork.nickname)[0]
   // const labelKey = selectedNetwork ? selectedNetwork.labelKey : COLORS.UI4
 
@@ -91,7 +91,7 @@ export default function NetworkDisplay({
 }
 NetworkDisplay.propTypes = {
   colored: PropTypes.bool,
-  indicatorSize: PropTypes.oneOf(Object.values(SIZES)),
+  // indicatorSize: PropTypes.oneOf(Object.values(SIZES)),
   labelProps: Chip.propTypes.labelProps,
   targetNetwork: PropTypes.shape({
     type: PropTypes.oneOf([
@@ -108,5 +108,5 @@ NetworkDisplay.propTypes = {
 
 NetworkDisplay.defaultProps = {
   colored: true,
-  indicatorSize: SIZES.LG,
+  // indicatorSize: SIZES.LG,
 };

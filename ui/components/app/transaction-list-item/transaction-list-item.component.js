@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import ListItem from '../../ui/list-item';
+// import ListItem from '../../ui/list-item';
 import { useTransactionDisplayData } from '../../../hooks/useTransactionDisplayData';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 
@@ -111,6 +111,73 @@ function TransactionListItemInner({
     isEarliestNonce,
   );
 
+  const {
+    title,
+    // subtitle,
+    // subtitleContainsOrigin,
+    date,
+    category,
+    primaryCurrency,
+    recipientAddress,
+    // secondaryCurrency,
+    displayedStatusKey,
+    isPending,
+    senderAddress,
+  } = useTransactionDisplayData(transactionGroup);
+  const primaryToken = primaryCurrency.split('-').join(' ').split(' ');
+  const OtherTitle = title.split(' ');
+  const isOtherTitle = OtherTitle?.[1];
+  const isSend = category === TRANSACTION_GROUP_CATEGORIES.SEND;
+  // const isSignatureReq =
+  //   category === TRANSACTION_GROUP_CATEGORIES.SIGNATURE_REQUEST;
+  const isApproval = category === TRANSACTION_GROUP_CATEGORIES.APPROVAL;
+  const isReceive = category === TRANSACTION_GROUP_CATEGORIES.RECEIVE;
+  const isUnapproved = status === TRANSACTION_STATUSES.UNAPPROVED;
+  const isSwap = category === TRANSACTION_GROUP_CATEGORIES.SWAP;
+
+  // const className = classnames('transaction-list-item', {
+  //   'transaction-list-item--unconfirmed':
+  //     isPending ||
+  //     [
+  //       TRANSACTION_STATUSES.FAILED,
+  //       TRANSACTION_STATUSES.DROPPED,
+  //       TRANSACTION_STATUSES.REJECTED,
+  //     ].includes(displayedStatusKey),
+  // });
+
+  const toggleShowDetails = useCallback(() => {
+    if (isUnapproved) {
+      history.push(`${CONFIRM_TRANSACTION_ROUTE}/${id}`);
+      return;
+    }
+    setShowDetails((prev) => !prev);
+  }, [isUnapproved, history, id]);
+
+  const speedUpButton = useMemo(() => {
+    if (!shouldShowSpeedUp || !isPending || isUnapproved) {
+      return null;
+    }
+    return (
+      <Button
+        type="primary"
+        onClick={hasCancelled ? cancelTransaction : retryTransaction}
+        style={hasCancelled ? { width: 'auto' } : null}
+      >
+        {hasCancelled ? t('speedUpCancellation') : t('speedUp')}
+      </Button>
+    );
+  }, [
+    shouldShowSpeedUp,
+    isUnapproved,
+    t,
+    isPending,
+    hasCancelled,
+    retryTransaction,
+    cancelTransaction,
+  ]);
+
+  const showCancelButton = !hasCancelled && isPending && !isUnapproved;
+
   const transactionList = () => {
     return (
       <div
@@ -172,73 +239,6 @@ function TransactionListItemInner({
       </div>
     );
   };
-
-  const {
-    title,
-    subtitle,
-    subtitleContainsOrigin,
-    date,
-    category,
-    primaryCurrency,
-    recipientAddress,
-    secondaryCurrency,
-    displayedStatusKey,
-    isPending,
-    senderAddress,
-  } = useTransactionDisplayData(transactionGroup);
-  const primaryToken = primaryCurrency.split('-').join(' ').split(' ');
-  const OtherTitle = title.split(' ');
-  const isOtherTitle = OtherTitle?.[1];
-  const isSend = category === TRANSACTION_GROUP_CATEGORIES.SEND;
-  const isSignatureReq =
-    category === TRANSACTION_GROUP_CATEGORIES.SIGNATURE_REQUEST;
-  const isApproval = category === TRANSACTION_GROUP_CATEGORIES.APPROVAL;
-  const isReceive = category === TRANSACTION_GROUP_CATEGORIES.RECEIVE;
-  const isUnapproved = status === TRANSACTION_STATUSES.UNAPPROVED;
-  const isSwap = category === TRANSACTION_GROUP_CATEGORIES.SWAP;
-
-  const className = classnames('transaction-list-item', {
-    'transaction-list-item--unconfirmed':
-      isPending ||
-      [
-        TRANSACTION_STATUSES.FAILED,
-        TRANSACTION_STATUSES.DROPPED,
-        TRANSACTION_STATUSES.REJECTED,
-      ].includes(displayedStatusKey),
-  });
-
-  const toggleShowDetails = useCallback(() => {
-    if (isUnapproved) {
-      history.push(`${CONFIRM_TRANSACTION_ROUTE}/${id}`);
-      return;
-    }
-    setShowDetails((prev) => !prev);
-  }, [isUnapproved, history, id]);
-
-  const speedUpButton = useMemo(() => {
-    if (!shouldShowSpeedUp || !isPending || isUnapproved) {
-      return null;
-    }
-    return (
-      <Button
-        type="primary"
-        onClick={hasCancelled ? cancelTransaction : retryTransaction}
-        style={hasCancelled ? { width: 'auto' } : null}
-      >
-        {hasCancelled ? t('speedUpCancellation') : t('speedUp')}
-      </Button>
-    );
-  }, [
-    shouldShowSpeedUp,
-    isUnapproved,
-    t,
-    isPending,
-    hasCancelled,
-    retryTransaction,
-    cancelTransaction,
-  ]);
-
-  const showCancelButton = !hasCancelled && isPending && !isUnapproved;
 
   return (
     <>

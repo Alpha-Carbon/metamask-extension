@@ -7,17 +7,17 @@ import QrView from '../../../ui/qr-code';
 // import EditableLabel from '../../../ui/editable-label';
 // import Button from '../../../ui/button';
 // import { getURLHostName } from '../../../../helpers/utils/util';
-import { isHardwareKeyring } from '../../../../helpers/utils/hardware';
+// import { isHardwareKeyring } from '../../../../helpers/utils/hardware';
 
 export default class AccountDetailsModal extends Component {
   static propTypes = {
     selectedIdentity: PropTypes.object,
-    chainId: PropTypes.string,
-    showExportPrivateKeyModal: PropTypes.func,
-    setAccountLabel: PropTypes.func,
-    keyrings: PropTypes.array,
-    rpcPrefs: PropTypes.object,
-    accounts: PropTypes.array,
+    // chainId: PropTypes.string,
+    // showExportPrivateKeyModal: PropTypes.func,
+    // setAccountLabel: PropTypes.func,
+    // keyrings: PropTypes.array,
+    // rpcPrefs: PropTypes.object,
+    // accounts: PropTypes.array,
   };
 
   static contextTypes = {
@@ -31,26 +31,29 @@ export default class AccountDetailsModal extends Component {
       // chainId,
       // showExportPrivateKeyModal,
       // setAccountLabel,
-      keyrings,
+      // keyrings,
       // rpcPrefs,
-      accounts,
+      // accounts,
     } = this.props;
-    const { name, address } = selectedIdentity;
-    const keyring = keyrings.find((kr) => {
-      return kr.accounts.includes(address);
-    });
+    const {
+      // name,
+      address,
+    } = selectedIdentity;
+    // const keyring = keyrings.find((kr) => {
+    //   return kr.accounts.includes(address);
+    // });
 
-    const getAccountsNames = (allAccounts, currentName) => {
-      return Object.values(allAccounts)
-        .map((item) => item.name)
-        .filter((itemName) => itemName !== currentName);
-    };
+    // const getAccountsNames = (allAccounts, currentName) => {
+    //   return Object.values(allAccounts)
+    //     .map((item) => item.name)
+    //     .filter((itemName) => itemName !== currentName);
+    // };
 
-    let exportPrivateKeyFeatureEnabled = true;
-    // This feature is disabled for hardware wallets
-    if (isHardwareKeyring(keyring?.type)) {
-      exportPrivateKeyFeatureEnabled = false;
-    }
+    // let exportPrivateKeyFeatureEnabled = true;
+    // // This feature is disabled for hardware wallets
+    // if (isHardwareKeyring(keyring?.type)) {
+    //   exportPrivateKeyFeatureEnabled = false;
+    // }
 
     return (
       <AccountModalContainer className="account-details-modal">

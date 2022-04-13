@@ -118,40 +118,44 @@ input.form-control {
   }
 }
 
-.mr-1{
+.mr-1 {
   margin-right: 5px;
 }
-.mr-2{
+
+.mr-2 {
   margin-right: 10px;
 }
-.ml-1{
+
+.ml-1 {
   margin-left: 5px;
 }
-.ml-2{
+
+.ml-2 {
   margin-left: 10px;
 }
 
-.d-flex{
+.d-flex {
   display: flex;
 }
 
-.align-items-center{
+.align-items-center {
   align-items: center;
 }
 
-.justify-content-space-between{
+.justify-content-space-between {
   justify-content: space-between;
 }
 
-.w-100{
+.w-100 {
   width: 100%;
 }
 
-.txt-linear-secondary-gradient-2{
+.txt-linear-secondary-gradient-2 {
   background: var(--secondary-2-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 /** Default Typography on base elements **/
 * {
   font-family: $font-family;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { checkExistingAddresses } from '../../../helpers/utils/util';
-import TokenListPlaceholder from './token-list-placeholder';
+// import TokenListPlaceholder from './token-list-placeholder';
 
 export default class TokenList extends Component {
   static contextTypes = {

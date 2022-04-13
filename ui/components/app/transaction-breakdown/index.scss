@@ -21,7 +21,7 @@
     text-align: end;
     overflow: hidden;
     text-overflow: ellipsis;
-    
+
 
     &--eth-total {
       font-weight: bold;
@@ -32,7 +32,8 @@
       font-weight: bold;
       color: var(--gray-2);
     }
-    &.linear-gradient{
+
+    &.linear-gradient {
       background: var(--secondary-2-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;

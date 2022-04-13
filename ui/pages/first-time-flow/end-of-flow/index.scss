@@ -2,16 +2,19 @@
   color: black;
   font-style: normal;
 
-  &-logo-wrap{
+  &-logo-wrap {
     display: flex;
     align-items: center;
     margin-top: 3%;
-    &>span{
+
+    & > span {
       @include roundeNormal;
       @include H5;
-      color:var(--white);
+
+      color: var(--white);
     }
   }
+
   &__text-1,
   &__text-3 {
     @include Paragraph;
@@ -23,6 +26,7 @@
   &__text-2 {
     @include Paragraph;
     @include roundeBold;
+
     color: var(--white);
     margin-top: 26px;
   }
@@ -30,9 +34,11 @@
   &__text-3 {
     margin-top: 2px;
     margin-bottom: 2px;
-    color:var(--gray-3);
+    color: var(--gray-3);
+
     @media screen and (max-width: $break-small) {
       @include H6;
+
       margin-bottom: 16px;
     }
   }

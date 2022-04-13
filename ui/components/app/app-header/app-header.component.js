@@ -2,10 +2,13 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 // import { useSelector } from 'react-redux';
-import Identicon from '../../ui/identicon';
+// import Identicon from '../../ui/identicon';
 // import MetaFoxLogo from '../../ui/metafox-logo';
 import AlphaCarbonLogoGradient from '../../ui/alpha-carbon-logo-gradient';
-import { DEFAULT_ROUTE, UNLOCK_ROUTE } from '../../../helpers/constants/routes';
+import {
+  DEFAULT_ROUTE,
+  // UNLOCK_ROUTE
+} from '../../../helpers/constants/routes';
 import NetworkDisplay from '../network-display';
 import MenuIcon from '../../ui/icon/menu-icon.component';
 import { getEnvironmentType } from '../../../../app/scripts/lib/util';
@@ -18,7 +21,7 @@ export default class AppHeader extends PureComponent {
     showNetworkDropdown: PropTypes.func,
     hideNetworkDropdown: PropTypes.func,
     toggleAccountMenu: PropTypes.func,
-    selectedAddress: PropTypes.string,
+    // selectedAddress: PropTypes.string,
     isUnlocked: PropTypes.bool,
     hideNetworkIndicator: PropTypes.bool,
     disabled: PropTypes.bool,
@@ -66,7 +69,7 @@ export default class AppHeader extends PureComponent {
     const {
       isUnlocked,
       toggleAccountMenu,
-      selectedAddress,
+      // selectedAddress,
       disabled,
       isAccountMenuOpen,
     } = this.props;
@@ -117,7 +120,7 @@ export default class AppHeader extends PureComponent {
           'app-header--back-drop': isUnlocked,
           'app-header--filter':
             (isAccountMenuOpen || networkDropdownOpen) &&
-            getEnvironmentType() != ENVIRONMENT_TYPE_FULLSCREEN,
+            getEnvironmentType() !== ENVIRONMENT_TYPE_FULLSCREEN,
         })}
       >
         <div className="app-header__contents">

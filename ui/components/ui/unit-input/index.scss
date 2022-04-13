@@ -39,6 +39,7 @@
 
   &__input {
     @include Paragraph;
+
     font-size: 30px;
     color: #4d4d4d;
     border: none;
@@ -49,6 +50,7 @@
     background: linear-gradient(111.99deg, var(--secondary-2-start) 9.4%, var(--secondary-2-end) 92.26%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
     &__disabled {
       background-color: rgb(222, 222, 222);
     }

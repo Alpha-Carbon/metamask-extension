@@ -51,10 +51,10 @@ import {
   ADD_COLLECTIBLE_ROUTE,
 } from '../../helpers/constants/routes';
 ///: BEGIN:ONLY_INCLUDE_IN(beta)
-import BetaHomeFooter from './beta/beta-home-footer.component';
+// import BetaHomeFooter from './beta/beta-home-footer.component';
 ///: END:ONLY_INCLUDE_IN
 ///: BEGIN:ONLY_INCLUDE_IN(flask)
-import FlaskHomeFooter from './flask/flask-home-footer.component';
+// import FlaskHomeFooter from './flask/flask-home-footer.component';
 ///: END:ONLY_INCLUDE_IN
 
 const LEARN_MORE_URL =
@@ -276,36 +276,36 @@ export default class Home extends PureComponent {
           ///: BEGIN:ONLY_INCLUDE_IN(flask)
           shouldShowErrors
             ? Object.entries(errorsToShow).map(([errorId, error]) => {
-              return (
-                <HomeNotification
-                  classNames={['home__error-message']}
-                  infoText={error.data.snapId}
-                  descriptionText={
-                    <>
-                      <Typography
-                        color={COLORS.UI1}
-                        variant={TYPOGRAPHY.H5}
-                        fontWeight={FONT_WEIGHT.NORMAL}
-                      >
-                        {t('somethingWentWrong')}
-                      </Typography>
-                      <Typography
-                        color={COLORS.UI1}
-                        variant={TYPOGRAPHY.H7}
-                        fontWeight={FONT_WEIGHT.NORMAL}
-                      >
-                        {t('snapError', [error.message, error.code])}
-                      </Typography>
-                    </>
-                  }
-                  onIgnore={async () => {
-                    await removeSnapError(errorId);
-                  }}
-                  ignoreText="Dismiss"
-                  key="home-error-message"
-                />
-              );
-            })
+                return (
+                  <HomeNotification
+                    classNames={['home__error-message']}
+                    infoText={error.data.snapId}
+                    descriptionText={
+                      <>
+                        <Typography
+                          color={COLORS.UI1}
+                          variant={TYPOGRAPHY.H5}
+                          fontWeight={FONT_WEIGHT.NORMAL}
+                        >
+                          {t('somethingWentWrong')}
+                        </Typography>
+                        <Typography
+                          color={COLORS.UI1}
+                          variant={TYPOGRAPHY.H7}
+                          fontWeight={FONT_WEIGHT.NORMAL}
+                        >
+                          {t('snapError', [error.message, error.code])}
+                        </Typography>
+                      </>
+                    }
+                    onIgnore={async () => {
+                      await removeSnapError(errorId);
+                    }}
+                    ignoreText="Dismiss"
+                    key="home-error-message"
+                  />
+                );
+              })
             : null
           ///: END:ONLY_INCLUDE_IN
         }
@@ -328,8 +328,8 @@ export default class Home extends PureComponent {
                   {newCollectibleAddedMessage === 'success'
                     ? t('newCollectibleAddedMessage')
                     : t('newCollectibleAddFailed', [
-                      newCollectibleAddedMessage,
-                    ])}
+                        newCollectibleAddedMessage,
+                      ])}
                 </Typography>
                 <button
                   className="fas fa-times home__close"
