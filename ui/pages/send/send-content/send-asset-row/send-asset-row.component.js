@@ -65,8 +65,9 @@ export default class SendAssetRow extends Component {
         collectible.isCurrentlyOwned && collectible.standard === ERC721,
     );
     this.setState({
-      sendableTokens, sendableCollectibles,
-    })
+      sendableTokens,
+      sendableCollectibles,
+    });
   }
 
   openDropdown = () => this.setState({ isShowingDropdown: true });
@@ -116,9 +117,7 @@ export default class SendAssetRow extends Component {
     return (
       // <SendRowWrapper label={`${t('asset')}:`}>
       <div className="send-v2__asset-wrap">
-        <div className="send-v2__asset-wrap-title">
-          {t('from')}
-        </div>
+        <div className="send-v2__asset-wrap-title">{t('from')}</div>
         <div className="send-v2__asset-dropdown">
           <div
             className="send-v2__asset-dropdown__input-wrapper"
@@ -205,7 +204,7 @@ export default class SendAssetRow extends Component {
             )} */}
 
             {accountsList.map((identity) => {
-              //render account list
+              // render account list
               return (
                 <div
                   className="send-v2__asset-dropdown__asset"
@@ -238,7 +237,7 @@ export default class SendAssetRow extends Component {
                     </div>
                   </div>
                 </div>
-              )
+              );
             })}
           </div>
         </div>
@@ -265,7 +264,7 @@ export default class SendAssetRow extends Component {
     const sendableAssets = [...sendableTokens, ...sendableCollectibles];
     const selectedAccount = accountsList.find((identity) => {
       return identity.address === selectedAddress;
-    })
+    });
 
     return (
       <div
@@ -312,7 +311,7 @@ export default class SendAssetRow extends Component {
     const { accountsList, selectedAddress } = this.props;
     const selectedAccount = accountsList.find((identity) => {
       return identity.address === selectedAddress;
-    })
+    });
 
     return (
       <div
@@ -349,7 +348,7 @@ export default class SendAssetRow extends Component {
     const { t } = this.context;
     const selectedAccount = accountsList.find((identity) => {
       return identity.address === selectedAddress;
-    })
+    });
 
     return (
       <div

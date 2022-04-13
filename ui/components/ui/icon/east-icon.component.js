@@ -6,7 +6,7 @@ export default function EastIcon({
   width = '24',
   height = '24',
   color = '#323232',
-  opacity = '0.44'
+  opacity = '0.44',
 }) {
   return (
     <svg

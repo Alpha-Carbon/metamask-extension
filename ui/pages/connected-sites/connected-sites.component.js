@@ -113,11 +113,9 @@ export default class ConnectedSites extends Component {
         </div>
         <h3 className="connected-sites-title">{t('connectedSites')}</h3>
         <p className="connected-sites-subtitle">
-          {
-            connectedSubjects.length
-              ? t('connectedSitesDescription', [accountLabel])
-              : t('connectedSitesEmptyDescription', [accountLabel])
-          }
+          {connectedSubjects.length
+            ? t('connectedSitesDescription', [accountLabel])
+            : t('connectedSitesEmptyDescription', [accountLabel])}
         </p>
         {this.renderConnectedSitesList()}
       </Popover>
@@ -166,8 +164,12 @@ export default class ConnectedSites extends Component {
         <div className="connected-sites-icon">
           <AccountTreeGradientIcon />
         </div>
-        <h3 className="connected-sites-title">{t('disconnectPrompt', [subjectKey])}</h3>
-        <p className="connected-sites-subtitle">{t('disconnectAllAccountsConfirmationDescription')}</p>
+        <h3 className="connected-sites-title">
+          {t('disconnectPrompt', [subjectKey])}
+        </h3>
+        <p className="connected-sites-subtitle">
+          {t('disconnectAllAccountsConfirmationDescription')}
+        </p>
       </Popover>
     );
   }

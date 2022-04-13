@@ -106,9 +106,7 @@ const ConfirmImportToken = () => {
                       {/* {getTokenName(name, symbol)} */}
                       {importTokenName.split(' ')[0]}
                       <br />
-                      <span>
-                        {importTokenName.split(' ')[2]}
-                      </span>
+                      <span>{importTokenName.split(' ')[2]}</span>
                     </div>
                   </div>
                   <div className="confirm-import-token__balance">

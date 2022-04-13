@@ -563,7 +563,7 @@ export default class ConfirmTransactionBase extends Component {
                 <GasTiming
                   maxPriorityFeePerGas={hexWEIToDecGWEI(
                     maxPriorityFeePerGas ||
-                    txData.txParams.maxPriorityFeePerGas,
+                      txData.txParams.maxPriorityFeePerGas,
                   )}
                   maxFeePerGas={hexWEIToDecGWEI(
                     maxFeePerGas || txData.txParams.maxFeePerGas,

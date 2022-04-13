@@ -45,7 +45,15 @@ import { conversionUtil } from '../../shared/modules/conversion.utils';
  */
 export function useCurrencyDisplay(
   inputValue,
-  { displayValue, prefix, numberOfDecimals, denomination, currency, conversionRate, ...opts },
+  {
+    displayValue,
+    prefix,
+    numberOfDecimals,
+    denomination,
+    currency,
+    conversionRate,
+    ...opts
+  },
 ) {
   const currentCurrency = useSelector(getCurrentCurrency);
   const nativeCurrency = useSelector(getNativeCurrency);

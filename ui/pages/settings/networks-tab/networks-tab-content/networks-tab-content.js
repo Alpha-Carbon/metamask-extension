@@ -39,7 +39,6 @@ const NetworksTabContent = ({
           selectedNetwork={selectedNetwork}
         />
       ) : null} */}
-
     </>
   );
 };

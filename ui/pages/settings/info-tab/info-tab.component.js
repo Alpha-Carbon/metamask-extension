@@ -116,7 +116,11 @@ export default class InfoTab extends PureComponent {
           {/* {this.renderInfoLinks()} */}
         </div>
         <div className="info-tab__logo-wrapper">
-          <img src="./images/alphaCarbon/alpha-gradient-logo.png" className="info-tab__logo" alt="" />
+          <img
+            src="./images/alphaCarbon/alpha-gradient-logo.png"
+            className="info-tab__logo"
+            alt=""
+          />
         </div>
       </div>
     );

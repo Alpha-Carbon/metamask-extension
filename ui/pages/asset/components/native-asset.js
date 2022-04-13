@@ -13,23 +13,20 @@ import {
   getSelectedAccount,
 } from '../../../selectors/selectors';
 import { showModal } from '../../../store/actions';
-import {
-  DEFAULT_ROUTE,
-  SEND_ROUTE,
-} from '../../../helpers/constants/routes';
+import { DEFAULT_ROUTE, SEND_ROUTE } from '../../../helpers/constants/routes';
 import { getURLHostName } from '../../../helpers/utils/util';
 import {
   useNewMetricEvent,
   useMetricEvent,
 } from '../../../hooks/useMetricEvent';
 import { I18nContext } from '../../../contexts/i18n';
-import AssetNavigation from './asset-navigation';
-import AssetOptions from './asset-options';
 import ActAvatar from '../../../components/ui/icon/act-avatar-icon.component';
 import ReceiveIcon from '../../../components/ui/icon/receive-icon.component';
 import SendIcon from '../../../components/ui/icon/send-icon.component';
 import UserPreferencedCurrencyDisplay from '../../../components/app/user-preferenced-currency-display';
 import { PRIMARY } from '../../../helpers/constants/common';
+import AssetOptions from './asset-options';
+import AssetNavigation from './asset-navigation';
 
 export default function NativeAsset({ nativeCurrency }) {
   const selectedAccountName = useSelector(
@@ -70,29 +67,30 @@ export default function NativeAsset({ nativeCurrency }) {
         assetName={nativeCurrency}
         onBack={() => history.push(DEFAULT_ROUTE)}
         isEthNetwork={!rpcPrefs.blockExplorerUrl}
-      // optionsButton={
-      //   <AssetOptions
-      //     isNativeAsset
-      //     onClickBlockExplorer={() => {
-      //       blockExplorerLinkClickedEvent();
-      //       global.platform.openTab({
-      //         url: accountLink,
-      //       });
-      //     }}
-      //     onViewAccountDetails={() => {
-      //       dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
-      //     }}
-      //   />
-      // }
+        // optionsButton={
+        //   <AssetOptions
+        //     isNativeAsset
+        //     onClickBlockExplorer={() => {
+        //       blockExplorerLinkClickedEvent();
+        //       global.platform.openTab({
+        //         url: accountLink,
+        //       });
+        //     }}
+        //     onViewAccountDetails={() => {
+        //       dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
+        //     }}
+        //   />
+        // }
       />
       <div className="asset-native__wrapper">
         <ActAvatar
-          width='56'
-          height='56'
-          className='asset-native__wrapper-icon'
-          txtClassName='asset-native__wrapper-icon-txt' />
+          width="56"
+          height="56"
+          className="asset-native__wrapper-icon"
+          txtClassName="asset-native__wrapper-icon-txt"
+        />
         <UserPreferencedCurrencyDisplay
-          className='eth-overview__primary-balance asset-native__wrapper-balance'
+          className="eth-overview__primary-balance asset-native__wrapper-balance"
           data-testid="eth-overview__primary-currency"
           value={balance}
           type={PRIMARY}
@@ -100,14 +98,17 @@ export default function NativeAsset({ nativeCurrency }) {
           hideTitle
         />
         <div className="asset-native__wrapper-buttons">
-          <button className='asset-native__wrapper-buttons-receive' onClick={() => {
-            dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
-          }}>
+          <button
+            className="asset-native__wrapper-buttons-receive"
+            onClick={() => {
+              dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
+            }}
+          >
             <ReceiveIcon size={18} color="#FFFFFF" />
             <p>{t('receive')}</p>
           </button>
           <button
-            className='asset-native__wrapper-buttons-send'
+            className="asset-native__wrapper-buttons-send"
             onClick={() => {
               sendEvent();
               history.push(SEND_ROUTE);

@@ -444,6 +444,9 @@
   "cancelled": {
     "message": "Cancelled"
   },
+  "carbonWallet": {
+    "message": "Carbon Wallet"
+  },
   "chainId": {
     "message": "Chain ID"
   },
@@ -532,6 +535,9 @@
   "connectToMultipleNumberOfAccounts": {
     "message": "$1 accounts",
     "description": "$1 is the number of accounts to which the web3 site/application is asking to connect; this will substitute $1 in connectToMultiple"
+  },
+  "connectToSite": {
+    "message": "Connect to "
   },
   "connectWithMetaMask": {
     "message": "Connect With Carbon Wallet"
@@ -641,6 +647,9 @@
   },
   "createAccount": {
     "message": "Create Account"
+  },
+  "createGetStart": {
+    "message": "To get started, create a new wallet or use one you already have."
   },
   "createNewWallet": {
     "message": "Create a new wallet"
@@ -1129,6 +1138,9 @@
   "exportPrivateKey": {
     "message": "Export Private Key"
   },
+  "extension": {
+    "message": "Extension"
+  },
   "externalExtension": {
     "message": "External Extension"
   },
@@ -1430,6 +1442,9 @@
   },
   "importExistingWalletTitle": {
     "message": "Import existing wallet with Secret Recovery Phrase"
+  },
+  "importFromSeed": {
+    "message": "Import from seed"
   },
   "importMyWallet": {
     "message": "Import My Wallet"
@@ -2440,6 +2455,9 @@
   "removeSnapDescription": {
     "message": "This action will delete the snap, its data and revoke your given permissions."
   },
+  "rename": {
+    "message": "Rename"
+  },
   "replace": {
     "message": "replace"
   },
@@ -2500,6 +2518,9 @@
   },
   "saveAsCsvFile": {
     "message": "Save as CSV File"
+  },
+  "saveYourPrivateKey": {
+    "message": "Save it somewhere safe and secret."
   },
   "scanInstructions": {
     "message": "Place the QR code in front of your camera"
@@ -2703,6 +2724,15 @@
   },
   "showPermissions": {
     "message": "Show permissions"
+  },
+  "showPrivateKey": {
+    "message": "Show private key"
+  },
+  "showPrivateKeyDescription": {
+    "message": "This is the private key for the current selected account: $1. Never disclose this key. Anyone with your private key can fully control your account, including transferring away any of your funds."
+  },
+  "showPrivateKeyTitle": {
+    "message": "Show private key for “$1”"
   },
   "showPrivateKeys": {
     "message": "Show Private Keys"
@@ -3775,43 +3805,13 @@
   "youSign": {
     "message": "You are signing"
   },
+  "yourPrivateKey": {
+    "message": "Your privare key"
+  },
   "yourPrivateSeedPhrase": {
     "message": "Your private Secret Recovery Phrase"
   },
   "zeroGasPriceOnSpeedUpError": {
     "message": "Zero gas price on speed up"
-  },
-  "carbonWallet":{
-    "message": "Carbon Wallet"
-  },
-  "extension":{
-    "message": "Extension"
-  },
-  "createGetStart":{
-    "message": "To get started, create a new wallet or use one you already have."
-  },
-  "importFromSeed":{
-    "message": "Import from seed"
-  },
-  "rename":{
-    "message": "Rename"
-  },
-  "connectToSite":{
-    "message":"Connect to "
-  },
-  "yourPrivateKey":{
-    "message":"Your privare key"
-  },
-  "saveYourPrivateKey":{
-    "message":"Save it somewhere safe and secret."
-  },
-  "showPrivateKey":{
-    "message":"Show private key"
-  },
-  "showPrivateKeyTitle":{
-    "message":"Show private key for “$1”"
-  },
-  "showPrivateKeyDescription":{
-    "message":"This is the private key for the current selected account: $1. Never disclose this key. Anyone with your private key can fully control your account, including transferring away any of your funds."
   }
 }

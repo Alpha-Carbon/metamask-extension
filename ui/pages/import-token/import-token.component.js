@@ -515,10 +515,9 @@ class ImportToken extends Component {
       <Tab name={this.context.t('customToken')} key="custom-tab">
         {this.renderCustomTokenForm()}
       </Tab>,
-
     );
 
-    return <Tabs tabsClassName="home__tabs" >{tabs}</Tabs>;
+    return <Tabs tabsClassName="home__tabs">{tabs}</Tabs>;
   }
 
   render() {

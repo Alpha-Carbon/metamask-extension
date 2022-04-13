@@ -34,8 +34,6 @@ import { INVALID_ASSET_TYPE } from '../../../helpers/constants/error-keys';
 import { showModal } from '../../../store/actions';
 import WalletOverview from './wallet-overview';
 
-
-
 const TokenOverview = ({ className, token }) => {
   const dispatch = useDispatch();
   const t = useContext(I18nContext);
@@ -151,14 +149,17 @@ const TokenOverview = ({ className, token }) => {
             )}
           /> */}
           <div className="asset-native__wrapper-buttons">
-            <button className='asset-native__wrapper-buttons-receive' onClick={() => {
-              dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
-            }}>
+            <button
+              className="asset-native__wrapper-buttons-receive"
+              onClick={() => {
+                dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
+              }}
+            >
               <ReceiveIcon size={18} color="#FFFFFF" />
               <p>{t('receive')}</p>
             </button>
             <button
-              className='asset-native__wrapper-buttons-send'
+              className="asset-native__wrapper-buttons-send"
               onClick={async () => {
                 sendTokenEvent();
                 try {

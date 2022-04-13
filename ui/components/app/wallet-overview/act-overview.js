@@ -1,9 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 // import PropTypes from 'prop-types';
-import {
-  useDispatch,
-  useSelector,
-} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import classnames from 'classnames';
 import { useHistory } from 'react-router-dom';
 import copyToClipboard from 'copy-to-clipboard';
@@ -48,7 +45,9 @@ const ActOverview = () => {
   // const [title, parts] = useCurrencyDisplay(balance, { currency });
   const currentCurrency = useSelector(getCurrentCurrency);
   const [conversionRate, setConversionRate] = useState('');
-  const [title, parts] = useCurrencyDisplay(balance, { currency: currentCurrency });
+  const [title, parts] = useCurrencyDisplay(balance, {
+    currency: currentCurrency,
+  });
 
   // send method
   const sendEvent = useMetricEvent({
@@ -59,14 +58,18 @@ const ActOverview = () => {
     },
   });
   useEffect(() => {
-    fetch(`https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0xdAC17F958D2ee523a2206206994597C13D831ec7&vs_currencies=${currentCurrency}`)
+    fetch(
+      `https://api.coingecko.com/api/v3/simple/token_price/ethereum?contract_addresses=0xdAC17F958D2ee523a2206206994597C13D831ec7&vs_currencies=${currentCurrency}`,
+    )
       .then(function (response) {
         return response.json();
       })
       .then(function (myJson) {
-        setConversionRate(myJson['0xdac17f958d2ee523a2206206994597c13d831ec7'][currentCurrency])
+        setConversionRate(
+          myJson['0xdac17f958d2ee523a2206206994597c13d831ec7'][currentCurrency],
+        );
       });
-  }, [currentCurrency])
+  }, [currentCurrency]);
   return (
     <div className="act-overview__wrapper">
       <div className="act-overview__balance">
@@ -75,7 +78,8 @@ const ActOverview = () => {
           <Identicon address={selectedIdentity.address} diameter={36} />
         </div>
         <div className="act-overview__balance-info">
-          <div className="act-overview__balance-info-account"
+          <div
+            className="act-overview__balance-info-account"
             onClick={() => {
               dispatch(showModal({ name: 'ACCOUNT_NAME_EDIT' }));
             }}
@@ -112,12 +116,11 @@ const ActOverview = () => {
         <span className="act-overview__balance-token-currency">
           {parts.value}
         </span>
-        <span>
-          {parts.suffix}
-        </span>
+        <span>{parts.suffix}</span>
       </div>
       <div className="act-overview__buttons">
-        <button className="act-overview__buttons-receive"
+        <button
+          className="act-overview__buttons-receive"
           onClick={() => {
             dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
           }}
@@ -144,7 +147,7 @@ const ActOverview = () => {
           {t('send')}
         </button>
       </div>
-    </div >
+    </div>
   );
 };
 

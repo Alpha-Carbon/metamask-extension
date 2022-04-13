@@ -14,7 +14,7 @@ function mapStateToProps(state) {
   return {};
 }
 
-function SendTo({ }) {
+function SendTo({}) {
   const t = useI18nContext();
   const dispatch = useDispatch();
   const recipient = useSelector(getRecipient);

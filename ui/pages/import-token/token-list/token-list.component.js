@@ -26,10 +26,7 @@ export default class TokenList extends Component {
       useTokenDetection,
     } = this.props;
 
-    return results.length === 0 ? (
-      // <TokenListPlaceholder />
-      null
-    ) : (
+    return results.length === 0 ? null : ( // <TokenListPlaceholder />
       <div className="token-list">
         <div className="token-list__title">
           {this.context.t('searchResults')}

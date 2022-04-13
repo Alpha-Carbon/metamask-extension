@@ -7,12 +7,12 @@ import {
   setUsePhishDetect,
   exportAccount,
 } from '../../../store/actions';
-import SecurityTab from './security-tab.component';
 import { EXPORT_PRIVATE_KEY_ROUTE } from '../../../helpers/constants/routes';
 import {
   getSelectedIdentity,
   getMetaMaskAccountsOrdered,
 } from '../../../selectors';
+import SecurityTab from './security-tab.component';
 
 const mapStateToProps = (state, ownProps) => {
   const {

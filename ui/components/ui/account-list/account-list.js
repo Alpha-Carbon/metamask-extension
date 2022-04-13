@@ -62,7 +62,6 @@ const AccountList = ({
               }
             >
               <i className="fa fa-info-circle" />
-
             </Tooltip>
           </div>
         ) : null}
@@ -111,8 +110,9 @@ const AccountList = ({
                 </div>
                 {addressLastConnectedMap[address] ? (
                   <Tooltip
-                    title={`${t('lastConnected')} ${addressLastConnectedMap[address]
-                      }`}
+                    title={`${t('lastConnected')} ${
+                      addressLastConnectedMap[address]
+                    }`}
                   >
                     <i className="fa fa-info-circle" />
                   </Tooltip>

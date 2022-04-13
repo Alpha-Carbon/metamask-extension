@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, withRouter } from 'react-router-dom';
 import { useDispatch, connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { compose } from 'redux'
+
+import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import validUrl from 'valid-url';
 import log from 'loglevel';
@@ -558,9 +558,12 @@ const NetworksFormModal = ({
           'networks-tab__add-network-form': addNewNetwork,
         })}
       >
-        <button className='networks-tab__network-form__modal-close' onClick={() => {
-          dispatch(hideModal());
-        }}>
+        <button
+          className="networks-tab__network-form__modal-close"
+          onClick={() => {
+            dispatch(hideModal());
+          }}
+        >
           <CloseIcon />
         </button>
         {addNewNetwork ? (
@@ -600,7 +603,9 @@ const NetworksFormModal = ({
             titleText={t('chainId')}
             value={chainId}
             disabled={viewOnly}
-            tooltipText={viewOnly ? null : t('networkSettingsChainIdDescription')}
+            tooltipText={
+              viewOnly ? null : t('networkSettingsChainIdDescription')
+            }
           />
           <FormField
             warning={warnings.ticker?.msg || ''}
@@ -664,7 +669,4 @@ NetworksFormModal.defaultProps = {
   selectedNetwork: {},
 };
 
-export default compose(
-  withRouter,
-  connect(mapStateToProps),
-)(NetworksFormModal);
+export default compose(withRouter, connect(mapStateToProps))(NetworksFormModal);

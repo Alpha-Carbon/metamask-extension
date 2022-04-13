@@ -150,25 +150,25 @@ class SettingsPage extends PureComponent {
     const { t } = this.context;
     const {
       currentPath,
-      isPopup,
-      isAddressEntryPage,
-      pathnameI18nKey,
-      addressName,
-      initialBreadCrumbRoute,
-      breadCrumbTextKey,
-      history,
-      initialBreadCrumbKey,
+      // isPopup,
+      // isAddressEntryPage,
+      // pathnameI18nKey,
+      // addressName,
+      // initialBreadCrumbRoute,
+      // breadCrumbTextKey,
+      // history,
+      // initialBreadCrumbKey,
     } = this.props;
 
-    let subheaderText;
+    // let subheaderText;
 
-    if (isPopup && isAddressEntryPage) {
-      subheaderText = t('settings');
-    } else if (initialBreadCrumbKey) {
-      subheaderText = t(initialBreadCrumbKey);
-    } else {
-      subheaderText = t(pathnameI18nKey || 'general');
-    }
+    // if (isPopup && isAddressEntryPage) {
+    //   subheaderText = t('settings');
+    // } else if (initialBreadCrumbKey) {
+    //   subheaderText = t(initialBreadCrumbKey);
+    // } else {
+    //   subheaderText = t(pathnameI18nKey || 'general');
+    // }
 
     return (
       !currentPath.startsWith(NETWORKS_ROUTE) && (

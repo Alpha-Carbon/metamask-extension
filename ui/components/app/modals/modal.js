@@ -11,6 +11,7 @@ import { ENVIRONMENT_TYPE_POPUP } from '../../../../shared/constants/app';
 // Modal Components
 import ConfirmCustomizeGasModal from '../gas-customization/gas-modal-page-container';
 import SwapsGasCustomizationModal from '../../../pages/swaps/swaps-gas-customization-modal';
+import NetworksFormModal from '../../../pages/settings/networks-tab/networks-form-modal';
 import DepositEtherModal from './deposit-ether-modal';
 import AccountDetailsModal from './account-details-modal';
 import AccountNameEdit from './account-name-edit-modal';
@@ -32,7 +33,6 @@ import EditApprovalPermission from './edit-approval-permission';
 import NewAccountModal from './new-account-modal';
 import CustomizeNonceModal from './customize-nonce';
 import ConvertTokenToNftModal from './convert-token-to-nft-modal/convert-token-to-nft-modal';
-import NetworksFormModal from '../../../pages/settings/networks-tab/networks-form-modal';
 
 const modalContainerBaseStyle = {
   transform: 'translate3d(-50%, 0, 0px)',
@@ -503,7 +503,7 @@ class Modal extends Component {
 
   render() {
     const modal = MODALS[this.props.modalState.name || 'DEFAULT'];
-    const { contents: children, disableBackdropClick = false, } = modal;
+    const { contents: children, disableBackdropClick = false } = modal;
     const modalStyle =
       modal[isMobileView() ? 'mobileModalStyle' : 'laptopModalStyle'];
     const contentStyle = modal.contentStyle || {};

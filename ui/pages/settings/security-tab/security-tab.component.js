@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import copyToClipboard from 'copy-to-clipboard';
 import ToggleButton from '../../../components/ui/toggle-button';
 import {
   REVEAL_SEED_ROUTE,
@@ -11,9 +12,9 @@ import Button from '../../../components/ui/button';
 import TextField from '../../../components/ui/text-field';
 import VisibilityIcon from '../../../components/ui/icon/visibility-icon.component';
 import Tooltip from '../../../components/ui/tooltip';
-import copyToClipboard from 'copy-to-clipboard';
 import { SECOND } from '../../../../shared/constants/time';
 import CopyPrimaryGradientIcon from '../../../components/ui/icon/copy-primary-gradient-icon.component';
+
 export default class SecurityTab extends PureComponent {
   static contextTypes = {
     t: PropTypes.func,
@@ -39,7 +40,7 @@ export default class SecurityTab extends PureComponent {
     privateKey: null,
     copied: false,
     copyTimeout: null,
-  }
+  };
 
   renderSeedWords() {
     const { t } = this.context;
@@ -162,14 +163,10 @@ export default class SecurityTab extends PureComponent {
 
   renderShowPrivateKey() {
     const { t } = this.context;
-    const {
-      history,
-      accountsList,
-      selectedAddress,
-    } = this.props;
+    const { history, accountsList, selectedAddress } = this.props;
     const selectedAccount = accountsList.find((identity) => {
       return identity.address === selectedAddress;
-    })
+    });
 
     return (
       <div className="settings-page__content-row">
@@ -239,8 +236,11 @@ export default class SecurityTab extends PureComponent {
                     onClick={() => {
                       this.setState({
                         copied: true,
-                        copyTimeout: setTimeout(() => this.setState({ copied: true }), SECOND * 3),
-                      })
+                        copyTimeout: setTimeout(
+                          () => this.setState({ copied: true }),
+                          SECOND * 3,
+                        ),
+                      });
                       copyToClipboard(privateKey);
                     }}
                   >
@@ -249,22 +249,22 @@ export default class SecurityTab extends PureComponent {
                 </Tooltip>
               )}
               <TextField
-                className={
-                  classNames({
-                    "export-private-key": privateKey,
-                  })
-                }
+                className={classNames({
+                  'export-private-key': privateKey,
+                })}
                 key="export-private-key"
                 id="export-private-key"
                 placeholder={t('password')}
-                value={privateKey ? privateKey : password}
+                value={privateKey || password}
                 type={privateKey ? 'text' : 'password'}
                 fullWidth
-                label={privateKey ? t('yourPrivateKey') : t('enterPasswordContinue')}
-                onChange={(event) => this.setState({ password: event.target.value })}
-                inputProps={
-                  { readOnly: privateKey }
+                label={
+                  privateKey ? t('yourPrivateKey') : t('enterPasswordContinue')
                 }
+                onChange={(event) =>
+                  this.setState({ password: event.target.value })
+                }
+                inputProps={{ readOnly: privateKey }}
                 autoFocus
               />
             </div>
@@ -276,7 +276,7 @@ export default class SecurityTab extends PureComponent {
                   event.preventDefault();
                   this.setState({
                     privateKey: null,
-                  })
+                  });
                   history.push(SECURITY_ROUTE);
                 }}
               >
@@ -298,7 +298,7 @@ export default class SecurityTab extends PureComponent {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   render() {
@@ -306,20 +306,20 @@ export default class SecurityTab extends PureComponent {
 
     return (
       <div className="settings-page__body">
-        {!isExportPrivateKey ?
+        {!isExportPrivateKey ? (
           <>
-            {warning ? <div className="settings-tab__error">{warning}</div> : null}
+            {warning ? (
+              <div className="settings-tab__error">{warning}</div>
+            ) : null}
             {this.renderSeedWords()}
             {this.renderIncomingTransactionsOptIn()}
             {this.renderPhishingDetectionToggle()}
             {this.renderMetaMetricsOptIn()}
             {this.renderShowPrivateKey()}
           </>
-          :
-          <>
-            {this.renderPrivateKeyContent()}
-          </>
-        }
+        ) : (
+          <>{this.renderPrivateKeyContent()}</>
+        )}
       </div>
     );
   }

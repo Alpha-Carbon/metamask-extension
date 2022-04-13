@@ -32,7 +32,6 @@ export default class AccountNameEdit extends Component {
         .filter((itemName) => itemName !== currentName);
     };
 
-
     return (
       <AccountModalContainer type="edit" className="account-details-modal">
         <EditableLabel

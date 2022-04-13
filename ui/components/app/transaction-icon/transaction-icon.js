@@ -44,11 +44,11 @@ export default function TransactionIcon({ status, category }) {
 
   // let color = COLOR_MAP[status] || OK_COLOR;
   let color;
-  isConfirm && category == TRANSACTION_GROUP_CATEGORIES.SEND ?
-    color = '#CF3939' :
-    isConfirm && category == TRANSACTION_GROUP_CATEGORIES.RECEIVE ?
-      color = '#227BFF' :
-      color = COLOR_MAP[status] || OK_COLOR;
+  isConfirm && category == TRANSACTION_GROUP_CATEGORIES.SEND
+    ? (color = '#CF3939')
+    : isConfirm && category == TRANSACTION_GROUP_CATEGORIES.RECEIVE
+    ? (color = '#227BFF')
+    : (color = COLOR_MAP[status] || OK_COLOR);
 
   const Icon = ICON_MAP[category];
 

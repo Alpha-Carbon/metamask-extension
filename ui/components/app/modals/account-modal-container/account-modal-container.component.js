@@ -26,17 +26,17 @@ export default function AccountModalContainer(props, context) {
         {/* <div>
           <Identicon address={selectedIdentity.address} diameter={64} />
         </div> */}
-        {type === 'edit' ?
+        {type === 'edit' ? (
           <div className="account-modal__title">
             <RenameGradientIcon size={40} />
             <p>{context.t('rename')}</p>
           </div>
-
-          : <div className="account-modal__title">
+        ) : (
+          <div className="account-modal__title">
             <ReceiveGradient size={40} />
             <p> {context.t('receive')}</p>
-          </div>}
-
+          </div>
+        )}
 
         {showBackButton && (
           <div className="account-modal__back" onClick={backButtonAction}>

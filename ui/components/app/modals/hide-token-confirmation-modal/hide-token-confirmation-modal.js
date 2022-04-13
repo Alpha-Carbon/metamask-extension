@@ -51,14 +51,15 @@ class HideTokenConfirmationModal extends Component {
     return (
       <div className="hide-token-confirmation">
         <div className="hide-token-confirmation__container">
-          <button className="hide-token-confirmation__close" onClick={() => hideModal()}>
+          <button
+            className="hide-token-confirmation__close"
+            onClick={() => hideModal()}
+          >
             <CloseIcon />
           </button>
           <div className="hide-token-confirmation__title">
             <VisibilityIcon color="#525252" width="36" height="31" />
-            <p>
-              {this.context.t('hideTokenPrompt')}
-            </p>
+            <p>{this.context.t('hideTokenPrompt')}</p>
           </div>
           <Identicon
             className="hide-token-confirmation__identicon"

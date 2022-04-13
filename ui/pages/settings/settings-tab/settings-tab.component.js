@@ -68,8 +68,8 @@ export default class SettingsTab extends PureComponent {
           <span className="settings-page__content-description">
             {lastFetchedConversionDate
               ? t('updatedWithDate', [
-                new Date(lastFetchedConversionDate * 1000).toString(),
-              ])
+                  new Date(lastFetchedConversionDate * 1000).toString(),
+                ])
               : t('noConversionDateAvailable')}
           </span>
         </div>
@@ -264,23 +264,22 @@ export default class SettingsTab extends PureComponent {
                   {nativeCurrency}
                 </label> */}
                 <div className="radio-wrap">
-                  <div className={
-                    classnames('radio', {
+                  <div
+                    className={classnames('radio', {
                       'radio-enable': useNativeCurrencyAsPrimaryCurrency,
                       'radio-disable': !useNativeCurrencyAsPrimaryCurrency,
-                    })
-                  } onClick={() => {
-                    setUseNativeCurrencyAsPrimaryCurrencyPreference(true)
-                  }}>
-                  </div>
+                    })}
+                    onClick={() => {
+                      setUseNativeCurrencyAsPrimaryCurrencyPreference(true);
+                    }}
+                  ></div>
                   <label
                     htmlFor="native-primary-currency"
-                    className={
-                      classnames('radio-label', {
-                        'radio-label-enable': useNativeCurrencyAsPrimaryCurrency,
-                        'radio-label-disable': !useNativeCurrencyAsPrimaryCurrency
-                      })
-                    }>
+                    className={classnames('radio-label', {
+                      'radio-label-enable': useNativeCurrencyAsPrimaryCurrency,
+                      'radio-label-disable': !useNativeCurrencyAsPrimaryCurrency,
+                    })}
+                  >
                     {nativeCurrency}
                   </label>
                 </div>
@@ -301,23 +300,22 @@ export default class SettingsTab extends PureComponent {
                   {t('fiat')}
                 </label> */}
                 <div className="radio-wrap">
-                  <div className={
-                    classnames('radio', {
+                  <div
+                    className={classnames('radio', {
                       'radio-enable': !useNativeCurrencyAsPrimaryCurrency,
                       'radio-disable': useNativeCurrencyAsPrimaryCurrency,
-                    })
-                  } onClick={() => {
-                    setUseNativeCurrencyAsPrimaryCurrencyPreference(false)
-                  }}>
-                  </div>
+                    })}
+                    onClick={() => {
+                      setUseNativeCurrencyAsPrimaryCurrencyPreference(false);
+                    }}
+                  ></div>
                   <label
                     htmlFor="fiat-primary-currency"
-                    className={
-                      classnames('radio-label', {
-                        'radio-label-enable': !useNativeCurrencyAsPrimaryCurrency,
-                        'radio-label-disable': useNativeCurrencyAsPrimaryCurrency
-                      })
-                    }>
+                    className={classnames('radio-label', {
+                      'radio-label-enable': !useNativeCurrencyAsPrimaryCurrency,
+                      'radio-label-disable': useNativeCurrencyAsPrimaryCurrency,
+                    })}
+                  >
                     {t('fiat')}
                   </label>
                 </div>

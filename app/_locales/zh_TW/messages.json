@@ -163,6 +163,9 @@
   "cancelled": {
     "message": "已取消"
   },
+  "carbonWallet": {
+    "message": "Carbon Wallet"
+  },
   "chainId": {
     "message": "鏈 ID"
   },
@@ -195,6 +198,9 @@
   },
   "connectHardwareWallet": {
     "message": "連線硬體錢包"
+  },
+  "connectToSite": {
+    "message": "連接到 "
   },
   "connectingTo": {
     "message": "連線到$1"
@@ -246,6 +252,9 @@
   },
   "createAccount": {
     "message": "建立帳戶"
+  },
+  "createGetStart": {
+    "message": "歡迎, 請創建一個新錢包或使用您已擁有的錢包"
   },
   "createPassword": {
     "message": "建立密碼"
@@ -364,6 +373,9 @@
   "exportPrivateKey": {
     "message": "導出私鑰"
   },
+  "extension": {
+    "message": "Extension"
+  },
   "failed": {
     "message": "交易失败"
   },
@@ -467,6 +479,9 @@
   },
   "importAccountSeedPhrase": {
     "message": "利用助憶詞還原"
+  },
+  "importFromSeed": {
+    "message": "引入帳號"
   },
   "importWallet": {
     "message": "匯入錢包"
@@ -732,6 +747,9 @@
   "removeAccountDescription": {
     "message": "此帳戶將由錢包中移除。在繼續進行之前請確認您已經匯出並妥善備份助憶詞或私鑰。"
   },
+  "rename": {
+    "message": "重新命名"
+  },
   "requestsAwaitingAcknowledgement": {
     "message": "請求正在等待確認"
   },
@@ -776,6 +794,9 @@
   },
   "saveAsCsvFile": {
     "message": "儲存為CSV格式檔案"
+  },
+  "saveYourPrivateKey": {
+    "message": "儲存在安全和秘密的地方"
   },
   "scanInstructions": {
     "message": "請將 QR code 放在攝影鏡頭前面"
@@ -851,6 +872,15 @@
   },
   "showHexDataDescription": {
     "message": "在交易時顯示16進位資料"
+  },
+  "showPrivateKey": {
+    "message": "顯示私鑰"
+  },
+  "showPrivateKeyDescription": {
+    "message": "這是目前所選帳戶的私鑰：“$1”。請勿洩露此密鑰。 任何取得這把私鑰的人都可以竊取這個帳戶中的所有資產。"
+  },
+  "showPrivateKeyTitle": {
+    "message": "顯示 “$1” 私鑰"
   },
   "showPrivateKeys": {
     "message": "顯示私鑰"
@@ -1087,43 +1117,13 @@
   "youSign": {
     "message": "正在簽署"
   },
+  "yourPrivateKey": {
+    "message": "您的私鑰"
+  },
   "yourPrivateSeedPhrase": {
     "message": "您的助憶詞"
   },
   "zeroGasPriceOnSpeedUpError": {
     "message": "加速的 Gas 價格為 0"
-  },
-  "carbonWallet":{
-    "message": "Carbon Wallet"
-  },
-  "extension":{
-    "message": "Extension"
-  },
-  "createGetStart":{
-    "message": "歡迎, 請創建一個新錢包或使用您已擁有的錢包"
-  },
-  "importFromSeed":{
-    "message": "引入帳號"
-  },
-  "rename":{
-    "message": "重新命名"
-  },
-  "connectToSite":{
-    "message":"連接到 "
-  },
-  "yourPrivateKey":{
-    "message":"您的私鑰"
-  },
-  "saveYourPrivateKey":{
-    "message":"儲存在安全和秘密的地方"
-  },
-  "showPrivateKey":{
-    "message":"顯示私鑰"
-  },
-  "showPrivateKeyTitle":{
-    "message":"顯示 “$1” 私鑰"
-  },
-  "showPrivateKeyDescription":{
-    "message":"這是目前所選帳戶的私鑰：“$1”。請勿洩露此密鑰。 任何取得這把私鑰的人都可以竊取這個帳戶中的所有資產。"
   }
 }

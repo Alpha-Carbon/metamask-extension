@@ -33,8 +33,8 @@ import SearchIcon from '../../ui/search-icon';
 import ExpandIcon from '../../ui/icon/expend-icon.component';
 import EastIcon from '../../ui/icon/east-icon.component';
 import Button from '../../ui/button';
-import KeyRingLabel from './keyring-label';
 import { getURLHostName } from '../../../helpers/utils/util';
+import KeyRingLabel from './keyring-label';
 
 export function AccountMenuItem(props) {
   const { icon, children, text, subText, className, onClick } = props;
@@ -441,12 +441,14 @@ export default class AccountMenu extends Component {
               alt={t('etherscanViewOn')}
             />
           }
-          text={rpcPrefs.blockExplorerUrl
-            ? t('blockExplorerView', [
-              // getURLHostName(rpcPrefs.blockExplorerUrl),
-              provider.nickname
-            ])
-            : t('etherscanViewOn')}
+          text={
+            rpcPrefs.blockExplorerUrl
+              ? t('blockExplorerView', [
+                  // getURLHostName(rpcPrefs.blockExplorerUrl),
+                  provider.nickname,
+                ])
+              : t('etherscanViewOn')
+          }
         />
         <AccountMenuItem
           onClick={() => {

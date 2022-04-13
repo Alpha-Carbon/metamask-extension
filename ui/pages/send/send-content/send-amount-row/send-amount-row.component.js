@@ -6,13 +6,13 @@ import UserPreferencedTokenInput from '../../../../components/app/user-preferenc
 import UserPreferencedCurrencyDisplay from '../../../../components/app/user-preferenced-currency-display';
 import { ASSET_TYPES } from '../../../../ducks/send';
 import ArrowIcon from '../../../../components/ui/icon/arrow-icon.component';
-import AmountMaxButton from './amount-max-button';
 import { ERC20, ERC721, PRIMARY } from '../../../../helpers/constants/common';
 
 import Identicon from '../../../../components/ui/identicon';
 import TokenBalance from '../../../../components/ui/token-balance';
 import TokenListDisplay from '../../../../components/app/token-list-display';
 import { isEqualCaseInsensitive } from '../../../../helpers/utils/util';
+import AmountMaxButton from './amount-max-button';
 
 export default class SendAmountRow extends Component {
   static propTypes = {
@@ -71,8 +71,9 @@ export default class SendAmountRow extends Component {
         collectible.isCurrentlyOwned && collectible.standard === ERC721,
     );
     this.setState({
-      sendableTokens, sendableCollectibles,
-    })
+      sendableTokens,
+      sendableCollectibles,
+    });
   }
 
   openDropdown = () => this.setState({ isShowingDropdown: true });
@@ -139,7 +140,14 @@ export default class SendAmountRow extends Component {
   }
 
   renderAmount() {
-    const { accounts, selectedAddress, inError, nativeCurrency, tokens, sendAsset: { details, type } } = this.props;
+    const {
+      accounts,
+      selectedAddress,
+      inError,
+      nativeCurrency,
+      tokens,
+      sendAsset: { details, type },
+    } = this.props;
     const { t } = this.context;
     const balanceValue = accounts[selectedAddress]
       ? accounts[selectedAddress].balance
@@ -153,26 +161,28 @@ export default class SendAmountRow extends Component {
 
     return (
       <div className="send-v2__amount__wrapper">
-        <button className="send-v2__amount__switch" onClick={() => {
-          this.openDropdown();
-        }}>
+        <button
+          className="send-v2__amount__switch"
+          onClick={() => {
+            this.openDropdown();
+          }}
+        >
           {/* <p>{nativeCurrency}</p> */}
-          <p>
-            {token ? token?.symbol : nativeCurrency}
-          </p>
+          <p>{token ? token?.symbol : nativeCurrency}</p>
           <ArrowIcon color="#FFFFFF" />
         </button>
         {this.renderInput()}
         <p className="send-v2__amount__balance">
           <span>{t('balance')} : </span>
-          {token ?
+          {token ? (
             <TokenBalance token={token} />
-            :
+          ) : (
             <UserPreferencedCurrencyDisplay
               ethNumberOfDecimals={4}
               value={balanceValue}
               type={PRIMARY}
-            />}
+            />
+          )}
         </p>
         <AmountMaxButton inError={inError} />
         {[...this.state.sendableTokens, ...this.state.sendableCollectibles]
@@ -183,7 +193,6 @@ export default class SendAmountRow extends Component {
     );
   }
 
-
   render() {
     const { inError, asset } = this.props;
 
@@ -191,7 +200,7 @@ export default class SendAmountRow extends Component {
       return null;
     }
 
-    return this.renderAmount()
+    return this.renderAmount();
     /* <SendRowWrapper
         label={`${this.context.t('amount')}:`}
         showError={inError}
@@ -201,7 +210,6 @@ export default class SendAmountRow extends Component {
         {this.renderInput()}
       </SendRowWrapper> */
   }
-
 
   renderMountDropdown() {
     const { tokens } = this.props;
@@ -250,7 +258,7 @@ export default class SendAmountRow extends Component {
     const sendableAssets = [...sendableTokens, ...sendableCollectibles];
     const selectedAccount = accountsList.find((identity) => {
       return identity.address === selectedAddress;
-    })
+    });
 
     return (
       <div
@@ -296,7 +304,7 @@ export default class SendAmountRow extends Component {
     const { t } = this.context;
     const selectedAccount = accountsList.find((identity) => {
       return identity.address === selectedAddress;
-    })
+    });
 
     return (
       <div

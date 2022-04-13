@@ -9,7 +9,7 @@ import { getMostRecentOverviewPage } from '../../ducks/history/history';
 import {
   getRpcPrefsForCurrentProvider,
   getIsMainnet,
-  getIsTokenDetectionSupported
+  getIsTokenDetectionSupported,
 } from '../../selectors/selectors';
 import ImportToken from './import-token.component';
 

@@ -407,6 +407,9 @@
   "cancelled": {
     "message": "已取消"
   },
+  "carbonWallet": {
+    "message": "Carbon Wallet"
+  },
   "chainId": {
     "message": "链 ID"
   },
@@ -487,6 +490,9 @@
   "connectToMultipleNumberOfAccounts": {
     "message": "$1 个账户",
     "description": "$1 is the number of accounts to which the web3 site/application is asking to connect; this will substitute $1 in connectToMultiple"
+  },
+  "connectToSite": {
+    "message": "连接到 "
   },
   "connectWithMetaMask": {
     "message": "使用 Carbon Wallet 连接"
@@ -589,6 +595,9 @@
   },
   "createAccount": {
     "message": "创建账户"
+  },
+  "createGetStart": {
+    "message": "欢迎, 请创建一个新钱包或使用您已拥有的钱包"
   },
   "createNewWallet": {
     "message": "创建新的钱包"
@@ -1023,6 +1032,9 @@
   "exportPrivateKey": {
     "message": "导出私钥"
   },
+  "extension": {
+    "message": "Extension"
+  },
   "externalExtension": {
     "message": "外部扩展"
   },
@@ -1292,6 +1304,9 @@
   },
   "importExistingWalletTitle": {
     "message": "使用账户助记词导入现有钱包"
+  },
+  "importFromSeed": {
+    "message": "引入帐号"
   },
   "importMyWallet": {
     "message": "导入我的钱包"
@@ -2211,6 +2226,9 @@
   "removeNFT": {
     "message": "删除 NFT"
   },
+  "rename": {
+    "message": "重新命名"
+  },
   "requestsAwaitingAcknowledgement": {
     "message": "待确认的请求"
   },
@@ -2268,6 +2286,9 @@
   },
   "saveAsCsvFile": {
     "message": "保存为 CSV 文件"
+  },
+  "saveYourPrivateKey": {
+    "message": "储存在安全和秘密的地方"
   },
   "scanInstructions": {
     "message": "将二维码放在相机前"
@@ -2468,6 +2489,15 @@
   },
   "showPermissions": {
     "message": "显示权限"
+  },
+  "showPrivateKey": {
+    "message": "显示私钥"
+  },
+  "showPrivateKeyDescription": {
+    "message": "这是目前所选帐户的私钥：“$1”。请勿泄露此密钥。任何取得这把私钥的人都可以窃取这个帐户中的所有资产。"
+  },
+  "showPrivateKeyTitle": {
+    "message": "显示 “$1” 私钥"
   },
   "showPrivateKeys": {
     "message": "显示私钥"
@@ -3394,43 +3424,13 @@
   "youSign": {
     "message": "正在签名"
   },
+  "yourPrivateKey": {
+    "message": "您的私钥"
+  },
   "yourPrivateSeedPhrase": {
     "message": "您的账户助记词"
   },
   "zeroGasPriceOnSpeedUpError": {
     "message": "加速时无燃料价格"
-  },
-  "carbonWallet":{
-    "message": "Carbon Wallet"
-  },
-  "extension":{
-    "message": "Extension"
-  },
-  "createGetStart":{
-    "message": "欢迎, 请创建一个新钱包或使用您已拥有的钱包"
-  },
-  "importFromSeed":{
-    "message": "引入帐号"
-  },
-  "rename":{
-    "message": "重新命名"
-  },
-  "connectToSite":{
-    "message":"连接到 "
-  },
-  "yourPrivateKey":{
-    "message":"您的私钥"
-  },
-  "saveYourPrivateKey":{
-    "message":"储存在安全和秘密的地方"
-  },
-  "showPrivateKey":{
-    "message":"显示私钥"
-  },
-  "showPrivateKeyTitle":{
-    "message":"显示 “$1” 私钥"
-  },
-  "showPrivateKeyDescription":{
-    "message":"这是目前所选帐户的私钥：“$1”。请勿泄露此密钥。任何取得这把私钥的人都可以窃取这个帐户中的所有资产。"
   }
 }

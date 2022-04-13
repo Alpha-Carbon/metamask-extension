@@ -39,6 +39,7 @@ import CancelSpeedupPopover from '../cancel-speedup-popover';
 import EditGasFeePopover from '../edit-gas-fee-popover';
 import EditGasPopover from '../edit-gas-popover';
 import { getNativeCurrency } from '../../../ducks/metamask/metamask';
+
 function TransactionListItemInner({
   transactionGroup,
   setEditGasMode,
@@ -112,46 +113,50 @@ function TransactionListItemInner({
 
   const transactionList = () => {
     return (
-      <div className='transaction-list-item' onClick={() => {
-        toggleShowDetails()
-      }}>
-        <div className="transaction-list-item__time">
-          {date}
-        </div>
+      <div
+        className="transaction-list-item"
+        onClick={() => {
+          toggleShowDetails();
+        }}
+      >
+        <div className="transaction-list-item__time">{date}</div>
         <div className="transaction-list-item__info">
           <TransactionIcon category={category} status={displayedStatusKey} />
           <div className="transaction-list-item__info-status">
-            <p className={
-              classnames(
-                'transaction-list-item__info-status-title', {
-                'transaction-list-item__info-status-title-send': isSend,
-                'transaction-list-item__info-status-title-receive': isReceive,
-                'transaction-list-item__info-status-title-approval': isApproval,
-                'transaction-list-item__info-status-title-swap': isSwap,
-              }
+            <p
+              className={classnames(
+                'transaction-list-item__info-status-title',
+                {
+                  'transaction-list-item__info-status-title-send': isSend,
+                  'transaction-list-item__info-status-title-receive': isReceive,
+                  'transaction-list-item__info-status-title-approval': isApproval,
+                  'transaction-list-item__info-status-title-swap': isSwap,
+                },
               )}
-
             >
               {/* {title} */}
               {title.split(' ')[0]}
               {/* <span className='ml-2'>{nativeCurrency}</span> */}
-              <span className='ml-2'>{isOtherTitle ? isOtherTitle : nativeCurrency}</span>
+              <span className="ml-2">{isOtherTitle || nativeCurrency}</span>
             </p>
-            <p className={classnames(
-              'transaction-status',
-              `transaction-status--${displayedStatusKey}`,
-            )}>{displayedStatusKey}</p>
+            <p
+              className={classnames(
+                'transaction-status',
+                `transaction-status--${displayedStatusKey}`,
+              )}
+            >
+              {displayedStatusKey}
+            </p>
           </div>
-          <div className={
-            classnames(
-              'transaction-list-item__balance', {
+          <div
+            className={classnames('transaction-list-item__balance', {
               'transaction-list-item__balance-send': isSend,
               'transaction-list-item__balance-receive': isReceive,
               'transaction-list-item__balance-approval': isApproval,
               'transaction-list-item__balance-swap': isSwap,
-            }
-            )}>
-            <span className='mr-2'>{primaryToken[1]}</span>
+            })}
+          >
+            <span className="mr-2">{primaryToken[1]}</span>
             <span>{primaryToken[2]}</span>
           </div>
         </div>
@@ -165,8 +170,8 @@ function TransactionListItemInner({
           )}
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   const {
     title,
@@ -336,7 +341,6 @@ function TransactionListItemInner({
           transaction={transactionGroup.primaryTransaction}
         />
       )}
-
     </>
   );
 }

@@ -8,7 +8,7 @@ const NetworksList = ({
   networksToRender,
   networkDefaultedToProvider,
   selectedRpcUrl,
-  selectedNetwork
+  selectedNetwork,
 }) => {
   return (
     <div

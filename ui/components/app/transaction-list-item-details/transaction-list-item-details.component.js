@@ -13,11 +13,10 @@ import CancelButton from '../cancel-button';
 import Popover from '../../ui/popover';
 import { SECOND } from '../../../../shared/constants/time';
 import { TRANSACTION_TYPES } from '../../../../shared/constants/transaction';
-import { getURLHostName } from '../../../helpers/utils/util';
+import { getURLHostName, shortenAddress } from '../../../helpers/utils/util';
 import TransactionDecoding from '../transaction-decoding';
-import { shortenAddress } from '../../../helpers/utils/util';
-import TransactionIcon from '../transaction-icon';
 
+import TransactionIcon from '../transaction-icon';
 
 export default class TransactionListItemDetails extends PureComponent {
   static contextTypes = {
@@ -151,12 +150,11 @@ export default class TransactionListItemDetails extends PureComponent {
         <div className="transaction-list-item-details">
           <div className="transaction-list-item-details-title">
             <TransactionIcon category={category} status={status} />
-            <div className='transaction-list-item-details-title-txt'>
-              <span className='mr-2'>{title}</span>
+            <div className="transaction-list-item-details-title-txt">
+              <span className="mr-2">{title}</span>
               <span>{nativeCurrency}</span>
             </div>
           </div>
-
 
           <div className="transaction-list-item-details__operations">
             <div className="transaction-list-item-details__header-buttons">
@@ -279,16 +277,16 @@ export default class TransactionListItemDetails extends PureComponent {
               />
               {transactionGroup.initialTransaction.type !==
                 TRANSACTION_TYPES.INCOMING && (
-                  <Disclosure title={t('activityLog')} size="small">
-                    <TransactionActivityLog
-                      transactionGroup={transactionGroup}
-                      className="transaction-list-item-details__transaction-activity-log"
-                      onCancel={this.handleCancel}
-                      onRetry={this.handleRetry}
-                      isEarliestNonce={isEarliestNonce}
-                    />
-                  </Disclosure>
-                )}
+                <Disclosure title={t('activityLog')} size="small">
+                  <TransactionActivityLog
+                    transactionGroup={transactionGroup}
+                    className="transaction-list-item-details__transaction-activity-log"
+                    onCancel={this.handleCancel}
+                    onRetry={this.handleRetry}
+                    isEarliestNonce={isEarliestNonce}
+                  />
+                </Disclosure>
+              )}
               {transactionGroup.initialTransaction?.txParams?.data ? (
                 <Disclosure title="Transaction data" size="small">
                   <TransactionDecoding

@@ -9,8 +9,8 @@ import {
   getMetaMaskAccountsOrdered,
 } from '../../../../selectors';
 import { updateSendAsset, getSendAsset } from '../../../../ducks/send';
-import SendAssetRow from './send-asset-row.component';
 import { showAccountDetail } from '../../../../store/actions';
+import SendAssetRow from './send-asset-row.component';
 
 function mapStateToProps(state) {
   return {

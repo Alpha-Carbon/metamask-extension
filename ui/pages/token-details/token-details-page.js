@@ -176,7 +176,7 @@ export default function TokenDetailsPage() {
             ? networkNickname ?? t('privateNetwork')
             : t(networkType)}
         </Typography>
-        <div className='token-details__hide-token-button-wrap'>
+        <div className="token-details__hide-token-button-wrap">
           <Button
             type="primary"
             className="token-details__hide-token-button"
@@ -191,7 +191,6 @@ export default function TokenDetailsPage() {
             </Typography>
           </Button>
         </div>
-
       </Box>
     </Box>
   );

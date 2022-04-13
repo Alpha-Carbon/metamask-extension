@@ -9,12 +9,14 @@ import { SIZES } from '../../../../helpers/constants/design-system';
 import ColorIndicator from '../../../../components/ui/color-indicator';
 import LockIcon from '../../../../components/ui/lock-icon';
 import { NETWORKS_FORM_ROUTE } from '../../../../helpers/constants/routes';
-import { setSelectedSettingsRpcUrl, showModal, showNetworksFormModal } from '../../../../store/actions';
+import {
+  setSelectedSettingsRpcUrl,
+  showModal,
+  showNetworksFormModal,
+} from '../../../../store/actions';
 import { getEnvironmentType } from '../../../../../app/scripts/lib/util';
 import { ENVIRONMENT_TYPE_FULLSCREEN } from '../../../../../shared/constants/app';
 import { getProvider } from '../../../../selectors';
-
-
 
 const NetworksListItem = ({
   network,
@@ -55,12 +57,14 @@ const NetworksListItem = ({
         dispatch(setSelectedSettingsRpcUrl(rpcUrl));
         if (!isFullScreen) {
           // history.push(NETWORKS_FORM_ROUTE);
-          dispatch(showModal({
-            name: 'NETWORKS_FORM_MODAL',
-            networksToRender,
-            isCurrentRpcTarget: network == selectedNetwork,
-            selectedNetwork: network,
-          }));
+          dispatch(
+            showModal({
+              name: 'NETWORKS_FORM_MODAL',
+              networksToRender,
+              isCurrentRpcTarget: network == selectedNetwork,
+              selectedNetwork: network,
+            }),
+          );
         }
       }}
     >
