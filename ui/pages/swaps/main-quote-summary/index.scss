@@ -5,7 +5,7 @@
   align-items: center;
   position: relative;
   width: 100%;
-  color: var(--color-text-default);
+  color: var(--Black-100);
   margin-top: 28px;
   margin-bottom: 56px;
 
@@ -18,7 +18,7 @@
 
     @include H6;
 
-    color: var(--color-text-alternative);
+    color: var(--Grey-500);
   }
 
   &__source-row {
@@ -53,7 +53,7 @@
 
   &__destination-row-symbol {
     margin-left: 5px;
-    color: var(--color-text-default);
+    color: var(--Black-100);
   }
 
   &__icon,
@@ -70,7 +70,6 @@
 
   &__down-arrow {
     margin-top: 5px;
-    color: var(--color-icon-muted);
   }
 
   &__details {
@@ -118,6 +117,6 @@
   }
 
   &__exchange-rate-display {
-    color: var(--color-text-alternative);
+    color: var(--Grey-500);
   }
 }

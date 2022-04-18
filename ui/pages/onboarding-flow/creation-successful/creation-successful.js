@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Box from '../../../components/ui/box';
@@ -15,8 +15,8 @@ import {
   ONBOARDING_PRIVACY_SETTINGS_ROUTE,
 } from '../../../helpers/constants/routes';
 import { setCompletedOnboarding } from '../../../store/actions';
+import { useMetricEvent } from '../../../hooks/useMetricEvent';
 import { getFirstTimeFlowType } from '../../../selectors';
-import { MetaMetricsContext } from '../../../contexts/metametrics';
 
 export default function CreationSuccessful() {
   const firstTimeFlowTypeNameMap = {
@@ -28,18 +28,15 @@ export default function CreationSuccessful() {
   const dispatch = useDispatch();
   const firstTimeFlowType = useSelector(getFirstTimeFlowType);
 
-  const trackEvent = useContext(MetaMetricsContext);
+  const onboardingCompletedEvent = useMetricEvent({
+    category: 'Onboarding',
+    action: 'Onboarding Complete',
+    name: firstTimeFlowTypeNameMap[firstTimeFlowType],
+  });
 
   const onComplete = async () => {
     await dispatch(setCompletedOnboarding());
-    trackEvent({
-      event: firstTimeFlowTypeNameMap[firstTimeFlowType],
-      category: 'Onboarding',
-      properties: {
-        action: 'Onboarding Complete',
-        legacy_event: true,
-      },
-    });
+    onboardingCompletedEvent();
     history.push(ONBOARDING_PIN_EXTENSION_ROUTE);
   };
   return (
@@ -88,7 +85,7 @@ export default function CreationSuccessful() {
             type="link"
             rel="noopener noreferrer"
           >
-            {t('learnMoreUpperCase')}
+            {t('learnMore')}
           </Button>
         </li>
       </ul>
@@ -106,7 +103,7 @@ export default function CreationSuccessful() {
           rounded
           onClick={onComplete}
         >
-          {t('gotIt')}
+          {t('done')}
         </Button>
       </Box>
     </div>

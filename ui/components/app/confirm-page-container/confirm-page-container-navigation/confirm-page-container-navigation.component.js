@@ -28,20 +28,20 @@ const ConfirmPageContainerNavigation = (props) => {
           visibility: prevTxId ? 'initial' : 'hidden',
         }}
       >
-        <button
+        <div
           className="confirm-page-container-navigation__arrow"
           data-testid="first-page"
           onClick={() => onNextTx(firstTx)}
         >
-          <i className="fa fa-angle-double-left fa-2x" />
-        </button>
-        <button
+          <img src="./images/double-arrow.svg" alt="" />
+        </div>
+        <div
           className="confirm-page-container-navigation__arrow"
           data-testid="previous-page"
           onClick={() => onNextTx(prevTxId)}
         >
-          <i className="fa fa-angle-left fa-2x" />
-        </button>
+          <img src="./images/single-arrow.svg" alt="" />
+        </div>
       </div>
       <div className="confirm-page-container-navigation__textcontainer">
         <div className="confirm-page-container-navigation__navtext">
@@ -57,20 +57,28 @@ const ConfirmPageContainerNavigation = (props) => {
           visibility: nextTxId ? 'initial' : 'hidden',
         }}
       >
-        <button
+        <div
           className="confirm-page-container-navigation__arrow"
           data-testid="next-page"
           onClick={() => onNextTx(nextTxId)}
         >
-          <i className="fa fa-angle-right fa-2x" />
-        </button>
-        <button
+          <img
+            className="confirm-page-container-navigation__imageflip"
+            src="./images/single-arrow.svg"
+            alt=""
+          />
+        </div>
+        <div
           className="confirm-page-container-navigation__arrow"
           data-testid="last-page"
           onClick={() => onNextTx(lastTx)}
         >
-          <i className="fa fa-angle-double-right fa-2x" />
-        </button>
+          <img
+            className="confirm-page-container-navigation__imageflip"
+            src="./images/double-arrow.svg"
+            alt=""
+          />
+        </div>
       </div>
     </div>
   );

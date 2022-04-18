@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import { Switch, Route, matchPath } from 'react-router-dom';
 import classnames from 'classnames';
 import TabBar from '../../components/app/tab-bar';
-import IconCaretLeft from '../../components/ui/icon/icon-caret-left';
-
 import {
   ALERTS_ROUTE,
   ADVANCED_ROUTE,
   SECURITY_ROUTE,
+  EXPORT_PRIVATE_KEY_ROUTE,
   GENERAL_ROUTE,
   ABOUT_US_ROUTE,
   SETTINGS_ROUTE,
@@ -24,8 +23,6 @@ import {
   EXPERIMENTAL_ROUTE,
   ADD_NETWORK_ROUTE,
 } from '../../helpers/constants/routes';
-
-import { getSettingsRoutes } from '../../helpers/utils/settings-search';
 import SettingsTab from './settings-tab';
 import AlertsTab from './alerts-tab';
 import NetworksTab from './networks-tab';
@@ -38,8 +35,6 @@ import ExperimentalTab from './experimental-tab';
 import SnapListTab from './flask/snaps-list-tab';
 import ViewSnap from './flask/view-snap';
 ///: END:ONLY_INCLUDE_IN
-import SettingsSearch from './settings-search';
-import SettingsSearchList from './settings-search-list';
 
 class SettingsPage extends PureComponent {
   static propTypes = {
@@ -65,9 +60,6 @@ class SettingsPage extends PureComponent {
 
   state = {
     lastFetchedConversionDate: null,
-    searchResults: [],
-    isSearchList: false,
-    searchText: '',
   };
 
   componentDidMount() {
@@ -85,15 +77,6 @@ class SettingsPage extends PureComponent {
     }
   }
 
-  handleClickSetting(setting) {
-    const { history } = this.props;
-    history.push(setting.route);
-    this.setState({
-      searchResults: '',
-      isSearchList: '',
-    });
-  }
-
   render() {
     const {
       history,
@@ -103,9 +86,6 @@ class SettingsPage extends PureComponent {
       addNewNetwork,
       isSnapViewPage,
     } = this.props;
-
-    const { searchResults, isSearchList, searchText } = this.state;
-
     return (
       <div
         className={classnames('main-container settings-page', {
@@ -113,50 +93,24 @@ class SettingsPage extends PureComponent {
         })}
       >
         <div className="settings-page__header">
-          <div className="settings-page__header__title-container">
-            {currentPath !== SETTINGS_ROUTE && (
-              <IconCaretLeft
-                className="settings-page__back-button"
-                color="var(--color-icon-default)"
-                size={32}
-                onClick={() => history.push(backRoute)}
-              />
-            )}
-
-            {this.renderTitle()}
-
+          {currentPath !== SETTINGS_ROUTE && (
             <div
-              className="settings-page__header__title-container__close-button"
-              onClick={() => {
-                if (addNewNetwork) {
-                  history.push(NETWORKS_ROUTE);
-                } else {
-                  history.push(mostRecentOverviewPage);
-                }
-              }}
+              className="settings-page__back-button"
+              onClick={() => history.push(backRoute)}
             />
-          </div>
-
-          <div className="settings-page__header__search">
-            <SettingsSearch
-              onSearch={({ searchQuery = '', results = [] }) => {
-                this.setState({
-                  searchResults: results,
-                  isSearchList: searchQuery !== '',
-                  searchText: searchQuery,
-                });
-              }}
-              settingsRoutesList={getSettingsRoutes()}
-            />
-            {isSearchList && searchText.length >= 3 && (
-              <SettingsSearchList
-                results={searchResults}
-                onClickSetting={(setting) => this.handleClickSetting(setting)}
-              />
-            )}
-          </div>
+          )}
+          {this.renderTitle()}
+          <div
+            className="settings-page__close-button"
+            onClick={() => {
+              if (addNewNetwork) {
+                history.push(NETWORKS_ROUTE);
+              } else {
+                history.push(mostRecentOverviewPage);
+              }
+            }}
+          />
         </div>
-
         <div className="settings-page__content">
           <div className="settings-page__content__tabs">
             {this.renderTabs()}
@@ -189,41 +143,37 @@ class SettingsPage extends PureComponent {
       titleText = t('settings');
     }
 
-    return (
-      <div className="settings-page__header__title-container__title">
-        {titleText}
-      </div>
-    );
+    return <div className="settings-page__header__title">{titleText}</div>;
   }
 
   renderSubHeader() {
-    const { t } = this.context;
+    // const { t } = this.context;
     const {
       currentPath,
-      isPopup,
-      isAddressEntryPage,
-      pathnameI18nKey,
-      addressName,
-      initialBreadCrumbRoute,
-      breadCrumbTextKey,
-      history,
-      initialBreadCrumbKey,
+      // isPopup,
+      // isAddressEntryPage,
+      // pathnameI18nKey,
+      // addressName,
+      // initialBreadCrumbRoute,
+      // breadCrumbTextKey,
+      // history,
+      // initialBreadCrumbKey,
     } = this.props;
 
-    let subheaderText;
+    // let subheaderText;
 
-    if (isPopup && isAddressEntryPage) {
-      subheaderText = t('settings');
-    } else if (initialBreadCrumbKey) {
-      subheaderText = t(initialBreadCrumbKey);
-    } else {
-      subheaderText = t(pathnameI18nKey || 'general');
-    }
+    // if (isPopup && isAddressEntryPage) {
+    //   subheaderText = t('settings');
+    // } else if (initialBreadCrumbKey) {
+    //   subheaderText = t(initialBreadCrumbKey);
+    // } else {
+    //   subheaderText = t(pathnameI18nKey || 'general');
+    // }
 
     return (
       !currentPath.startsWith(NETWORKS_ROUTE) && (
         <div className="settings-page__subheader">
-          <div
+          {/* <div
             className={classnames({
               'settings-page__subheader--link': initialBreadCrumbRoute,
             })}
@@ -244,7 +194,7 @@ class SettingsPage extends PureComponent {
               <span>{' > '}</span>
               {addressName}
             </div>
-          )}
+          )} */}
         </div>
       )
     );
@@ -258,54 +208,54 @@ class SettingsPage extends PureComponent {
       <TabBar
         tabs={[
           {
-            icon: <i className="fa fa-cog" />,
+            // icon: <img src="images/general-icon.svg" alt="" />,
             content: t('general'),
             key: GENERAL_ROUTE,
           },
           {
-            icon: <i className="fas fa-sliders-h" />,
+            // icon: <img src="images/advanced-icon.svg" alt="" />,
             content: t('advanced'),
             key: ADVANCED_ROUTE,
           },
           {
-            icon: <i className="fa fa-address-book" />,
+            // icon: <img src="images/contacts-icon.svg" alt="" />,
             content: t('contacts'),
             key: CONTACT_LIST_ROUTE,
           },
           ///: BEGIN:ONLY_INCLUDE_IN(flask)
           {
-            icon: (
-              <i
-                className="fa fa-flask"
-                title={t('snapsSettingsDescription')}
-              />
-            ),
+            // icon: (
+            //   <img
+            //     src="images/experimental-icon.svg"
+            //     alt={t('snapsSettingsDescription')}
+            //   />
+            // ),
             content: t('snaps'),
             key: SNAPS_LIST_ROUTE,
           },
           ///: END:ONLY_INCLUDE_IN
           {
-            icon: <i className="fa fa-lock" />,
+            // icon: <img src="images/security-icon.svg" alt="" />,
             content: t('securityAndPrivacy'),
             key: SECURITY_ROUTE,
           },
           {
-            icon: <i className="fa fa-bell" />,
+            // icon: <img src="images/alerts-icon.svg" alt="" />,
             content: t('alerts'),
             key: ALERTS_ROUTE,
           },
           {
-            icon: <i className="fa fa-plug" />,
+            // icon: <img src="images/network-icon.svg" alt="" />,
             content: t('networks'),
             key: NETWORKS_ROUTE,
           },
+          // {
+          //   icon: <img src="images/experimental-icon.svg" alt="" />,
+          //   content: t('experimental'),
+          //   key: EXPERIMENTAL_ROUTE,
+          // },
           {
-            icon: <i className="fa fa-flask" />,
-            content: t('experimental'),
-            key: EXPERIMENTAL_ROUTE,
-          },
-          {
-            icon: <i className="fa fa-info-circle" />,
+            // icon: <img src="images/info-icon.svg" alt="" />,
             content: t('about'),
             key: ABOUT_US_ROUTE,
           },
@@ -344,6 +294,7 @@ class SettingsPage extends PureComponent {
         />
         <Route path={NETWORKS_ROUTE} component={NetworksTab} />
         <Route exact path={SECURITY_ROUTE} component={SecurityTab} />
+        <Route exact path={EXPORT_PRIVATE_KEY_ROUTE} component={SecurityTab} />
         <Route exact path={EXPERIMENTAL_ROUTE} component={ExperimentalTab} />
         <Route exact path={CONTACT_LIST_ROUTE} component={ContactListTab} />
         <Route exact path={CONTACT_ADD_ROUTE} component={ContactListTab} />

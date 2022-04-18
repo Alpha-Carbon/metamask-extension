@@ -7,6 +7,10 @@
     gap: 0 16px;
   }
 
+  &__content {
+    padding: 0 16px 24px;
+  }
+
   &__footer {
     display: flex;
     flex-flow: row;

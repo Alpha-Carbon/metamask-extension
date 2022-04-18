@@ -5,11 +5,12 @@ import {
   INITIALIZE_END_OF_FLOW_ROUTE,
 } from '../../../../helpers/constants/routes';
 import CreateNewVault from '../../../../components/app/create-new-vault';
+import BackIcon from '../../../../components/ui/icon/back-icon.component';
 
 export default class ImportWithSeedPhrase extends PureComponent {
   static contextTypes = {
     t: PropTypes.func,
-    trackEvent: PropTypes.func,
+    metricsEvent: PropTypes.func,
   };
 
   static propTypes = {
@@ -21,12 +22,13 @@ export default class ImportWithSeedPhrase extends PureComponent {
 
   UNSAFE_componentWillMount() {
     this._onBeforeUnload = () =>
-      this.context.trackEvent({
-        category: 'Onboarding',
-        event: 'Close window on import screen',
-        properties: {
+      this.context.metricsEvent({
+        eventOpts: {
+          category: 'Onboarding',
           action: 'Import Seed Phrase',
-          legacy_event: true,
+          name: 'Close window on import screen',
+        },
+        customVariables: {
           errorLabel: 'Seed Phrase Error',
           errorMessage: this.state.seedPhraseError,
         },
@@ -47,12 +49,11 @@ export default class ImportWithSeedPhrase extends PureComponent {
     } = this.props;
 
     await onSubmit(password, seedPhrase);
-    this.context.trackEvent({
-      category: 'Onboarding',
-      event: 'Import Complete',
-      properties: {
+    this.context.metricsEvent({
+      eventOpts: {
+        category: 'Onboarding',
         action: 'Import Seed Phrase',
-        legacy_event: true,
+        name: 'Import Complete',
       },
     });
 
@@ -70,24 +71,22 @@ export default class ImportWithSeedPhrase extends PureComponent {
           <a
             onClick={(e) => {
               e.preventDefault();
-              this.context.trackEvent({
-                category: 'Onboarding',
-                event: 'Go Back from Onboarding Import',
-                properties: {
+              this.context.metricsEvent({
+                eventOpts: {
+                  category: 'Onboarding',
                   action: 'Import Seed Phrase',
-                  legacy_event: true,
+                  name: 'Go Back from Onboarding Import',
                 },
               });
               this.props.history.push(INITIALIZE_SELECT_ACTION_ROUTE);
             }}
             href="#"
           >
-            {`< ${t('back')}`}
+            <BackIcon className="mr-2" />
+            {t('back')}
           </a>
         </div>
-        <div className="first-time-flow__header">
-          {t('importAccountSeedPhrase')}
-        </div>
+        <div className="first-time-flow__header">{t('importFromSeed')}</div>
         <div className="first-time-flow__text-block">{t('secretPhrase')}</div>
         <CreateNewVault
           includeTerms

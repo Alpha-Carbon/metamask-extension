@@ -1,10 +1,15 @@
 .confirm-page-container-summary {
   padding: 16px 24px;
-  background-color: var(--color-background-alternative);
+  background-color: var(--background);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  margin-bottom: 80px;
+
+  @media screen and (max-width: $break-small) {
+    margin-bottom: 40px;
+  }
 
   &__origin,
   &__action-row {
@@ -23,40 +28,16 @@
   &__action {
     @include H7;
 
-    color: var(--color-text-alternative);
+    text-transform: uppercase;
+    color: var(--oslo-gray);
     padding: 3px 8px;
-    border: 1px solid var(--color-border-default);
+    border: 1px solid var(--oslo-gray);
     border-radius: 4px;
-    display: inline-flex;
-    align-items: center;
-
-    &__name {
-      text-transform: uppercase;
-    }
-
-    .info-tooltip {
-      margin-inline-start: 4px;
-
-      &__tooltip-container {
-        margin-bottom: -3px;
-      }
-    }
-
-    &__contract-address {
-      margin-inline-end: 4px;
-    }
-
-    &__contract-address-btn {
-      background: none;
-      border: none;
-      padding: 0;
-      margin-inline-end: 4px;
-      color: var(--color-primary-default);
-    }
+    display: inline-block;
   }
 
   &__nonce {
-    color: var(--color-text-alternative);
+    color: var(--oslo-gray);
   }
 
   &__title {
@@ -75,26 +56,21 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-
-  &__title-text-long {
-    @include H3;
-
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    background: linear-gradient(111.99deg, var(--secondary-2-start) 9.4%, var(--secondary-2-end) 92.26%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   &__subtitle {
     @include H5;
 
-    color: var(--color-text-alternative);
+    color: var(--oslo-gray);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
   &--border {
-    border-bottom: 1px solid var(--color-border-muted);
+    // border-bottom: 1px solid var(--geyser);
   }
 }

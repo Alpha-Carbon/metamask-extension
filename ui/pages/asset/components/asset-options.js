@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 
 import { I18nContext } from '../../../contexts/i18n';
 import { Menu, MenuItem } from '../../../components/ui/menu';
+import VisibilityIcon from '../../../components/ui/icon/visibility-icon.component';
+import ErrorOutlineIcon from '../../../components/ui/icon/error-outline-icon.component';
 
 const AssetOptions = ({
   onRemove,
   onClickBlockExplorer,
-  onViewAccountDetails,
+  // onViewAccountDetails,
   onViewTokenDetails,
   tokenSymbol,
   isNativeAsset,
@@ -33,7 +35,7 @@ const AssetOptions = ({
           anchorElement={assetOptionsButtonElement}
           onHide={() => setAssetOptionsOpen(false)}
         >
-          <MenuItem
+          {/* <MenuItem
             iconClassName="fas fa-qrcode"
             data-testid="asset-options__account-details"
             onClick={() => {
@@ -42,7 +44,7 @@ const AssetOptions = ({
             }}
           >
             {t('accountDetails')}
-          </MenuItem>
+          </MenuItem> */}
           <MenuItem
             iconClassName="fas fa-external-link-alt asset-options__icon"
             data-testid="asset-options__etherscan"
@@ -57,26 +59,32 @@ const AssetOptions = ({
           </MenuItem>
           {isNativeAsset ? null : (
             <MenuItem
-              iconClassName="fas fa-trash-alt asset-options__icon"
+              // iconClassName="fas fa-trash-alt asset-options__icon"
               data-testid="asset-options__hide"
               onClick={() => {
                 setAssetOptionsOpen(false);
                 onRemove();
               }}
             >
-              {t('hideTokenSymbol', [tokenSymbol])}
+              <div className="d-flex align-items-center">
+                <VisibilityIcon className="mr-2" />
+                {t('hideTokenSymbol', [tokenSymbol])}
+              </div>
             </MenuItem>
           )}
           {isNativeAsset ? null : (
             <MenuItem
-              iconClassName="fas fa-info-circle asset-options__icon"
+              // iconClassName="fas fa-info-circle asset-options__icon"
               data-testid="asset-options__token-details"
               onClick={() => {
                 setAssetOptionsOpen(false);
                 onViewTokenDetails();
               }}
             >
-              {t('tokenDetails')}
+              <div className="d-flex align-items-center">
+                <ErrorOutlineIcon className="mr-2" />
+                {t('tokenDetails')}
+              </div>
             </MenuItem>
           )}
         </Menu>
@@ -90,7 +98,7 @@ AssetOptions.propTypes = {
   isNativeAsset: PropTypes.bool,
   onRemove: PropTypes.func.isRequired,
   onClickBlockExplorer: PropTypes.func.isRequired,
-  onViewAccountDetails: PropTypes.func.isRequired,
+  // onViewAccountDetails: PropTypes.func.isRequired,
   onViewTokenDetails: PropTypes.func.isRequired,
   tokenSymbol: PropTypes.string,
 };

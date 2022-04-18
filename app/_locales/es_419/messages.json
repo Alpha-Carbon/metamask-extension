@@ -143,6 +143,12 @@
   "addSuggestedTokens": {
     "message": "Agregar tokens sugeridos"
   },
+  "addToAddressBook": {
+    "message": "Agregar a la libreta de direcciones"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "p. ej., John D."
+  },
   "addToken": {
     "message": "Agregar token"
   },
@@ -222,15 +228,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Amino",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Amino Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Amino Flask",
     "description": "The name of the application (Flask)"
   },
   "approvalAndAggregatorTxFeeCost": {
@@ -976,6 +982,9 @@
   "ensUnknownError": {
     "message": "Error al buscar ENS."
   },
+  "enterAnAlias": {
+    "message": "Escribir un alias"
+  },
   "enterMaxSpendLimit": {
     "message": "Escribir límite máximo de gastos"
   },
@@ -1313,11 +1322,18 @@
   "importAccountError": {
     "message": "Error al importar la cuenta."
   },
+  "importAccountLinkText": {
+    "message": "importar con la frase secreta de recuperación"
+  },
   "importAccountMsg": {
     "message": "Las cuentas importadas no se asociarán con la frase secreta de recuperación de la cuenta original de MetaMask. Aprenda más sobre las cuentas importadas"
   },
   "importAccountSeedPhrase": {
     "message": "Importar una cartera con la frase secreta de recuperación"
+  },
+  "importAccountText": {
+    "message": "o $1",
+    "description": "$1 represents the text from `importAccountLinkText` as a link"
   },
   "importExistingWalletDescription": {
     "message": "Ingrese su frase secreta de recuperación (también conocida como Frase Semilla) que recibió al crear su cartera. $1",
@@ -1453,6 +1469,9 @@
   },
   "lastConnected": {
     "message": "Última conexión"
+  },
+  "layer1Fees": {
+    "message": "Cargos de capa 1"
   },
   "learmMoreAboutGas": {
     "message": "¿Quiere $1 sobre el gas?"
@@ -1775,6 +1794,9 @@
     "message": "Cuenta $1",
     "description": "Default name of next account to be created on create account screen"
   },
+  "newCollectibleAddFailed": {
+    "message": "No se añadió el coleccionable porque: $1"
+  },
   "newCollectibleAddedMessage": {
     "message": "¡El coleccionable fue añadido con éxito!"
   },
@@ -1786,6 +1808,9 @@
   },
   "newNFTsDetected": {
     "message": "¡Nuevo! Detección NFT"
+  },
+  "newNFTsDetectedInfo": {
+    "message": "Permitir que MetaMask detecte automáticamente NFT de Opensea y los muestre en su cartera MetaMask."
   },
   "newNetworkAdded": {
     "message": "¡\"$1\" se añadió con éxito!"
@@ -2253,6 +2278,9 @@
   "restore": {
     "message": "Restaurar"
   },
+  "restoreAccountWithSeed": {
+    "message": "Restaurar la cuenta con la frase secreta de recuperación"
+  },
   "restoreWalletPreferences": {
     "message": "Se encontró una copia de seguridad de los datos de $1. ¿Desea restaurar las preferencias de cartera?",
     "description": "$1 is the date at which the data was backed up"
@@ -2318,7 +2346,10 @@
     "message": "ADVERTENCIA: No revele su frase de respaldo. Cualquier persona que tenga esta frase puede robarle los ethers."
   },
   "secretPhrase": {
-    "message": "Ingrese su frase secreta aquí para restaurar su bóveda."
+    "message": "Solo la primera cuenta de esta cartera se cargará automáticamente. Después de llevar a cabo este proceso, para agregar cuentas adicionales haga clic en el menú desplegable y luego seleccione Crear cuenta."
+  },
+  "secretPhraseWarning": {
+    "message": "Si restablece utilizando otra frase secreta de recuperación, su cartera actual, sus cuentas y sus activos se eliminarán de esta aplicación de forma permanente. Esta acción es irreversible."
   },
   "secretRecoveryPhrase": {
     "message": "Frase secreta de recuperación"
@@ -2376,6 +2407,12 @@
   },
   "seedPhraseIntroTitleCopy": {
     "message": "Antes de comenzar, mire este breve video para aprender sobre su frase de recuperación y sobre cómo proteger su cartera."
+  },
+  "seedPhrasePlaceholder": {
+    "message": "Separar cada palabra con un solo espacio"
+  },
+  "seedPhrasePlaceholderPaste": {
+    "message": "Pegar la frase secreta de recuperación desde el Portapapeles"
   },
   "seedPhraseReq": {
     "message": "Las frases secretas de recuperación contienen 12, 15, 18, 21 o 24 palabras"
@@ -2489,6 +2526,9 @@
   },
   "showRecommendations": {
     "message": "Mostrar recomendaciones"
+  },
+  "showSeedPhrase": {
+    "message": "Mostrar frase secreta de recuperación"
   },
   "showTestnetNetworks": {
     "message": "Mostrar redes de prueba"

@@ -44,6 +44,12 @@
   "addSuggestedTokens": {
     "message": "Dodaj priporočene žetone"
   },
+  "addToAddressBook": {
+    "message": "Dodaj stik v imenik"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "npr. Jaka N."
+  },
   "addToken": {
     "message": "Dodaj žeton"
   },
@@ -61,15 +67,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Amino",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Amino Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Amino Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -333,6 +339,9 @@
   },
   "ensRegistrationError": {
     "message": "Napaka pri registraciji imena ENS"
+  },
+  "enterAnAlias": {
+    "message": "Vnesite vzdevek"
   },
   "enterPassword": {
     "message": "Vnesite geslo"
@@ -744,6 +753,9 @@
   "restore": {
     "message": "Obnovi"
   },
+  "restoreAccountWithSeed": {
+    "message": "Obnovi račun z seed phrase"
+  },
   "revealSeedWords": {
     "message": "Razkrij seed words"
   },
@@ -794,6 +806,9 @@
   },
   "securityAndPrivacy": {
     "message": "Varnost in zasebnost"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "Vsako besedo ločite z enim presledkom"
   },
   "seedPhraseReq": {
     "message": "Seed phrase mora biti dolg 12 besed"

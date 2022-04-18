@@ -22,7 +22,7 @@ export default function KeyRingLabel({ keyring }) {
     case KEYRING_TYPES.QR:
       label = KEYRING_NAMES.QR;
       break;
-    case KEYRING_TYPES.IMPORTED:
+    case 'Simple Key Pair':
       label = t('imported');
       break;
     case KEYRING_TYPES.TREZOR:

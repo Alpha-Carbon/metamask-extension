@@ -10,7 +10,7 @@ import { conversionUtil } from '../../../shared/modules/conversion.utils';
 export default class ConfirmEncryptionPublicKey extends Component {
   static contextTypes = {
     t: PropTypes.func.isRequired,
-    trackEvent: PropTypes.func.isRequired,
+    metricsEvent: PropTypes.func.isRequired,
   };
 
   static propTypes = {
@@ -154,7 +154,7 @@ export default class ConfirmEncryptionPublicKey extends Component {
       mostRecentOverviewPage,
       txData,
     } = this.props;
-    const { t, trackEvent } = this.context;
+    const { t, metricsEvent } = this.context;
 
     return (
       <div className="request-encryption-public-key__footer">
@@ -164,12 +164,11 @@ export default class ConfirmEncryptionPublicKey extends Component {
           className="request-encryption-public-key__footer__cancel-button"
           onClick={async (event) => {
             await cancelEncryptionPublicKey(txData, event);
-            trackEvent({
-              category: 'Messages',
-              event: 'Cancel',
-              properties: {
+            metricsEvent({
+              eventOpts: {
+                category: 'Messages',
                 action: 'Encryption public key Request',
-                legacy_event: true,
+                name: 'Cancel',
               },
             });
             clearConfirmTransaction();
@@ -184,12 +183,11 @@ export default class ConfirmEncryptionPublicKey extends Component {
           className="request-encryption-public-key__footer__sign-button"
           onClick={async (event) => {
             await encryptionPublicKey(txData, event);
-            this.context.trackEvent({
-              category: 'Messages',
-              event: 'Confirm',
-              properties: {
+            this.context.metricsEvent({
+              eventOpts: {
+                category: 'Messages',
                 action: 'Encryption public key Request',
-                legacy_event: true,
+                name: 'Confirm',
               },
             });
             clearConfirmTransaction();

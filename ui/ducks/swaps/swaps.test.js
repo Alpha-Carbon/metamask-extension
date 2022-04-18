@@ -15,7 +15,6 @@ jest.mock('../../store/actions.js', () => ({
   setSwapsLiveness: jest.fn(),
   setSwapsFeatureFlags: jest.fn(),
   fetchSmartTransactionsLiveness: jest.fn(),
-  getTransactions: jest.fn(),
 }));
 
 const providerState = {
@@ -35,7 +34,7 @@ describe('Ducks - Swaps', () => {
   describe('fetchSwapsLivenessAndFeatureFlags', () => {
     const cleanFeatureFlagApiCache = () => {
       setStorageItem(
-        'cachedFetch:https://swap.metaswap.codefi.network/featureFlags',
+        'cachedFetch:https://api2.metaswap.codefi.network/featureFlags',
         null,
       );
     };
@@ -48,7 +47,7 @@ describe('Ducks - Swaps', () => {
       featureFlagsResponse,
       replyWithError = false,
     } = {}) => {
-      const apiNock = nock('https://swap.metaswap.codefi.network').get(
+      const apiNock = nock('https://api2.metaswap.codefi.network').get(
         '/featureFlags',
       );
       if (replyWithError) {

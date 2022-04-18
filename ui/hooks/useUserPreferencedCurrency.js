@@ -1,7 +1,7 @@
 import { shallowEqual, useSelector } from 'react-redux';
 import {
   getPreferences,
-  getShouldShowFiat,
+  // getShouldShowFiat,
   getCurrentCurrency,
 } from '../selectors';
 import { getNativeCurrency } from '../ducks/metamask/metamask';
@@ -44,12 +44,12 @@ export function useUserPreferencedCurrency(type, opts = {}) {
     getPreferences,
     shallowEqual,
   );
-  const showFiat = useSelector(getShouldShowFiat) || opts.showFiatOverride;
+  // const showFiat = useSelector(getShouldShowFiat);
   const currentCurrency = useSelector(getCurrentCurrency);
 
   let currency, numberOfDecimals;
   if (
-    !showFiat ||
+    // !showFiat ||
     (type === PRIMARY && useNativeCurrencyAsPrimaryCurrency) ||
     (type === SECONDARY && !useNativeCurrencyAsPrimaryCurrency)
   ) {

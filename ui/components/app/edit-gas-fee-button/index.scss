@@ -8,7 +8,7 @@
 
     display: flex;
     align-items: baseline;
-    color: var(--color-primary-default);
+    color: var(--primary-1);
     background: transparent;
     border: 0;
     padding-inline-end: 0;
@@ -16,7 +16,7 @@
   }
 
   i {
-    color: var(--color-primary-default);
+    color: var(--primary-1);
     margin-right: 2px;
   }
 
@@ -37,11 +37,11 @@
 
   &__tooltip {
     p {
-      color: var(--color-text-alternative);
+      color: var(--Grey-500);
     }
 
     b {
-      color: var(--color-text-default);
+      color: var(--neutral-black);
       display: inline-block;
       min-width: 60%;
     }

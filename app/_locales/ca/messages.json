@@ -44,6 +44,12 @@
   "addSuggestedTokens": {
     "message": "Afegir Fitxes Suggerides"
   },
+  "addToAddressBook": {
+    "message": "Afegir al llibre d'adreces"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "p. ex. John D."
+  },
   "addToken": {
     "message": "Afegir Fitxa"
   },
@@ -61,15 +67,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Amino",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Amino Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Amino Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -330,6 +336,9 @@
   },
   "ensRegistrationError": {
     "message": "Error al registre de nom ENS"
+  },
+  "enterAnAlias": {
+    "message": "Introdueix Àlies"
   },
   "enterPassword": {
     "message": "Introdueix contrasenya"
@@ -734,6 +743,9 @@
   "restore": {
     "message": "Restaura"
   },
+  "restoreAccountWithSeed": {
+    "message": "Restaura el teu compte amb Frase de Recuperació"
+  },
   "revealSeedWords": {
     "message": "Revelar Paraules de Recuperació"
   },
@@ -784,6 +796,9 @@
   },
   "securityAndPrivacy": {
     "message": "Seguretat i privacitat"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "Separa cada paraula amb un únic espai"
   },
   "seedPhraseReq": {
     "message": "Les frases de recuperació tenen 12 paraules"

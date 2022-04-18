@@ -7,16 +7,18 @@ const trackStyle = {
   width: '40px',
   height: '24px',
   padding: '0px',
-  borderRadius: '26px',
-  border: '2px solid var(--color-primary-default)',
+  borderRadius: '30px',
+  // border: '2px solid rgb(3, 125, 214)',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  background: 'linear-gradient(91.07deg, #227BFF 4.72%, #451DFF 73%)',
 };
 
 const offTrackStyle = {
   ...trackStyle,
-  border: '2px solid var(--color-border-default)',
+  // border: '2px solid #8E8E8E',
+  background: '#BABABA',
 };
 
 const thumbStyle = {
@@ -31,18 +33,20 @@ const thumbStyle = {
 
 const colors = {
   activeThumb: {
-    base: '#037DD6',
+    // base: '#037DD6',
+    base: '#FFFFFF',
   },
   inactiveThumb: {
-    base: '#6A737D',
+    // base: '#6A737D',
+    base: '#FFFFFF',
   },
   active: {
-    base: '#F2F4F6',
-    hover: '#F2F4F6',
+    base: '#ffffff',
+    hover: '#ffffff',
   },
   inactive: {
-    base: '#F2F4F6',
-    hover: '#F2F4F6',
+    base: '#DADADA',
+    hover: '#DADADA',
   },
 };
 
@@ -52,7 +56,7 @@ const ToggleButton = (props) => {
   const modifier = value ? 'on' : 'off';
 
   return (
-    <label
+    <div
       tabIndex="0"
       onKeyDown={(e) => {
         if (e.key === 'Enter') {
@@ -77,12 +81,13 @@ const ToggleButton = (props) => {
         thumbStyle={thumbStyle}
         thumbAnimateRange={[3, 18]}
         colors={colors}
+        fullWidth
       />
       <div className="toggle-button__status">
         <span className="toggle-button__label-off">{offLabel}</span>
         <span className="toggle-button__label-on">{onLabel}</span>
       </div>
-    </label>
+    </div>
   );
 };
 

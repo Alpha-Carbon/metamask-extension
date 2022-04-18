@@ -5,15 +5,7 @@ import { util } from '@metamask/controllers';
 import { useI18nContext } from '../../hooks/useI18nContext';
 import { DEFAULT_ROUTE } from '../../helpers/constants/routes';
 
-import {
-  DISPLAY,
-  FONT_WEIGHT,
-  TYPOGRAPHY,
-} from '../../helpers/constants/design-system';
-
 import Box from '../../components/ui/box';
-import Typography from '../../components/ui/typography';
-import ActionableMessage from '../../components/ui/actionable-message';
 import PageContainer from '../../components/ui/page-container';
 import {
   addCollectibleVerifyOwnership,
@@ -46,7 +38,6 @@ export default function AddCollectible() {
   );
   const [tokenId, setTokenId] = useState('');
   const [disabled, setDisabled] = useState(true);
-  const [collectibleAddFailed, setCollectibleAddFailed] = useState(false);
 
   const handleAddCollectible = async () => {
     try {
@@ -56,7 +47,7 @@ export default function AddCollectible() {
     } catch (error) {
       const { message } = error;
       dispatch(setNewCollectibleAddedMessage(message));
-      setCollectibleAddFailed(true);
+      history.push(DEFAULT_ROUTE);
       return;
     }
     if (contractAddressToConvertFromTokenToCollectible) {
@@ -93,48 +84,24 @@ export default function AddCollectible() {
       }}
       disabled={disabled}
       contentComponent={
-        <Box>
+        <Box padding={4}>
           {isMainnet &&
           !useCollectibleDetection &&
           !collectibleDetectionNoticeDismissed ? (
             <CollectiblesDetectionNotice />
           ) : null}
-          {collectibleAddFailed && (
-            <ActionableMessage
-              type="danger"
-              useIcon
-              iconFillColor="var(--color-error-default)"
-              message={
-                <Box display={DISPLAY.INLINE_FLEX}>
-                  <Typography
-                    variant={TYPOGRAPHY.H7}
-                    fontWeight={FONT_WEIGHT.NORMAL}
-                    margin={0}
-                  >
-                    {t('collectibleAddFailedMessage')}
-                  </Typography>
-                  <button
-                    className="fas fa-times add-collectible__close"
-                    title={t('close')}
-                    onClick={() => setCollectibleAddFailed(false)}
-                  />
-                </Box>
-              }
-            />
-          )}
-          <Box margin={4}>
+          <Box>
             <FormField
               id="address"
               titleText={t('address')}
               placeholder="0x..."
               value={address}
-              onChange={(val) => {
-                validateAndSetAddress(val);
-                setCollectibleAddFailed(false);
-              }}
+              onChange={(val) => validateAndSetAddress(val)}
               tooltipText={t('importNFTAddressToolTip')}
               autoFocus
             />
+          </Box>
+          <Box>
             <FormField
               id="token-id"
               titleText={t('tokenId')}
@@ -142,7 +109,6 @@ export default function AddCollectible() {
               value={tokenId}
               onChange={(val) => {
                 validateAndSetTokenId(val);
-                setCollectibleAddFailed(false);
               }}
               tooltipText={t('importNFTTokenIdToolTip')}
               numeric

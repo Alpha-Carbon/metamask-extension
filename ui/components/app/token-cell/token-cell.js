@@ -29,7 +29,7 @@ export default function TokenCell({
         rel="noopener noreferrer"
         target="_blank"
         onClick={(event) => event.stopPropagation()}
-        style={{ color: 'var(--color-secondary-default)' }}
+        style={{ color: '#F7861C' }}
       >
         {t('here')}
       </a>

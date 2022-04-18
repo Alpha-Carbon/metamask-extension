@@ -23,9 +23,9 @@ const ICON_MAP = {
   [TRANSACTION_GROUP_CATEGORIES.SWAP]: Swap,
 };
 
-const FAIL_COLOR = 'var(--color-error-default)';
-const PENDING_COLOR = 'var(--color-icon-default)';
-const OK_COLOR = 'var(--color-primary-default)';
+const FAIL_COLOR = '#D73A49';
+const PENDING_COLOR = '#6A737D';
+const OK_COLOR = '#2F80ED';
 
 const COLOR_MAP = {
   [TRANSACTION_GROUP_STATUSES.PENDING]: PENDING_COLOR,
@@ -40,8 +40,23 @@ const COLOR_MAP = {
 
 export default function TransactionIcon({ status, category }) {
   const dispatch = useDispatch();
+  const isConfirm = status === TRANSACTION_STATUSES.CONFIRMED;
 
-  const color = COLOR_MAP[status] || OK_COLOR;
+  // let color = COLOR_MAP[status] || OK_COLOR;
+  let color;
+  if (isConfirm && category === TRANSACTION_GROUP_CATEGORIES.SEND) {
+    color = '#CF3939';
+  } else if (isConfirm && category === TRANSACTION_GROUP_CATEGORIES.RECEIVE) {
+    color = '#227BFF';
+  } else {
+    color = COLOR_MAP[status] || OK_COLOR;
+  }
+  // isConfirm && category === TRANSACTION_GROUP_CATEGORIES.SEND
+  //   ? (color = '#CF3939')
+  //   : isConfirm && category === TRANSACTION_GROUP_CATEGORIES.RECEIVE
+  //   ? (color = '#227BFF')
+  //   : (color = COLOR_MAP[status] || OK_COLOR);
+
   const Icon = ICON_MAP[category];
 
   if (!Icon) {

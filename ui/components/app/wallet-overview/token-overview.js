@@ -1,53 +1,69 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  useDispatch,
+  //  useSelector
+} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import Identicon from '../../ui/identicon';
-import Tooltip from '../../ui/tooltip';
+// import Tooltip from '../../ui/tooltip';
 import CurrencyDisplay from '../../ui/currency-display';
 import { I18nContext } from '../../../contexts/i18n';
-import { isHardwareKeyring } from '../../../helpers/utils/hardware';
+// import { isHardwareKeyring } from '../../../helpers/utils/hardware';
 import {
   SEND_ROUTE,
-  BUILD_QUOTE_ROUTE,
+  // BUILD_QUOTE_ROUTE,
 } from '../../../helpers/constants/routes';
+import {
+  useMetricEvent,
+  // useNewMetricEvent,
+} from '../../../hooks/useMetricEvent';
 import { useTokenTracker } from '../../../hooks/useTokenTracker';
 import { useTokenFiatAmount } from '../../../hooks/useTokenFiatAmount';
-import { updateSendAsset } from '../../../ducks/send';
-import { setSwapsFromToken } from '../../../ducks/swaps/swaps';
-import {
-  getCurrentKeyring,
-  getIsSwapsChain,
-} from '../../../selectors/selectors';
+import { ASSET_TYPES, updateSendAsset } from '../../../ducks/send';
+// import { setSwapsFromToken } from '../../../ducks/swaps/swaps';
+// import {
+//   getCurrentKeyring,
+//   getIsSwapsChain,
+// } from '../../../selectors/selectors';
 
-import SwapIcon from '../../ui/icon/swap-icon.component';
+// import SwapIcon from '../../ui/icon/swap-icon.component';
 import SendIcon from '../../ui/icon/overview-send-icon.component';
+import ReceiveIcon from '../../ui/icon/receive-icon.component';
 
-import IconButton from '../../ui/icon-button';
+// import IconButton from '../../ui/icon-button';
 import { INVALID_ASSET_TYPE } from '../../../helpers/constants/error-keys';
 import { showModal } from '../../../store/actions';
-import { MetaMetricsContext } from '../../../contexts/metametrics';
-import { ASSET_TYPES } from '../../../../shared/constants/transaction';
 import WalletOverview from './wallet-overview';
 
 const TokenOverview = ({ className, token }) => {
   const dispatch = useDispatch();
   const t = useContext(I18nContext);
-  const trackEvent = useContext(MetaMetricsContext);
+  const sendTokenEvent = useMetricEvent({
+    eventOpts: {
+      category: 'Navigation',
+      action: 'Home',
+      name: 'Clicked Send: Token',
+    },
+  });
   const history = useHistory();
-  const keyring = useSelector(getCurrentKeyring);
-  const usingHardwareWallet = isHardwareKeyring(keyring.type);
+  // const keyring = useSelector(getCurrentKeyring);
+  // const usingHardwareWallet = isHardwareKeyring(keyring.type);
   const { tokensWithBalances } = useTokenTracker([token]);
   const balanceToRender = tokensWithBalances[0]?.string;
-  const balance = tokensWithBalances[0]?.balance;
+  // const balance = tokensWithBalances[0]?.balance;
   const formattedFiatBalance = useTokenFiatAmount(
     token.address,
     balanceToRender,
     token.symbol,
   );
-  const isSwapsChain = useSelector(getIsSwapsChain);
-
+  // const isSwapsChain = useSelector(getIsSwapsChain);
+  // const enteredSwapsEvent = useNewMetricEvent({
+  //   event: 'Swaps Opened',
+  //   properties: { source: 'Token View', active_currency: token.symbol },
+  //   category: 'swaps',
+  // });
   useEffect(() => {
     if (token.isERC721 && process.env.COLLECTIBLES_V1) {
       dispatch(
@@ -79,17 +95,10 @@ const TokenOverview = ({ className, token }) => {
       }
       buttons={
         <>
-          <IconButton
+          {/* <IconButton
             className="token-overview__button"
             onClick={async () => {
-              trackEvent({
-                event: 'Clicked Send: Token',
-                category: 'Navigation',
-                properties: {
-                  action: 'Home',
-                  legacy_event: true,
-                },
-              });
+              sendTokenEvent();
               try {
                 await dispatch(
                   updateSendAsset({
@@ -108,25 +117,17 @@ const TokenOverview = ({ className, token }) => {
             label={t('send')}
             data-testid="eth-overview-send"
             disabled={token.isERC721}
-          />
-          <IconButton
+          /> */}
+          {/* <IconButton
             className="token-overview__button"
             disabled={!isSwapsChain}
             Icon={SwapIcon}
             onClick={() => {
               if (isSwapsChain) {
-                trackEvent({
-                  event: 'Swaps Opened',
-                  category: 'swaps',
-                  properties: {
-                    source: 'Token View',
-                    active_currency: token.symbol,
-                  },
-                });
+                enteredSwapsEvent();
                 dispatch(
                   setSwapsFromToken({
                     ...token,
-                    address: token.address.toLowerCase(),
                     iconUrl: token.image,
                     balance,
                     string: balanceToRender,
@@ -149,12 +150,45 @@ const TokenOverview = ({ className, token }) => {
                 {contents}
               </Tooltip>
             )}
-          />
+          /> */}
+          <div className="asset-native__wrapper-buttons">
+            <button
+              className="asset-native__wrapper-buttons-receive"
+              onClick={() => {
+                dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
+              }}
+            >
+              <ReceiveIcon size={18} color="#FFFFFF" />
+              <p>{t('receive')}</p>
+            </button>
+            <button
+              className="asset-native__wrapper-buttons-send"
+              onClick={async () => {
+                sendTokenEvent();
+                try {
+                  await dispatch(
+                    updateSendAsset({
+                      type: ASSET_TYPES.TOKEN,
+                      details: token,
+                    }),
+                  );
+                  history.push(SEND_ROUTE);
+                } catch (err) {
+                  if (!err.message.includes(INVALID_ASSET_TYPE)) {
+                    throw err;
+                  }
+                }
+              }}
+            >
+              <SendIcon size={19} color="#FFFFFF" />
+              <p>{t('send')}</p>
+            </button>
+          </div>
         </>
       }
       className={className}
       icon={
-        <Identicon diameter={32} address={token.address} image={token.image} />
+        <Identicon diameter={56} address={token.address} image={token.image} />
       }
     />
   );

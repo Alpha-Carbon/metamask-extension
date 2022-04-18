@@ -18,11 +18,10 @@ import {
 import { ONBOARDING_CREATE_PASSWORD_ROUTE } from '../../../helpers/constants/routes';
 import { clearClipboard } from '../../../helpers/utils/util';
 import { useI18nContext } from '../../../hooks/useI18nContext';
-import ZENDESK_URLS from '../../../helpers/constants/zendesk-url';
 
 export default function ImportSRP({ submitSecretRecoveryPhrase }) {
   const [secretRecoveryPhrase, setSecretRecoveryPhrase] = useState('');
-  const [revealSRP, setRevealSRP] = useState(false);
+  const [revealSRP, setRevealSRP] = useState(true);
   const [error, setError] = useState('');
   const history = useHistory();
   const t = useI18nContext();
@@ -57,11 +56,11 @@ export default function ImportSRP({ submitSecretRecoveryPhrase }) {
             <a
               key="learnMore"
               type="link"
-              href={ZENDESK_URLS.SECRET_RECOVERY_PHRASE}
+              href="https://metamask.zendesk.com/hc/en-us/articles/360036464651"
               target="_blank"
               rel="noopener noreferrer"
             >
-              {t('learnMoreUpperCase')}
+              {t('learnMore')}
             </a>,
           ])}
         </Typography>
@@ -76,7 +75,7 @@ export default function ImportSRP({ submitSecretRecoveryPhrase }) {
             <button onClick={() => setRevealSRP(!revealSRP)}>
               <i
                 className={`far fa-eye${revealSRP ? '-slash' : ''}`}
-                style={{ color: 'var(--color-icon-default' }}
+                color="grey"
               />
             </button>
             <textarea

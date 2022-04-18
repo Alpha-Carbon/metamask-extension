@@ -3,16 +3,26 @@
     text-transform: capitalize;
   }
 
+  &-wrap {
+    display: flex;
+    flex-direction: column;
+    min-height: 570px;
+    background: var(--white);
+    box-shadow: 0 4px 10px rgba(25, 17, 62, 0.1);
+    border-radius: 4px;
+    padding: 15px;
+  }
+
   &__closeButton {
     float: right;
     width: 10px;
     margin-top: -17px;
-    margin-inline-end: -8px;
+    margin-inline-end: 5px;
 
     &::after {
       font-size: 24px;
       content: '\00D7';
-      color: var(--color-icon-default);
+      color: var(--black);
     }
   }
 
@@ -26,20 +36,39 @@
 
   &__copy-icon {
     float: right;
-    margin-inline-start: 62px;
+    // margin-inline-start: 62px;
+    margin-inline-start: 18px;
+    margin-top: 5px;
 
-    @media screen and (min-width: $break-large) {
-      margin-inline-start: 112px;
-    }
+    // @media screen and (min-width: $break-large) {
+    //   margin-inline-start: 112px;
+    // }
   }
 
   &__hide-token-button {
-    width: 319px;
-    height: 39px;
-    margin-top: 70px;
+    width: 320px;
+    height: 40px;
+    // margin-top: 70px;
+
+    border-color: var(--gray-3);
 
     @media screen and (min-width: $break-large) {
-      margin-inline-start: 20px;
+      // margin-inline-start: 20px;
+    }
+
+    &-wrap {
+      flex-grow: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+  }
+
+  .btn--rounded.btn-primary {
+    background-color: var(--white);
+
+    &:hover {
+      border-color: var(--gray-3);
     }
   }
 }

@@ -44,6 +44,12 @@
   "addSuggestedTokens": {
     "message": "Lägg till föreslagna tokens"
   },
+  "addToAddressBook": {
+    "message": "Lägg till i adressbok"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "exempelvis John D."
+  },
   "addToken": {
     "message": "Lägg till token"
   },
@@ -61,15 +67,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Amino",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Amino Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Amino Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -327,6 +333,9 @@
   },
   "ensRegistrationError": {
     "message": "Fel i ENS-namnregistrering"
+  },
+  "enterAnAlias": {
+    "message": "Ange ett alias"
   },
   "enterPassword": {
     "message": "Ange lösenord"
@@ -740,6 +749,9 @@
   "restore": {
     "message": "Återställ"
   },
+  "restoreAccountWithSeed": {
+    "message": "Återställ ditt konto med seedphrase"
+  },
   "revealSeedWords": {
     "message": "Visa seed-ord"
   },
@@ -790,6 +802,9 @@
   },
   "securityAndPrivacy": {
     "message": "Säkerhet och integritet"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "Separera varje ord med ett enda mellanslag."
   },
   "seedPhraseReq": {
     "message": "Nyckelfraser är 12 ord långa."

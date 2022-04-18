@@ -50,25 +50,25 @@ export default function SkipSRPBackup({ handleClose }) {
         justifyContent={JUSTIFY_CONTENT.CENTER}
         margin={4}
       >
-        <i className="fa fa-exclamation-triangle fa-2x skip-srp-backup-popover__icon" />
+        <img src="./images/warning-icon.png" />
         <Typography variant={TYPOGRAPHY.h3} fontWeight={FONT_WEIGHT.BOLD}>
           {t('skipAccountSecurity')}
         </Typography>
         <Box justifyContent={JUSTIFY_CONTENT.CENTER} margin={3}>
-          <label className="skip-srp-backup-popover__label">
-            <Checkbox
-              className="skip-srp-backup-popover__checkbox"
-              onClick={() => setChecked(!checked)}
-              checked={checked}
-              dataTestId="skip-srp-backup-popover-checkbox"
-            />
-            <Typography
-              className="skip-srp-backup-popover__details"
-              variant={TYPOGRAPHY.h7}
-            >
-              {t('skipAccountSecurityDetails')}
-            </Typography>
-          </label>
+          <Checkbox
+            className="skip-srp-backup-popover__checkbox"
+            onClick={() => {
+              setChecked(!checked);
+            }}
+            checked={checked}
+            dataTestId="skip-srp-backup-popover-checkbox"
+          />
+          <Typography
+            className="skip-srp-backup-popover__details"
+            variant={TYPOGRAPHY.h7}
+          >
+            {t('skipAccountSecurityDetails')}
+          </Typography>
         </Box>
       </Box>
     </Popover>

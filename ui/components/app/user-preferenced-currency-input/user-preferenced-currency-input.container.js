@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onPreferenceToggle: () => dispatch(toggleCurrencySwitch()),
+    onPreferenceToggle: (value) => dispatch(toggleCurrencySwitch(value)),
   };
 };
 

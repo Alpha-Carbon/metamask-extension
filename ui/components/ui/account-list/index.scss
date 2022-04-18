@@ -3,7 +3,13 @@
   flex-direction: column;
   width: 100%;
   align-items: center;
-  overflow-y: auto;
+
+  &-line {
+    height: 1px;
+    width: 100%;
+    background-color: var(--gray-4);
+    margin-top: 10px;
+  }
 
   &__header--one-item,
   &__header--multiple-items {
@@ -27,6 +33,10 @@
     display: flex;
     margin-inline-start: 16px;
     align-items: center;
+
+    & > input {
+      color: var(--gray-3);
+    }
   }
 
   &__header-check-box {
@@ -34,19 +44,18 @@
   }
 
   &__wrapper {
+    width: 92%;
     display: flex;
-    overflow: hidden;
-    width: 100%;
   }
 
   &__list {
     flex: 2 1 0;
-    width: 100%;
+    width: 92%;
     max-height: max-content;
-    border: 1px solid var(--color-border-muted);
+    // border: 1px solid #d0d5da;
     box-sizing: border-box;
     border-radius: 8px;
-    margin-top: 8px;
+    // margin-top: 8px;
     overflow-y: auto;
   }
 
@@ -54,7 +63,7 @@
     display: flex;
     align-items: center;
     padding: 16px;
-    border-bottom: 1px solid var(--color-border-muted);
+    // border-bottom: 1px solid #d2d8dd;
     justify-content: space-between;
 
     &:last-of-type {
@@ -62,7 +71,7 @@
     }
 
     &:hover {
-      background: var(--color-background-alternative);
+      background: var(--Grey-000);
       cursor: pointer;
     }
 
@@ -76,7 +85,7 @@
     &__label {
       @include H6;
 
-      color: var(--color-text-default);
+      color: var(--Black-100);
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
@@ -85,7 +94,7 @@
     &__balance {
       @include H7;
 
-      color: var(--color-text-default);
+      color: var(--Grey-500);
     }
 
     &__last-connected {
@@ -94,7 +103,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      color: var(--color-primary-default);
+      color: var(--primary-blue);
     }
   }
 
@@ -103,6 +112,10 @@
     justify-content: flex-start;
     align-items: center;
     min-width: 0;
+
+    & > input {
+      color: var(--gray-3);
+    }
   }
 
   &__list-check-box {
@@ -114,14 +127,14 @@
   }
 
   .fa-info-circle {
-    color: var(--color-icon-muted);
+    color: var(--Grey-200);
     cursor: pointer;
     margin-inline-start: 8px;
     font-size: 0.9rem;
   }
 
   .fa-info-circle:hover {
-    color: var(--color-icon-default);
+    color: var(--Grey-300);
   }
 
   &__text,
@@ -131,11 +144,13 @@
   }
 
   &__text-blue {
-    color: var(--color-primary-default);
+    color: var(--secondary-3);
     cursor: pointer;
+
+    @include roundeBold;
   }
 
   &__text-grey {
-    color: var(--color-text-default);
+    color: var(--gray-1);
   }
 }

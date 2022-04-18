@@ -1,10 +1,10 @@
-import React, { useMemo, useState, useCallback, useContext } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import ListItem from '../../ui/list-item';
+// import ListItem from '../../ui/list-item';
 import { useTransactionDisplayData } from '../../../hooks/useTransactionDisplayData';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 
@@ -31,13 +31,14 @@ import {
   getEIP1559V2Enabled,
 } from '../../../selectors';
 import { isLegacyTransaction } from '../../../helpers/utils/transactions.util';
+import { useMetricEvent } from '../../../hooks/useMetricEvent';
 import Button from '../../ui/button';
 import AdvancedGasFeePopover from '../advanced-gas-fee-popover';
 import CancelButton from '../cancel-button';
 import CancelSpeedupPopover from '../cancel-speedup-popover';
 import EditGasFeePopover from '../edit-gas-fee-popover';
 import EditGasPopover from '../edit-gas-popover';
-import { MetaMetricsContext } from '../../../contexts/metametrics';
+import { getNativeCurrency } from '../../../ducks/metamask/metamask';
 
 function TransactionListItemInner({
   transactionGroup,
@@ -54,25 +55,33 @@ function TransactionListItemInner({
   const [showRetryEditGasPopover, setShowRetryEditGasPopover] = useState(false);
   const { supportsEIP1559V2 } = useGasFeeContext();
   const { openModal } = useTransactionModalContext();
+  const nativeCurrency = useSelector(getNativeCurrency);
 
   const {
     initialTransaction: { id },
     primaryTransaction: { err, status },
   } = transactionGroup;
 
-  const trackEvent = useContext(MetaMetricsContext);
+  const speedUpMetricsEvent = useMetricEvent({
+    eventOpts: {
+      category: 'Navigation',
+      action: 'Activity Log',
+      name: 'Clicked "Speed Up"',
+    },
+  });
+
+  const cancelMetricsEvent = useMetricEvent({
+    eventOpts: {
+      category: 'Navigation',
+      action: 'Activity Log',
+      name: 'Clicked "Cancel"',
+    },
+  });
 
   const retryTransaction = useCallback(
     async (event) => {
       event.stopPropagation();
-      trackEvent({
-        event: 'Clicked "Speed Up"',
-        category: 'Navigation',
-        properties: {
-          action: 'Activity Log',
-          legacy_event: true,
-        },
-      });
+      speedUpMetricsEvent();
       if (supportsEIP1559V2) {
         setEditGasMode(EDIT_GAS_MODES.SPEED_UP);
         openModal('cancelSpeedUpTransaction');
@@ -80,20 +89,13 @@ function TransactionListItemInner({
         setShowRetryEditGasPopover(true);
       }
     },
-    [openModal, setEditGasMode, trackEvent, supportsEIP1559V2],
+    [openModal, setEditGasMode, speedUpMetricsEvent, supportsEIP1559V2],
   );
 
   const cancelTransaction = useCallback(
     (event) => {
       event.stopPropagation();
-      trackEvent({
-        event: 'Clicked "Cancel"',
-        category: 'Navigation',
-        properties: {
-          action: 'Activity Log',
-          legacy_event: true,
-        },
-      });
+      cancelMetricsEvent();
       if (supportsEIP1559V2) {
         setEditGasMode(EDIT_GAS_MODES.CANCEL);
         openModal('cancelSpeedUpTransaction');
@@ -101,7 +103,7 @@ function TransactionListItemInner({
         setShowCancelEditGasPopover(true);
       }
     },
-    [trackEvent, openModal, setEditGasMode, supportsEIP1559V2],
+    [cancelMetricsEvent, openModal, setEditGasMode, supportsEIP1559V2],
   );
 
   const shouldShowSpeedUp = useShouldShowSpeedUp(
@@ -111,33 +113,37 @@ function TransactionListItemInner({
 
   const {
     title,
-    subtitle,
-    subtitleContainsOrigin,
+    // subtitle,
+    // subtitleContainsOrigin,
     date,
     category,
     primaryCurrency,
     recipientAddress,
-    secondaryCurrency,
+    // secondaryCurrency,
     displayedStatusKey,
     isPending,
     senderAddress,
   } = useTransactionDisplayData(transactionGroup);
-
-  const isSignatureReq =
-    category === TRANSACTION_GROUP_CATEGORIES.SIGNATURE_REQUEST;
+  const primaryToken = primaryCurrency.split('-').join(' ').split(' ');
+  const OtherTitle = title.split(' ');
+  const isOtherTitle = OtherTitle?.[1];
+  const isSend = category === TRANSACTION_GROUP_CATEGORIES.SEND;
+  // const isSignatureReq =
+  //   category === TRANSACTION_GROUP_CATEGORIES.SIGNATURE_REQUEST;
   const isApproval = category === TRANSACTION_GROUP_CATEGORIES.APPROVAL;
+  const isReceive = category === TRANSACTION_GROUP_CATEGORIES.RECEIVE;
   const isUnapproved = status === TRANSACTION_STATUSES.UNAPPROVED;
   const isSwap = category === TRANSACTION_GROUP_CATEGORIES.SWAP;
 
-  const className = classnames('transaction-list-item', {
-    'transaction-list-item--unconfirmed':
-      isPending ||
-      [
-        TRANSACTION_STATUSES.FAILED,
-        TRANSACTION_STATUSES.DROPPED,
-        TRANSACTION_STATUSES.REJECTED,
-      ].includes(displayedStatusKey),
-  });
+  // const className = classnames('transaction-list-item', {
+  //   'transaction-list-item--unconfirmed':
+  //     isPending ||
+  //     [
+  //       TRANSACTION_STATUSES.FAILED,
+  //       TRANSACTION_STATUSES.DROPPED,
+  //       TRANSACTION_STATUSES.REJECTED,
+  //     ].includes(displayedStatusKey),
+  // });
 
   const toggleShowDetails = useCallback(() => {
     if (isUnapproved) {
@@ -172,9 +178,71 @@ function TransactionListItemInner({
 
   const showCancelButton = !hasCancelled && isPending && !isUnapproved;
 
+  const transactionList = () => {
+    return (
+      <div
+        className="transaction-list-item"
+        onClick={() => {
+          toggleShowDetails();
+        }}
+      >
+        <div className="transaction-list-item__time">{date}</div>
+        <div className="transaction-list-item__info">
+          <TransactionIcon category={category} status={displayedStatusKey} />
+          <div className="transaction-list-item__info-status">
+            <p
+              className={classnames(
+                'transaction-list-item__info-status-title',
+                {
+                  'transaction-list-item__info-status-title-send': isSend,
+                  'transaction-list-item__info-status-title-receive': isReceive,
+                  'transaction-list-item__info-status-title-approval': isApproval,
+                  'transaction-list-item__info-status-title-swap': isSwap,
+                },
+              )}
+            >
+              {/* {title} */}
+              {title.split(' ')[0]}
+              {/* <span className='ml-2'>{nativeCurrency}</span> */}
+              <span className="ml-2">{isOtherTitle || nativeCurrency}</span>
+            </p>
+            <p
+              className={classnames(
+                'transaction-status',
+                `transaction-status--${displayedStatusKey}`,
+              )}
+            >
+              {displayedStatusKey}
+            </p>
+          </div>
+          <div
+            className={classnames('transaction-list-item__balance', {
+              'transaction-list-item__balance-send': isSend,
+              'transaction-list-item__balance-receive': isReceive,
+              'transaction-list-item__balance-approval': isApproval,
+              'transaction-list-item__balance-swap': isSwap,
+            })}
+          >
+            <span className="mr-2">{primaryToken[1]}</span>
+            <span>{primaryToken[2]}</span>
+          </div>
+        </div>
+        <div className="transaction-list-item__pending-actions">
+          {speedUpButton}
+          {showCancelButton && (
+            <CancelButton
+              transaction={transactionGroup.primaryTransaction}
+              cancelTransaction={cancelTransaction}
+            />
+          )}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <>
-      <ListItem
+      {/* <ListItem
         onClick={toggleShowDetails}
         className={className}
         title={title}
@@ -228,7 +296,8 @@ function TransactionListItemInner({
             />
           )}
         </div>
-      </ListItem>
+      </ListItem> */}
+      {transactionList()}
       {showDetails && (
         <TransactionListItemDetails
           title={title}
@@ -243,6 +312,9 @@ function TransactionListItemInner({
           isEarliestNonce={isEarliestNonce}
           onCancel={cancelTransaction}
           showCancel={isPending && !hasCancelled}
+          category={category}
+          status={displayedStatusKey}
+          nativeCurrency={nativeCurrency}
           transactionStatus={() => (
             <TransactionStatus
               isPending={isPending}

@@ -8,9 +8,8 @@ import {
 import { getMostRecentOverviewPage } from '../../ducks/history/history';
 import {
   getRpcPrefsForCurrentProvider,
+  // getIsMainnet,
   getIsTokenDetectionSupported,
-  getTokenDetectionSupportNetworkByChainId,
-  getIsMainnet,
 } from '../../selectors/selectors';
 import ImportToken from './import-token.component';
 
@@ -26,14 +25,12 @@ const mapStateToProps = (state) => {
       selectedAddress,
     },
   } = state;
-
-  const tokenDetectionV2Supported =
-    process.env.TOKEN_DETECTION_V2 && getIsTokenDetectionSupported(state);
+  // const showSearchTabCustomNetwork =
+  //   useTokenDetection && Boolean(Object.keys(tokenList).length);
+  // const showSearchTab =
+  //   getIsMainnet(state) || showSearchTabCustomNetwork || process.env.IN_TEST;
   const showSearchTab =
-    getIsMainnet(state) ||
-    tokenDetectionV2Supported ||
-    Boolean(process.env.IN_TEST);
-
+    getIsTokenDetectionSupported(state) || process.env.IN_TEST;
   return {
     identities,
     mostRecentOverviewPage: getMostRecentOverviewPage(state),
@@ -45,8 +42,6 @@ const mapStateToProps = (state) => {
     tokenList,
     useTokenDetection,
     selectedAddress,
-    isTokenDetectionSupported: getIsTokenDetectionSupported(state),
-    networkName: getTokenDetectionSupportNetworkByChainId(state),
   };
 };
 const mapDispatchToProps = (dispatch) => {

@@ -1,26 +1,26 @@
 .typography.gas-timing {
-  color: var(--color-text-alternative);
+  color: var(--ui-4);
 
   &--positive {
-    color: var(--color-success-default);
+    color: var(--success-3);
   }
 
   &--positive-V2 {
-    color: var(--color-success-default);
+    color: var(--success-3);
     font-weight: bold;
   }
 
   &--warning {
-    color: var(--color-warning-default);
+    color: var(--alert-3);
   }
 
   &--negative {
-    color: var(--color-error-default);
+    color: var(--error-1);
     font-weight: bold;
   }
 
   &--negative-V2 {
-    color: var(--color-secondary-default);
+    color: var(--secondary-1);
     font-weight: bold;
   }
 
@@ -29,7 +29,7 @@
     margin-inline-start: 4px;
 
     path {
-      fill: var(--color-error-default);
+      fill: var(--error-1);
     }
   }
 }

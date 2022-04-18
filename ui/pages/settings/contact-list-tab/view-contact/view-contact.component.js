@@ -42,7 +42,7 @@ function ViewContact({
         </div>
         <div className="address-book__view-contact__group">
           <Button
-            type="secondary"
+            type="primaryGradient"
             onClick={() => {
               history.push(`${editRoute}/${address}`);
             }}
@@ -68,7 +68,7 @@ function ViewContact({
                   handleCopy(checkSummedAddress);
                 }}
               >
-                <Copy size={20} color="var(--color-primary-default)" />
+                <Copy size={20} color="#3098DC" />
               </button>
             </Tooltip>
           </div>

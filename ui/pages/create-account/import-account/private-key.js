@@ -11,7 +11,7 @@ import { getMostRecentOverviewPage } from '../../../ducks/history/history';
 class PrivateKeyImportView extends Component {
   static contextTypes = {
     t: PropTypes.func,
-    trackEvent: PropTypes.func,
+    metricsEvent: PropTypes.func,
   };
 
   static propTypes = {
@@ -43,24 +43,22 @@ class PrivateKeyImportView extends Component {
     importNewAccount('Private Key', [privateKey])
       .then(({ selectedAddress }) => {
         if (selectedAddress) {
-          this.context.trackEvent({
-            category: 'Accounts',
-            event: 'Imported Account with Private Key',
-            properties: {
+          this.context.metricsEvent({
+            eventOpts: {
+              category: 'Accounts',
               action: 'Import Account',
-              legacy_event: true,
+              name: 'Imported Account with Private Key',
             },
           });
           history.push(mostRecentOverviewPage);
           displayWarning(null);
         } else {
           displayWarning(t('importAccountError'));
-          this.context.trackEvent({
-            category: 'Accounts',
-            event: 'Error importing with Private Key',
-            properties: {
+          this.context.metricsEvent({
+            eventOpts: {
+              category: 'Accounts',
               action: 'Import Account',
-              legacy_event: true,
+              name: 'Error importing with Private Key',
             },
           });
           setSelectedAddress(firstAddress);
@@ -90,7 +88,7 @@ class PrivateKeyImportView extends Component {
 
     return (
       <div className="new-account-import-form__private-key">
-        <span className="new-account-import-form__instruction">
+        <span className="new-account-create-form__instruction">
           {this.context.t('pastePrivateKey')}
         </span>
         <div className="new-account-import-form__private-key-password-container">
@@ -106,8 +104,7 @@ class PrivateKeyImportView extends Component {
         </div>
         <div className="new-account-import-form__buttons">
           <Button
-            type="secondary"
-            large
+            type="cancel"
             className="new-account-create-form__button"
             onClick={() => {
               const { history, mostRecentOverviewPage } = this.props;
@@ -118,8 +115,7 @@ class PrivateKeyImportView extends Component {
             {this.context.t('cancel')}
           </Button>
           <Button
-            type="primary"
-            large
+            type="primaryGradient"
             className="new-account-create-form__button"
             onClick={() => this.createNewKeychain()}
             disabled={this.state.isEmpty}

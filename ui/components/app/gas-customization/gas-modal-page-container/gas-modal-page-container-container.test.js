@@ -60,9 +60,7 @@ jest.mock('../../../../ducks/gas/gas.duck', () => ({
 }));
 
 jest.mock('../../../../ducks/send', () => {
-  const { ASSET_TYPES } = jest.requireActual(
-    '../../../../../shared/constants/transaction',
-  );
+  const { ASSET_TYPES } = jest.requireActual('../../../../ducks/send');
   return {
     useCustomGas: jest.fn(),
     updateGasLimit: jest.fn(),

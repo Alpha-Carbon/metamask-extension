@@ -75,7 +75,10 @@ export default function MainQuoteSummary({
               {sourceSymbol}
             </span>
           </div>
-          <i className="fa fa-arrow-down main-quote-summary__down-arrow" />
+          <img
+            className="main-quote-summary__down-arrow"
+            src="images/down-arrow-grey.svg"
+          />
           <div className="main-quote-summary__destination-row">
             <UrlIcon
               url={destinationIconUrl}
@@ -118,7 +121,7 @@ export default function MainQuoteSummary({
             secondaryTokenValue={destinationValue}
             secondaryTokenDecimals={destinationDecimals}
             secondaryTokenSymbol={destinationSymbol}
-            arrowColor="var(--color-primary-default)"
+            arrowColor="#037DD6"
             boldSymbols={false}
             className="main-quote-summary__exchange-rate-display"
           />

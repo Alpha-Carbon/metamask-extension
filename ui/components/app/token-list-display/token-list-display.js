@@ -39,7 +39,7 @@ export default function TokenListDisplay({ clickHandler }) {
             className="token-list-item"
             onClick={() => clickHandler(tokenData)}
           >
-            <Identicon address={address} diameter={36} image={image} />
+            <Identicon address={address} diameter={30} image={image} />
             <div className="token-list-item__data">
               <div className="token-list-item__symbol">{symbol}</div>
               <div className="token-list-item__balance">

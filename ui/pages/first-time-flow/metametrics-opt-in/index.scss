@@ -3,7 +3,7 @@
   width: 100%;
 
   a {
-    color: var(--color-primary-default);
+    color: #2f9ae0bf;
   }
 
   &__main {
@@ -11,7 +11,7 @@
     flex-direction: column;
     margin-left: 26.26%;
     margin-right: 28%;
-    color: var(--color-text-default);
+    color: black;
 
     @media screen and (max-width: $break-small) {
       justify-content: center;
@@ -35,7 +35,7 @@
     margin-top: 25px;
 
     .fa-bar-chart {
-      color: var(--color-icon-default);
+      color: #c4c4c4;
     }
   }
 
@@ -61,12 +61,12 @@
 
     .fa-check {
       margin-right: 12px;
-      color: var(--color-success-default);
+      color: #1acc56;
     }
 
     .fa-times {
       margin-right: 12px;
-      color: var(--color-error-default);
+      color: #d0021b;
     }
   }
 
@@ -93,7 +93,7 @@
 
   &__bottom-text {
     margin-top: 10px;
-    color: var(--color-text-alternative);
+    color: #9a9a9a;
   }
 
   &__content {

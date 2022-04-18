@@ -1,16 +1,22 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import { useMetricEvent } from '../../../hooks/useMetricEvent';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import { IMPORT_TOKEN_ROUTE } from '../../../helpers/constants/routes';
 import Button from '../../ui/button';
 import Box from '../../ui/box/box';
 import { TEXT_ALIGN } from '../../../helpers/constants/design-system';
 import { detectNewTokens } from '../../../store/actions';
-import { MetaMetricsContext } from '../../../contexts/metametrics';
 
 export default function ImportTokenLink({ isMainnet }) {
-  const trackEvent = useContext(MetaMetricsContext);
+  const addTokenEvent = useMetricEvent({
+    eventOpts: {
+      category: 'Navigation',
+      action: 'Token Menu',
+      name: 'Clicked "Add Token"',
+    },
+  });
   const t = useI18nContext();
   const history = useHistory();
 
@@ -33,14 +39,7 @@ export default function ImportTokenLink({ isMainnet }) {
         type="link"
         onClick={() => {
           history.push(IMPORT_TOKEN_ROUTE);
-          trackEvent({
-            event: 'Clicked "Add Token"',
-            category: 'Navigation',
-            properties: {
-              action: 'Token Menu',
-              legacy_event: true,
-            },
-          });
+          addTokenEvent();
         }}
       >
         {isMainnet

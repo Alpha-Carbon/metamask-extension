@@ -44,6 +44,12 @@
   "addSuggestedTokens": {
     "message": "Pridėti siūlomų žetonų"
   },
+  "addToAddressBook": {
+    "message": "Pridėti į adresų knygelę"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "pvz., John D."
+  },
   "addToken": {
     "message": "Pridėti žetoną"
   },
@@ -61,15 +67,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Amino",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Amino Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Amino Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -333,6 +339,9 @@
   },
   "ensRegistrationError": {
     "message": "ENS pavadinimo registracijos klaida"
+  },
+  "enterAnAlias": {
+    "message": "Įveskite alternatyvųjį vardą"
   },
   "enterPassword": {
     "message": "Įveskite slaptažodį"
@@ -756,6 +765,9 @@
   "restore": {
     "message": "Atkurti"
   },
+  "restoreAccountWithSeed": {
+    "message": "Atkurti paskyrą naudojant atkūrimo frazę"
+  },
   "revealSeedWords": {
     "message": "Atskleisti atkūrimo žodžius"
   },
@@ -806,6 +818,9 @@
   },
   "securityAndPrivacy": {
     "message": "Sauga ir privatumas"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "Kiekvieną žodį atskirkite viengubu tarpu"
   },
   "seedPhraseReq": {
     "message": "Atkūrimo frazės yra 12 žodžių ilgio"

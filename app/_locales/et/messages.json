@@ -44,6 +44,12 @@
   "addSuggestedTokens": {
     "message": "Lisa soovitatud lube"
   },
+  "addToAddressBook": {
+    "message": "Lisage aadressiraamatusse"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "nt John D."
+  },
   "addToken": {
     "message": "Lisage luba"
   },
@@ -61,15 +67,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Amino",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Amino Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Amino Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -333,6 +339,9 @@
   },
   "ensRegistrationError": {
     "message": "Tõrge ENS-i nime registreerimisel"
+  },
+  "enterAnAlias": {
+    "message": "Sisestage alias"
   },
   "enterPassword": {
     "message": "Sisestage parool"
@@ -746,6 +755,9 @@
   "restore": {
     "message": "Taasta"
   },
+  "restoreAccountWithSeed": {
+    "message": "Taastage konto seemnefraasi abil"
+  },
   "revealSeedWords": {
     "message": "Kuva seemnesõnu"
   },
@@ -796,6 +808,9 @@
   },
   "securityAndPrivacy": {
     "message": "Turvalisus ja privaatsus"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "Eraldage iga sõna ühe tühikuga"
   },
   "seedPhraseReq": {
     "message": "Seemnefraasid on 12 sõna pikad"

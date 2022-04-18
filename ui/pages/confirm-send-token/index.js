@@ -1,1 +1,1 @@
-export { default } from './confirm-send-token';
+export { default } from './confirm-send-token.container';

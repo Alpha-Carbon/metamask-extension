@@ -27,7 +27,7 @@ export default class SendFooter extends Component {
 
   static contextTypes = {
     t: PropTypes.func,
-    trackEvent: PropTypes.func,
+    metricsEvent: PropTypes.func,
   };
 
   onCancel() {
@@ -60,19 +60,20 @@ export default class SendFooter extends Component {
       history,
       gasEstimateType,
     } = this.props;
-    const { trackEvent } = this.context;
+    const { metricsEvent } = this.context;
 
     // TODO: add nickname functionality
     await addToAddressBookIfNew(to, toAccounts);
     const promise = sign();
 
     Promise.resolve(promise).then(() => {
-      trackEvent({
-        category: 'Transactions',
-        event: 'Complete',
-        properties: {
+      metricsEvent({
+        eventOpts: {
+          category: 'Transactions',
           action: 'Edit Screen',
-          legacy_event: true,
+          name: 'Complete',
+        },
+        customVariables: {
           gasChanged: gasEstimateType,
         },
       });
@@ -82,7 +83,7 @@ export default class SendFooter extends Component {
 
   componentDidUpdate(prevProps) {
     const { sendErrors } = this.props;
-    const { trackEvent } = this.context;
+    const { metricsEvent } = this.context;
     if (
       Object.keys(sendErrors).length > 0 &&
       isEqual(sendErrors, prevProps.sendErrors) === false
@@ -90,12 +91,13 @@ export default class SendFooter extends Component {
       const errorField = Object.keys(sendErrors).find((key) => sendErrors[key]);
       const errorMessage = sendErrors[errorField];
 
-      trackEvent({
-        category: 'Transactions',
-        event: 'Error',
-        properties: {
+      metricsEvent({
+        eventOpts: {
+          category: 'Transactions',
           action: 'Edit Screen',
-          legacy_event: true,
+          name: 'Error',
+        },
+        customVariables: {
           errorField,
           errorMessage,
         },
@@ -111,6 +113,7 @@ export default class SendFooter extends Component {
         onCancel={() => this.onCancel()}
         onSubmit={(e) => this.onSubmit(e)}
         disabled={this.props.disabled}
+        footerButtonLeftClassName="send-v2__reject-btn"
         cancelText={sendStage === SEND_STAGES.EDIT ? t('reject') : t('cancel')}
       />
     );

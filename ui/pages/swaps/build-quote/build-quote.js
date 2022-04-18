@@ -6,7 +6,8 @@ import classnames from 'classnames';
 import { uniqBy, isEqual } from 'lodash';
 import { useHistory } from 'react-router-dom';
 import { getTokenTrackerLink } from '@metamask/etherscan-link';
-import { MetaMetricsContext } from '../../../contexts/metametrics';
+import { MetaMetricsContext } from '../../../contexts/metametrics.new';
+import { useNewMetricEvent } from '../../../hooks/useMetricEvent';
 import {
   useTokensToSearch,
   getRenderableTokenData,
@@ -76,7 +77,10 @@ import {
   hexToDecimal,
 } from '../../../helpers/utils/conversions.util';
 import { calcTokenAmount } from '../../../helpers/utils/token-util';
-import { getURLHostName } from '../../../helpers/utils/util';
+import {
+  getURLHostName,
+  isEqualCaseInsensitive,
+} from '../../../helpers/utils/util';
 import { usePrevious } from '../../../hooks/usePrevious';
 import { useTokenTracker } from '../../../hooks/useTokenTracker';
 import { useTokenFiatAmount } from '../../../hooks/useTokenFiatAmount';
@@ -106,7 +110,6 @@ import {
   shouldEnableDirectWrapping,
 } from '../swaps.util';
 import SwapsFooter from '../swaps-footer';
-import { isEqualCaseInsensitive } from '../../../../shared/modules/string-utils';
 
 const fuseSearchKeys = [
   { name: 'name', weight: 0.499 },
@@ -126,7 +129,7 @@ export default function BuildQuote({
   const t = useContext(I18nContext);
   const dispatch = useDispatch();
   const history = useHistory();
-  const trackEvent = useContext(MetaMetricsContext);
+  const metaMetricsEvent = useContext(MetaMetricsContext);
 
   const [fetchedTokenExchangeRate, setFetchedTokenExchangeRate] = useState(
     undefined,
@@ -176,11 +179,11 @@ export default function BuildQuote({
 
   const onCloseSmartTransactionsOptInPopover = (e) => {
     e?.preventDefault();
-    setSmartTransactionsOptInStatus(false, smartTransactionsOptInStatus);
+    setSmartTransactionsOptInStatus(false);
   };
 
   const onEnableSmartTransactionsClick = () =>
-    setSmartTransactionsOptInStatus(true, smartTransactionsOptInStatus);
+    setSmartTransactionsOptInStatus(true);
 
   const fetchParamsFromToken = isSwapsDefaultTokenSymbol(
     sourceTokenInfo?.symbol,
@@ -337,13 +340,25 @@ export default function BuildQuote({
     null, // no holderAddress
     {
       blockExplorerUrl:
-        SWAPS_CHAINID_DEFAULT_BLOCK_EXPLORER_URL_MAP[chainId] ?? null,
+        rpcPrefs.blockExplorerUrl ??
+        SWAPS_CHAINID_DEFAULT_BLOCK_EXPLORER_URL_MAP[chainId] ??
+        null,
     },
   );
 
   const blockExplorerLabel = rpcPrefs.blockExplorerUrl
     ? getURLHostName(blockExplorerTokenLink)
     : t('etherscan');
+
+  const blockExplorerLinkClickedEvent = useNewMetricEvent({
+    category: 'Swaps',
+    event: 'Clicked Block Explorer Link',
+    properties: {
+      link_type: 'Token Tracker',
+      action: 'Swaps Confirmation',
+      block_explorer_domain: getURLHostName(blockExplorerTokenLink),
+    },
+  });
 
   const { destinationTokenAddedForSwap } = fetchParams || {};
   const { address: toAddress } = toToken || {};
@@ -430,32 +445,23 @@ export default function BuildQuote({
     fromTokenBalance,
   ]);
 
-  const trackBuildQuotePageLoadedEvent = useCallback(() => {
-    trackEvent({
-      event: 'Build Quote Page Loaded',
-      category: 'swaps',
-      sensitiveProperties: {
-        is_hardware_wallet: hardwareWalletUsed,
-        hardware_wallet_type: hardwareWalletType,
-        stx_enabled: smartTransactionsEnabled,
-        current_stx_enabled: currentSmartTransactionsEnabled,
-        stx_user_opt_in: smartTransactionsOptInStatus,
-      },
-    });
-  }, [
-    trackEvent,
-    hardwareWalletUsed,
-    hardwareWalletType,
-    smartTransactionsEnabled,
-    currentSmartTransactionsEnabled,
-    smartTransactionsOptInStatus,
-  ]);
+  const buildQuotePageLoadedEvent = useNewMetricEvent({
+    event: 'Build Quote Page Loaded',
+    category: 'swaps',
+    sensitiveProperties: {
+      is_hardware_wallet: hardwareWalletUsed,
+      hardware_wallet_type: hardwareWalletType,
+      stx_enabled: smartTransactionsEnabled,
+      current_stx_enabled: currentSmartTransactionsEnabled,
+      stx_user_opt_in: smartTransactionsOptInStatus,
+    },
+  });
 
   useEffect(() => {
     dispatch(resetSwapsPostFetchState());
     dispatch(setReviewSwapClickedTimestamp());
-    trackBuildQuotePageLoadedEvent();
-  }, [dispatch, trackBuildQuotePageLoadedEvent]);
+    buildQuotePageLoadedEvent();
+  }, [dispatch, buildQuotePageLoadedEvent]);
 
   const BlockExplorerLink = () => {
     return (
@@ -463,15 +469,7 @@ export default function BuildQuote({
         className="build-quote__token-etherscan-link build-quote__underline"
         key="build-quote-etherscan-link"
         onClick={() => {
-          trackEvent({
-            event: 'Clicked Block Explorer Link',
-            category: 'Swaps',
-            properties: {
-              link_type: 'Token Tracker',
-              action: 'Swaps Confirmation',
-              block_explorer_domain: getURLHostName(blockExplorerTokenLink),
-            },
-          });
+          blockExplorerLinkClickedEvent();
           global.platform.openTab({
             url: blockExplorerTokenLink,
           });
@@ -528,7 +526,7 @@ export default function BuildQuote({
           history,
           fromTokenInputValue,
           maxSlippage,
-          trackEvent,
+          metaMetricsEvent,
           pageRedirectionDisabled,
         ),
       );
@@ -547,7 +545,7 @@ export default function BuildQuote({
     dispatch,
     history,
     maxSlippage,
-    trackEvent,
+    metaMetricsEvent,
     isReviewSwapButtonDisabled,
     fromTokenInputValue,
     fromTokenAddress,
@@ -597,36 +595,27 @@ export default function BuildQuote({
                 flexDirection={FLEX_DIRECTION.COLUMN}
               >
                 <img
-                  src="./images/logo/smart-transactions-header.png"
+                  src="./images/logo/metamask-smart-transactions@4x.png"
                   alt={t('swapSwapSwitch')}
                 />
               </Box>
-              <Typography variant={TYPOGRAPHY.H7} marginTop={0}>
+              <Typography variant={TYPOGRAPHY.H6} marginTop={0}>
                 {t('stxDescription')}
               </Typography>
               <Typography
                 tag="ul"
-                variant={TYPOGRAPHY.H7}
+                variant={TYPOGRAPHY.H6}
                 fontWeight={FONT_WEIGHT.BOLD}
                 marginTop={3}
               >
                 <li>{t('stxBenefit1')}</li>
                 <li>{t('stxBenefit2')}</li>
                 <li>{t('stxBenefit3')}</li>
-                <li>
-                  {t('stxBenefit4')}
-                  <Typography
-                    tag="span"
-                    fontWeight={FONT_WEIGHT.NORMAL}
-                    variant={TYPOGRAPHY.H7}
-                  >
-                    {' *'}
-                  </Typography>
-                </li>
+                <li>{t('stxBenefit4')}</li>
               </Typography>
               <Typography
                 variant={TYPOGRAPHY.H8}
-                color={COLORS.TEXT_ALTERNATIVE}
+                color={COLORS.UI4}
                 boxProps={{ marginTop: 3 }}
               >
                 {t('stxSubDescription')}&nbsp;
@@ -634,7 +623,7 @@ export default function BuildQuote({
                   tag="span"
                   fontWeight={FONT_WEIGHT.BOLD}
                   variant={TYPOGRAPHY.H8}
-                  color={COLORS.TEXT_ALTERNATIVE}
+                  color={COLORS.UI4}
                 >
                   {t('stxYouCanOptOut')}&nbsp;
                 </Typography>
@@ -719,8 +708,12 @@ export default function BuildQuote({
               onFromSelect(selectedToToken);
             }}
           >
-            <i className="fa fa-arrow-up" title={t('swapSwapSwitch')} />
-            <i className="fa fa-arrow-down" title={t('swapSwapSwitch')} />
+            <img
+              src="./images/icons/swap2.svg"
+              alt={t('swapSwapSwitch')}
+              width="12"
+              height="16"
+            />
           </button>
         </div>
         <div className="build-quote__dropdown-swap-to-header">
@@ -792,17 +785,7 @@ export default function BuildQuote({
                       className="build-quote__token-etherscan-link"
                       key="build-quote-etherscan-link"
                       onClick={() => {
-                        trackEvent({
-                          event: 'Clicked Block Explorer Link',
-                          category: 'Swaps',
-                          properties: {
-                            link_type: 'Token Tracker',
-                            action: 'Swaps Confirmation',
-                            block_explorer_domain: getURLHostName(
-                              blockExplorerTokenLink,
-                            ),
-                          },
-                        });
+                        blockExplorerLinkClickedEvent();
                         global.platform.openTab({
                           url: blockExplorerTokenLink,
                         });
@@ -825,8 +808,7 @@ export default function BuildQuote({
               )}
             </div>
           ))}
-        {(smartTransactionsEnabled ||
-          (!smartTransactionsEnabled && !isDirectWrappingEnabled)) && (
+        {!isDirectWrappingEnabled && (
           <div className="build-quote__slippage-buttons-container">
             <SlippageButtons
               onSelect={(newSlippage) => {
@@ -838,7 +820,6 @@ export default function BuildQuote({
               smartTransactionsOptInStatus={smartTransactionsOptInStatus}
               setSmartTransactionsOptInStatus={setSmartTransactionsOptInStatus}
               currentSmartTransactionsError={currentSmartTransactionsError}
-              isDirectWrappingEnabled={isDirectWrappingEnabled}
             />
           </div>
         )}
@@ -856,7 +837,7 @@ export default function BuildQuote({
                 history,
                 fromTokenInputValue,
                 maxSlippage,
-                trackEvent,
+                metaMetricsEvent,
               ),
             );
           } else if (areQuotesPresent) {

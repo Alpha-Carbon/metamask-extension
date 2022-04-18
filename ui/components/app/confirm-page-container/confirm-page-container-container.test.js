@@ -42,7 +42,6 @@ describe('Confirm Page Container Container Test', () => {
       identities: [],
       featureFlags: {},
       enableEIP1559V2NoticeDismissed: true,
-      tokenList: {},
     },
   };
 

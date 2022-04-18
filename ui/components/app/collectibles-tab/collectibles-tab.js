@@ -58,7 +58,7 @@ export default function CollectiblesTab({ onAddNFT }) {
   }
 
   return (
-    <Box className="collectibles-tab">
+    <div className="collectibles-tab">
       {Object.keys(collections).length > 0 ||
       previouslyOwnedCollection.collectibles.length > 0 ? (
         <CollectiblesItems
@@ -66,42 +66,40 @@ export default function CollectiblesTab({ onAddNFT }) {
           previouslyOwnedCollection={previouslyOwnedCollection}
         />
       ) : (
-        <>
+        <Box padding={[6, 12, 6, 12]}>
           {isMainnet &&
           !useCollectibleDetection &&
           !collectibleDetectionNoticeDismissed ? (
             <CollectiblesDetectionNotice />
           ) : null}
-          <Box padding={12}>
-            <Box justifyContent={JUSTIFY_CONTENT.CENTER}>
-              <img src="./images/no-nfts.svg" />
-            </Box>
-            <Box
-              marginTop={4}
-              marginBottom={12}
-              justifyContent={JUSTIFY_CONTENT.CENTER}
-              flexDirection={FLEX_DIRECTION.COLUMN}
-              className="collectibles-tab__link"
-            >
-              <Typography
-                color={COLORS.TEXT_MUTED}
-                variant={TYPOGRAPHY.H4}
-                align={TEXT_ALIGN.CENTER}
-                fontWeight={FONT_WEIGHT.BOLD}
-              >
-                {t('noNFTs')}
-              </Typography>
-              <Button
-                type="link"
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://metamask.zendesk.com/hc/en-us/articles/360058238591-NFT-tokens-in-MetaMask-wallet"
-              >
-                {t('learnMoreUpperCase')}
-              </Button>
-            </Box>
+          <Box justifyContent={JUSTIFY_CONTENT.CENTER}>
+            <img src="./images/no-nfts.svg" />
           </Box>
-        </>
+          <Box
+            marginTop={4}
+            marginBottom={12}
+            justifyContent={JUSTIFY_CONTENT.CENTER}
+            flexDirection={FLEX_DIRECTION.COLUMN}
+            className="collectibles-tab__link"
+          >
+            <Typography
+              color={COLORS.UI3}
+              variant={TYPOGRAPHY.H4}
+              align={TEXT_ALIGN.CENTER}
+              fontWeight={FONT_WEIGHT.BOLD}
+            >
+              {t('noNFTs')}
+            </Typography>
+            <Button
+              type="link"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://metamask.zendesk.com/hc/en-us/articles/360058238591-NFT-tokens-in-MetaMask-wallet"
+            >
+              {t('learnMoreUpperCase')}
+            </Button>
+          </Box>
+        </Box>
       )}
       <Box
         marginBottom={4}
@@ -109,7 +107,7 @@ export default function CollectiblesTab({ onAddNFT }) {
         flexDirection={FLEX_DIRECTION.COLUMN}
       >
         <Typography
-          color={COLORS.TEXT_MUTED}
+          color={COLORS.UI3}
           variant={TYPOGRAPHY.H5}
           align={TEXT_ALIGN.CENTER}
         >
@@ -136,7 +134,7 @@ export default function CollectiblesTab({ onAddNFT }) {
                 )}
               </Box>
               <Typography
-                color={COLORS.TEXT_MUTED}
+                color={COLORS.UI3}
                 variant={TYPOGRAPHY.H6}
                 align={TEXT_ALIGN.CENTER}
               >
@@ -154,7 +152,7 @@ export default function CollectiblesTab({ onAddNFT }) {
           </Box>
         </Box>
       </Box>
-    </Box>
+    </div>
   );
 }
 

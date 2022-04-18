@@ -16,7 +16,7 @@ describe('MetaMetrics Opt In', () => {
   beforeEach(() => {
     wrapper = mount(<MetaMetricsOptIn.WrappedComponent {...props} />, {
       context: {
-        trackEvent: () => undefined,
+        metricsEvent: () => undefined,
         t: (key) => messages[key].message,
       },
     });

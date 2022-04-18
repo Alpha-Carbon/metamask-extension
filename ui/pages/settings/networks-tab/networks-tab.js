@@ -16,10 +16,7 @@ import {
   getNetworksTabSelectedRpcUrl,
   getProvider,
 } from '../../../selectors';
-import {
-  NETWORK_TYPE_RPC,
-  TEST_CHAINS,
-} from '../../../../shared/constants/network';
+import { NETWORK_TYPE_RPC } from '../../../../shared/constants/network';
 import { defaultNetworksData } from './networks-tab.constants';
 import NetworksTabContent from './networks-tab-content';
 import NetworksForm from './networks-form';
@@ -28,7 +25,6 @@ import NetworksFormSubheader from './networks-tab-subheader';
 const defaultNetworks = defaultNetworksData.map((network) => ({
   ...network,
   viewOnly: true,
-  isATestNetwork: TEST_CHAINS.includes(network.chainId),
 }));
 
 const NetworksTab = ({ addNewNetwork }) => {
@@ -48,13 +44,14 @@ const NetworksTab = ({ addNewNetwork }) => {
   const frequentRpcNetworkListDetails = frequentRpcListDetail.map((rpc) => {
     return {
       label: rpc.nickname,
-      iconColor: 'var(--color-icon-default)',
+      labelKey: rpc.labelKey,
+      iconColor: '#6A737D',
       providerType: NETWORK_TYPE_RPC,
       rpcUrl: rpc.rpcUrl,
       chainId: rpc.chainId,
       ticker: rpc.ticker,
       blockExplorerUrl: rpc.rpcPrefs?.blockExplorerUrl || '',
-      isATestNetwork: TEST_CHAINS.includes(rpc.chainId),
+      viewOnly: rpc.viewOnly,
     };
   });
 
@@ -107,11 +104,12 @@ const NetworksTab = ({ addNewNetwork }) => {
               providerUrl={provider.rpcUrl}
               selectedNetwork={selectedNetwork}
               shouldRenderNetworkForm={shouldRenderNetworkForm}
+              isFullScreen={isFullScreen}
             />
             {!isFullScreen && !shouldRenderNetworkForm ? (
               <div className="networks-tab__networks-list-popup-footer">
                 <Button
-                  type="primary"
+                  type="primaryGradient"
                   onClick={(event) => {
                     event.preventDefault();
                     global.platform.openExtensionInBrowser(ADD_NETWORK_ROUTE);

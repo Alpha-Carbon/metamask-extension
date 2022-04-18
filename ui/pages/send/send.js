@@ -1,6 +1,7 @@
-import React, { useEffect, useCallback, useContext } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
+import classnames from 'classnames';
 import {
   getIsUsingMyAccountForRecipientSearch,
   getRecipient,
@@ -16,7 +17,7 @@ import {
 import { getCurrentChainId, isCustomPriceExcessive } from '../../selectors';
 import { getSendHexDataFeatureFlagState } from '../../ducks/metamask/metamask';
 import { showQrScanner } from '../../store/actions';
-import { MetaMetricsContext } from '../../contexts/metametrics';
+import { useMetricEvent } from '../../hooks/useMetricEvent';
 import SendHeader from './send-header';
 import AddRecipient from './send-content/add-recipient';
 import SendContent from './send-content';
@@ -37,8 +38,15 @@ export default function SendTransactionScreen() {
   const recipient = useSelector(getRecipient);
   const showHexData = useSelector(getSendHexDataFeatureFlagState);
   const userInput = useSelector(getRecipientUserInput);
+
   const location = useLocation();
-  const trackEvent = useContext(MetaMetricsContext);
+  const trackUsedQRScanner = useMetricEvent({
+    eventOpts: {
+      category: 'Transactions',
+      action: 'Edit Screen',
+      name: 'Used QR scanner',
+    },
+  });
 
   const dispatch = useDispatch();
 
@@ -92,7 +100,10 @@ export default function SendTransactionScreen() {
       <SendHeader history={history} />
       <EnsInput
         userInput={userInput}
-        className="send__to-row"
+        // className="send__to-row"
+        className={classnames({
+          'send__to-row': !recipient.address,
+        })}
         onChange={(address) => dispatch(updateRecipientUserInput(address))}
         onValidAddressTyped={(address) =>
           dispatch(updateRecipient({ address, nickname: '' }))
@@ -103,14 +114,7 @@ export default function SendTransactionScreen() {
         onPaste={(text) => updateRecipient({ address: text, nickname: '' })}
         onReset={() => dispatch(resetRecipientInput())}
         scanQrCode={() => {
-          trackEvent({
-            event: 'Used QR scanner',
-            category: 'Transactions',
-            properties: {
-              action: 'Edit Screen',
-              legacy_event: true,
-            },
-          });
+          trackUsedQRScanner();
           dispatch(showQrScanner());
         }}
       />

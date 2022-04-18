@@ -5,12 +5,12 @@ import {
   ENVIRONMENT_TYPE_NOTIFICATION,
 } from '../../../../../shared/constants/app';
 import { getEnvironmentType } from '../../../../../app/scripts/lib/util';
-import NetworkDisplay from '../../network-display';
+// import NetworkDisplay from '../../network-display';
 import Identicon from '../../../ui/identicon';
-import IconCaretLeft from '../../../ui/icon/icon-caret-left';
 import { shortenAddress } from '../../../../helpers/utils/util';
 import AccountMismatchWarning from '../../../ui/account-mismatch-warning/account-mismatch-warning.component';
 import { useI18nContext } from '../../../../hooks/useI18nContext';
+import BackIcon from '../../../ui/icon/back-icon.component';
 
 export default function ConfirmPageContainerHeader({
   onEdit,
@@ -48,16 +48,22 @@ export default function ConfirmPageContainerHeader({
               visibility: showEdit ? 'initial' : 'hidden',
             }}
           >
-            <IconCaretLeft />
+            {/* <img src="./images/caret-left.svg" alt="" /> */}
+            <div
+              className="confirm-page-container-header__back-icon"
+              onClick={() => onEdit()}
+            >
+              <BackIcon />
+            </div>
             <span
               className="confirm-page-container-header__back-button"
               onClick={() => onEdit()}
             >
-              {t('edit')}
+              {t('sendTo')}
             </span>
           </div>
         )}
-        {isFullScreen ? null : <NetworkDisplay />}
+        {/* {isFullScreen ? null : <NetworkDisplay />} */}
       </div>
       {children}
     </div>

@@ -2,11 +2,11 @@
   max-width: 800px;
 
   .control-dots .dot {
-    background: var(--color-icon-muted);
+    background: var(--ui-2);
     box-shadow: none;
 
     &.selected {
-      background: var(--color-icon-default);
+      background: var(--ui-4);
     }
   }
 

@@ -48,50 +48,48 @@ const ChooseAccount = ({
   };
 
   return (
-    <>
-      <div className="permissions-connect-choose-account__content">
-        <PermissionsConnectHeader
-          iconUrl={targetSubjectMetadata?.iconUrl}
-          iconName={targetSubjectMetadata?.name}
-          headerTitle={t('connectWithMetaMask')}
-          headerText={
-            accounts.length > 0
-              ? t('selectAccounts')
-              : t('connectAccountOrCreate')
-          }
-          siteOrigin={targetSubjectMetadata?.origin}
-        />
-        <AccountList
-          accounts={accounts}
-          selectNewAccountViaModal={selectNewAccountViaModal}
-          addressLastConnectedMap={addressLastConnectedMap}
-          nativeCurrency={nativeCurrency}
-          selectedAccounts={selectedAccounts}
-          allAreSelected={allAreSelected}
-          deselectAll={deselectAll}
-          selectAll={selectAll}
-          handleAccountClick={handleAccountClick}
-        />
-      </div>
+    <div className="permissions-connect-choose-account">
+      <PermissionsConnectHeader
+        iconUrl={targetSubjectMetadata?.iconUrl}
+        iconName={targetSubjectMetadata?.name}
+        headerTitle={t('connectWithMetaMask')}
+        headerText={
+          accounts.length > 0
+            ? t('selectAccounts')
+            : t('connectAccountOrCreate')
+        }
+        siteOrigin={targetSubjectMetadata?.origin}
+      />
+      <AccountList
+        accounts={accounts}
+        selectNewAccountViaModal={selectNewAccountViaModal}
+        addressLastConnectedMap={addressLastConnectedMap}
+        nativeCurrency={nativeCurrency}
+        selectedAccounts={selectedAccounts}
+        allAreSelected={allAreSelected}
+        deselectAll={deselectAll}
+        selectAll={selectAll}
+        handleAccountClick={handleAccountClick}
+      />
       <div className="permissions-connect-choose-account__footer-container">
         <PermissionsConnectFooter />
         <div className="permissions-connect-choose-account__bottom-buttons">
           <Button
             onClick={() => cancelPermissionsRequest(permissionsRequestId)}
-            type="secondary"
+            type="cancel"
           >
             {t('cancel')}
           </Button>
           <Button
             onClick={() => selectAccounts(selectedAccounts)}
-            type="primary"
+            type="primaryGradient"
             disabled={selectedAccounts.size === 0}
           >
             {t('next')}
           </Button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

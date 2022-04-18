@@ -11,13 +11,10 @@ import {
   OPTIMISM_CHAIN_ID,
   OPTIMISM_TESTNET_CHAIN_ID,
   BUYABLE_CHAINS_MAP,
-  MAINNET_DISPLAY_NAME,
-  BSC_CHAIN_ID,
   POLYGON_CHAIN_ID,
+  BSC_CHAIN_ID,
   AVALANCHE_CHAIN_ID,
-  BSC_DISPLAY_NAME,
-  POLYGON_DISPLAY_NAME,
-  AVALANCHE_DISPLAY_NAME,
+  AMINO_CHAIN_ID,
 } from '../../shared/constants/network';
 import {
   KEYRING_TYPES,
@@ -40,7 +37,11 @@ import {
   ALLOWED_SWAPS_CHAIN_IDS,
 } from '../../shared/constants/swaps';
 
-import { shortenAddress, getAccountByAddress } from '../helpers/utils/util';
+import {
+  shortenAddress,
+  getAccountByAddress,
+  isEqualCaseInsensitive,
+} from '../helpers/utils/util';
 import {
   getValueFromWeiHex,
   hexToDecimal,
@@ -63,7 +64,6 @@ import {
   getLedgerWebHidConnectedStatus,
   getLedgerTransportStatus,
 } from '../ducks/app/app';
-import { isEqualCaseInsensitive } from '../../shared/modules/string-utils';
 
 /**
  * One of the only remaining valid uses of selecting the network subkey of the
@@ -405,11 +405,10 @@ export function getAccountsWithLabels(state) {
   return getMetaMaskAccountsOrdered(state).map(
     ({ address, name, balance }) => ({
       address,
-      addressLabel: `${
-        name.length < TRUNCATED_NAME_CHAR_LIMIT
+      addressLabel: `${name.length < TRUNCATED_NAME_CHAR_LIMIT
           ? name
           : `${name.slice(0, TRUNCATED_NAME_CHAR_LIMIT - 1)}...`
-      } (${shortenAddress(address)})`,
+        } (${shortenAddress(address)})`,
       label: name,
       balance,
     }),
@@ -486,10 +485,6 @@ export function getUnapprovedTemplatedConfirmations(state) {
 function getSuggestedAssetCount(state) {
   const { suggestedAssets = [] } = state.metamask;
   return suggestedAssets.length;
-}
-
-export function getSuggestedAssets(state) {
-  return state.metamask.suggestedAssets;
 }
 
 export function getIsMainnet(state) {
@@ -572,7 +567,7 @@ export function getRpcPrefsForCurrentProvider(state) {
   const { frequentRpcListDetail, provider } = state.metamask;
   const selectRpcInfo = frequentRpcListDetail.find(
     (rpcInfo) => rpcInfo.rpcUrl === provider.rpcUrl,
-  );
+  ) || provider.rpcUrl.length > 0 && provider;
   const { rpcPrefs = {} } = selectRpcInfo || {};
   return rpcPrefs;
 }
@@ -679,11 +674,6 @@ export function getIsBuyableTransakChain(state) {
   return Boolean(BUYABLE_CHAINS_MAP?.[chainId]?.transakCurrencies);
 }
 
-export function getIsBuyableMoonPayChain(state) {
-  const chainId = getCurrentChainId(state);
-  return Boolean(BUYABLE_CHAINS_MAP?.[chainId]?.moonPay);
-}
-
 export function getNativeCurrencyImage(state) {
   const nativeCurrency = getNativeCurrency(state).toUpperCase();
   return NATIVE_CURRENCY_TOKEN_IMAGE_MAP[nativeCurrency];
@@ -726,9 +716,6 @@ function getAllowedNotificationIds(state) {
     7: false,
     8: supportsWebHid && currentKeyringIsLedger && currentlyUsingLedgerLive,
     9: getIsMainnet(state),
-    10: Boolean(process.env.TOKEN_DETECTION_V2),
-    11: Boolean(process.env.TOKEN_DETECTION_V2),
-    12: true,
   };
 }
 
@@ -806,16 +793,6 @@ export function getOpenSeaEnabled(state) {
 }
 
 /**
- * To get the `theme` value which determines which theme is selected
- *
- * @param {*} state
- * @returns Boolean
- */
-export function getTheme(state) {
-  return state.metamask.theme;
-}
-
-/**
  * To retrieve the tokenList produced by TokenListcontroller
  *
  * @param {*} state
@@ -876,7 +853,7 @@ export function getIsOptimism(state) {
   );
 }
 
-export function getNetworkSupportsSettingGasFees(state) {
+export function getNetworkSupportsSettingGasPrice(state) {
   return !getIsOptimism(state);
 }
 
@@ -910,32 +887,6 @@ export function getIsAdvancedGasFeeDefault(state) {
   );
 }
 
-/**
- * @param state
- * @returns string e.g. ethereum, bsc or polygon
- */
-export const getTokenDetectionSupportNetworkByChainId = (state) => {
-  const chainId = getCurrentChainId(state);
-  switch (chainId) {
-    case MAINNET_CHAIN_ID:
-      return MAINNET_DISPLAY_NAME;
-    case BSC_CHAIN_ID:
-      return BSC_DISPLAY_NAME;
-    case POLYGON_CHAIN_ID:
-      return POLYGON_DISPLAY_NAME;
-    case AVALANCHE_CHAIN_ID:
-      return AVALANCHE_DISPLAY_NAME;
-    default:
-      return '';
-  }
-};
-/**
- * To check for the chainId that supports token detection ,
- * currently it returns true for Ethereum Mainnet, Polygon, BSC and Avalanche
- *
- * @param {*} state
- * @returns Boolean
- */
 export function getIsTokenDetectionSupported(state) {
   const chainId = getCurrentChainId(state);
   return [
@@ -943,13 +894,6 @@ export function getIsTokenDetectionSupported(state) {
     BSC_CHAIN_ID,
     POLYGON_CHAIN_ID,
     AVALANCHE_CHAIN_ID,
+    AMINO_CHAIN_ID,
   ].includes(chainId);
-}
-
-export function getTokenDetectionNoticeDismissed(state) {
-  return state.metamask.tokenDetectionNoticeDismissed;
-}
-
-export function getTokenDetectionWarningDismissed(state) {
-  return state.metamask.tokenDetectionWarningDismissed;
 }

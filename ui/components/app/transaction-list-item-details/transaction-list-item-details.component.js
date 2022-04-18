@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import copyToClipboard from 'copy-to-clipboard';
 import { getBlockExplorerLink } from '@metamask/etherscan-link';
-import SenderToRecipient from '../../ui/sender-to-recipient';
-import { DEFAULT_VARIANT } from '../../ui/sender-to-recipient/sender-to-recipient.constants';
+// import SenderToRecipient from '../../ui/sender-to-recipient';
+// import { DEFAULT_VARIANT } from '../../ui/sender-to-recipient/sender-to-recipient.constants';
 import Disclosure from '../../ui/disclosure';
 import TransactionActivityLog from '../transaction-activity-log';
 import TransactionBreakdown from '../transaction-breakdown';
@@ -13,17 +13,20 @@ import CancelButton from '../cancel-button';
 import Popover from '../../ui/popover';
 import { SECOND } from '../../../../shared/constants/time';
 import { TRANSACTION_TYPES } from '../../../../shared/constants/transaction';
-import { getURLHostName } from '../../../helpers/utils/util';
+import { getURLHostName, shortenAddress } from '../../../helpers/utils/util';
 import TransactionDecoding from '../transaction-decoding';
+
+import TransactionIcon from '../transaction-icon';
 
 export default class TransactionListItemDetails extends PureComponent {
   static contextTypes = {
     t: PropTypes.func,
+    metricsEvent: PropTypes.func,
     trackEvent: PropTypes.func,
   };
 
   static defaultProps = {
-    recipientEns: null,
+    // recipientEns: null,
   };
 
   static propTypes = {
@@ -37,14 +40,17 @@ export default class TransactionListItemDetails extends PureComponent {
     transactionGroup: PropTypes.object,
     title: PropTypes.string.isRequired,
     onClose: PropTypes.func.isRequired,
-    recipientEns: PropTypes.string,
+    // recipientEns: PropTypes.string,
     recipientAddress: PropTypes.string,
     rpcPrefs: PropTypes.object,
     senderAddress: PropTypes.string.isRequired,
     tryReverseResolveAddress: PropTypes.func.isRequired,
-    senderNickname: PropTypes.string.isRequired,
-    recipientNickname: PropTypes.string,
+    // senderNickname: PropTypes.string.isRequired,
+    // recipientNickname: PropTypes.string,
     transactionStatus: PropTypes.func,
+    category: PropTypes.string,
+    status: PropTypes.string,
+    nativeCurrency: PropTypes.string,
   };
 
   state = {
@@ -68,7 +74,6 @@ export default class TransactionListItemDetails extends PureComponent {
         link_type: 'Transaction Block Explorer',
         action: 'Transaction Details',
         block_explorer_domain: getURLHostName(blockExplorerLink),
-        legacy_event: true,
       },
     });
 
@@ -94,12 +99,11 @@ export default class TransactionListItemDetails extends PureComponent {
     const { primaryTransaction: transaction } = transactionGroup;
     const { hash } = transaction;
 
-    this.context.trackEvent({
-      category: 'Navigation',
-      event: 'Copied Transaction ID',
-      properties: {
+    this.context.metricsEvent({
+      eventOpts: {
+        category: 'Navigation',
         action: 'Activity Log',
-        legacy_event: true,
+        name: 'Copied Transaction ID',
       },
     });
 
@@ -125,16 +129,19 @@ export default class TransactionListItemDetails extends PureComponent {
       primaryCurrency,
       showSpeedUp,
       showRetry,
-      recipientEns,
+      // recipientEns,
       recipientAddress,
       senderAddress,
       isEarliestNonce,
-      senderNickname,
+      // senderNickname,
       title,
       onClose,
-      recipientNickname,
+      // recipientNickname,
       showCancel,
       transactionStatus: TransactionStatus,
+      category,
+      status,
+      nativeCurrency,
     } = this.props;
     const {
       primaryTransaction: transaction,
@@ -142,9 +149,18 @@ export default class TransactionListItemDetails extends PureComponent {
     } = transactionGroup;
     const { hash } = transaction;
 
+    console.log(category, status, nativeCurrency, 'trans');
     return (
-      <Popover title={title} onClose={onClose}>
+      <Popover onClose={onClose} className="transaction-list-popover">
         <div className="transaction-list-item-details">
+          <div className="transaction-list-item-details-title">
+            <TransactionIcon category={category} status={status} />
+            <div className="transaction-list-item-details-title-txt">
+              <span className="mr-2">{title}</span>
+              <span>{nativeCurrency}</span>
+            </div>
+          </div>
+
           <div className="transaction-list-item-details__operations">
             <div className="transaction-list-item-details__header-buttons">
               {showSpeedUp && (
@@ -211,7 +227,18 @@ export default class TransactionListItemDetails extends PureComponent {
             </div>
           </div>
           <div className="transaction-list-item-details__body">
-            <div className="transaction-list-item-details__sender-to-recipient-header">
+            <div className="transaction-list-item-details__address">
+              <div className="transaction-list-item-details__address-from">
+                <div>{t('from')}</div>
+                <p>{shortenAddress(senderAddress)}</p>
+              </div>
+              <div className="transaction-list-item-details__address-to">
+                <div>{t('to')}</div>
+                <p>{shortenAddress(recipientAddress)}</p>
+              </div>
+              <div className="transaction-list-item-details__address-line"></div>
+            </div>
+            {/* <div className="transaction-list-item-details__sender-to-recipient-header">
               <div>{t('from')}</div>
               <div>{t('to')}</div>
             </div>
@@ -226,27 +253,25 @@ export default class TransactionListItemDetails extends PureComponent {
                 senderName={senderNickname}
                 senderAddress={senderAddress}
                 onRecipientClick={() => {
-                  this.context.trackEvent({
-                    category: 'Navigation',
-                    event: 'Copied "To" Address',
-                    properties: {
+                  this.context.metricsEvent({
+                    eventOpts: {
+                      category: 'Navigation',
                       action: 'Activity Log',
-                      legacy_event: true,
+                      name: 'Copied "To" Address',
                     },
                   });
                 }}
                 onSenderClick={() => {
-                  this.context.trackEvent({
-                    category: 'Navigation',
-                    event: 'Copied "From" Address',
-                    properties: {
+                  this.context.metricsEvent({
+                    eventOpts: {
+                      category: 'Navigation',
                       action: 'Activity Log',
-                      legacy_event: true,
+                      name: 'Copied "From" Address',
                     },
                   });
                 }}
               />
-            </div>
+            </div> */}
             <div className="transaction-list-item-details__cards-container">
               <TransactionBreakdown
                 nonce={transactionGroup.initialTransaction.txParams.nonce}

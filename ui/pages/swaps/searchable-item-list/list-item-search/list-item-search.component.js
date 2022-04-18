@@ -12,10 +12,7 @@ import { getCurrentChainId } from '../../../../selectors/selectors';
 
 const renderAdornment = () => (
   <InputAdornment position="start" style={{ marginRight: '12px' }}>
-    <i
-      className="fa fa-search fa-lg"
-      style={{ color: 'var(--color-icon-muted)' }}
-    />
+    <img src="images/search.svg" width="17" height="17" alt="" />
   </InputAdornment>
 );
 

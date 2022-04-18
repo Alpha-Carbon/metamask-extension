@@ -53,6 +53,7 @@ export default class ConfirmRemoveAccount extends Component {
         </div>
         <div className="confirm-remove-account__account__link">
           <a
+            className=""
             onClick={() => {
               const accountLink = getAccountLink(
                 identity.address,
@@ -76,11 +77,7 @@ export default class ConfirmRemoveAccount extends Component {
             rel="noopener noreferrer"
             title={t('etherscanView')}
           >
-            <i
-              className="fa fa-share-square"
-              style={{ color: 'var(--color-icon-muted)' }}
-              title={t('etherscanView')}
-            />
+            <img src="images/popout.svg" alt={t('etherscanView')} />
           </a>
         </div>
       </div>

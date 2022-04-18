@@ -15,7 +15,7 @@
     width: 65%;
     margin-top: 16px;
     padding: 12px 12px 14px 12px;
-    border: 1px solid var(--color-border-default);
+    border: 1px solid var(--ui-1);
     box-sizing: border-box;
     border-radius: 100px;
     align-items: center;
@@ -47,7 +47,7 @@
     display: flex;
     height: 27px;
     padding: 12px 12px 14px 12px;
-    background-color: var(--color-background-alternative);
+    background-color: var(--ui-1);
     border-radius: 100px;
     align-items: center;
     justify-content: center;
@@ -56,7 +56,7 @@
   &__siteimage-identicon {
     width: 33px;
     height: 33px;
-    border: solid var(--color-border-muted);
+    border: solid #fff;
   }
 
   &__address-identicon {
@@ -68,9 +68,11 @@
     padding: 0 0 0 8px;
   }
 
-  &__etherscan-link img {
-    width: 9px;
-    height: 9px;
+  &__etherscan-link {
+    img {
+      width: 9px;
+      height: 9px;
+    }
   }
 
   .app-header__logo-container {
@@ -111,7 +113,7 @@
 
     margin-top: 16px;
     margin-bottom: 16px;
-    color: var(--color-text-alternative);
+    color: #6a737d;
     text-align: center;
     padding-left: 24px;
     padding-right: 24px;
@@ -121,7 +123,7 @@
   &__card--no-border {
     display: flex;
     flex-flow: column;
-    border-bottom: 1px solid var(--color-border-default);
+    border-bottom: 1px solid #d2d8dd;
     position: relative;
     padding-left: 24px;
     padding-right: 24px;
@@ -135,7 +137,7 @@
     &__thin-text {
       @include H7;
 
-      color: var(--color-text-alternative);
+      color: #6a737d;
     }
   }
 
@@ -202,7 +204,7 @@
       div {
         width: 22px;
         height: 2px;
-        background: var(--color-primary-default);
+        background: var(--primary-blue);
         position: absolute;
       }
 
@@ -218,9 +220,9 @@
     &__circle {
       width: 14px;
       height: 14px;
-      border: 2px solid var(--color-primary-default);
+      border: 2px solid var(--primary-blue);
       border-radius: 50%;
-      background: var(--color-background-default);
+      background: white;
       position: absolute;
     }
   }
@@ -250,7 +252,7 @@
       @include H4;
 
       font-weight: bold;
-      color: var(--color-text-default);
+      color: #000;
     }
 
     &__secondary-fee,
@@ -258,7 +260,7 @@
       @include H6;
 
       font-weight: normal;
-      color: var(--color-text-muted);
+      color: #8c8e94;
     }
 
     &__labelled-fee {
@@ -286,7 +288,7 @@
     i {
       margin-left: 6px;
       display: flex;
-      color: var(--color-primary-default);
+      color: #3099f2;
       align-items: center;
     }
   }
@@ -301,7 +303,7 @@
     flex-flow: row;
     padding-top: 15px;
     padding-bottom: 30px;
-    border-bottom: 1px solid var(--color-border-muted);
+    border-bottom: 1px solid #d2d8dd;
     width: 100%;
     justify-content: center;
     padding-left: 24px;
@@ -311,21 +313,21 @@
   &__large-text {
     @include H4;
 
-    color: var(--color-text-default);
+    color: #24292e;
   }
 
   &__medium-link-text {
     @include H6;
 
     font-weight: 500;
-    color: var(--color-primary-default);
+    color: var(--primary-blue);
   }
 
   &__medium-text,
   &__label {
     @include H6;
 
-    color: var(--color-text-default);
+    color: #24292e;
   }
 
   &__label {
@@ -338,11 +340,11 @@
   &__info-row {
     @include H7;
 
-    color: var(--color-text-alternative);
+    color: #6a737d;
   }
 
   &__small-blue-text {
-    color: var(--color-primary-default);
+    color: var(--primary-blue);
   }
 
   &__info-row {
@@ -393,7 +395,7 @@
     margin-top: 5px;
     margin-bottom: 6px;
     padding: 12px 12px 14px 12px;
-    border: 1px solid var(--color-border-muted);
+    border: 1px solid #bbc0c5;
     box-sizing: border-box;
     border-radius: 6px;
     align-items: center;

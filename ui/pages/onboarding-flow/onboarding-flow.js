@@ -21,6 +21,8 @@ import {
 } from '../../helpers/constants/routes';
 import {
   getCompletedOnboarding,
+  getIsInitialized,
+  getIsUnlocked,
   getSeedPhraseBackedUp,
 } from '../../ducks/metamask/metamask';
 import {
@@ -52,6 +54,8 @@ export default function OnboardingFlow() {
   const currentLocation = useLocation();
   const history = useHistory();
   const t = useI18nContext();
+  const isInitialized = useSelector(getIsInitialized);
+  const isUnlocked = useSelector(getIsUnlocked);
   const completedOnboarding = useSelector(getCompletedOnboarding);
   const seedPhraseBackedUp = useSelector(getSeedPhraseBackedUp);
   const nextRoute = useSelector(getFirstTimeFlowTypeRoute);
@@ -59,8 +63,19 @@ export default function OnboardingFlow() {
   useEffect(() => {
     if (completedOnboarding && seedPhraseBackedUp) {
       history.push(DEFAULT_ROUTE);
+      return;
     }
-  }, [history, completedOnboarding, seedPhraseBackedUp]);
+
+    if (isInitialized && !isUnlocked) {
+      history.push(ONBOARDING_UNLOCK_ROUTE);
+    }
+  }, [
+    history,
+    completedOnboarding,
+    isInitialized,
+    isUnlocked,
+    seedPhraseBackedUp,
+  ]);
 
   const handleCreateNewAccount = async (password) => {
     const newSecretRecoveryPhrase = await dispatch(
@@ -178,7 +193,7 @@ export default function OnboardingFlow() {
           target="_blank"
         >
           <span>{t('followUsOnTwitter')}</span>
-          <i className="fab fa-twitter onboarding-flow__twitter-button__icon" />
+          <img src="images/twitter-icon.png" />
         </Button>
       )}
     </div>

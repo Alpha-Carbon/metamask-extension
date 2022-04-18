@@ -7,7 +7,7 @@ import FormField from '../../ui/form-field';
 import { GAS_ESTIMATE_TYPES } from '../../../../shared/constants/gas';
 import { getGasFormErrorText } from '../../../helpers/constants/gas';
 import { getIsGasEstimatesLoading } from '../../../ducks/metamask/metamask';
-import { getNetworkSupportsSettingGasFees } from '../../../selectors';
+import { getNetworkSupportsSettingGasPrice } from '../../../selectors';
 
 export default function AdvancedGasControls({
   gasEstimateType,
@@ -35,8 +35,8 @@ export default function AdvancedGasControls({
       gasEstimateType === GAS_ESTIMATE_TYPES.ETH_GASPRICE ||
       isGasEstimatesLoading);
 
-  const networkSupportsSettingGasFees = useSelector(
-    getNetworkSupportsSettingGasFees,
+  const networkSupportsSettingGasPrice = useSelector(
+    getNetworkSupportsSettingGasPrice,
   );
 
   return (
@@ -55,7 +55,6 @@ export default function AdvancedGasControls({
         tooltipText={t('editGasLimitTooltip')}
         value={gasLimit}
         allowDecimals={false}
-        disabled={!networkSupportsSettingGasFees}
         numeric
       />
       {showFeeMarketFields ? (
@@ -112,7 +111,7 @@ export default function AdvancedGasControls({
                 ? getGasFormErrorText(gasErrors.gasPrice, t)
                 : null
             }
-            disabled={!networkSupportsSettingGasFees}
+            disabled={!networkSupportsSettingGasPrice}
           />
         </>
       )}

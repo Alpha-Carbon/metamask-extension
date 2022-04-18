@@ -12,7 +12,7 @@ const LOADING_CLASS = `${BASE_CLASS}--active`;
 
 export default function LoadingHeartBeat({
   estimateUsed,
-  backgroundColor = 'var(--color-background-default)',
+  backgroundColor = '#fff',
 }) {
   useShouldAnimateGasEstimations();
   const active = useSelector(getGasLoadingAnimationIsShowing);

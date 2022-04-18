@@ -44,6 +44,12 @@
   "addSuggestedTokens": {
     "message": "Lisää ehdotetut käyttötunnukset"
   },
+  "addToAddressBook": {
+    "message": "Lisää osoitekirjaan"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "esim. Jukka E."
+  },
   "addToken": {
     "message": "Lisää tietue"
   },
@@ -61,15 +67,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Amino",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Amino Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Amino Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -333,6 +339,9 @@
   },
   "ensRegistrationError": {
     "message": "Virhe ENS-nimen rekisteröinnissä"
+  },
+  "enterAnAlias": {
+    "message": "Anna peitenimi"
   },
   "enterPassword": {
     "message": "Kirjoita salasana"
@@ -753,6 +762,9 @@
   "restore": {
     "message": "Palauta"
   },
+  "restoreAccountWithSeed": {
+    "message": "Palauta tilisi käyttäen salaustekstiä (seed phrase)"
+  },
   "revealSeedWords": {
     "message": "Paljasta salaussanat"
   },
@@ -803,6 +815,9 @@
   },
   "securityAndPrivacy": {
     "message": "Turva & yksityisyys"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "Erota kukin sana yhdellä välilyönnillä"
   },
   "seedPhraseReq": {
     "message": "Juurilauseet ovat 12 sanan pituisia"

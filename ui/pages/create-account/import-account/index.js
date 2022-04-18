@@ -44,7 +44,7 @@ export default class AccountImportSubview extends Component {
           <div className="page-container__title">{t('importAccount')}</div>
           <div className="page-container__subtitle">
             {t('importAccountMsg')}
-            <span
+            {/* <span
               className="new-account-info-link"
               onClick={() => {
                 global.platform.openTab({
@@ -54,7 +54,7 @@ export default class AccountImportSubview extends Component {
               }}
             >
               {t('here')}
-            </span>
+            </span> */}
           </div>
         </div>
         <div className="new-account-import-form">

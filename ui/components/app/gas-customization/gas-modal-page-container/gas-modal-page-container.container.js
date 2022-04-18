@@ -19,6 +19,7 @@ import {
   updateGasPrice,
   useCustomGas,
   getSendAsset,
+  ASSET_TYPES,
 } from '../../../../ducks/send';
 import {
   conversionRateSelector as getConversionRate,
@@ -53,12 +54,9 @@ import {
   isBalanceSufficient,
 } from '../../../../pages/send/send.utils';
 import { MIN_GAS_LIMIT_DEC } from '../../../../pages/send/send.constants';
-import {
-  ASSET_TYPES,
-  TRANSACTION_STATUSES,
-} from '../../../../../shared/constants/transaction';
+import { TRANSACTION_STATUSES } from '../../../../../shared/constants/transaction';
 import { GAS_LIMITS } from '../../../../../shared/constants/gas';
-import { updateGasFees } from '../../../../ducks/metamask/metamask';
+import { updateTransactionGasFees } from '../../../../ducks/metamask/metamask';
 import GasModalPageContainer from './gas-modal-page-container.component';
 
 const mapStateToProps = (state, ownProps) => {
@@ -209,7 +207,7 @@ const mapDispatchToProps = (dispatch) => {
     hideModal: () => dispatch(hideModal()),
     useCustomGas: () => dispatch(useCustomGas()),
     updateTransactionGasFees: (gasFees) => {
-      dispatch(updateGasFees({ ...gasFees, expectHexWei: true }));
+      dispatch(updateTransactionGasFees({ ...gasFees, expectHexWei: true }));
     },
     updateCustomGasPrice,
     updateCustomGasLimit: (newLimit) =>

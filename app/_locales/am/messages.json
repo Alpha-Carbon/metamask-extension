@@ -38,6 +38,12 @@
   "addSuggestedTokens": {
     "message": "የተጠቆሙ ተለዋጭ ስሞችን አክል"
   },
+  "addToAddressBook": {
+    "message": "በአድራሻ መዝገብ ላይ አክል"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "ለምሳሌ፡ ጆን ዲ."
+  },
   "addToken": {
     "message": "ተለዋጭ ስም አክል"
   },
@@ -55,15 +61,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Amino",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Amino Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Amino Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -324,6 +330,9 @@
   },
   "ensRegistrationError": {
     "message": "በ ENS የስም ምዝገባ ላይ የተፈጠረ ስህተት"
+  },
+  "enterAnAlias": {
+    "message": "ተለዋጭ ስም ያስገቡ"
   },
   "enterPassword": {
     "message": "የይለፍ ቃል ያስገቡ"
@@ -741,6 +750,9 @@
   "restore": {
     "message": "እነበረበት መልስ"
   },
+  "restoreAccountWithSeed": {
+    "message": "መለያዎን በዘር ሐረግ ወደነበረበት ይመልሱ"
+  },
   "revealSeedWords": {
     "message": "የዘር ቃላትን ይግለጹ"
   },
@@ -791,6 +803,9 @@
   },
   "securityAndPrivacy": {
     "message": "ደህንነት እና ግላዊነት"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "እያንዳንዱን ቃል በነጠላ ክፍት ቦታ ይለያዩ"
   },
   "seedPhraseReq": {
     "message": "የዘር ሐረጋት የ 12 ቃላት ርዝመት አላቸው"

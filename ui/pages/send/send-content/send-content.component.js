@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import PageContainerContent from '../../../components/ui/page-container/page-container-content.component';
 import Dialog from '../../../components/ui/dialog';
@@ -9,11 +10,13 @@ import {
   GAS_PRICE_EXCESSIVE_ERROR_KEY,
   INSUFFICIENT_FUNDS_FOR_GAS_ERROR_KEY,
 } from '../../../helpers/constants/error-keys';
-import { ASSET_TYPES } from '../../../../shared/constants/transaction';
+import { ASSET_TYPES } from '../../../ducks/send';
 import SendAmountRow from './send-amount-row';
 import SendHexDataRow from './send-hex-data-row';
 import SendAssetRow from './send-asset-row';
-import SendGasRow from './send-gas-row';
+// import SendGasRow from './send-gas-row';
+// import SendFrom from './send-from';
+import SendTo from './send-to';
 
 export default class SendContent extends Component {
   state = {
@@ -33,11 +36,12 @@ export default class SendContent extends Component {
     gasIsExcessive: PropTypes.bool.isRequired,
     isEthGasPrice: PropTypes.bool,
     noGasPrice: PropTypes.bool,
-    networkOrAccountNotSupports1559: PropTypes.bool,
+    // networkOrAccountNotSupports1559: PropTypes.bool,
     getIsBalanceInsufficient: PropTypes.bool,
     asset: PropTypes.object,
     to: PropTypes.string,
     assetError: PropTypes.string,
+    // addToAddressBook: PropTypes.func,
   };
 
   render() {
@@ -47,7 +51,7 @@ export default class SendContent extends Component {
       gasIsExcessive,
       isEthGasPrice,
       noGasPrice,
-      networkOrAccountNotSupports1559,
+      // networkOrAccountNotSupports1559,
       getIsBalanceInsufficient,
       asset,
       assetError,
@@ -76,10 +80,13 @@ export default class SendContent extends Component {
             : null}
           {error ? this.renderError(error) : null}
           {warning ? this.renderWarning() : null}
-          {this.maybeRenderAddContact()}
+
           <SendAssetRow />
+          {/* <SendFrom /> */}
+          <SendTo />
+          {this.maybeRenderAddContact()}
           <SendAmountRow />
-          {networkOrAccountNotSupports1559 ? <SendGasRow /> : null}
+          {/* {networkOrAccountNotSupports1559 ? <SendGasRow /> : null} */}
           {showHexData ? <SendHexDataRow /> : null}
         </div>
       </PageContainerContent>
@@ -97,13 +104,19 @@ export default class SendContent extends Component {
 
     return (
       <>
-        <Dialog
+        {/* <Dialog
           type="message"
           className="send__dialog"
           onClick={() => this.setState({ showNicknamePopovers: true })}
         >
           {t('newAccountDetectedDialogMessage')}
-        </Dialog>
+        </Dialog> */}
+        <button
+          className="send__dialog"
+          onClick={() => this.setState({ showNicknamePopovers: true })}
+        >
+          {t('newAccountDetectedDialogMessage')}
+        </button>
         {showNicknamePopovers ? (
           <NicknamePopovers
             onClose={() => this.setState({ showNicknamePopovers: false })}

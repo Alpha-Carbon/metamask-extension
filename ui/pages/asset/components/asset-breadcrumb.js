@@ -1,23 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import BackIcon from '../../../components/ui/icon/back-icon.component';
 
-const AssetBreadcrumb = ({ accountName, assetName, onBack }) => {
+const AssetBreadcrumb = ({
+  // accountName,
+  //  assetName,
+  onBack,
+}) => {
   return (
     <button className="asset-breadcrumb" onClick={onBack}>
-      <i
+      {/* <i
         className="fas fa-chevron-left asset-breadcrumb__chevron"
         data-testid="asset__back"
       />
       <span>{accountName}</span>
       &nbsp;/&nbsp;
-      <span className="asset-breadcrumb__asset">{assetName}</span>
+      <span className="asset-breadcrumb__asset">{assetName}</span> */}
+      <BackIcon />
     </button>
   );
 };
 
 AssetBreadcrumb.propTypes = {
-  accountName: PropTypes.string.isRequired,
-  assetName: PropTypes.string.isRequired,
+  // accountName: PropTypes.string.isRequired,
+  // assetName: PropTypes.string.isRequired,
   onBack: PropTypes.func.isRequired,
 };
 

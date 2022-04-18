@@ -143,6 +143,12 @@
   "addSuggestedTokens": {
     "message": "Tambahkan Token yang Disarankan"
   },
+  "addToAddressBook": {
+    "message": "Tambahkan ke buku alamat"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "contoh: John D."
+  },
   "addToken": {
     "message": "Tambahkan Token"
   },
@@ -222,15 +228,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Amino",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Amino Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Amino Flask",
     "description": "The name of the application (Flask)"
   },
   "approvalAndAggregatorTxFeeCost": {
@@ -946,6 +952,9 @@
   "ensUnknownError": {
     "message": "Pencarian ENS gagal."
   },
+  "enterAnAlias": {
+    "message": "Masukkan alias"
+  },
   "enterMaxSpendLimit": {
     "message": "Masukkan Batas Penggunaan Maksimum"
   },
@@ -1264,11 +1273,18 @@
   "importAccountError": {
     "message": "Galat saat mengimpor akun."
   },
+  "importAccountLinkText": {
+    "message": "impor menggunakan Frasa Pemulihan Rahasia"
+  },
   "importAccountMsg": {
     "message": "Akun yang diimpor tidak akan dikaitkan dengan Frasa Pemulihan Rahasia akun MetaMask yang asli dibuat. Pelajari selengkapnya tentang akun yang diimpor"
   },
   "importAccountSeedPhrase": {
     "message": "Impor dompet dengan Frasa Pemulihan Rahasia"
+  },
+  "importAccountText": {
+    "message": "atau $1",
+    "description": "$1 represents the text from `importAccountLinkText` as a link"
   },
   "importExistingWalletDescription": {
     "message": "Masukkan Frasa Pemulihan Rahasia Anda (alias Frasa Benih) yang diberikan saat Anda membuat dompet. $1",
@@ -1404,6 +1420,9 @@
   },
   "lastConnected": {
     "message": "Terakhir Terhubung"
+  },
+  "layer1Fees": {
+    "message": "Biaya lapis 1"
   },
   "learmMoreAboutGas": {
     "message": "Ingin $1 seputar gas?"
@@ -1726,6 +1745,9 @@
     "message": "Akun $1",
     "description": "Default name of next account to be created on create account screen"
   },
+  "newCollectibleAddFailed": {
+    "message": "Koleksi tidak ditambahkan karena: $1"
+  },
   "newCollectibleAddedMessage": {
     "message": "Koleksi berhasil ditambahkan!"
   },
@@ -1737,6 +1759,9 @@
   },
   "newNFTsDetected": {
     "message": "Baru! Deteksi NFT"
+  },
+  "newNFTsDetectedInfo": {
+    "message": "Izinkan MetaMask untuk mendeteksi NFT dari Opensea secara otomatis dan menampilkannya di dompet MetaMask Anda."
   },
   "newNetworkAdded": {
     "message": "“$1” berhasil ditambahkan!"
@@ -2204,6 +2229,9 @@
   "restore": {
     "message": "Pulihkan"
   },
+  "restoreAccountWithSeed": {
+    "message": "Pulihkan Akun dengan Frasa Pemulihan Rahasia"
+  },
   "restoreWalletPreferences": {
     "message": "Cadangan data Anda dari $1 telah ditemukan. Pulihkan preferensi dompet Anda?",
     "description": "$1 is the date at which the data was backed up"
@@ -2271,6 +2299,9 @@
   "secretPhrase": {
     "message": "Hanya akun pertama di dompet ini yang akan dimuat secara otomatis. Setelah proses ini selesai, untuk menambahkan akun tambahan, klik menu drop down, lalu pilih Buat Akun."
   },
+  "secretPhraseWarning": {
+    "message": "Jika Anda memulihkan menggunakan Frasa Pemulihan Rahasia lainnya, dompet, akun, dan aset Anda saat ini akan dihapus dari aplikasi ini secara permanen. Tindakan ini tidak dapat dibatalkan."
+  },
   "secretRecoveryPhrase": {
     "message": "Frasa Pemulihan Rahasia"
   },
@@ -2327,6 +2358,12 @@
   },
   "seedPhraseIntroTitleCopy": {
     "message": "Sebelum memulai, lihat video singkat ini untuk mempelajari tentang Frasa Pemulihan Rahasia Anda dan cara menjaga keamanan dompet Anda."
+  },
+  "seedPhrasePlaceholder": {
+    "message": "Pisahkan setiap kata dengan satu spasi"
+  },
+  "seedPhrasePlaceholderPaste": {
+    "message": "Tempel Frasa Pemulihan Rahasia dari clipboard"
   },
   "seedPhraseReq": {
     "message": "Frasa Pemulihan Rahasia berisi 12, 15, 18, 21, atau 24 kata"
@@ -2437,6 +2474,9 @@
   },
   "showRecommendations": {
     "message": "Tampilkan Rekomendasi"
+  },
+  "showSeedPhrase": {
+    "message": "Tampilkan Frasa Pemulihan Rahasia"
   },
   "showTestnetNetworks": {
     "message": "Tampilkan jaringan pengujian"

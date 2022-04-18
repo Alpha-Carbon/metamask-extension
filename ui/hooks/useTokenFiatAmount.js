@@ -7,7 +7,7 @@ import {
 } from '../selectors';
 import { getTokenFiatAmount } from '../helpers/utils/token-util';
 import { getConversionRate } from '../ducks/metamask/metamask';
-import { isEqualCaseInsensitive } from '../../shared/modules/string-utils';
+import { isEqualCaseInsensitive } from '../helpers/utils/util';
 
 /**
  * Get the token balance converted to fiat and formatted for display

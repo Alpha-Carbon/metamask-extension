@@ -6,32 +6,24 @@ import { useUserPreferencedCurrency } from '../../../hooks/useUserPreferencedCur
 
 export default function UserPreferencedCurrencyDisplay({
   'data-testid': dataTestId,
-  ethLogoHeight = 14,
+  ethLogoHeight = 12,
   ethNumberOfDecimals,
   fiatNumberOfDecimals,
   numberOfDecimals: propsNumberOfDecimals,
   showEthLogo,
   type,
-  showFiat,
   ...restProps
 }) {
   const { currency, numberOfDecimals } = useUserPreferencedCurrency(type, {
     ethNumberOfDecimals,
     fiatNumberOfDecimals,
     numberOfDecimals: propsNumberOfDecimals,
-    showFiatOverride: showFiat,
   });
   const prefixComponent = useMemo(() => {
     return (
       currency === ETH &&
       showEthLogo && (
-        <i
-          className="fab fa-ethereum"
-          style={{
-            color: 'var(--color-icon-default)',
-            fontSize: ethLogoHeight,
-          }}
-        />
+        <img src="./images/eth.svg" height={ethLogoHeight} alt="" />
       )
     );
   }, [currency, showEthLogo, ethLogoHeight]);
@@ -57,7 +49,7 @@ UserPreferencedCurrencyDisplay.propTypes = {
   hideTitle: PropTypes.bool,
   style: PropTypes.object,
   showEthLogo: PropTypes.bool,
-  ethLogoHeight: PropTypes.number,
+  ethLogoHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   type: PropTypes.oneOf([PRIMARY, SECONDARY]),
   ethNumberOfDecimals: PropTypes.oneOfType([
     PropTypes.string,
@@ -67,5 +59,4 @@ UserPreferencedCurrencyDisplay.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]),
-  showFiat: PropTypes.boolean,
 };

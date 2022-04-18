@@ -67,7 +67,7 @@ export default function PrivacySettings() {
                 {t('etherscan')}
               </a>,
               <a
-                href="https://etherscan.io/privacyPolicy"
+                href="https://cn.etherscan.com/privacyPolicy"
                 target="_blank"
                 rel="noreferrer"
                 key="privacyMsg"
@@ -103,7 +103,7 @@ export default function PrivacySettings() {
             value={turnOnTokenDetection}
             setValue={setTurnOnTokenDetection}
             title={t('turnOnTokenDetection')}
-            description={t('useTokenDetectionPrivacyDesc')}
+            description={t('useTokenDetectionDescription')}
           />
         </div>
         <Button type="primary" rounded onClick={handleSubmit}>

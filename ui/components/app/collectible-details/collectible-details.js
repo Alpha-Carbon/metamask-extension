@@ -18,7 +18,11 @@ import {
   BLOCK_SIZES,
 } from '../../../helpers/constants/design-system';
 import { useI18nContext } from '../../../hooks/useI18nContext';
-import { getAssetImageURL, shortenAddress } from '../../../helpers/utils/util';
+import {
+  getAssetImageURL,
+  isEqualCaseInsensitive,
+  shortenAddress,
+} from '../../../helpers/utils/util';
 import {
   getCurrentChainId,
   getIpfsGateway,
@@ -45,13 +49,11 @@ import { getEnvironmentType } from '../../../../app/scripts/lib/util';
 import { ENVIRONMENT_TYPE_POPUP } from '../../../../shared/constants/app';
 import CollectibleOptions from '../collectible-options/collectible-options';
 import Button from '../../ui/button';
-import { updateSendAsset } from '../../../ducks/send';
+import { ASSET_TYPES, updateSendAsset } from '../../../ducks/send';
 import InfoTooltip from '../../ui/info-tooltip';
 import { ERC721 } from '../../../helpers/constants/common';
 import { usePrevious } from '../../../hooks/usePrevious';
 import { useCopyToClipboard } from '../../../hooks/useCopyToClipboard';
-import { isEqualCaseInsensitive } from '../../../../shared/modules/string-utils';
-import { ASSET_TYPES } from '../../../../shared/constants/transaction';
 
 export default function CollectibleDetails({ collectible }) {
   const {
@@ -185,7 +187,7 @@ export default function CollectibleDetails({ collectible }) {
           >
             <div>
               <Typography
-                color={COLORS.TEXT_DEFAULT}
+                color={COLORS.BLACK}
                 variant={TYPOGRAPHY.H4}
                 fontWeight={FONT_WEIGHT.BOLD}
                 boxProps={{ margin: 0, marginBottom: 2 }}
@@ -193,7 +195,7 @@ export default function CollectibleDetails({ collectible }) {
                 {name}
               </Typography>
               <Typography
-                color={COLORS.TEXT_MUTED}
+                color={COLORS.UI3}
                 variant={TYPOGRAPHY.H5}
                 boxProps={{ margin: 0, marginBottom: 4 }}
                 overflowWrap={OVERFLOW_WRAP.BREAK_WORD}
@@ -204,7 +206,7 @@ export default function CollectibleDetails({ collectible }) {
             {description ? (
               <div>
                 <Typography
-                  color={COLORS.TEXT_DEFAULT}
+                  color={COLORS.BLACK}
                   variant={TYPOGRAPHY.H6}
                   fontWeight={FONT_WEIGHT.BOLD}
                   className="collectible-details__description"
@@ -213,7 +215,7 @@ export default function CollectibleDetails({ collectible }) {
                   {t('description')}
                 </Typography>
                 <Typography
-                  color={COLORS.TEXT_ALTERNATIVE}
+                  color={COLORS.UI4}
                   variant={TYPOGRAPHY.H6}
                   boxProps={{ margin: 0, marginBottom: 4 }}
                 >
@@ -227,7 +229,7 @@ export default function CollectibleDetails({ collectible }) {
         <Box marginBottom={2}>
           <Box display={DISPLAY.FLEX} flexDirection={FLEX_DIRECTION.ROW}>
             <Typography
-              color={COLORS.TEXT_DEFAULT}
+              color={COLORS.BLACK}
               variant={TYPOGRAPHY.H6}
               fontWeight={FONT_WEIGHT.BOLD}
               boxProps={{
@@ -240,7 +242,7 @@ export default function CollectibleDetails({ collectible }) {
               {t('source')}
             </Typography>
             <Typography
-              color={COLORS.PRIMARY_DEFAULT}
+              color={COLORS.PRIMARY1}
               variant={TYPOGRAPHY.H6}
               boxProps={{
                 margin: 0,
@@ -260,7 +262,7 @@ export default function CollectibleDetails({ collectible }) {
           </Box>
           <Box display={DISPLAY.FLEX} flexDirection={FLEX_DIRECTION.ROW}>
             <Typography
-              color={COLORS.TEXT_DEFAULT}
+              color={COLORS.BLACK}
               variant={TYPOGRAPHY.H6}
               fontWeight={FONT_WEIGHT.BOLD}
               boxProps={{
@@ -278,7 +280,7 @@ export default function CollectibleDetails({ collectible }) {
               className="collectible-details__contract-wrapper"
             >
               <Typography
-                color={COLORS.PRIMARY_DEFAULT}
+                color={COLORS.PRIMARY1}
                 variant={TYPOGRAPHY.H6}
                 overflowWrap={OVERFLOW_WRAP.BREAK_WORD}
                 boxProps={{
@@ -311,7 +313,7 @@ export default function CollectibleDetails({ collectible }) {
                 {copied ? (
                   t('copiedExclamation')
                 ) : (
-                  <Copy size={15} color="var(--color-icon-default)" />
+                  <Copy size={15} color="#6a737d" />
                 )}
               </button>
             </Box>

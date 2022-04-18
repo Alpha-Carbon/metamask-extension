@@ -44,6 +44,12 @@
   "addSuggestedTokens": {
     "message": "Добавете препоръчани жетони"
   },
+  "addToAddressBook": {
+    "message": "Добавяне към адресната книга"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "напр. Джон Д."
+  },
   "addToken": {
     "message": "Добавяне на жетон"
   },
@@ -61,15 +67,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Amino",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Amino Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Amino Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -333,6 +339,9 @@
   },
   "ensRegistrationError": {
     "message": "Грешка при регистрацията на име на ENS"
+  },
+  "enterAnAlias": {
+    "message": "Въведете псевдоним"
   },
   "enterPassword": {
     "message": "Въведете парола"
@@ -752,6 +761,9 @@
   "restore": {
     "message": "Възстановяване"
   },
+  "restoreAccountWithSeed": {
+    "message": "Възстановете акаунта си с фраза зародиш"
+  },
   "revealSeedWords": {
     "message": "Разкрий думите зародиш"
   },
@@ -802,6 +814,9 @@
   },
   "securityAndPrivacy": {
     "message": "Сигурност и поверителност"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "Отделете всяка дума с един интервал"
   },
   "seedPhraseReq": {
     "message": "Фразите зародиш се състоят от 12 думи"

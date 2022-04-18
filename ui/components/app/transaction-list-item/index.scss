@@ -1,6 +1,15 @@
 .transaction-list-item {
+  padding: 8px 16px;
+  border-top: 1px solid var(--gray-4);
+  cursor: pointer;
+  margin: 0 25px;
+
+  &:hover {
+    background-color: var(--Grey-000);
+  }
+
   &__primary-currency {
-    color: var(--color-text-default);
+    color: var(--Black-100);
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -9,15 +18,15 @@
     @include H7;
 
     margin-top: 4px;
-    color: var(--color-text-alternative);
+    color: var(--Grey-500);
   }
 
   & &--unconfirmed {
-    color: var(--color-text-alternative);
+    color: var(--Grey-500);
   }
 
   &--unconfirmed &__primary-currency {
-    color: var(--color-text-alternative);
+    color: var(--Grey-500);
   }
 
   &__pending-actions {
@@ -63,5 +72,57 @@
   &__origin {
     /*rtl:ignore*/
     direction: rtl;
+  }
+
+  &__time {
+    color: var(--gray-3);
+
+    @include H6;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+
+    & > svg {
+      margin-right: 15px;
+    }
+
+    &-status {
+      &-title {
+        &-send {
+          color: var(--function-2);
+        }
+
+        &-receive {
+          color: var(--secondary-3);
+        }
+      }
+    }
+  }
+
+  &__balance {
+    @include H4;
+    @include roundeBold;
+
+    flex: 1;
+    text-align: right;
+    padding-top: 20px;
+
+    & > span:nth-child(2) {
+      @include roundeNormal;
+    }
+
+    &-send {
+      color: var(--function-2);
+    }
+
+    &-receive {
+      color: var(--secondary-3);
+    }
+
+    @media screen and (max-width: $break-small) {
+      @include H5;
+    }
   }
 }

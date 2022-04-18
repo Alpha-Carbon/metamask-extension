@@ -2,34 +2,63 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { getAccountLink } from '@metamask/etherscan-link';
+// import { getAccountLink } from '@metamask/etherscan-link';
 import TransactionList from '../../../components/app/transaction-list';
-import { EthOverview } from '../../../components/app/wallet-overview';
+// import { EthOverview } from '../../../components/app/wallet-overview';
 import {
   getSelectedIdentity,
-  getCurrentChainId,
+  // getCurrentChainId,
   getRpcPrefsForCurrentProvider,
-  getSelectedAddress,
+  // getSelectedAddress,
+  getSelectedAccount,
 } from '../../../selectors/selectors';
 import { showModal } from '../../../store/actions';
-import { DEFAULT_ROUTE } from '../../../helpers/constants/routes';
-import { getURLHostName } from '../../../helpers/utils/util';
-import { MetaMetricsContext } from '../../../contexts/metametrics';
+import { DEFAULT_ROUTE, SEND_ROUTE } from '../../../helpers/constants/routes';
+// import { getURLHostName } from '../../../helpers/utils/util';
+import {
+  // useNewMetricEvent,
+  useMetricEvent,
+} from '../../../hooks/useMetricEvent';
+import { I18nContext } from '../../../contexts/i18n';
+import ActAvatar from '../../../components/ui/icon/act-avatar-icon.component';
+import ReceiveIcon from '../../../components/ui/icon/receive-icon.component';
+import SendIcon from '../../../components/ui/icon/send-icon.component';
+import UserPreferencedCurrencyDisplay from '../../../components/app/user-preferenced-currency-display';
+import { PRIMARY } from '../../../helpers/constants/common';
+// import AssetOptions from './asset-options';
 import AssetNavigation from './asset-navigation';
-import AssetOptions from './asset-options';
 
 export default function NativeAsset({ nativeCurrency }) {
   const selectedAccountName = useSelector(
     (state) => getSelectedIdentity(state).name,
   );
   const dispatch = useDispatch();
-
-  const chainId = useSelector(getCurrentChainId);
+  const t = useContext(I18nContext);
+  // const chainId = useSelector(getCurrentChainId);
   const rpcPrefs = useSelector(getRpcPrefsForCurrentProvider);
-  const address = useSelector(getSelectedAddress);
+  // const address = useSelector(getSelectedAddress);
   const history = useHistory();
-  const accountLink = getAccountLink(address, chainId, rpcPrefs);
-  const trackEvent = useContext(MetaMetricsContext);
+  // const accountLink = getAccountLink(address, chainId, rpcPrefs);
+  const selectedAccount = useSelector(getSelectedAccount);
+  const { balance } = selectedAccount;
+
+  // const blockExplorerLinkClickedEvent = useNewMetricEvent({
+  //   category: 'Navigation',
+  //   event: 'Clicked Block Explorer Link',
+  //   properties: {
+  //     link_type: 'Account Tracker',
+  //     action: 'Asset Options',
+  //     block_explorer_domain: getURLHostName(accountLink),
+  //   },
+  // });
+
+  const sendEvent = useMetricEvent({
+    eventOpts: {
+      category: 'Navigation',
+      action: 'Home',
+      name: 'Clicked Send: TACT',
+    },
+  });
 
   return (
     <>
@@ -38,30 +67,59 @@ export default function NativeAsset({ nativeCurrency }) {
         assetName={nativeCurrency}
         onBack={() => history.push(DEFAULT_ROUTE)}
         isEthNetwork={!rpcPrefs.blockExplorerUrl}
-        optionsButton={
-          <AssetOptions
-            isNativeAsset
-            onClickBlockExplorer={() => {
-              trackEvent({
-                event: 'Clicked Block Explorer Link',
-                category: 'Navigation',
-                properties: {
-                  link_type: 'Account Tracker',
-                  action: 'Asset Options',
-                  block_explorer_domain: getURLHostName(accountLink),
-                },
-              });
-              global.platform.openTab({
-                url: accountLink,
-              });
-            }}
-            onViewAccountDetails={() => {
+        // optionsButton={
+        //   <AssetOptions
+        //     isNativeAsset
+        //     onClickBlockExplorer={() => {
+        //       blockExplorerLinkClickedEvent();
+        //       global.platform.openTab({
+        //         url: accountLink,
+        //       });
+        //     }}
+        //     onViewAccountDetails={() => {
+        //       dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
+        //     }}
+        //   />
+        // }
+      />
+      <div className="asset-native__wrapper">
+        <ActAvatar
+          width="56"
+          height="56"
+          className="asset-native__wrapper-icon"
+          txtClassName="asset-native__wrapper-icon-txt"
+        />
+        <UserPreferencedCurrencyDisplay
+          className="eth-overview__primary-balance asset-native__wrapper-balance"
+          data-testid="eth-overview__primary-currency"
+          value={balance}
+          type={PRIMARY}
+          ethNumberOfDecimals={3}
+          hideTitle
+        />
+        <div className="asset-native__wrapper-buttons">
+          <button
+            className="asset-native__wrapper-buttons-receive"
+            onClick={() => {
               dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
             }}
-          />
-        }
-      />
-      <EthOverview className="asset__overview" />
+          >
+            <ReceiveIcon size={18} color="#FFFFFF" />
+            <p>{t('receive')}</p>
+          </button>
+          <button
+            className="asset-native__wrapper-buttons-send"
+            onClick={() => {
+              sendEvent();
+              history.push(SEND_ROUTE);
+            }}
+          >
+            <SendIcon size={19} color="#FFFFFF" />
+            <p>{t('send')}</p>
+          </button>
+        </div>
+      </div>
+      {/* <EthOverview className="asset__overview" /> */}
       <TransactionList hideTokenTransactions />
     </>
   );

@@ -11,8 +11,10 @@ import { ENVIRONMENT_TYPE_POPUP } from '../../../../shared/constants/app';
 // Modal Components
 import ConfirmCustomizeGasModal from '../gas-customization/gas-modal-page-container';
 import SwapsGasCustomizationModal from '../../../pages/swaps/swaps-gas-customization-modal';
+import NetworksFormModal from '../../../pages/settings/networks-tab/networks-form-modal';
 import DepositEtherModal from './deposit-ether-modal';
 import AccountDetailsModal from './account-details-modal';
+import AccountNameEdit from './account-name-edit-modal';
 import ExportPrivateKeyModal from './export-private-key-modal';
 import HideTokenConfirmationModal from './hide-token-confirmation-modal';
 import QRScanner from './qr-scanner';
@@ -26,6 +28,7 @@ import FadeModal from './fade-modal';
 import MetaMetricsOptInModal from './metametrics-opt-in-modal';
 import RejectTransactions from './reject-transactions';
 import ConfirmDeleteNetwork from './confirm-delete-network';
+import AddToAddressBookModal from './add-to-addressbook-modal';
 import EditApprovalPermission from './edit-approval-permission';
 import NewAccountModal from './new-account-modal';
 import CustomizeNonceModal from './customize-nonce';
@@ -33,9 +36,9 @@ import ConvertTokenToNftModal from './convert-token-to-nft-modal/convert-token-t
 
 const modalContainerBaseStyle = {
   transform: 'translate3d(-50%, 0, 0px)',
-  border: '1px solid var(--color-border-default)',
+  border: '1px solid #CCCFD1',
   borderRadius: '8px',
-  backgroundColor: 'var(--color-background-default)',
+  backgroundColor: '#FFFFFF',
   boxShadow: '0 2px 22px 0 rgba(0,0,0,0.2)',
 };
 
@@ -56,7 +59,7 @@ const accountModalStyle = {
     width: '95%',
     // top: isPopupOrNotification() === 'popup' ? '52vh' : '36.5vh',
     boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 2px 2px',
-    borderRadius: '4px',
+    borderRadius: '10px',
     top: '10%',
     transform: 'none',
     left: '0',
@@ -67,7 +70,7 @@ const accountModalStyle = {
     width: '335px',
     // top: 'calc(33% + 45px)',
     boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 2px 2px',
-    borderRadius: '4px',
+    borderRadius: '10px',
     top: '10%',
     transform: 'none',
     left: '0',
@@ -75,7 +78,7 @@ const accountModalStyle = {
     margin: '0 auto',
   },
   contentStyle: {
-    borderRadius: '4px',
+    borderRadius: '10px',
   },
 };
 
@@ -113,6 +116,33 @@ const MODALS = {
     },
   },
 
+  ADD_TO_ADDRESSBOOK: {
+    contents: <AddToAddressBookModal />,
+    mobileModalStyle: {
+      width: '95%',
+      top: '10%',
+      boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 2px 2px',
+      transform: 'none',
+      left: '0',
+      right: '0',
+      margin: '0 auto',
+      borderRadius: '10px',
+    },
+    laptopModalStyle: {
+      width: '375px',
+      top: '10%',
+      boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 2px 2px',
+      transform: 'none',
+      left: '0',
+      right: '0',
+      margin: '0 auto',
+      borderRadius: '10px',
+    },
+    contentStyle: {
+      borderRadius: '10px',
+    },
+  },
+
   NEW_ACCOUNT: {
     contents: <NewAccountModal />,
     mobileModalStyle: {
@@ -144,6 +174,10 @@ const MODALS = {
     contents: <AccountDetailsModal />,
     ...accountModalStyle,
   },
+  ACCOUNT_NAME_EDIT: {
+    contents: <AccountNameEdit />,
+    ...accountModalStyle,
+  },
 
   EXPORT_PRIVATE_KEY: {
     contents: <ExportPrivateKeyModal />,
@@ -152,6 +186,9 @@ const MODALS = {
 
   HIDE_TOKEN_CONFIRMATION: {
     contents: <HideTokenConfirmationModal />,
+    contentStyle: {
+      borderRadius: '10px',
+    },
     mobileModalStyle: {
       width: '95%',
       top: getEnvironmentType() === ENVIRONMENT_TYPE_POPUP ? '52vh' : '36.5vh',
@@ -262,6 +299,33 @@ const MODALS = {
     customOnHideOpts: {
       action: resetCustomGasData,
       args: [],
+    },
+  },
+
+  NETWORKS_FORM_MODAL: {
+    contents: <NetworksFormModal />,
+    mobileModalStyle: {
+      width: '95%',
+      top: '10%',
+      boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 2px 2px',
+      transform: 'none',
+      left: '0',
+      right: '0',
+      margin: '0 auto',
+      borderRadius: '10px',
+    },
+    laptopModalStyle: {
+      width: '320px',
+      top: '0%',
+      boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 2px 2px',
+      transform: 'none',
+      left: '0',
+      right: '0',
+      margin: '20px auto',
+      borderRadius: '10px',
+    },
+    contentStyle: {
+      borderRadius: '10px',
     },
   },
 
@@ -389,7 +453,7 @@ const MODALS = {
 };
 
 const BACKDROPSTYLE = {
-  backgroundColor: 'var(--color-overlay-default)',
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
 };
 
 function mapStateToProps(state) {
@@ -443,7 +507,6 @@ class Modal extends Component {
     const modalStyle =
       modal[isMobileView() ? 'mobileModalStyle' : 'laptopModalStyle'];
     const contentStyle = modal.contentStyle || {};
-
     return (
       <FadeModal
         keyboard={false}

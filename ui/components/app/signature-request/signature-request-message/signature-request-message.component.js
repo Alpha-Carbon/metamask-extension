@@ -77,7 +77,12 @@ export default class SignatureRequestMessage extends PureComponent {
         className="signature-request-message__scroll-button"
         data-testid="signature-request-scroll-button"
       >
-        <i className="fa fa-arrow-down" title={this.context.t('scrollDown')} />
+        <img
+          src="./images/icons/down-arrow.svg"
+          width="28"
+          height="28"
+          alt={this.context.t('scrollDown')}
+        />
       </div>
     );
   }

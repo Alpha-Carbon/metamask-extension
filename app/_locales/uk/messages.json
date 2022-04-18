@@ -44,6 +44,12 @@
   "addSuggestedTokens": {
     "message": "Додати рекомендовані токени"
   },
+  "addToAddressBook": {
+    "message": "Додати до адресної книги"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "Напр.: Джон Д."
+  },
   "addToken": {
     "message": "Додати токен"
   },
@@ -61,15 +67,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Amino",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Amino Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Amino Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -333,6 +339,9 @@
   },
   "ensRegistrationError": {
     "message": "Помилка у реєстрації ENS ім'я"
+  },
+  "enterAnAlias": {
+    "message": "Введіть псевдонім"
   },
   "enterPassword": {
     "message": "Введіть пароль"
@@ -756,6 +765,9 @@
   "restore": {
     "message": "Відновити"
   },
+  "restoreAccountWithSeed": {
+    "message": "Відновіть ваш обліковий запис за допомогою seed-фрази"
+  },
   "revealSeedWords": {
     "message": "Показати мнемонічні слова"
   },
@@ -806,6 +818,9 @@
   },
   "securityAndPrivacy": {
     "message": "Безпека й конфіденційність"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "Відділіть кожне слово одним пробілом"
   },
   "seedPhraseReq": {
     "message": "Початкові фрази мають 12 слів"
