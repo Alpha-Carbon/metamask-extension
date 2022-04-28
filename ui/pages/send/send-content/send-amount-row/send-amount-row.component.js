@@ -162,16 +162,20 @@ export default class SendAmountRow extends Component {
 
     return (
       <div className="send-v2__amount__wrapper">
-        <button
-          className="send-v2__amount__switch"
-          onClick={() => {
-            this.openDropdown();
-          }}
-        >
-          {/* <p>{nativeCurrency}</p> */}
-          <p>{token ? token?.symbol : nativeCurrency}</p>
-          <ArrowIcon color="#FFFFFF" />
-        </button>
+        <div className="send-v2__amount__btns d-flex align-items-center">
+          <button
+            className="send-v2__amount__switch"
+            onClick={() => {
+              this.openDropdown();
+            }}
+          >
+            {/* <p>{nativeCurrency}</p> */}
+            <p>{token ? token?.symbol : nativeCurrency}</p>
+            <ArrowIcon color="#FFFFFF" />
+          </button>
+          <AmountMaxButton inError={inError} />
+        </div>
+
         {this.renderInput()}
         <p className="send-v2__amount__balance">
           <span>{t('balance')} : </span>
@@ -185,7 +189,7 @@ export default class SendAmountRow extends Component {
             />
           )}
         </p>
-        <AmountMaxButton inError={inError} />
+
         {[...this.state.sendableTokens, ...this.state.sendableCollectibles]
           .length > 0
           ? this.renderMountDropdown()

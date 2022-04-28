@@ -74,12 +74,13 @@
       }
 
       &__name {
-        @include H7;
+        @include H5;
 
         padding-left: 14px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        color: var(--secondary-3);
 
         [dir="rtl"] & {
           /*rtl:ignore*/

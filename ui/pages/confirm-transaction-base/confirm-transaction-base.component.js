@@ -563,7 +563,7 @@ export default class ConfirmTransactionBase extends Component {
                 <GasTiming
                   maxPriorityFeePerGas={hexWEIToDecGWEI(
                     maxPriorityFeePerGas ||
-                      txData.txParams.maxPriorityFeePerGas,
+                    txData.txParams.maxPriorityFeePerGas,
                   )}
                   maxFeePerGas={hexWEIToDecGWEI(
                     maxFeePerGas || txData.txParams.maxFeePerGas,
@@ -729,7 +729,8 @@ export default class ConfirmTransactionBase extends Component {
             </div>
           )}
           <div className="confirm-page-container-content__data-box-label">
-            {`${t('hexData')}: ${toBuffer(txParams?.data).length} bytes`}
+            {`${t('hexData')}: `}
+            <span>{toBuffer(txParams?.data).length} bytes</span>
           </div>
           <div className="confirm-page-container-content__data-box">
             {txParams?.data}

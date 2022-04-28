@@ -141,7 +141,7 @@ export default class EnsInput extends Component {
                 autoFocus
                 data-testid="ens-input"
               />
-              {/* <button
+              <button
                 className={classnames('ens-input__wrapper__action-icon', {
                   'ens-input__wrapper__action-icon--erase': userInput,
                   'ens-input__wrapper__action-icon--qrcode': !userInput,
@@ -153,7 +153,7 @@ export default class EnsInput extends Component {
                     this.props.scanQrCode();
                   }
                 }}
-              /> */}
+              />
             </>
           )}
         </div>

@@ -121,16 +121,23 @@ export function RecipientWithAddress({
         <div className="sender-to-recipient__sender-icon">
           <Identicon address={checksummedRecipientAddress} diameter={24} />
         </div>
-        <div className="sender-to-recipient__name">
-          {addressOnly
-            ? recipientNickname ||
+        <Tooltip
+          position="bottom"
+          html={t('viewDetail')}
+          wrapperClassName="sender-to-recipient__tooltip-wrapper"
+          containerClassName="sender-to-recipient__tooltip-container"
+        >
+          <div className="sender-to-recipient__name">
+            {addressOnly
+              ? recipientNickname ||
               recipientEns ||
               shortenAddress(checksummedRecipientAddress)
-            : recipientNickname ||
+              : recipientNickname ||
               recipientEns ||
               recipientName ||
               t('newContract')}
-        </div>
+          </div>
+        </Tooltip>
       </div>
       {showNicknamePopovers ? (
         <NicknamePopovers

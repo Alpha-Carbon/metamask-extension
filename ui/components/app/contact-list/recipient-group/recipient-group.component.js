@@ -27,12 +27,16 @@ export default function RecipientGroup({
     >
       {isRecent && (
         <div className="send__select-recipient-wrapper__group-label recent">
-          {label}
+          <div className="send__select-recipient-wrapper__group-label-line"></div>
+          <p>{label}</p>
+          <div className="send__select-recipient-wrapper__group-label-line"></div>
         </div>
       )}
       {isMyAccount && (
         <div className="send__select-recipient-wrapper__group-label my-account">
-          {label}
+          <div className="send__select-recipient-wrapper__group-label-line"></div>
+          <p>{label}</p>
+          <div className="send__select-recipient-wrapper__group-label-line"></div>
         </div>
       )}
       {isAddressBook && (
@@ -76,12 +80,12 @@ export default function RecipientGroup({
               data-testid="recipient"
             >
               <div className="send__select-recipient-wrapper__group-item__title">
-                {/* {name || ellipsify(address)} */}
-                {ellipsify(address)}
+                {name || ellipsify(address)}
+                {/* {ellipsify(address)} */}
               </div>
               {name && (
                 <div className="send__select-recipient-wrapper__group-item__subtitle">
-                  {/* {ellipsify(address)} */}
+                  {ellipsify(address)}
                 </div>
               )}
             </div>

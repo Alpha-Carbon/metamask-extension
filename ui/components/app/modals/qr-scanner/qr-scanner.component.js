@@ -9,6 +9,8 @@ import Spinner from '../../../ui/spinner';
 import WebcamUtils from '../../../../helpers/utils/webcam-utils';
 import { getURL } from '../../../../helpers/utils/util';
 import PageContainerFooter from '../../../ui/page-container/page-container-footer/page-container-footer.component';
+import QrCodeGradient from '../../../ui/icon/qr-code-gradient-icon.component';
+import CloseIcon from '../../../ui/icon/close-icon.component';
 
 const READY_STATE = {
   ACCESSING_CAMERA: 'ACCESSING_CAMERA',
@@ -241,6 +243,7 @@ export default class QrScanner extends Component {
 
     return (
       <>
+        <QrCodeGradient className="qr-scanner__icon" />
         <div className="qr-scanner__title">{`${t('scanQrCode')}`}</div>
         <div className="qr-scanner__content">
           <div className="qr-scanner__content__video-wrapper">
@@ -262,7 +265,9 @@ export default class QrScanner extends Component {
     const { error } = this.state;
     return (
       <div className="qr-scanner">
-        <div className="qr-scanner__close" onClick={this.stopAndClose}></div>
+        <button className="qr-scanner__close" onClick={this.stopAndClose}>
+          <CloseIcon />
+        </button>
         {error ? this.renderError() : this.renderVideo()}
       </div>
     );

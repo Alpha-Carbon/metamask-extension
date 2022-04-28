@@ -572,7 +572,7 @@
     flex-flow: row;
     flex: 1 0 auto;
     justify-content: space-between;
-    align-items: center;
+    // align-items: center;
   }
 
   &__form-field-container {
@@ -584,6 +584,7 @@
   &__form-field {
     flex: 1 1 auto;
     min-width: 0;
+
 
     .currency-display {
       color: var(--tundora);
@@ -608,7 +609,7 @@
   &__form-label {
     @include Paragraph;
 
-    color: var(--scorpion);
+    color: var(--black);
     width: 95px;
     flex: 0 0 auto;
   }
@@ -830,13 +831,17 @@
 
       z-index: 1025;
       position: relative;
-      height: 54px;
+      height: 96px;
       width: 100%;
-      border: 1px solid var(--alto);
       border-radius: 4px;
       background-color: var(--white);
-      color: var(--tundora);
+      color: var(--gray-1);
       padding: 10px;
+      resize: none;
+      border: none;
+      &::placeholder{
+        color:var(--gray-3);
+      }
     }
   }
 
@@ -847,14 +852,14 @@
     display: inline-block;
     width: 56px;
     height: 20px;
-    margin-top: 5px;
+    margin-top: 10px;
     border-radius: 100px;
 
     &__button {
       width: 56px;
       height: 26px;
       position: absolute;
-      border: 1px solid var(--secondary-3);
+      // border: 1px solid var(--secondary-3);
       border-radius: 100px;
       cursor: pointer;
       top: 0;
@@ -866,6 +871,8 @@
       justify-content: center;
       color: var(--secondary-3);
       background: var(--background);
+      font-size: 14px;
+      text-decoration: underline;
 
       &__disabled {
         color: var(--secondary-3);
@@ -874,9 +881,9 @@
     }
 
     input:checked + &__button {
-      background-color: var(--secondary-3);
-      border: 1px solid var(--secondary-3);
-      color: #fff;
+      // background-color: var(--secondary-3);
+      // border: 1px solid var(--secondary-3);
+      // color: #fff;
     }
   }
 
@@ -1296,6 +1303,11 @@
       position: relative;
     }
 
+    &__btns{
+      width: 100%;
+      padding-left: 39%;
+    }
+
     &__switch {
       background: var(--secondary-2-gradient);
       border-radius: 20px;
@@ -1303,10 +1315,9 @@
       display: flex;
       align-items: center;
       padding: 3px 8px 3px 16px;
-
+      margin-top: 15px;
+      margin-right: 5px;
       @include H5;
-
-      margin-bottom: 30px;
 
       & > icon {
         margin-left: 10px;
@@ -1326,7 +1337,6 @@
     }
 
     &__balance {
-      margin-top: 25px;
       margin-bottom: 15px;
       color: var(--gray-3);
       display: flex;

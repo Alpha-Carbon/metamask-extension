@@ -20,7 +20,7 @@ const CopyRawData = ({ data }) => {
           className="copy-raw-data__button"
         >
           <div className="copy-raw-data__icon">
-            <CopyIcon size={12} color="#BBC0C5" />
+            <CopyIcon size={12} color="#525252" />
           </div>
           <div className="copy-raw-data__label">
             {t('copyRawTransactionData')}

@@ -1125,5 +1125,8 @@
   },
   "zeroGasPriceOnSpeedUpError": {
     "message": "加速的 Gas 價格為 0"
+  },
+  "viewDetail": {
+    "message": "查看詳細內容"
   }
 }

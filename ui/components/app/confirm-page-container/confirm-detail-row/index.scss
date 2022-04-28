@@ -7,9 +7,9 @@
 
   &__label {
     @include H7;
+    @include roundeBold;
 
-    font-weight: 500;
-    color: var(--scorpion);
+    color: var(--black);
     text-transform: uppercase;
   }
 
@@ -52,10 +52,15 @@
   }
 
   .custom-nonce-input {
+    & .MuiInputBase-root{
+      height: 28px;
+      border: none !important;
+    }
     input {
       @include Paragraph;
 
-      width: 90px;
+      width: 120px;
+      padding: 0;
     }
   }
 }

@@ -9,7 +9,7 @@
   border-radius: 4px;
   // background-color: #fff;
   color: #4d4d4d;
-  padding: 8px 10px;
+  padding: 25px 10px;
   position: relative;
   background: none;
   border: 0;
@@ -41,16 +41,15 @@
     @include Paragraph;
 
     font-size: 30px;
-    color: #4d4d4d;
     border: none;
     max-width: 15ch;
     overflow: hidden;
     text-overflow: ellipsis;
     height: 30px;
-    background: linear-gradient(111.99deg, var(--secondary-2-start) 9.4%, var(--secondary-2-end) 92.26%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
+    color: var(--gray-1);
+    background-color: var(--background);
+    font-size: 40px;
+    text-align: center;
     &__disabled {
       background-color: rgb(222, 222, 222);
     }

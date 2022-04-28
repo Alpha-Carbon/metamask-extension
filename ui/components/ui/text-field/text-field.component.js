@@ -61,6 +61,7 @@ const styles = {
     'label + &': {
       marginTop: '9px',
     },
+    backgroundColor: 'white',
     border: '1px solid #222222',
     height: '40px',
     borderRadius: '4px',

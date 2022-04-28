@@ -3432,5 +3432,8 @@
   },
   "zeroGasPriceOnSpeedUpError": {
     "message": "加速时无燃料价格"
+  },
+  "viewDetail": {
+    "message": "查看详细信息"
   }
 }
