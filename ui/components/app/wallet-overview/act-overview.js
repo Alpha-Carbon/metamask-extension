@@ -152,7 +152,7 @@ const ActOverview = () => {
         >
           <SendIcon
             className="act-overview__buttons-icon"
-            size={24}
+            size={17}
             color="#FFFFFF"
           />
           {t('send')}
