@@ -224,7 +224,7 @@
     "description": "The url of the site that requested permission to 'withdraw and spend'"
   },
   "amino": {
-    "message": "Amino Test Network"
+    "message": "Carbon Wallet Test Network"
   },
   "amount": {
     "message": "Amount"
