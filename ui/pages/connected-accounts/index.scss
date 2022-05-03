@@ -29,7 +29,7 @@
   }
 
   &__footer {
-    border-top-color: var(--gray-2) !important;
+    border-top: none !important;
     a,
     a:hover {
       @include H6;
