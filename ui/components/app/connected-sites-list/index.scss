@@ -26,6 +26,8 @@
       padding-inline-start: 24px;
       color: var(--function-2);
       background: none;
+      display: flex;
+      align-items: center;
 
       &:hover {
         background: none;
