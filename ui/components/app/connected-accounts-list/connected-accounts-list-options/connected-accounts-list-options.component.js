@@ -19,6 +19,7 @@ const ConnectedAccountsListOptions = ({
       />
       {show ? (
         <Menu
+          className="connected-accounts-options__menu"
           anchorElement={optionsButtonElement}
           onHide={onHideOptions}
           popperOptions={{

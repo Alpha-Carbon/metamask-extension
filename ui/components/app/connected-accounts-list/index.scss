@@ -12,6 +12,7 @@
 
     display: inline;
     font-weight: bold;
+    color: var(--gray-1);
   }
 
   %account-status-typography {
@@ -24,7 +25,7 @@
     @extend %account-status-typography;
 
     display: inline;
-    color: var(--Grey-500);
+    color: var(--gray-2);
   }
 
   &__account-status-link {
@@ -46,7 +47,7 @@
     align-items: center;
     width: 100%;
     padding: 16px 24px;
-    border-top: 1px solid var(--geyser);
+    border-top: 1px solid var(--gray-2);
 
     &--highlight {
       background-color: var(--Yellow-000);
@@ -66,10 +67,17 @@
 }
 
 .connected-accounts-options {
+  &__menu{
+    & .menu-item{
+      display: flex;
+      padding: 11px 0px !important;
+    }
+  }
   &__button {
     font-size: $font-size-h4;
     background: inherit;
-    color: var(--Grey-500);
+    color: #323232;
+    transform: rotate(90deg);
   }
 }
 

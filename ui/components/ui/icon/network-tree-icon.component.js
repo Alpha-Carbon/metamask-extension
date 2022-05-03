@@ -3,29 +3,28 @@ import PropTypes from 'prop-types';
 
 export default function NetworkTreeIcon({
   className,
-  width = '40',
-  height = '40',
-  color = '#3CBB50',
+  width = '34',
+  height = '30',
 }) {
   return (
     <svg
       className={className}
       width={width}
-      height={height}
-      viewBox={`0 0 ${width} ${height}`}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M36.6668 18.3333V5H25.0002V10H15.0002V5H3.3335V18.3333H15.0002V13.3333H18.3335V30H25.0002V35H36.6668V21.6667H25.0002V26.6667H21.6668V13.3333H25.0002V18.3333H36.6668ZM11.6668 15H6.66683V8.33333H11.6668V15ZM28.3335 25H33.3335V31.6667H28.3335V25ZM28.3335 8.33333H33.3335V15H28.3335V8.33333Z"
-        fill={color}
-      />
+      height={height} viewBox="0 0 34 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M33.6666 13.3333V0H21.9999V5H11.9999V0H0.333252V13.3333H11.9999V8.33333H15.3333V25H21.9999V30H33.6666V16.6667H21.9999V21.6667H18.6666V8.33333H21.9999V13.3333H33.6666ZM8.66659 10H3.66659V3.33333H8.66659V10ZM25.3333 20H30.3333V26.6667H25.3333V20ZM25.3333 3.33333H30.3333V10H25.3333V3.33333Z" fill="url(#paint0_linear_1211_417)" />
+      <defs>
+        <linearGradient id="paint0_linear_1211_417" x1="0.333252" y1="9.80769" x2="32.6051" y2="24.2887" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#451DFF" />
+          <stop offset="1" stop-color="#FF1D7C" />
+        </linearGradient>
+      </defs>
     </svg>
+
   );
 }
 
 NetworkTreeIcon.propTypes = {
-  className: PropTypes.object,
+  className: PropTypes.string,
   /**
    * Width of the icon
    */
@@ -34,8 +33,4 @@ NetworkTreeIcon.propTypes = {
    * Height of the icon
    */
   height: PropTypes.string,
-  /**
-   * Color of the icon should be a valid design system color
-   */
-  color: PropTypes.string,
 };
