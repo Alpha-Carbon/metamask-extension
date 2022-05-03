@@ -1,25 +1,31 @@
 import React, { useContext, useState } from 'react';
 // import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-// import classnames from 'classnames';
+import classnames from 'classnames';
 import { useHistory } from 'react-router-dom';
 import copyToClipboard from 'copy-to-clipboard';
+import browser from 'webextension-polyfill';
 import {
   getSelectedAccount,
   getSelectedIdentity,
   getCurrentCurrency,
+  getOriginOfCurrentTab,
 } from '../../../selectors/selectors';
 import { useMetricEvent } from '../../../hooks/useMetricEvent';
 import { showModal } from '../../../store/actions';
 import {
   SEND_ROUTE,
   // BUILD_QUOTE_ROUTE,
+  CONNECTED_ACCOUNTS_ROUTE,
 } from '../../../helpers/constants/routes';
 import { SECOND } from '../../../../shared/constants/time';
 import { shortenAddress } from '../../../helpers/utils/util';
 import { toChecksumHexAddress } from '../../../../shared/modules/hexstring-utils';
 import { useCurrencyDisplay } from '../../../hooks/useCurrencyDisplay';
 // import { useUserPreferencedCurrency } from '../../../hooks/useUserPreferencedCurrency';
+import { getEnvironmentType } from '../../../../app/scripts/lib/util';
+import { ENVIRONMENT_TYPE_POPUP } from '../../../../shared/constants/app';
+import ConnectedStatusIndicator from '../connected-status-indicator';
 import Tooltip from '../../ui/tooltip';
 import EditIcon from '../../ui/icon/edit-icon.component';
 import CopyIcon from '../../ui/icon/copy-icon.component';
@@ -49,6 +55,12 @@ const ActOverview = () => {
   const parts = useCurrencyDisplay(balance, {
     currency: currentCurrency,
   });
+  //connected
+  const origin = useSelector(getOriginOfCurrentTab);
+  const showStatus =
+    getEnvironmentType() === ENVIRONMENT_TYPE_POPUP &&
+    origin &&
+    origin !== browser.runtime.id;
 
   // send method
   const sendEvent = useMetricEvent({
@@ -90,27 +102,36 @@ const ActOverview = () => {
               <EditIcon />
             </span>
           </div>
-          <Tooltip
-            wrapperClassName="selected-account__tooltip-wrapper"
-            position="bottom"
-            title={copied ? t('copiedExclamation') : t('copyToClipboard')}
-          >
-            <button
-              className="act-overview__balance-info-copy"
-              onClick={() => {
-                setCopied(true);
-                setTimeout(() => setCopied(true), SECOND * 3);
-                copyToClipboard(checksummedAddress);
-              }}
+          <div className={classnames("d-flex align-items-center", {
+            "justify-content-space-between": showStatus,
+          })}>
+            <Tooltip
+              wrapperClassName="selected-account__tooltip-wrapper"
+              position="bottom"
+              title={copied ? t('copiedExclamation') : t('copyToClipboard')}
             >
-              <div className="act-overview__balance-info-address">
-                <span> {shortenAddress(checksummedAddress)}</span>
-                <span>
-                  <CopyIcon color="#2EE8DB" size={12} />
-                </span>
-              </div>
-            </button>
-          </Tooltip>
+              <button
+                className="act-overview__balance-info-copy"
+                onClick={() => {
+                  setCopied(true);
+                  setTimeout(() => setCopied(true), SECOND * 3);
+                  copyToClipboard(checksummedAddress);
+                }}
+              >
+                <div className="act-overview__balance-info-address">
+                  <span> {shortenAddress(checksummedAddress)}</span>
+                  <span>
+                    <CopyIcon color="#2EE8DB" size={12} />
+                  </span>
+                </div>
+              </button>
+            </Tooltip>
+            {showStatus ? (
+              <ConnectedStatusIndicator
+                onClick={() => history.push(CONNECTED_ACCOUNTS_ROUTE)}
+              />
+            ) : null}
+          </div>
         </div>
       </div>
       <div className="act-overview__balance-token">
