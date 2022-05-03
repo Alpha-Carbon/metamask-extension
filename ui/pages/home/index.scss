@@ -10,6 +10,11 @@
     min-width: 0;
     display: flex;
     flex-direction: column;
+    & .tabs{
+      &__content{
+        margin-top: 0 !important;
+      }
+    }
   }
 
   &__balance-wrapper {
@@ -25,6 +30,7 @@
     // box-shadow: 0 3px 4px rgba(135, 134, 134, 0.16);
     background-color: var(--background);
     border-bottom: 1px solid var(--gray-4);
+
   }
 
   &__main-view &__tab {

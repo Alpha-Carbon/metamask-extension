@@ -1,6 +1,28 @@
 .asset-list-item {
+  height: 60px;
+  overflow: hidden;
+  margin-top: 0 !important;
+  padding: 0px 8px !important;
+  position: relative;
+  background-color: var(--background) !important;
+  box-shadow: none !important;
+  border-top: none;
+  & .list-item__top-wrap{
+    justify-content: space-between;
+    & .list-item__icon{
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.5;
+    }
+  }
   & .list-item__heading {
     max-width: 100%;
+  }
+
+  & .list-item__right-content{
+    transform: translateY(10px);
   }
 
   &__token-button {
@@ -21,6 +43,10 @@
     }
   }
 
+  &__token-balance{
+    color: var(--gray-1);
+  }
+
   &__token-value {
     @include roundeNormal;
     @include H3;
@@ -31,7 +57,6 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     max-width: 100%;
-    display: block;
     overflow: hidden;
   }
 
