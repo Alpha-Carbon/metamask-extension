@@ -113,8 +113,8 @@ function TransactionListItemInner({
 
   const {
     title,
-    // subtitle,
-    // subtitleContainsOrigin,
+    subtitle,
+    subtitleContainsOrigin,
     date,
     category,
     primaryCurrency,
@@ -124,7 +124,7 @@ function TransactionListItemInner({
     isPending,
     senderAddress,
   } = useTransactionDisplayData(transactionGroup);
-  const primaryToken = primaryCurrency.split('-').join(' ').split(' ');
+  const primaryToken = primaryCurrency.split(' ');
   const OtherTitle = title.split(' ');
   const isOtherTitle = OtherTitle?.[1];
   const isSend = category === TRANSACTION_GROUP_CATEGORIES.SEND;
@@ -186,9 +186,9 @@ function TransactionListItemInner({
           toggleShowDetails();
         }}
       >
-        <div className="transaction-list-item__time">{date}</div>
+        <div className="transaction-list-item__title">{date}&nbsp; | &nbsp;{subtitle} </div>
         <div className="transaction-list-item__info">
-          <TransactionIcon category={category} status={displayedStatusKey} />
+          <TransactionIcon category={category} status={displayedStatusKey} size={20} />
           <div className="transaction-list-item__info-status">
             <p
               className={classnames(
@@ -223,8 +223,8 @@ function TransactionListItemInner({
               'transaction-list-item__balance-swap': isSwap,
             })}
           >
-            <span className="mr-2">{primaryToken[1]}</span>
-            <span>{primaryToken[2]}</span>
+            <span className="mr-2">{primaryToken[0]}</span>
+            <span>{primaryToken[1]}</span>
           </div>
         </div>
         <div className="transaction-list-item__pending-actions">

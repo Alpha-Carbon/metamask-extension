@@ -68,7 +68,7 @@ export default class TransactionBreakdown extends PureComponent {
         <TransactionBreakdownRow divider title={t('nonce')}>
           {typeof nonce === 'undefined' ? null : (
             <HexToDecimal
-              className="transaction-breakdown__value linear-gradient"
+              className="transaction-breakdown__value"
               value={nonce}
             />
           )}
@@ -76,7 +76,7 @@ export default class TransactionBreakdown extends PureComponent {
         <TransactionBreakdownRow
           title={isTokenApprove ? t('spendLimitAmount') : t('amount')}
         >
-          <span className="transaction-breakdown__value transaction-breakdown__value--amount linear-gradient">
+          <span className="transaction-breakdown__value transaction-breakdown__value--amount">
             {primaryCurrency}
           </span>
         </TransactionBreakdownRow>
@@ -219,14 +219,14 @@ export default class TransactionBreakdown extends PureComponent {
         )}
         <TransactionBreakdownRow title={t('total')}>
           <UserPreferencedCurrencyDisplay
-            className="transaction-breakdown__value transaction-breakdown__value--eth-total linear-gradient"
+            className="transaction-breakdown__value transaction-breakdown__value--eth-total"
             type={PRIMARY}
             value={totalInHex}
             numberOfDecimals={isMultiLayerFeeNetwork ? 18 : null}
           />
           {showFiat && (
             <UserPreferencedCurrencyDisplay
-              className="transaction-breakdown__value linear-gradient"
+              className="transaction-breakdown__value"
               type={SECONDARY}
               value={totalInHex}
             />

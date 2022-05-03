@@ -23,9 +23,9 @@ const ICON_MAP = {
   [TRANSACTION_GROUP_CATEGORIES.SWAP]: Swap,
 };
 
-const FAIL_COLOR = '#D73A49';
+const FAIL_COLOR = '#CF3939';
 const PENDING_COLOR = '#6A737D';
-const OK_COLOR = '#2F80ED';
+const OK_COLOR = '#227BFF';
 
 const COLOR_MAP = {
   [TRANSACTION_GROUP_STATUSES.PENDING]: PENDING_COLOR,
@@ -36,26 +36,21 @@ const COLOR_MAP = {
   [TRANSACTION_GROUP_STATUSES.CANCELLED]: FAIL_COLOR,
   [TRANSACTION_STATUSES.DROPPED]: FAIL_COLOR,
   [TRANSACTION_STATUSES.SUBMITTED]: PENDING_COLOR,
+  [TRANSACTION_STATUSES.CONFIRMED]: OK_COLOR,
 };
 
-export default function TransactionIcon({ status, category }) {
+export default function TransactionIcon({ status, category, size = "28" }) {
   const dispatch = useDispatch();
-  const isConfirm = status === TRANSACTION_STATUSES.CONFIRMED;
-
-  // let color = COLOR_MAP[status] || OK_COLOR;
-  let color;
-  if (isConfirm && category === TRANSACTION_GROUP_CATEGORIES.SEND) {
-    color = '#CF3939';
-  } else if (isConfirm && category === TRANSACTION_GROUP_CATEGORIES.RECEIVE) {
-    color = '#227BFF';
-  } else {
-    color = COLOR_MAP[status] || OK_COLOR;
-  }
-  // isConfirm && category === TRANSACTION_GROUP_CATEGORIES.SEND
-  //   ? (color = '#CF3939')
-  //   : isConfirm && category === TRANSACTION_GROUP_CATEGORIES.RECEIVE
-  //   ? (color = '#227BFF')
-  //   : (color = COLOR_MAP[status] || OK_COLOR);
+  // const isConfirm = status === TRANSACTION_STATUSES.CONFIRMED;
+  let color = COLOR_MAP[status] || OK_COLOR;
+  // let color;
+  // if (isConfirm && category === TRANSACTION_GROUP_CATEGORIES.SEND) {
+  //   color = '#CF3939';
+  // } else if (isConfirm && category === TRANSACTION_GROUP_CATEGORIES.RECEIVE) {
+  //   color = '#227BFF';
+  // } else {
+  //   color = COLOR_MAP[status] || OK_COLOR;
+  // }
 
   const Icon = ICON_MAP[category];
 
@@ -68,7 +63,7 @@ export default function TransactionIcon({ status, category }) {
     return <div className="transaction-icon__grey-circle" />;
   }
 
-  return <Icon color={color} size={28} />;
+  return <Icon color={color} size={size} />;
 }
 
 TransactionIcon.propTypes = {

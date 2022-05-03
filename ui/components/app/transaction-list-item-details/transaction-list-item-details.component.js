@@ -15,8 +15,9 @@ import { SECOND } from '../../../../shared/constants/time';
 import { TRANSACTION_TYPES } from '../../../../shared/constants/transaction';
 import { getURLHostName, shortenAddress } from '../../../helpers/utils/util';
 import TransactionDecoding from '../transaction-decoding';
-
 import TransactionIcon from '../transaction-icon';
+import Identicon from '../../ui/identicon/identicon.component';
+import NicknamePopovers from '../modals/nickname-popovers/nickname-popovers.component';
 
 export default class TransactionListItemDetails extends PureComponent {
   static contextTypes = {
@@ -55,6 +56,8 @@ export default class TransactionListItemDetails extends PureComponent {
 
   state = {
     justCopied: false,
+    addressCopied: false,
+    showNicknamePopovers: false,
   };
 
   handleBlockExplorerClick = () => {
@@ -113,6 +116,14 @@ export default class TransactionListItemDetails extends PureComponent {
     });
   };
 
+  handleCopyFromAddress = () => {
+    const { senderAddress } = this.props;
+    this.setState({ addressCopied: true }, () => {
+      copyToClipboard(senderAddress);
+      setTimeout(() => this.setState({ addressCopied: false }), SECOND)
+    })
+  }
+
   componentDidMount() {
     const { recipientAddress, tryReverseResolveAddress } = this.props;
 
@@ -123,7 +134,7 @@ export default class TransactionListItemDetails extends PureComponent {
 
   render() {
     const { t } = this.context;
-    const { justCopied } = this.state;
+    const { justCopied, addressCopied, showNicknamePopovers } = this.state;
     const {
       transactionGroup,
       primaryCurrency,
@@ -149,96 +160,139 @@ export default class TransactionListItemDetails extends PureComponent {
     } = transactionGroup;
     const { hash } = transaction;
 
-    console.log(category, status, nativeCurrency, 'trans');
-    return (
-      <Popover onClose={onClose} className="transaction-list-popover">
-        <div className="transaction-list-item-details">
-          <div className="transaction-list-item-details-title">
-            <TransactionIcon category={category} status={status} />
-            <div className="transaction-list-item-details-title-txt">
-              <span className="mr-2">{title}</span>
-              <span>{nativeCurrency}</span>
-            </div>
-          </div>
+    let tooltipHtml = <p>{t('copiedExclamation')}</p>;
+    if (!addressCopied) {
+      tooltipHtml = <p>
+        {shortenAddress(recipientAddress)}
+        <br />
+        {t('copyAddress')}
+      </p>
+    }
 
-          <div className="transaction-list-item-details__operations">
-            <div className="transaction-list-item-details__header-buttons">
-              {showSpeedUp && (
-                <Button
-                  type="primary"
-                  onClick={this.handleRetry}
-                  className="transaction-list-item-details__header-button-rounded-button"
-                >
-                  {t('speedUp')}
-                </Button>
-              )}
-              {showCancel && (
-                <CancelButton
-                  transaction={transaction}
-                  cancelTransaction={this.handleCancel}
-                  detailsModal
-                />
-              )}
-              {showRetry && (
-                <Tooltip title={t('retryTransaction')}>
+    return (
+      <>
+        {showNicknamePopovers &&
+          <NicknamePopovers
+            onClose={() => this.setState({ showNicknamePopovers: false })}
+            address={recipientAddress}
+          />
+        }
+        <Popover onClose={onClose} className="transaction-list-popover">
+          <div className="transaction-list-item-details">
+            <div className="transaction-list-item-details-title">
+              <TransactionIcon category={category} status={status} />
+              <div className="transaction-list-item-details-title-txt">
+                <span className="mr-2">{title}</span>
+                {/* <span>{nativeCurrency}</span> */}
+              </div>
+            </div>
+
+            <div className="transaction-list-item-details__operations">
+              <div className="transaction-list-item-details__header-buttons">
+                {showSpeedUp && (
                   <Button
-                    type="raised"
+                    type="primary"
                     onClick={this.handleRetry}
-                    className="transaction-list-item-details__header-button"
+                    className="transaction-list-item-details__header-button-rounded-button"
                   >
-                    <i className="fa fa-sync"></i>
+                    {t('speedUp')}
                   </Button>
-                </Tooltip>
-              )}
-            </div>
-          </div>
-          <div className="transaction-list-item-details__header">
-            <div className="transaction-list-item-details__tx-status">
-              <div>{t('status')}</div>
-              <div>
-                <TransactionStatus />
+                )}
+                {showCancel && (
+                  <CancelButton
+                    transaction={transaction}
+                    cancelTransaction={this.handleCancel}
+                    detailsModal
+                  />
+                )}
+                {showRetry && (
+                  <Tooltip title={t('retryTransaction')}>
+                    <Button
+                      type="raised"
+                      onClick={this.handleRetry}
+                      className="transaction-list-item-details__header-button"
+                    >
+                      <i className="fa fa-sync"></i>
+                    </Button>
+                  </Tooltip>
+                )}
               </div>
             </div>
-            <div className="transaction-list-item-details__tx-hash">
-              <div>
-                <Button
-                  type="link"
-                  onClick={this.handleBlockExplorerClick}
-                  disabled={!hash}
-                >
-                  {t('viewOnBlockExplorer')}
-                </Button>
+            <div className="transaction-list-item-details__header">
+              <div className="transaction-list-item-details__tx-status">
+                <div>{t('status')}</div>
+                <div>
+                  <TransactionStatus />
+                </div>
               </div>
-              <div>
-                <Tooltip
-                  wrapperClassName="transaction-list-item-details__header-button"
-                  containerClassName="transaction-list-item-details__header-button-tooltip-container"
-                  title={justCopied ? t('copiedExclamation') : null}
-                >
+              <div className="transaction-list-item-details__tx-hash">
+                <div>
                   <Button
                     type="link"
-                    onClick={this.handleCopyTxId}
+                    onClick={this.handleBlockExplorerClick}
                     disabled={!hash}
                   >
-                    {t('copyTransactionId')}
+                    {t('viewOnBlockExplorer')}
                   </Button>
-                </Tooltip>
+                </div>
+                <div>
+                  <Tooltip
+                    wrapperClassName="transaction-list-item-details__header-button"
+                    containerClassName="transaction-list-item-details__header-button-tooltip-container"
+                    title={justCopied ? t('copiedExclamation') : null}
+                  >
+                    <Button
+                      type="link"
+                      onClick={this.handleCopyTxId}
+                      disabled={!hash}
+                    >
+                      {t('copyTransactionId')}
+                    </Button>
+                  </Tooltip>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="transaction-list-item-details__body">
-            <div className="transaction-list-item-details__address">
-              <div className="transaction-list-item-details__address-from">
-                <div>{t('from')}</div>
-                <p>{shortenAddress(senderAddress)}</p>
+            <div className="transaction-list-item-details__body">
+              <div className="transaction-list-item-details__address">
+                <div className="transaction-list-item-details__address-from">
+                  <div>{t('from')}</div>
+                  <Tooltip
+                    position="bottom"
+                    containerClassName="transaction-list-item-details__address-tooltip"
+                    html={tooltipHtml}
+                  >
+                    <Identicon address={shortenAddress(senderAddress)}
+                      diameter={20} />
+                    <div
+                      className="transaction-list-item-details__address-txt"
+                      onClick={this.handleCopyFromAddress}
+                    >
+                      {shortenAddress(senderAddress)}
+                    </div>
+                  </Tooltip>
+                </div>
+                <div className="transaction-list-item-details__address-to">
+                  <div>{t('to')}</div>
+                  <Tooltip
+                    position="bottom"
+                    containerClassName="transaction-list-item-details__address-tooltip"
+                    html={t('viewDetail')}
+                  >
+                    <Identicon address={shortenAddress(recipientAddress)}
+                      diameter={20} />
+                    <div
+                      className="transaction-list-item-details__address-txt"
+                      onClick={() => {
+                        this.setState({ showNicknamePopovers: true })
+                      }}
+                    >
+                      {shortenAddress(recipientAddress)}
+                    </div>
+                  </Tooltip>
+                </div>
+                <div className="transaction-list-item-details__address-line"></div>
               </div>
-              <div className="transaction-list-item-details__address-to">
-                <div>{t('to')}</div>
-                <p>{shortenAddress(recipientAddress)}</p>
-              </div>
-              <div className="transaction-list-item-details__address-line"></div>
-            </div>
-            {/* <div className="transaction-list-item-details__sender-to-recipient-header">
+              {/* <div className="transaction-list-item-details__sender-to-recipient-header">
               <div>{t('from')}</div>
               <div>{t('to')}</div>
             </div>
@@ -272,41 +326,42 @@ export default class TransactionListItemDetails extends PureComponent {
                 }}
               />
             </div> */}
-            <div className="transaction-list-item-details__cards-container">
-              <TransactionBreakdown
-                nonce={transactionGroup.initialTransaction.txParams.nonce}
-                isTokenApprove={type === TRANSACTION_TYPES.TOKEN_METHOD_APPROVE}
-                transaction={transaction}
-                primaryCurrency={primaryCurrency}
-                className="transaction-list-item-details__transaction-breakdown"
-              />
-              {transactionGroup.initialTransaction.type !==
-                TRANSACTION_TYPES.INCOMING && (
-                <Disclosure title={t('activityLog')} size="small">
-                  <TransactionActivityLog
-                    transactionGroup={transactionGroup}
-                    className="transaction-list-item-details__transaction-activity-log"
-                    onCancel={this.handleCancel}
-                    onRetry={this.handleRetry}
-                    isEarliestNonce={isEarliestNonce}
-                  />
-                </Disclosure>
-              )}
-              {transactionGroup.initialTransaction?.txParams?.data ? (
-                <Disclosure title="Transaction data" size="small">
-                  <TransactionDecoding
-                    title={t('transactionData')}
-                    to={transactionGroup.initialTransaction.txParams?.to}
-                    inputData={
-                      transactionGroup.initialTransaction.txParams?.data
-                    }
-                  />
-                </Disclosure>
-              ) : null}
+              <div className="transaction-list-item-details__cards-container">
+                <TransactionBreakdown
+                  nonce={transactionGroup.initialTransaction.txParams.nonce}
+                  isTokenApprove={type === TRANSACTION_TYPES.TOKEN_METHOD_APPROVE}
+                  transaction={transaction}
+                  primaryCurrency={primaryCurrency}
+                  className="transaction-list-item-details__transaction-breakdown"
+                />
+                {transactionGroup.initialTransaction.type !==
+                  TRANSACTION_TYPES.INCOMING && (
+                    <Disclosure title={t('activityLog')} size="small">
+                      <TransactionActivityLog
+                        transactionGroup={transactionGroup}
+                        className="transaction-list-item-details__transaction-activity-log"
+                        onCancel={this.handleCancel}
+                        onRetry={this.handleRetry}
+                        isEarliestNonce={isEarliestNonce}
+                      />
+                    </Disclosure>
+                  )}
+                {transactionGroup.initialTransaction?.txParams?.data ? (
+                  <Disclosure title="Transaction data" size="small">
+                    <TransactionDecoding
+                      title={t('transactionData')}
+                      to={transactionGroup.initialTransaction.txParams?.to}
+                      inputData={
+                        transactionGroup.initialTransaction.txParams?.data
+                      }
+                    />
+                  </Disclosure>
+                ) : null}
+              </div>
             </div>
           </div>
-        </div>
-      </Popover>
+        </Popover>
+      </>
     );
   }
 }

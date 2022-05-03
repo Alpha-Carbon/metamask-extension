@@ -51,7 +51,7 @@ const NicknamePopover = ({
               }}
               title=""
             >
-              <CopyIcon size={11} color="#989a9b" />
+              <CopyIcon size={13} color="#525252" />
             </button>
           </Tooltip>
         </div>
@@ -73,7 +73,7 @@ const NicknamePopover = ({
           </Button>
         </div>
         <Button
-          type="primary"
+          type="primaryGradient"
           className="nickname-popover__footer-button"
           onClick={onAddClick}
         >

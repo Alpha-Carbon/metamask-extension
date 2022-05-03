@@ -1,6 +1,7 @@
 .nickname-popover {
   &__popover-wrap {
-    height: 232px;
+    // height: 232px;
+    width: 340px !important;
     border-radius: 4px;
     background: var(--ui-white);
     display: flex;
@@ -23,8 +24,10 @@
     font-weight: bold;
     display: flex;
     align-items: center;
-    color: var(--Black-100);
     padding-top: 8px;
+    background: var(--primary-background);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   &__public-address {
@@ -39,6 +42,8 @@
     padding-left: 8px;
     padding-right: 2px;
     margin-top: 8px;
+    margin-left: 10px;
+    margin-right: 10px;
 
     button {
       background: none;
@@ -54,7 +59,7 @@
   &__view-on-block-explorer {
     @include H7;
 
-    color: var(--primary-1);
+    color: var(--secondary-3);
     margin-top: 12px;
   }
 
@@ -65,10 +70,9 @@
   }
 
   &__footer-button {
-    margin-top: 16px;
     width: 152px;
-    height: 40px;
+    height: 32px;
     border-radius: 100px;
-    background: var(--primary-1);
+    margin-bottom: 15px;
   }
 }

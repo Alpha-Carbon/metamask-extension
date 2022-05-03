@@ -165,7 +165,6 @@
 
     &-txt {
       @include H3;
-      @include roundeBold;
 
       background: linear-gradient(147.15deg, var(--primary-start) 29.03%, var(--primary-end) 84.89%);
       -webkit-background-clip: text;
@@ -175,7 +174,7 @@
 
   &__address {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     border-top: 1px solid var(--gray-4);
     border-bottom: 1px solid var(--gray-4);
     padding: 16px 0;
@@ -183,7 +182,7 @@
 
     & > div {
       color: var(--gray-1);
-
+      flex: 1;
       @include H5;
       @include roundeBold;
 
@@ -191,15 +190,20 @@
         margin-bottom: 8px;
       }
 
-      & > p {
-        background: var(--secondary-2-gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
+    }
+    &-txt{
+      color: var(--secondary-3);
+      cursor: pointer;
+      margin-left: 8px;
     }
 
     &-to {
-      text-align: right;
+      text-align: left;
+      margin-left: 20px;
+    }
+    &-tooltip{
+      display: flex !important;
+      align-items: center;
     }
 
     &-line {

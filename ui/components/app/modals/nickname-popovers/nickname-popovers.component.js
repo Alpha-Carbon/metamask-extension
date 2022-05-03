@@ -11,14 +11,14 @@ import {
 import NicknamePopover from '../../../ui/nickname-popover';
 import UpdateNicknamePopover from '../../../ui/update-nickname-popover/update-nickname-popover';
 
-// const SHOW_NICKNAME_POPOVER = 'SHOW_NICKNAME_POPOVER';
+const SHOW_NICKNAME_POPOVER = 'SHOW_NICKNAME_POPOVER';
 const ADD_NICKNAME_POPOVER = 'ADD_NICKNAME_POPOVER';
 
 const NicknamePopovers = ({ address, onClose }) => {
   const dispatch = useDispatch();
 
   const [popoverToDisplay, setPopoverToDisplay] = useState(
-    // SHOW_NICKNAME_POPOVER,
+    SHOW_NICKNAME_POPOVER,
     ADD_NICKNAME_POPOVER,
   );
 
@@ -45,8 +45,8 @@ const NicknamePopovers = ({ address, onClose }) => {
         address={address}
         nickname={recipientNickname || null}
         memo={addressBookEntryObject?.memo}
-        // onClose={() => setPopoverToDisplay(SHOW_NICKNAME_POPOVER)}
-        onClose={onClose}
+        onClose={() => setPopoverToDisplay(SHOW_NICKNAME_POPOVER)}
+        // onClose={onClose}
         onAdd={(recipient, nickname, memo) =>
           dispatch(addToAddressBook(recipient, nickname, memo))
         }
