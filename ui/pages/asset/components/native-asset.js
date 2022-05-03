@@ -21,6 +21,7 @@ import {
 } from '../../../hooks/useMetricEvent';
 import { I18nContext } from '../../../contexts/i18n';
 import ActAvatar from '../../../components/ui/icon/act-avatar-icon.component';
+import ActCoinIcon from '../../../components/ui/icon/act-coin-icon.component';
 import ReceiveIcon from '../../../components/ui/icon/receive-icon.component';
 import SendIcon from '../../../components/ui/icon/send-icon.component';
 import UserPreferencedCurrencyDisplay from '../../../components/app/user-preferenced-currency-display';
@@ -67,27 +68,26 @@ export default function NativeAsset({ nativeCurrency }) {
         assetName={nativeCurrency}
         onBack={() => history.push(DEFAULT_ROUTE)}
         isEthNetwork={!rpcPrefs.blockExplorerUrl}
-        // optionsButton={
-        //   <AssetOptions
-        //     isNativeAsset
-        //     onClickBlockExplorer={() => {
-        //       blockExplorerLinkClickedEvent();
-        //       global.platform.openTab({
-        //         url: accountLink,
-        //       });
-        //     }}
-        //     onViewAccountDetails={() => {
-        //       dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
-        //     }}
-        //   />
-        // }
+      // optionsButton={
+      //   <AssetOptions
+      //     isNativeAsset
+      //     onClickBlockExplorer={() => {
+      //       blockExplorerLinkClickedEvent();
+      //       global.platform.openTab({
+      //         url: accountLink,
+      //       });
+      //     }}
+      //     onViewAccountDetails={() => {
+      //       dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
+      //     }}
+      //   />
+      // }
       />
       <div className="asset-native__wrapper">
-        <ActAvatar
+        <ActCoinIcon
           width="56"
           height="56"
           className="asset-native__wrapper-icon"
-          txtClassName="asset-native__wrapper-icon-txt"
         />
         <UserPreferencedCurrencyDisplay
           className="eth-overview__primary-balance asset-native__wrapper-balance"
@@ -104,7 +104,7 @@ export default function NativeAsset({ nativeCurrency }) {
               dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
             }}
           >
-            <ReceiveIcon size={18} color="#FFFFFF" />
+            <ReceiveIcon size={26} color="#FFFFFF" />
             <p>{t('receive')}</p>
           </button>
           <button

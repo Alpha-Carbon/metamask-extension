@@ -158,7 +158,7 @@ const TokenOverview = ({ className, token }) => {
                 dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
               }}
             >
-              <ReceiveIcon size={18} color="#FFFFFF" />
+              <ReceiveIcon size={26} color="#FFFFFF" />
               <p>{t('receive')}</p>
             </button>
             <button

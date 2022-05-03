@@ -111,6 +111,9 @@
 
     &-send {
       color: var(--gray-1);
+      &>span:nth-child(1){
+        @include roundeBold;
+      }
     }
 
     &-receive {
