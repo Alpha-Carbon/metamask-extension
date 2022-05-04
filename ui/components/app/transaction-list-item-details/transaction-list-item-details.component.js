@@ -40,6 +40,7 @@ export default class TransactionListItemDetails extends PureComponent {
     primaryCurrency: PropTypes.string,
     transactionGroup: PropTypes.object,
     title: PropTypes.string.isRequired,
+    isOtherTitle: PropTypes.string,
     onClose: PropTypes.func.isRequired,
     // recipientEns: PropTypes.string,
     recipientAddress: PropTypes.string,
@@ -146,6 +147,7 @@ export default class TransactionListItemDetails extends PureComponent {
       isEarliestNonce,
       // senderNickname,
       title,
+      isOtherTitle,
       onClose,
       // recipientNickname,
       showCancel,
@@ -168,7 +170,6 @@ export default class TransactionListItemDetails extends PureComponent {
         {t('copyAddress')}
       </p>
     }
-
     return (
       <>
         {showNicknamePopovers &&
@@ -182,8 +183,14 @@ export default class TransactionListItemDetails extends PureComponent {
             <div className="transaction-list-item-details-title">
               <TransactionIcon category={category} status={status} />
               <div className="transaction-list-item-details-title-txt">
-                <span className="mr-2">{title}</span>
-                {/* <span>{nativeCurrency}</span> */}
+                {isOtherTitle ?
+                  <span className="mr-2">{title}</span>
+                  :
+                  <>
+                    <span className="mr-2">{title}</span>
+                    <span>{nativeCurrency}</span>
+                  </>
+                }
               </div>
             </div>
 

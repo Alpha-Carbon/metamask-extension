@@ -301,6 +301,7 @@ function TransactionListItemInner({
       {showDetails && (
         <TransactionListItemDetails
           title={title}
+          isOtherTitle={isOtherTitle}
           onClose={toggleShowDetails}
           transactionGroup={transactionGroup}
           primaryCurrency={primaryCurrency}
