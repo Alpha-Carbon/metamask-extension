@@ -21,7 +21,8 @@ import {
   ADD_NETWORK_ROUTE,
   // ADVANCED_ROUTE,
 } from '../../../helpers/constants/routes';
-import NetworkTreeIcon from '../../ui/icon/network-tree-icon.component';
+// import NetworkTreeIcon from '../../ui/icon/network-tree-icon.component';
+import NetworkPrimaryGradientIcon from '../../ui/icon/network-primary-gradient-icon.component';
 import CheckIcon from '../../ui/icon/check-icon.component';
 import CloseIcon from '../../ui/icon/close-icon.component';
 import { Dropdown, DropdownMenuItem } from './dropdown';
@@ -374,7 +375,7 @@ class NetworkDropdown extends Component {
           <CloseIcon />
         </div>
         <div className="network-dropdown-header">
-          <NetworkTreeIcon />
+          <NetworkPrimaryGradientIcon />
           <div className="network-dropdown-title">{t('networks')}</div>
           <div className="network-dropdown-divider" />
           {/* {showTestnetMessageInDropdown ? (
