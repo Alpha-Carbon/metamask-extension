@@ -13,6 +13,7 @@
     "start:mv3": "ENABLE_MV3=true yarn build:dev dev",
     "start:lavamoat": "yarn build dev",
     "dist": "yarn build prod",
+    "dist:mv3": "ENABLE_MV3=true yarn build prod",
     "build": "yarn lavamoat:build",
     "build:dev": "node development/build/index.js",
     "start:test": "SEGMENT_HOST='https://api.segment.io' SEGMENT_WRITE_KEY='FAKE' yarn build testDev",
@@ -104,6 +105,7 @@
   },
   "dependencies": {
     "3box": "^1.10.2",
+    "@alphacarbon/inpage-provider": "^0.1.0",
     "@babel/runtime": "^7.5.5",
     "@download/blockies": "^1.0.3",
     "@ensdomains/content-hash": "^2.5.6",
