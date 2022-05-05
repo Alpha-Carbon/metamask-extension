@@ -188,7 +188,7 @@ function TransactionListItemInner({
       >
         <div className="transaction-list-item__title">{date}&nbsp; | &nbsp;{subtitle} </div>
         <div className="transaction-list-item__info">
-          <TransactionIcon category={category} status={displayedStatusKey} size={20} />
+          <TransactionIcon category={category} status={displayedStatusKey} size={24} />
           <div className="transaction-list-item__info-status">
             <p
               className={classnames(
@@ -201,10 +201,10 @@ function TransactionListItemInner({
                 },
               )}
             >
-              {/* {title} */}
-              {title.split(' ')[0]}
+              {title}
+              {/* {title.split(' ')[0]} */}
               {/* <span className='ml-2'>{nativeCurrency}</span> */}
-              <span className="ml-2">{isOtherTitle || nativeCurrency}</span>
+              {/* <span className="ml-2">{isOtherTitle || nativeCurrency}</span> */}
             </p>
             <p
               className={classnames(
