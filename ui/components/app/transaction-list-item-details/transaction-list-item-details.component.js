@@ -53,12 +53,14 @@ export default class TransactionListItemDetails extends PureComponent {
     category: PropTypes.string,
     status: PropTypes.string,
     nativeCurrency: PropTypes.string,
+    toName: PropTypes.string,
   };
 
   state = {
     justCopied: false,
     addressCopied: false,
     showNicknamePopovers: false,
+    addressOnly: true,
   };
 
   handleBlockExplorerClick = () => {
@@ -135,13 +137,13 @@ export default class TransactionListItemDetails extends PureComponent {
 
   render() {
     const { t } = this.context;
-    const { justCopied, addressCopied, showNicknamePopovers } = this.state;
+    const { justCopied, addressCopied, showNicknamePopovers, addressOnly } = this.state;
     const {
       transactionGroup,
       primaryCurrency,
       showSpeedUp,
       showRetry,
-      // recipientEns,
+      recipientEns,
       recipientAddress,
       senderAddress,
       isEarliestNonce,
@@ -149,7 +151,8 @@ export default class TransactionListItemDetails extends PureComponent {
       title,
       isOtherTitle,
       onClose,
-      // recipientNickname,
+      recipientNickname,
+      toName,
       showCancel,
       transactionStatus: TransactionStatus,
       category,
@@ -165,7 +168,7 @@ export default class TransactionListItemDetails extends PureComponent {
     let tooltipHtml = <p>{t('copiedExclamation')}</p>;
     if (!addressCopied) {
       tooltipHtml = <p>
-        {shortenAddress(recipientAddress)}
+        {shortenAddress(senderAddress)}
         <br />
         {t('copyAddress')}
       </p>
@@ -274,6 +277,7 @@ export default class TransactionListItemDetails extends PureComponent {
                       className="transaction-list-item-details__address-txt"
                       onClick={this.handleCopyFromAddress}
                     >
+
                       {shortenAddress(senderAddress)}
                     </div>
                   </Tooltip>
@@ -293,7 +297,14 @@ export default class TransactionListItemDetails extends PureComponent {
                         this.setState({ showNicknamePopovers: true })
                       }}
                     >
-                      {shortenAddress(recipientAddress)}
+                      {addressOnly
+                        ? recipientNickname ||
+                        recipientEns ||
+                        shortenAddress(recipientAddress)
+                        : recipientNickname ||
+                        recipientEns ||
+                        toName ||
+                        t('newContract')}
                     </div>
                   </Tooltip>
                 </div>

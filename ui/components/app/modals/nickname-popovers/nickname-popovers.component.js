@@ -38,7 +38,6 @@ const NicknamePopovers = ({ address, onClose }) => {
     { blockExplorerUrl: rpcPrefs?.blockExplorerUrl ?? null },
     null,
   );
-
   if (popoverToDisplay === ADD_NICKNAME_POPOVER) {
     return (
       <UpdateNicknamePopover
