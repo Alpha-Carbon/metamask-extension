@@ -90,6 +90,7 @@ const AssetList = ({ onClickAsset }) => {
         secondary={showFiat ? secondaryCurrencyDisplay : undefined}
         tokenImage={primaryTokenImage}
         identiconBorder
+        nativeCurrency={nativeCurrency}
       />
       <TokenList
         onTokenClick={(tokenAddress) => {

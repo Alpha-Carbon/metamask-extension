@@ -31,6 +31,7 @@ const AssetListItem = ({
   secondary,
   identiconBorder,
   isERC721,
+  nativeCurrency,
 }) => {
   // const t = useI18nContext();
   // const dispatch = useDispatch();
@@ -102,7 +103,6 @@ const AssetListItem = ({
   //   t,
   //   dispatch,
   // ]);
-
   return (
     <ListItem
       className={classnames('asset-list-item', className)}
@@ -124,7 +124,8 @@ const AssetListItem = ({
       subtitle={secondary ? <h3 title={secondary}>{secondary}</h3> : null}
       onClick={onClick}
       icon={
-        tokenAddress ? (
+        nativeCurrency == 'TACT' && !tokenAddress ? <ActCoinIcon width="66" height="66" /> :
+          // tokenAddress ? (
           <Identicon
             className={iconClassName}
             diameter={60}
@@ -133,9 +134,9 @@ const AssetListItem = ({
             alt={`${primary} ${tokenSymbol}`}
             imageBorder={identiconBorder}
           />
-        ) : (
-          <ActCoinIcon width="66" height="66" />
-        )
+        // ) : (
+        //   <ActCoinIcon width="66" height="66" />
+        // )
       }
       midContent={midContent}
       rightContent={
