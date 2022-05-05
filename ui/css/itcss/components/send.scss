@@ -1278,6 +1278,11 @@
 
       @include roundeBold;
       @include H5;
+      &>span{
+        @include H6;
+        
+        color: var(--gray-3);
+      }
     }
   }
 

@@ -41,7 +41,9 @@ export default function RecipientGroup({
       )}
       {isAddressBook && (
         <div className="send__select-recipient-wrapper__group-label is-address">
-          {label}
+          <div className="send__select-recipient-wrapper__group-label-line"></div>
+          <p>{label}</p>
+          <div className="send__select-recipient-wrapper__group-label-line"></div>
         </div>
       )}
       {items.map(({ address, name }) => (

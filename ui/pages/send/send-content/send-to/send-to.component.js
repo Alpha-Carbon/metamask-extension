@@ -18,6 +18,9 @@ function SendTo() {
   const t = useI18nContext();
   const dispatch = useDispatch();
   const recipient = useSelector(getRecipient);
+  console.log(recipient, 'recipient');
+  const selectedName = recipient.nickname;
+  const selectedAddress = recipient.address;
   return (
     <div className={classnames('send-v2__to-wrap')}>
       <div className="send-v2__to-title">{t('to')}</div>
@@ -26,7 +29,15 @@ function SendTo() {
           <Identicon address={recipient.address} diameter={30} />
         </div>
         <div className="send-v2__to-cont-address">
-          {ellipsify(recipient.address)}
+          {selectedName !== selectedAddress ? (
+            <>
+              {selectedName}
+              <br />
+              <span>{ellipsify(selectedAddress)}</span>
+            </>
+          ) :
+            <span>{ellipsify(selectedAddress)}</span>
+          }
         </div>
       </div>
       <div

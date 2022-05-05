@@ -183,16 +183,16 @@
         background: transparent;
         text-align: left;
 
-        &::after {
-          content: "";
-          position: absolute;
-          width: calc(100% - 20px);
-          height: 1px;
-          background: var(--black);
-          top: 50%;
-          transform: translateY(-50%);
-          margin-left: 20px;
-        }
+        // &::after {
+        //   content: "";
+        //   position: absolute;
+        //   width: calc(100% - 20px);
+        //   height: 1px;
+        //   background: var(--black);
+        //   top: 50%;
+        //   transform: translateY(-50%);
+        //   margin-left: 20px;
+        // }
       }
     }
 
@@ -204,7 +204,8 @@
     &__group-item--selected {
       @extend %row-nowrap;
 
-      padding: 0.75rem 1rem;
+      padding: 0.75rem 0rem;
+      margin: 0px 1.25rem;
       align-items: center;
       border-bottom: 1px solid var(--alto);
       cursor: pointer;
