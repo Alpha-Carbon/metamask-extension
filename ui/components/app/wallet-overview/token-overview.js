@@ -180,7 +180,7 @@ const TokenOverview = ({ className, token }) => {
                 }
               }}
             >
-              <SendIcon size={19} color="#FFFFFF" />
+              <SendIcon size={26} color="#FFFFFF" />
               <p>{t('send')}</p>
             </button>
           </div>

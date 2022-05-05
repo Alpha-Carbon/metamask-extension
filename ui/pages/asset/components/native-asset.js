@@ -114,7 +114,7 @@ export default function NativeAsset({ nativeCurrency }) {
               history.push(SEND_ROUTE);
             }}
           >
-            <SendIcon size={19} color="#FFFFFF" />
+            <SendIcon size={26} color="#FFFFFF" />
             <p>{t('send')}</p>
           </button>
         </div>
