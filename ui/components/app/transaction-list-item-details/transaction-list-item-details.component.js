@@ -4,6 +4,7 @@ import copyToClipboard from 'copy-to-clipboard';
 import { getBlockExplorerLink } from '@metamask/etherscan-link';
 // import SenderToRecipient from '../../ui/sender-to-recipient';
 // import { DEFAULT_VARIANT } from '../../ui/sender-to-recipient/sender-to-recipient.constants';
+import { toChecksumHexAddress } from '../../../../shared/modules/hexstring-utils';
 import Disclosure from '../../ui/disclosure';
 import TransactionActivityLog from '../transaction-activity-log';
 import TransactionBreakdown from '../transaction-breakdown';
@@ -178,7 +179,7 @@ export default class TransactionListItemDetails extends PureComponent {
         {showNicknamePopovers &&
           <NicknamePopovers
             onClose={() => this.setState({ showNicknamePopovers: false })}
-            address={recipientAddress}
+            address={toChecksumHexAddress(recipientAddress)}
           />
         }
         <Popover onClose={onClose} className="transaction-list-popover">
