@@ -848,7 +848,8 @@
   &__amount-max {
     @include H7;
 
-    position: relative;
+    position: absolute;
+    right: 0;
     display: inline-block;
     width: 56px;
     height: 20px;
@@ -859,7 +860,7 @@
       width: 56px;
       height: 26px;
       position: absolute;
-      // border: 1px solid var(--secondary-3);
+      border: 1px solid var(--secondary-3);
       border-radius: 100px;
       cursor: pointer;
       top: 0;
@@ -872,7 +873,7 @@
       color: var(--secondary-3);
       background: var(--background);
       font-size: 14px;
-      text-decoration: underline;
+      // text-decoration: underline;
 
       &__disabled {
         color: var(--secondary-3);
@@ -881,9 +882,9 @@
     }
 
     input:checked + &__button {
-      // background-color: var(--secondary-3);
-      // border: 1px solid var(--secondary-3);
-      // color: #fff;
+      background-color: var(--secondary-3);
+      border: 1px solid var(--secondary-3);
+      color: #fff;
     }
   }
 
@@ -1280,7 +1281,7 @@
       @include H5;
       &>span{
         @include H6;
-        
+
         color: var(--gray-3);
       }
     }
@@ -1310,7 +1311,6 @@
 
     &__btns{
       width: 100%;
-      padding-left: 39%;
     }
 
     &__switch {

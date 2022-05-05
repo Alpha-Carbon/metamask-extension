@@ -162,7 +162,7 @@ export default class SendAmountRow extends Component {
 
     return (
       <div className="send-v2__amount__wrapper">
-        <div className="send-v2__amount__btns d-flex align-items-center">
+        <div className="send-v2__amount__btns d-flex align-items-center justify-content-center">
           <button
             className="send-v2__amount__switch"
             onClick={() => {
