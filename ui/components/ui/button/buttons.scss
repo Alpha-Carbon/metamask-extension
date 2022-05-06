@@ -83,6 +83,7 @@
   color: var(--white);
   background: var(--secondary-gradient);
   border-radius: 20px;
+  font-weight: 700;
 
   &:hover {
     // border-color: var(--Blue-500);
@@ -210,6 +211,7 @@
 .btn-primary-gradient {
   color: var(--white);
   background: var(--primary-gradient);
+  font-weight: 700;
 
   &:hover {
     // border-color: var(--hover-confirm);
@@ -411,9 +413,10 @@ input[type="submit"][disabled] {
 }
 
 .btn-cancel {
-  color: var(--gray-3);
+  color: var(--gray-2);
   background-color: transparent;
-  border: 1px solid #bababa;
+  border: 1px solid var(--gray-2);;
+  font-weight: 700;
 
   &:hover {
     // border-color: var(--Blue-500);

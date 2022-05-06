@@ -142,7 +142,8 @@
 
 .act-overview {
   &__wrapper {
-    background: var(--gray-1);
+    // background: var(--gray-1);
+    background: linear-gradient(180deg, #FFEFD3 0%, #F9F6F1 100%);
     max-width: 360px;
     width: calc(100% - 40px);
     border-radius: 10px;
@@ -165,18 +166,24 @@
     &-info {
       flex-grow: 1;
       &-account {
-        display: flex;
-        align-items: center;
-        color: var(--white);
+        // display: flex;
+        // align-items: center;
+        display: inline-block;
+        color: var(--gray-1);
         cursor: pointer;
 
         & > span:nth-child(1) {
           margin-right: 5px;
         }
+        &> span:nth-child(2){
+          &>svg{
+            padding-top: 4px;
+          }
+        }
       }
 
       &-address {
-        color: var(--secondary-4);
+        color: var(--secondary-3);
 
         & > span:nth-child(1) {
           margin-right: 5px;
@@ -191,7 +198,7 @@
 
     &-token {
       text-align: right;
-      color: var(--white);
+      color: var(--gray-1);
       margin-top: 8px;
       margin-bottom: 16px;
 

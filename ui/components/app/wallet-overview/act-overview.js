@@ -99,7 +99,7 @@ const ActOverview = () => {
           >
             <span>{selectedIdentity.name}</span>
             <span>
-              <EditIcon />
+              <EditIcon color="#222222" />
             </span>
           </div>
           <div className={classnames("d-flex align-items-center", {
@@ -121,7 +121,7 @@ const ActOverview = () => {
                 <div className="act-overview__balance-info-address">
                   <span> {shortenAddress(checksummedAddress)}</span>
                   <span>
-                    <CopyIcon color="#2EE8DB" size={12} />
+                    <CopyIcon color="#227BFF" size={12} />
                   </span>
                 </div>
               </button>
