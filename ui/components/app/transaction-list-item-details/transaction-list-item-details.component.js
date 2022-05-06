@@ -187,14 +187,15 @@ export default class TransactionListItemDetails extends PureComponent {
             <div className="transaction-list-item-details-title">
               <TransactionIcon category={category} status={status} />
               <div className="transaction-list-item-details-title-txt">
-                {isOtherTitle ?
+                {/* {isOtherTitle ?
                   <span className="mr-2">{title}</span>
                   :
                   <>
                     <span className="mr-2">{title}</span>
                     <span>{nativeCurrency}</span>
                   </>
-                }
+                } */}
+                <span>{title}</span>
               </div>
             </div>
 
