@@ -109,6 +109,11 @@
     text-align: right;
     padding-top: 20px;
 
+    &>span:nth-child(1){
+      color: var(--gray-1);
+      @include roundeBold;
+    }
+
     &-send {
       color: var(--gray-1);
       &>span:nth-child(1){
