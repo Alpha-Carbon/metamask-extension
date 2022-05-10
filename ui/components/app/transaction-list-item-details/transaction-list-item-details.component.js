@@ -18,6 +18,7 @@ import { getURLHostName, shortenAddress } from '../../../helpers/utils/util';
 import TransactionDecoding from '../transaction-decoding';
 import TransactionIcon from '../transaction-icon';
 import Identicon from '../../ui/identicon/identicon.component';
+import AutoRenewIcon from '../../ui/icon/auto-renew-icon.component';
 import NicknamePopovers from '../modals/nickname-popovers/nickname-popovers.component';
 
 export default class TransactionListItemDetails extends PureComponent {
@@ -217,7 +218,7 @@ export default class TransactionListItemDetails extends PureComponent {
                     detailsModal
                   />
                 )}
-                {showRetry && (
+                {/* {showRetry && (
                   <Tooltip title={t('retryTransaction')}>
                     <Button
                       type="raised"
@@ -227,14 +228,26 @@ export default class TransactionListItemDetails extends PureComponent {
                       <i className="fa fa-sync"></i>
                     </Button>
                   </Tooltip>
-                )}
+                )} */}
               </div>
             </div>
             <div className="transaction-list-item-details__header">
               <div className="transaction-list-item-details__tx-status">
                 <div>{t('status')}</div>
-                <div>
+                <div className="d-flex align-items-center">
                   <TransactionStatus />
+                  {showRetry && (
+                    <Tooltip title={t('retryTransaction')}>
+                      <Button
+                        type="raised"
+                        onClick={this.handleRetry}
+                        className="transaction-list-item-details__header-button transaction-list-item-details__header-button-renew ml-2"
+                      >
+                        {/* <i className="fa fa-sync"></i> */}
+                        <AutoRenewIcon />
+                      </Button>
+                    </Tooltip>
+                  )}
                 </div>
               </div>
               <div className="transaction-list-item-details__tx-hash">
