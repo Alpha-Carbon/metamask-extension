@@ -406,8 +406,8 @@ export function getAccountsWithLabels(state) {
     ({ address, name, balance }) => ({
       address,
       addressLabel: `${name.length < TRUNCATED_NAME_CHAR_LIMIT
-          ? name
-          : `${name.slice(0, TRUNCATED_NAME_CHAR_LIMIT - 1)}...`
+        ? name
+        : `${name.slice(0, TRUNCATED_NAME_CHAR_LIMIT - 1)}...`
         } (${shortenAddress(address)})`,
       label: name,
       balance,
@@ -489,7 +489,7 @@ function getSuggestedAssetCount(state) {
 
 export function getIsMainnet(state) {
   const chainId = getCurrentChainId(state);
-  return chainId === MAINNET_CHAIN_ID;
+  return chainId === AMINO_CHAIN_ID;
 }
 
 export function getIsTestnet(state) {
