@@ -1,4 +1,5 @@
 .connected-status-indicator {
+  $self: &;
   display: flex;
   align-items: center;
   place-self: center start;
@@ -8,7 +9,14 @@
   border-radius: 100px;
 
   &:hover {
-    background-color: #f2f3f4;
+    // background-color: #f2f3f4;
+    #{$self}__text{
+      color: var(--secondary-5);
+    }
+    & .color-indicator--color-secondary-3{
+      border-color: var(--secondary-5);
+    }
+    
   }
 
   &:active {
@@ -35,11 +43,11 @@
   }
 
   &__green-circle {
-    border-color: #4cd964;
+    border-color: var(--function-1);
   }
 
   &__green-circle &__inner-circle {
-    background-color: #4cd964;
+    background-color: var(--function-1);
   }
 
   &__yellow-circle {
@@ -53,7 +61,7 @@
   &__text {
     @include H8;
 
-    color: var(--Grey-500);
+    color: var(--secondary-3);
     margin-left: 6px;
     white-space: nowrap;
   }

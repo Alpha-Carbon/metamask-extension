@@ -142,8 +142,8 @@
 
 .act-overview {
   &__wrapper {
-    // background: var(--gray-1);
-    background: linear-gradient(180deg, #FFEFD3 0%, #F9F6F1 100%);
+    background: var(--white);
+    // background: linear-gradient(180deg, #FFEFD3 0%, #F9F6F1 100%);
     max-width: 360px;
     width: calc(100% - 40px);
     border-radius: 10px;
