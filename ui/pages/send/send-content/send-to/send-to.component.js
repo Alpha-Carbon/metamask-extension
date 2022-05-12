@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { connect, useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -9,18 +9,28 @@ import CloseIcon from '../../../../components/ui/icon/close-icon.component';
 import { getRecipient, resetRecipientInput } from '../../../../ducks/send';
 import { ellipsify } from '../../send.utils';
 import Identicon from '../../../../components/ui/identicon/identicon.component';
+import { getMetaMaskAccountsOrdered } from '../../../../selectors';
 
-function mapStateToProps() {
-  return {};
+
+function mapStateToProps(state) {
+  const accounts = getMetaMaskAccountsOrdered(state);
+  return {
+    accounts,
+  };
 }
 
-function SendTo() {
+function SendTo(accounts) {
   const t = useI18nContext();
   const dispatch = useDispatch();
   const recipient = useSelector(getRecipient);
-  console.log(recipient, 'recipient');
+
   const selectedName = recipient.nickname;
   const selectedAddress = recipient.address;
+  const accountsList = accounts.accounts;
+  const selectedAccountName = accountsList.find((item) => {
+    return item.address === selectedAddress;
+  })
+
   return (
     <div className={classnames('send-v2__to-wrap')}>
       <div className="send-v2__to-title">{t('to')}</div>
@@ -31,7 +41,7 @@ function SendTo() {
         <div className="send-v2__to-cont-address">
           {selectedName !== selectedAddress ? (
             <>
-              {selectedName}
+              {selectedName || selectedAccountName.name}
               <br />
               <span>{ellipsify(selectedAddress)}</span>
             </>
@@ -49,5 +59,7 @@ function SendTo() {
     </div>
   );
 }
-// SendTo.PropTypes = {};
+SendTo.propTypes = {
+  accounts: PropTypes.object,
+};
 export default compose(withRouter, connect(mapStateToProps))(SendTo);
