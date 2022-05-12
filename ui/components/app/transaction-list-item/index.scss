@@ -30,15 +30,18 @@
   }
 
   &__pending-actions {
-    padding-top: 12px;
+    padding-top: 8px;
     display: flex;
+    margin-left: 36px;
 
     .button {
       @include H8;
 
+      line-height: 130%;
       padding: 8px;
-      width: 75px;
+      width: 80px;
       white-space: nowrap;
+      height: 30px;
     }
 
     & > .button:first-child {

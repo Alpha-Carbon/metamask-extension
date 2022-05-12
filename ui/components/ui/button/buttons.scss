@@ -188,8 +188,8 @@
 
 .btn-primary {
   color: var(--white);
-  border: 1px solid var(--Blue-500);
-  background-color: var(--Blue-500);
+  border: 1px solid var(--secondary-3);
+  background-color: var(--secondary-3);
 
   &:hover {
     border-color: var(--hover-confirm);
@@ -360,7 +360,7 @@ input[type="submit"][disabled] {
   }
 
   &.btn-primary {
-    background-color: var(--Blue-500);
+    background-color: var(--secondary-3);
 
     &--disabled,
     &[disabled] {

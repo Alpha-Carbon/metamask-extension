@@ -211,6 +211,13 @@ export default class TransactionListItemDetails extends PureComponent {
                     {t('speedUp')}
                   </Button>
                 )}
+                <Button
+                  type="primary"
+                  onClick={this.handleRetry}
+                  className="transaction-list-item-details__header-button-rounded-button"
+                >
+                  {t('speedUp')}
+                </Button>
                 {showCancel && (
                   <CancelButton
                     transaction={transaction}
@@ -218,6 +225,11 @@ export default class TransactionListItemDetails extends PureComponent {
                     detailsModal
                   />
                 )}
+                <CancelButton
+                  transaction={transaction}
+                  cancelTransaction={this.handleCancel}
+                  detailsModal
+                />
                 {/* {showRetry && (
                   <Tooltip title={t('retryTransaction')}>
                     <Button
