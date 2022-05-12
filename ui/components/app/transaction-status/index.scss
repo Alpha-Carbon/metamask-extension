@@ -5,6 +5,10 @@
     color: var(--function-1);
   }
 
+  &--submitted{
+    color: var(--function-3);
+  }
+
   &--unapproved {
     color: var(--Orange-500);
   }
