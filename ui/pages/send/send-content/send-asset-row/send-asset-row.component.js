@@ -197,7 +197,6 @@ export default class SendAssetRow extends Component {
     //     isEqualCaseInsensitive(address, details.address),
     //   );
     // }
-
     return (
       this.state.isShowingDropdown && (
         <div>
@@ -231,7 +230,7 @@ export default class SendAssetRow extends Component {
                   <div className="send-v2__asset-dropdown__asset-icon">
                     <Identicon
                       diameter={30}
-                      image={nativeCurrencyImage}
+                      // image={nativeCurrencyImage}
                       address={identity.address}
                     />
                   </div>
@@ -293,7 +292,7 @@ export default class SendAssetRow extends Component {
         <div className="send-v2__asset-dropdown__asset-icon">
           <Identicon
             diameter={30}
-            image={nativeCurrencyImage}
+            // image={nativeCurrencyImage}
             address={selectedAccount.address}
           />
         </div>
@@ -381,7 +380,10 @@ export default class SendAssetRow extends Component {
         onClick={() => this.selectToken(ASSET_TYPES.COLLECTIBLE, collectible)}
       >
         <div className="send-v2__asset-dropdown__asset-icon">
-          <Identicon address={address} diameter={30} image={image} />
+          <Identicon
+            address={address}
+          // diameter={30} image={image}
+          />
         </div>
         <div className="send-v2__asset-dropdown__asset-data">
           <div className="send-v2__asset-dropdown__symbol">

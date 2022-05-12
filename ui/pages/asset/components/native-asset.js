@@ -11,6 +11,7 @@ import {
   getRpcPrefsForCurrentProvider,
   // getSelectedAddress,
   getSelectedAccount,
+  getNativeCurrencyImage,
 } from '../../../selectors/selectors';
 import { showModal } from '../../../store/actions';
 import { DEFAULT_ROUTE, SEND_ROUTE } from '../../../helpers/constants/routes';
@@ -20,7 +21,6 @@ import {
   useMetricEvent,
 } from '../../../hooks/useMetricEvent';
 import { I18nContext } from '../../../contexts/i18n';
-import ActAvatar from '../../../components/ui/icon/act-avatar-icon.component';
 import ActCoinIcon from '../../../components/ui/icon/act-coin-icon.component';
 import ReceiveIcon from '../../../components/ui/icon/receive-icon.component';
 import SendIcon from '../../../components/ui/icon/send-icon.component';
@@ -28,6 +28,7 @@ import UserPreferencedCurrencyDisplay from '../../../components/app/user-prefere
 import { PRIMARY } from '../../../helpers/constants/common';
 // import AssetOptions from './asset-options';
 import AssetNavigation from './asset-navigation';
+import Identicon from '../../../../ui/components/ui/identicon'
 
 export default function NativeAsset({ nativeCurrency }) {
   const selectedAccountName = useSelector(
@@ -42,6 +43,7 @@ export default function NativeAsset({ nativeCurrency }) {
   // const accountLink = getAccountLink(address, chainId, rpcPrefs);
   const selectedAccount = useSelector(getSelectedAccount);
   const { balance } = selectedAccount;
+  const primaryTokenImage = useSelector(getNativeCurrencyImage);
 
   // const blockExplorerLinkClickedEvent = useNewMetricEvent({
   //   category: 'Navigation',
@@ -60,7 +62,7 @@ export default function NativeAsset({ nativeCurrency }) {
       name: 'Clicked Send: TACT',
     },
   });
-
+  console.log(nativeCurrency, 'nativeCurrency');
   return (
     <>
       <AssetNavigation
@@ -84,11 +86,14 @@ export default function NativeAsset({ nativeCurrency }) {
       // }
       />
       <div className="asset-native__wrapper">
-        <ActCoinIcon
-          width="56"
-          height="56"
-          className="asset-native__wrapper-icon"
-        />
+        {nativeCurrency === 'TACT' ?
+          <ActCoinIcon
+            width="56"
+            height="56"
+            className="asset-native__wrapper-icon"
+          /> :
+          <Identicon diameter={56} image={primaryTokenImage} imageBorder />
+        }
         <UserPreferencedCurrencyDisplay
           className="eth-overview__primary-balance asset-native__wrapper-balance"
           data-testid="eth-overview__primary-currency"
