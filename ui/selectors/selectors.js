@@ -489,7 +489,8 @@ function getSuggestedAssetCount(state) {
 
 export function getIsMainnet(state) {
   const chainId = getCurrentChainId(state);
-  return chainId === AMINO_CHAIN_ID;
+  // return chainId === AMINO_CHAIN_ID;
+  return chainId === MAINNET_CHAIN_ID;
 }
 
 export function getIsTestnet(state) {
@@ -896,4 +897,8 @@ export function getIsTokenDetectionSupported(state) {
     AVALANCHE_CHAIN_ID,
     AMINO_CHAIN_ID,
   ].includes(chainId);
+}
+
+export function getState(state) {
+  return state
 }
