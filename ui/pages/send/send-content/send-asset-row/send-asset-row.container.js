@@ -8,7 +8,7 @@ import {
   getNativeCurrencyImage,
   getMetaMaskAccountsOrdered,
 } from '../../../../selectors';
-import { updateSendAsset, getSendAsset } from '../../../../ducks/send';
+import { updateSendAsset, getSendAsset, getSendStage } from '../../../../ducks/send';
 import { showAccountDetail } from '../../../../store/actions';
 import SendAssetRow from './send-asset-row.component';
 
@@ -22,6 +22,7 @@ function mapStateToProps(state) {
     nativeCurrency: getNativeCurrency(state),
     nativeCurrencyImage: getNativeCurrencyImage(state),
     accountsList: getMetaMaskAccountsOrdered(state),
+    sendStage: getSendStage(state),
   };
 }
 

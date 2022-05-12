@@ -34,6 +34,7 @@ import Alerts from '../../components/app/alerts';
 import Asset from '../asset';
 import OnboardingAppHeader from '../onboarding-flow/onboarding-app-header/onboarding-app-header';
 import TokenDetailsPage from '../token-details';
+import { SEND_STAGES } from '../../ducks/send';
 
 import {
   IMPORT_TOKEN_ROUTE,
@@ -97,6 +98,7 @@ export default class Routes extends Component {
     prepareToLeaveSwaps: PropTypes.func,
     browserEnvironmentOs: PropTypes.string,
     browserEnvironmentBrowser: PropTypes.string,
+    sendStage: PropTypes.string,
   };
 
   static contextTypes = {
@@ -231,6 +233,10 @@ export default class Routes extends Component {
     );
   }
 
+  onEditTransactionPage() {
+    return this.props.sendStage === SEND_STAGES.EDIT;
+  }
+
   onSwapsPage() {
     const { location } = this.props;
     return Boolean(
@@ -349,6 +355,7 @@ export default class Routes extends Component {
             onClick={this.onAppHeaderClick}
             disabled={
               this.onConfirmPage() ||
+              this.onEditTransactionPage() ||
               (this.onSwapsPage() && !this.onSwapsBuildQuotePage())
             }
           />

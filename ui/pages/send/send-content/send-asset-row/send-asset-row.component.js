@@ -6,7 +6,7 @@ import Identicon from '../../../../components/ui/identicon';
 // import TokenListDisplay from '../../../../components/app/token-list-display';
 import UserPreferencedCurrencyDisplay from '../../../../components/app/user-preferenced-currency-display';
 import { ERC20, ERC721, PRIMARY } from '../../../../helpers/constants/common';
-import { ASSET_TYPES } from '../../../../ducks/send';
+import { ASSET_TYPES, SEND_STAGES } from '../../../../ducks/send';
 import { isEqualCaseInsensitive } from '../../../../helpers/utils/util';
 import ArrowIcon from '../../../../components/ui/icon/arrow-icon.component';
 
@@ -45,6 +45,7 @@ export default class SendAssetRow extends Component {
       }),
     ),
     showAccountDetail: PropTypes.func,
+    sendStage: PropTypes.string,
   };
 
   static contextTypes = {
@@ -111,6 +112,13 @@ export default class SendAssetRow extends Component {
     );
   };
 
+  onEditTransactionPage() {
+    return this.props.sendStage === SEND_STAGES.EDIT;
+  }
+  arrowIconOpacity() {
+    return this.onEditTransactionPage() ? '0.5' : '1';
+  }
+
   render() {
     const { t } = this.context;
 
@@ -121,7 +129,11 @@ export default class SendAssetRow extends Component {
         <div className="send-v2__asset-dropdown">
           <div
             className="send-v2__asset-dropdown__input-wrapper"
-            onClick={this.openDropdown}
+            onClick={() => {
+              if (!this.onEditTransactionPage()) {
+                this.openDropdown();
+              }
+            }}
           >
             {this.renderSendAsset()}
           </div>
@@ -302,7 +314,7 @@ export default class SendAssetRow extends Component {
         </div>
         {!insideDropdown && (
           // <i className="fa fa-caret-down fa-lg send-v2__asset-dropdown__caret" />
-          <ArrowIcon />
+          <ArrowIcon opacity={this.arrowIconOpacity()} />
         )}
       </div>
     );
@@ -343,7 +355,7 @@ export default class SendAssetRow extends Component {
         </div>
         {!insideDropdown && (
           // <i className="fa fa-caret-down fa-lg send-v2__asset-dropdown__caret" />
-          <ArrowIcon />
+          <ArrowIcon opacity={this.arrowIconOpacity()} />
         )}
       </div>
     );
@@ -385,7 +397,7 @@ export default class SendAssetRow extends Component {
         </div>
         {!insideDropdown && (
           // <i className="fa fa-caret-down fa-lg send-v2__asset-dropdown__caret" />
-          <ArrowIcon />
+          <ArrowIcon opacity={this.arrowIconOpacity()} />
         )}
       </div>
     );
