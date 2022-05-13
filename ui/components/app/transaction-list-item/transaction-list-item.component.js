@@ -177,7 +177,6 @@ function TransactionListItemInner({
   ]);
 
   const showCancelButton = !hasCancelled && isPending && !isUnapproved;
-
   const transactionList = () => {
     return (
       <div
@@ -212,7 +211,15 @@ function TransactionListItemInner({
                 `transaction-status--${displayedStatusKey}`,
               )}
             >
-              {displayedStatusKey}
+              {/* {displayedStatusKey} */}
+              <TransactionStatus
+                isPending={isPending}
+                isEarliestNonce={isEarliestNonce}
+                error={err}
+                date={date}
+                status={displayedStatusKey}
+                statusOnly
+              />
             </p>
           </div>
           <div

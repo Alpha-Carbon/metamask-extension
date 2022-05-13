@@ -197,7 +197,6 @@ export default class AccountMenu extends Component {
       const addressSubjects =
         addressConnectedSubjectMap[identity.address] || {};
       const iconAndNameForOpenSubject = addressSubjects[originOfCurrentTab];
-
       return (
         <div
           className="account-menu__account account-menu__item--clickable"
