@@ -125,7 +125,7 @@ export default function TransactionList({
             </div>
             {pendingTransactions.map((transactionGroup, index) =>
               transactionGroup.initialTransaction.transactionType ===
-              TRANSACTION_TYPES.SMART ? (
+                TRANSACTION_TYPES.SMART ? (
                 <SmartTransactionListItem
                   isEarliestNonce={index === 0}
                   smartTransaction={transactionGroup.initialTransaction}
@@ -150,7 +150,7 @@ export default function TransactionList({
               .slice(0, limit)
               .map((transactionGroup, index) =>
                 transactionGroup.initialTransaction?.transactionType ===
-                'smart' ? (
+                  'smart' ? (
                   <SmartTransactionListItem
                     smartTransaction={transactionGroup.initialTransaction}
                     key={`${transactionGroup.nonce}:${index}`}
@@ -172,7 +172,7 @@ export default function TransactionList({
           {completedTransactions.length > limit && (
             <Button
               className="transaction-list__view-more"
-              type="secondary"
+              type="primaryGradient"
               onClick={viewMore}
             >
               {t('viewMore')}
