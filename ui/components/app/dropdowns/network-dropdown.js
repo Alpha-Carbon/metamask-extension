@@ -326,59 +326,60 @@ class NetworkDropdown extends Component {
     const { t } = this.context;
 
     return (
-      <Dropdown
-        isOpen={isOpen}
-        isFilter
-        onClickOutside={(event) => {
-          const { classList } = event.target;
-          const isInClassList = (className) => classList.contains(className);
-          const notToggleElementIndex = notToggleElementClassnames.findIndex(
-            isInClassList,
-          );
+      <>
+        <Dropdown
+          isOpen={isOpen}
+          isFilter
+          onClickOutside={(event) => {
+            const { classList } = event.target;
+            const isInClassList = (className) => classList.contains(className);
+            const notToggleElementIndex = notToggleElementClassnames.findIndex(
+              isInClassList,
+            );
 
-          if (notToggleElementIndex === -1) {
-            event.stopPropagation();
-            hideNetworkDropdown();
-          }
-        }}
-        containerClassName="network-droppo"
-        zIndex={55}
-        style={{
-          position: 'unset',
-          // top: '50%',
-          // transform: 'translate(-50%,-50%)',
-          // left: '50%',
-          // width: '352px',
-          // zIndex: '55px',
-        }}
-        innerStyle={{
-          padding: '15px 13px',
-          background: '#FFFFFF',
-          borderRadius: '10px',
-          boxShadow: 'none',
-          minHeight: '400px',
-          display: 'flex',
-          flexDirection: 'column',
-          position: 'absolute',
-          top: '50%',
-          transform: 'translate(-50%,-50%)',
-          left: '50%',
-          maxWidth: '352px',
-          width: '90%',
-          zIndex: '55',
-        }}
-      >
-        <div
-          className="network-dropdown-close"
-          onClick={() => hideNetworkDropdown()}
+            if (notToggleElementIndex === -1) {
+              event.stopPropagation();
+              hideNetworkDropdown();
+            }
+          }}
+          containerClassName="network-droppo"
+          zIndex={55}
+          style={{
+            position: 'unset',
+            // top: '50%',
+            // transform: 'translate(-50%,-50%)',
+            // left: '50%',
+            // width: '352px',
+            // zIndex: '55px',
+          }}
+          innerStyle={{
+            padding: '15px 13px',
+            background: '#FFFFFF',
+            borderRadius: '10px',
+            boxShadow: 'none',
+            minHeight: '400px',
+            display: 'flex',
+            flexDirection: 'column',
+            position: 'absolute',
+            top: '50%',
+            transform: 'translate(-50%,-50%)',
+            left: '50%',
+            maxWidth: '352px',
+            width: '90%',
+            zIndex: '55',
+          }}
         >
-          <CloseIcon />
-        </div>
-        <div className="network-dropdown-header">
-          <NetworkPrimaryGradientIcon />
-          <div className="network-dropdown-title">{t('networks')}</div>
-          <div className="network-dropdown-divider" />
-          {/* {showTestnetMessageInDropdown ? (
+          <div
+            className="network-dropdown-close"
+            onClick={() => hideNetworkDropdown()}
+          >
+            <CloseIcon />
+          </div>
+          <div className="network-dropdown-header">
+            <NetworkPrimaryGradientIcon />
+            <div className="network-dropdown-title">{t('networks')}</div>
+            <div className="network-dropdown-divider" />
+            {/* {showTestnetMessageInDropdown ? (
             <div className="network-dropdown-content">
               {t('toggleTestNetworks', [
                 <a
@@ -402,17 +403,17 @@ class NetworkDropdown extends Component {
               </button>
             </div>
           ) : null} */}
-        </div>
+          </div>
 
-        <div className="network-dropdown-list">
-          {/* {this.renderNetworkEntry('mainnet')} */}
+          <div className="network-dropdown-list">
+            {/* {this.renderNetworkEntry('mainnet')} */}
 
-          {this.renderCustomRpcList(
-            rpcListDetailWithoutLocalHost,
-            this.props.provider,
-          )}
+            {this.renderCustomRpcList(
+              rpcListDetailWithoutLocalHost,
+              this.props.provider,
+            )}
 
-          {/* {shouldShowTestNetworks && (
+            {/* {shouldShowTestNetworks && (
             <>
               {this.renderNetworkEntry('ropsten')}
               {this.renderNetworkEntry('kovan')}
@@ -425,10 +426,12 @@ class NetworkDropdown extends Component {
               )}
             </>
           )} */}
-        </div>
+          </div>
 
-        {this.renderAddCustomButton()}
-      </Dropdown>
+          {this.renderAddCustomButton()}
+        </Dropdown>
+        {isOpen && <div className="network-dropdown-area" onClick={() => hideNetworkDropdown()} />}
+      </>
     );
   }
 }
