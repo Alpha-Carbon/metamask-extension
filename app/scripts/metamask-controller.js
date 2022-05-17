@@ -3125,7 +3125,7 @@ export default class MetamaskController extends EventEmitter {
 
     // messages between inpage and background
     this.setupProviderConnection(
-      mux.createStream('metamask-provider'),
+      mux.createStream('carbon-provider'),
       sender,
       _subjectType,
     );
