@@ -2,8 +2,7 @@
 
 .transaction-breakdown {
   &__title {
-    padding-bottom: 4px;
-    padding-top: 8px;
+    padding: 8px 0px;
     font-size: 14px;
     color: var(--gray-1);
     font-weight: bold;
@@ -37,6 +36,14 @@
       background: var(--secondary-2-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+  }
+
+  &__total{
+    margin-top: 16px;
+    & .transaction-breakdown-row__title{
+      font-weight: bold;
+      color: var(--gray-2);
     }
   }
 }
