@@ -285,7 +285,7 @@ export default class TransactionListItemDetails extends PureComponent {
                     containerClassName="transaction-list-item-details__address-tooltip"
                     html={tooltipHtml}
                   >
-                    <Identicon address={shortenAddress(senderAddress)}
+                    <Identicon address={senderAddress}
                       diameter={20} />
                     <div
                       className="transaction-list-item-details__address-txt"
@@ -303,7 +303,7 @@ export default class TransactionListItemDetails extends PureComponent {
                     containerClassName="transaction-list-item-details__address-tooltip"
                     html={t('viewDetail')}
                   >
-                    <Identicon address={shortenAddress(recipientAddress)}
+                    <Identicon address={recipientAddress}
                       diameter={20} />
                     <div
                       className="transaction-list-item-details__address-txt"
