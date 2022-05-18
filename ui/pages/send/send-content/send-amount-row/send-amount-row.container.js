@@ -9,6 +9,7 @@ import {
   sendAmountIsInError,
   getSendAsset,
   updateSendAsset,
+  getSendStage,
 } from '../../../../ducks/send';
 import {
   getMetaMaskAccounts,
@@ -30,12 +31,12 @@ function mapStateToProps(state) {
     amount: getSendAmount(state),
     inError: sendAmountIsInError(state),
     asset: getSendAsset(state),
-
     tokens,
     collectibles: getCollectibles(state),
     sendAsset: getSendAsset(state),
     nativeCurrencyImage: getNativeCurrencyImage(state),
     accountsList: getMetaMaskAccountsOrdered(state),
+    sendStage: getSendStage(state),
   };
 }
 

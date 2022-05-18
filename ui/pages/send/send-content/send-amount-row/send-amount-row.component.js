@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import UserPreferencedCurrencyInput from '../../../../components/app/user-preferenced-currency-input';
 import UserPreferencedTokenInput from '../../../../components/app/user-preferenced-token-input';
 import UserPreferencedCurrencyDisplay from '../../../../components/app/user-preferenced-currency-display';
-import { ASSET_TYPES } from '../../../../ducks/send';
+import { ASSET_TYPES, SEND_STAGES } from '../../../../ducks/send';
 import ArrowIcon from '../../../../components/ui/icon/arrow-icon.component';
 import { ERC20, ERC721, PRIMARY } from '../../../../helpers/constants/common';
 
@@ -52,6 +52,7 @@ export default class SendAmountRow extends Component {
         }),
       }),
     ),
+    sendStage: PropTypes.string,
   };
 
   static contextTypes = {
@@ -121,6 +122,10 @@ export default class SendAmountRow extends Component {
   handleChange = (newAmount) => {
     this.props.updateSendAmount(newAmount);
   };
+
+  onEditTransactionPage() {
+    return this.props.sendStage === SEND_STAGES.EDIT;
+  }
 
   renderInput() {
     const { amount, inError, asset } = this.props;
@@ -223,7 +228,7 @@ export default class SendAmountRow extends Component {
     const { tokens } = this.props;
 
     return (
-      this.state.isShowingDropdown && (
+      !this.onEditTransactionPage() && this.state.isShowingDropdown && (
         <div>
           <div
             className="send-v2__asset-dropdown__close-area"
