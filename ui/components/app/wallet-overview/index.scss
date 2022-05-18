@@ -59,6 +59,7 @@
     color: var(--black);
     width: 100%;
     justify-content: center;
+
   }
 
   &__cached-star {
@@ -122,7 +123,14 @@
 
     color: var(--black);
     width: 100%;
+    align-items: baseline !important;
     justify-content: center;
+    & .currency-display-component__suffix {
+      @include roundeBold;
+
+      font-size: 12px;
+      padding-left: 3px;
+    }
   }
 
   &__secondary-balance {
