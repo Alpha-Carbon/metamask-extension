@@ -124,7 +124,7 @@ export default class TransactionListItemDetails extends PureComponent {
   handleCopyFromAddress = () => {
     const { senderAddress } = this.props;
     this.setState({ addressCopied: true }, () => {
-      copyToClipboard(senderAddress);
+      copyToClipboard(toChecksumHexAddress(senderAddress));
       setTimeout(() => this.setState({ addressCopied: false }), SECOND)
     })
   }
@@ -175,6 +175,9 @@ export default class TransactionListItemDetails extends PureComponent {
         {t('copyAddress')}
       </p>
     }
+    const checksummedSenderAddress = toChecksumHexAddress(senderAddress);
+    const checksummedRecipientAddress = toChecksumHexAddress(recipientAddress);
+
     return (
       <>
         {showNicknamePopovers &&
@@ -292,7 +295,7 @@ export default class TransactionListItemDetails extends PureComponent {
                       onClick={this.handleCopyFromAddress}
                     >
 
-                      {shortenAddress(senderAddress)}
+                      {shortenAddress(checksummedSenderAddress)}
                     </div>
                   </Tooltip>
                 </div>
@@ -314,7 +317,7 @@ export default class TransactionListItemDetails extends PureComponent {
                       {addressOnly
                         ? recipientNickname ||
                         recipientEns ||
-                        shortenAddress(recipientAddress)
+                        shortenAddress(checksummedRecipientAddress)
                         : recipientNickname ||
                         recipientEns ||
                         toName ||
