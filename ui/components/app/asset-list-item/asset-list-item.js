@@ -124,19 +124,14 @@ const AssetListItem = ({
       subtitle={secondary ? <h3 title={secondary}>{secondary}</h3> : null}
       onClick={onClick}
       icon={
-        nativeCurrency == 'TACT' && !tokenAddress ? <ActCoinIcon width="56" height="56" /> :
-          // tokenAddress ? (
-          <Identicon
-            className={iconClassName}
-            diameter={56}
-            address={tokenAddress}
-            image={tokenImage}
-            alt={`${primary} ${tokenSymbol}`}
-            imageBorder={identiconBorder}
-          />
-        // ) : (
-        //   <ActCoinIcon width="66" height="66" />
-        // )
+        <Identicon
+          className={iconClassName}
+          diameter={56}
+          address={tokenAddress}
+          image={tokenImage}
+          alt={`${primary} ${tokenSymbol}`}
+          imageBorder={identiconBorder}
+        />
       }
       midContent={midContent}
       rightContent={

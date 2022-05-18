@@ -27,6 +27,7 @@ export const AVALANCHE_CHAIN_ID = '0xa86a';
 export const FANTOM_CHAIN_ID = '0xfa';
 export const CELO_CHAIN_ID = '0xa4ec';
 export const AMINO_CHAIN_ID = '0x7a69';
+export const AMINOX_CHAIN_ID = '0x343a';
 
 /**
  * The largest possible chain ID we can handle.
@@ -63,12 +64,16 @@ export const MATIC_SYMBOL = 'MATIC';
 export const AVALANCHE_SYMBOL = 'AVAX';
 export const FANTOM_SYMBOL = 'FTM';
 export const CELO_SYMBOL = 'CELO';
+export const AMINO_SYMBOL = 'TACT';
+export const AMINOX_SYMBOL = 'TACT';
 
 export const ETH_TOKEN_IMAGE_URL = './images/eth_logo.svg';
 export const TEST_ETH_TOKEN_IMAGE_URL = './images/black-eth-logo.svg';
 export const BNB_TOKEN_IMAGE_URL = './images/bnb.png';
 export const MATIC_TOKEN_IMAGE_URL = './images/matic-token.png';
 export const AVAX_TOKEN_IMAGE_URL = './images/avax-token.png';
+export const AMINO_TOKEN_IMAGE_URL = './images/act-icon.svg';
+export const AMINOX_TOKEN_IMAGE_URL = './images/act-icon.svg';
 
 export const INFURA_PROVIDER_TYPES = [ROPSTEN, RINKEBY, KOVAN, MAINNET, GOERLI];
 
@@ -136,6 +141,8 @@ export const CHAIN_ID_TO_NETWORK_IMAGE_URL_MAP = {
   [AVALANCHE_CHAIN_ID]: AVAX_TOKEN_IMAGE_URL,
   [BSC_CHAIN_ID]: BNB_TOKEN_IMAGE_URL,
   [POLYGON_CHAIN_ID]: MATIC_TOKEN_IMAGE_URL,
+  [AMINO_CHAIN_ID]: AMINO_TOKEN_IMAGE_URL,
+  [AMINOX_CHAIN_ID]: AMINO_TOKEN_IMAGE_URL,
 };
 
 export const CHAIN_ID_TO_NETWORK_ID_MAP = Object.values(
@@ -151,6 +158,8 @@ export const NATIVE_CURRENCY_TOKEN_IMAGE_MAP = {
   [BNB_SYMBOL]: BNB_TOKEN_IMAGE_URL,
   [MATIC_SYMBOL]: MATIC_TOKEN_IMAGE_URL,
   [AVALANCHE_SYMBOL]: AVAX_TOKEN_IMAGE_URL,
+  [AMINO_SYMBOL]: AMINO_TOKEN_IMAGE_URL,
+  [AMINOX_SYMBOL]: AMINO_TOKEN_IMAGE_URL,
 };
 
 export const INFURA_BLOCKED_KEY = 'countryBlocked';

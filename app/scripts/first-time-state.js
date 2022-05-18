@@ -40,6 +40,17 @@ const initialState = {
         },
         viewOnly: true,
       },
+      {
+        nickname: 'Amino X Testnet',
+        labelKey: 'Amino X Testnet',
+        rpcUrl: 'https://aminoxtestnet.node.alphacarbon.network/',
+        chainId: `0x${(13370).toString(16)}`,
+        ticker: 'TACT',
+        rpcPrefs: {
+          blockExplorerUrl: 'https://aminoxtestnet.blockscout.alphacarbon.network/',
+        },
+        viewOnly: true,
+      },
     ],
   },
 };
