@@ -9,7 +9,7 @@ import { isBeta } from '../../../helpers/utils/build-types';
 
 export default class InfoTab extends PureComponent {
   state = {
-    // version: global.platform.getVersion(),
+    version: global.platform.getVersion(),
   };
 
   static contextTypes = {
@@ -95,7 +95,8 @@ export default class InfoTab extends PureComponent {
 
   render() {
     const { t } = this.context;
-
+    console.log(this.state.version, 'version');
+    console.log(this.state);
     return (
       <div className="settings-page__body">
         <div className="settings-page__content-row">
@@ -105,8 +106,7 @@ export default class InfoTab extends PureComponent {
                 {isBeta() ? t('betaMetamaskVersion') : t('metamaskVersion')}
               </div>
               <div className="info-tab__version-number">
-                {/* {this.state.version} */}
-                1.0
+                {this.state.version}
               </div>
             </div>
             <div className="info-tab__item">
