@@ -338,7 +338,11 @@ export default class SendAssetRow extends Component {
         onClick={() => this.selectToken(ASSET_TYPES.TOKEN, token)}
       >
         <div className="send-v2__asset-dropdown__asset-icon">
-          <Identicon address={address} diameter={30} image={image} />
+          <Identicon
+            address={selectedAccount.address}
+            diameter={30}
+          // image={image} 
+          />
         </div>
         <div className="send-v2__asset-dropdown__asset-data">
           <div className="send-v2__asset-dropdown__symbol">
