@@ -54,8 +54,8 @@ export default class EditApprovalPermission extends PureComponent {
           <div className="edit-approval-permission__title">
             {t('editPermission')}
           </div>
-          <i
-            className="fa fa-times fa-lg edit-approval-permission__header__close"
+          <div
+            className="edit-approval-permission__header__close"
             onClick={() => hideModal()}
           />
         </div>

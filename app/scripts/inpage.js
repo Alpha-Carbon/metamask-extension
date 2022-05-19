@@ -13,7 +13,7 @@ const cleanContextForImports = () => {
   try {
     global.define = undefined;
   } catch (_) {
-    console.warn('MetaMask - global.define could not be deleted.');
+    console.warn('Carbon - global.define could not be deleted.');
   }
 };
 
@@ -24,7 +24,7 @@ const restoreContextAfterImports = () => {
   try {
     global.define = __define;
   } catch (_) {
-    console.warn('MetaMask - global.define could not be overwritten.');
+    console.warn('Carbon - global.define could not be overwritten.');
   }
 };
 
@@ -33,7 +33,7 @@ cleanContextForImports();
 /* eslint-disable import/first */
 import log from 'loglevel';
 import { WindowPostMessageStream } from '@metamask/post-message-stream';
-import { initializeProvider } from '@metamask/providers/dist/initializeInpageProvider';
+import { initializeProvider } from '@alphacarbon/inpage-provider';
 
 restoreContextAfterImports();
 
@@ -44,13 +44,13 @@ log.setDefaultLevel(process.env.METAMASK_DEBUG ? 'debug' : 'warn');
 //
 
 // setup background connection
-const metamaskStream = new WindowPostMessageStream({
-  name: 'metamask-inpage',
-  target: 'metamask-contentscript',
+const carbonStream = new WindowPostMessageStream({
+  name: 'carbon-inpage',
+  target: 'carbon-contentscript',
 });
 
 initializeProvider({
-  connectionStream: metamaskStream,
+  connectionStream: carbonStream,
   logger: log,
   shouldShimWeb3: true,
 });

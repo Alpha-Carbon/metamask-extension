@@ -7,9 +7,10 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  background-color: var(--background);
 
   &--with-top-border {
-    border-top: 1px solid var(--color-border-muted);
+    // border-top: 1px solid var(--geyser);
   }
 
   &__error-container {
@@ -18,12 +19,15 @@
 
   &__details {
     box-sizing: border-box;
-    padding: 0 24px;
+    padding: 0 12px;
+    background-color: var(--background);
   }
 
   &__data {
     padding: 16px;
-    color: var(--color-text-alternative);
+    color: var(--gray-2);
+    background: var(--white);
+    border-radius: 10px;
 
     & > .disclosure {
       margin-top: 0;
@@ -33,16 +37,22 @@
   &__data-box {
     @include H7;
 
-    background-color: var(--color-background-alternative);
+    background-color: var(--gray-5);
     padding: 12px;
     word-wrap: break-word;
     overflow-y: auto;
+    color: var(--gray-3);
 
     &-label {
       @include H7;
+      @include roundeBold;
 
+      color: var(--gray-2);
       text-transform: uppercase;
       padding: 8px 0 12px;
+      &>span{
+        color: var(--gray-2);
+      }
     }
   }
 
@@ -61,7 +71,7 @@
   }
 
   &__gas-fee {
-    border-bottom: 1px solid var(--color-border-muted);
+    border-bottom: 1px solid var(--geyser);
 
     .advanced-gas-inputs__gas-edit-rows {
       margin-bottom: 16px;
@@ -70,24 +80,46 @@
 
   &__function-type {
     @include H6;
+    @include roundeBold;
 
-    font-weight: 500;
     text-transform: capitalize;
-    color: var(--color-text-default);
+    color: var(--gray-1);
     padding-left: 5px;
   }
-
+  & .tabs__list{
+    padding-left: 10px;
+    border-top: 1px solid var(--gray-4);
+    & .tab--active{
+      &>button{
+        &::after{
+          content: "";
+          position: absolute;
+          bottom: 5px;
+          left: 0;
+          width: calc(100% - 16px);
+          height: 2px;
+          background: var(--secondary-2-gradient);
+          border-radius: 10px;
+          margin: 0px 8px;
+        }
+      }
+    }
+  }
   &__tab {
     @include H7;
+    @include roundeBold;
 
-    color: var(--color-text-alternative);
+    color: var(--black);
     text-transform: uppercase;
     margin: 0 8px;
 
     & button {
+      @include roundeBold;
       font-size: unset;
-      color: var(--color-text-alternative);
+      color: var(--black);
       text-transform: uppercase;
+      position: relative;
+
     }
   }
 
@@ -99,5 +131,11 @@
   &__total-amount,
   &__total-value {
     position: relative;
+  }
+
+  &__currency-container-balance {
+    @include H7;
+
+    color: var(--black);
   }
 }

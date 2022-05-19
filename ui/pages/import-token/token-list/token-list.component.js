@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { checkExistingAddresses } from '../../../helpers/utils/util';
-import TokenListPlaceholder from './token-list-placeholder';
+// import TokenListPlaceholder from './token-list-placeholder';
 
 export default class TokenList extends Component {
   static contextTypes = {
@@ -26,9 +26,7 @@ export default class TokenList extends Component {
       useTokenDetection,
     } = this.props;
 
-    return results.length === 0 ? (
-      <TokenListPlaceholder />
-    ) : (
+    return results.length === 0 ? null : ( // <TokenListPlaceholder />
       <div className="token-list">
         <div className="token-list__title">
           {this.context.t('searchResults')}
@@ -38,14 +36,10 @@ export default class TokenList extends Component {
             .fill(undefined)
             .map((_, i) => {
               const { iconUrl, symbol, name, address } = results[i] || {};
-              let iconPath = iconUrl;
-              if (!process.env.TOKEN_DETECTION_V2) {
-                /** TODO: Remove during TOKEN_DETECTION_V2 feature flag clean up */
-                // token from dynamic api list is fetched when useTokenDetection is true
-                iconPath = useTokenDetection
-                  ? iconUrl
-                  : `images/contract/${iconUrl}`;
-              }
+              // token from dynamic api list is fetched when useTokenDetection is true
+              const iconPath = useTokenDetection
+                ? iconUrl
+                : `images/contract/${iconUrl}`;
               const tokenAlreadyAdded = checkExistingAddresses(address, tokens);
               const onClick = () =>
                 !tokenAlreadyAdded && onToggleToken(results[i]);

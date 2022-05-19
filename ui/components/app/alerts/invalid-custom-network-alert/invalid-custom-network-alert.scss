@@ -16,7 +16,7 @@
   }
 
   &__content-link {
-    color: var(--color-primary-default);
+    color: var(--primary-blue);
     cursor: pointer;
   }
 
@@ -49,8 +49,8 @@
     margin-bottom: 16px;
     padding: 16px;
     font-size: 14px;
-    border: 1px solid var(--color-error-default);
-    background: var(--color-error-muted);
+    border: 1px solid var(--accent-red);
+    background: #f8eae8;
     border-radius: 3px;
   }
 }

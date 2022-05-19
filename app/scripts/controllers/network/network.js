@@ -10,13 +10,13 @@ import {
 } from 'swappable-obj-proxy';
 import EthQuery from 'eth-query';
 import {
-  RINKEBY,
-  MAINNET,
+  // RINKEBY,
+  // MAINNET,
   INFURA_PROVIDER_TYPES,
   NETWORK_TYPE_RPC,
   NETWORK_TYPE_TO_ID_MAP,
-  MAINNET_CHAIN_ID,
-  RINKEBY_CHAIN_ID,
+  // MAINNET_CHAIN_ID,
+  // RINKEBY_CHAIN_ID,
   INFURA_BLOCKED_KEY,
 } from '../../../../shared/constants/network';
 import { SECOND } from '../../../../shared/constants/time';
@@ -29,22 +29,29 @@ import createMetamaskMiddleware from './createMetamaskMiddleware';
 import createInfuraClient from './createInfuraClient';
 import createJsonRpcClient from './createJsonRpcClient';
 
-const env = process.env.METAMASK_ENV;
+// const env = process.env.METAMASK_ENV;
 const fetchWithTimeout = getFetchWithTimeout(SECOND * 30);
 
-let defaultProviderConfigOpts;
-if (process.env.IN_TEST) {
-  defaultProviderConfigOpts = {
-    type: NETWORK_TYPE_RPC,
-    rpcUrl: 'http://localhost:8545',
-    chainId: '0x539',
-    nickname: 'Localhost 8545',
-  };
-} else if (process.env.METAMASK_DEBUG || env === 'test') {
-  defaultProviderConfigOpts = { type: RINKEBY, chainId: RINKEBY_CHAIN_ID };
-} else {
-  defaultProviderConfigOpts = { type: MAINNET, chainId: MAINNET_CHAIN_ID };
-}
+// let defaultProviderConfigOpts;
+// if (process.env.IN_TEST) {
+//   defaultProviderConfigOpts = {
+//     type: NETWORK_TYPE_RPC,
+//     rpcUrl: 'http://localhost:8545',
+//     chainId: '0x539',
+//     nickname: 'Localhost 8545',
+//   };
+// } else if (process.env.METAMASK_DEBUG || env === 'test') {
+//   defaultProviderConfigOpts = { type: RINKEBY, chainId: RINKEBY_CHAIN_ID };
+// } else {
+//   defaultProviderConfigOpts = { type: MAINNET, chainId: MAINNET_CHAIN_ID };
+// }
+const defaultProviderConfigOpts = {
+  type: NETWORK_TYPE_RPC,
+  rpcUrl: 'https://leucine0.node.alphacarbon.network',
+  chainId: `0x${(31337).toString(16)}`,
+  ticker: 'TACT',
+  nickname: 'Leucine100',
+};
 
 const defaultProviderConfig = {
   ticker: 'ETH',

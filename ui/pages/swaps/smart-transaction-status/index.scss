@@ -13,7 +13,7 @@
 
   &__loading-bar-container {
     height: 3px;
-    background: var(--color-background-alternative);
+    background: var(--Grey-100);
     display: flex;
     margin-top: 12px;
     margin-bottom: 28px;
@@ -21,7 +21,7 @@
 
   &__loading-bar {
     height: 3px;
-    background: var(--color-primary-default);
+    background: var(--Blue-500);
     transition: width 0.5s linear;
   }
 
@@ -58,11 +58,11 @@
   }
 
   a {
-    color: var(--color-primary-default);
+    color: var(--Blue-500);
   }
 
   &__support-link {
-    color: var(--color-primary-default);
+    color: var(--Blue-500);
     margin-top: 24px;
     cursor: pointer;
   }
@@ -73,8 +73,8 @@
 
   &__swaps-footer {
     .btn-secondary {
-      color: var(--color-text-alternative);
-      border: 1px solid var(--color-border-default);
+      color: var(--ui-4);
+      border: 1px solid var(--ui-4);
     }
   }
 

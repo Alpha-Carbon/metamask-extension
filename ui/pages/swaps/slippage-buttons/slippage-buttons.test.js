@@ -45,6 +45,6 @@ describe('SlippageButtons', () => {
     expect(
       document.querySelector('.slippage-buttons__button-group'),
     ).toMatchSnapshot();
-    expect(getByText('Smart Transaction')).toBeInTheDocument();
+    expect(getByText('Smart transaction')).toBeInTheDocument();
   });
 });

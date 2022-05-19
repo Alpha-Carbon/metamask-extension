@@ -80,10 +80,7 @@ export default function EditGasFeeButton({ userAcknowledgedGasMissing }) {
         <InfoTooltip
           contentText={
             <div className="edit-gas-fee-button__tooltip">
-              <Typography
-                variant={TYPOGRAPHY.H7}
-                color={COLORS.TEXT_ALTERNATIVE}
-              >
+              <Typography variant={TYPOGRAPHY.H7} color={COLORS.NEUTRAL_GREY}>
                 {t('dappSuggestedTooltip', [transaction.origin])}
               </Typography>
               <Typography variant={TYPOGRAPHY.H7}>

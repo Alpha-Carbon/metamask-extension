@@ -40,7 +40,7 @@ export default class MultipleNotifications extends PureComponent {
         >
           {childrenToRender.length > 1 ? (
             <i
-              className={classnames('fa fa-sm fa-sort-amount', {
+              className={classnames('fa fa-sm fa-sort-amount-asc', {
                 flipped: !showAll,
               })}
             />

@@ -11,12 +11,12 @@ import {
   checkNetworkAndAccountSupports1559,
   getAddressBook,
 } from '../../selectors';
-import { updateTransactionGasFees } from '../../store/actions';
+import { updateTransaction } from '../../store/actions';
 import { setCustomGasLimit, setCustomGasPrice } from '../gas/gas.duck';
 import { decGWEIToHexWEI } from '../../helpers/utils/conversions.util';
+import { isEqualCaseInsensitive } from '../../helpers/utils/util';
 
 import { KEYRING_TYPES } from '../../../shared/constants/hardware-wallets';
-import { isEqualCaseInsensitive } from '../../../shared/modules/string-utils';
 
 export default function reduceMetamask(state = {}, action) {
   const metamaskState = {
@@ -209,7 +209,7 @@ const toHexWei = (value, expectHexWei) => {
 };
 
 // Action Creators
-export function updateGasFees({
+export function updateTransactionGasFees({
   gasPrice,
   gasLimit,
   maxPriorityFeePerGas,
@@ -239,7 +239,7 @@ export function updateGasFees({
       ? addHexPrefix(gasLimit)
       : addHexPrefix(gasLimit.toString(16));
     dispatch(setCustomGasLimit(customGasLimit));
-    await dispatch(updateTransactionGasFees(updatedTx.id, updatedTx));
+    await dispatch(updateTransaction(updatedTx));
   };
 }
 

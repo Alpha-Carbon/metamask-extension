@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -7,6 +7,7 @@ import TokenList from '../token-list';
 import { IMPORT_TOKEN_ROUTE } from '../../../helpers/constants/routes';
 import AssetListItem from '../asset-list-item';
 import { PRIMARY, SECONDARY } from '../../../helpers/constants/common';
+import { useMetricEvent } from '../../../hooks/useMetricEvent';
 import { useUserPreferencedCurrency } from '../../../hooks/useUserPreferencedCurrency';
 import {
   getCurrentAccountWithSendEtherInfo,
@@ -23,9 +24,10 @@ import {
   TYPOGRAPHY,
   FONT_WEIGHT,
   JUSTIFY_CONTENT,
+  ALIGN_ITEMS,
+  FLEX_WRAP,
 } from '../../../helpers/constants/design-system';
 import { useI18nContext } from '../../../hooks/useI18nContext';
-import { MetaMetricsContext } from '../../../contexts/metametrics';
 
 const AssetList = ({ onClickAsset }) => {
   const t = useI18nContext();
@@ -35,7 +37,20 @@ const AssetList = ({ onClickAsset }) => {
   );
   const nativeCurrency = useSelector(getNativeCurrency);
   const showFiat = useSelector(getShouldShowFiat);
-  const trackEvent = useContext(MetaMetricsContext);
+  const selectTokenEvent = useMetricEvent({
+    eventOpts: {
+      category: 'Navigation',
+      action: 'Token Menu',
+      name: 'Clicked Token',
+    },
+  });
+  const addTokenEvent = useMetricEvent({
+    eventOpts: {
+      category: 'Navigation',
+      action: 'Token Menu',
+      name: 'Clicked "Add Token"',
+    },
+  });
 
   const {
     currency: primaryCurrency,
@@ -77,44 +92,32 @@ const AssetList = ({ onClickAsset }) => {
         secondary={showFiat ? secondaryCurrencyDisplay : undefined}
         tokenImage={primaryTokenImage}
         identiconBorder
+        nativeCurrency={nativeCurrency}
       />
       <TokenList
         onTokenClick={(tokenAddress) => {
           onClickAsset(tokenAddress);
-          trackEvent({
-            event: 'Clicked Token',
-            category: 'Navigation',
-            properties: {
-              action: 'Token Menu',
-              legacy_event: true,
-            },
-          });
+          selectTokenEvent();
         }}
       />
-      <Box marginTop={4}>
-        <Box justifyContent={JUSTIFY_CONTENT.CENTER}>
+      <Box marginTop={4} marginBottom={2}>
+        <Box flexWrap={FLEX_WRAP.WRAP} justifyContent={JUSTIFY_CONTENT.CENTER} alignItems={ALIGN_ITEMS.CENTER}>
           <Typography
-            color={COLORS.TEXT_ALTERNATIVE}
+            color={COLORS.UI4}
             variant={TYPOGRAPHY.H6}
             fontWeight={FONT_WEIGHT.NORMAL}
+            margin={[0, 2]}
           >
             {t('missingToken')}
           </Typography>
+          <ImportTokenLink
+            isMainnet={isMainnet}
+            onClick={() => {
+              history.push(IMPORT_TOKEN_ROUTE);
+              addTokenEvent();
+            }}
+          />
         </Box>
-        <ImportTokenLink
-          isMainnet={isMainnet}
-          onClick={() => {
-            history.push(IMPORT_TOKEN_ROUTE);
-            trackEvent({
-              event: 'Clicked "Add Token"',
-              category: 'Navigation',
-              properties: {
-                action: 'Token Menu',
-                legacy_event: true,
-              },
-            });
-          }}
-        />
       </Box>
     </>
   );

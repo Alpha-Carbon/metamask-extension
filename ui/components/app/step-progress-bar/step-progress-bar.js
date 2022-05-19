@@ -1,7 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import { capitalize } from 'lodash';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import Box from '../../ui/box';
 import { BLOCK_SIZES } from '../../../helpers/constants/design-system';
@@ -27,26 +26,26 @@ export function ThreeStepProgressBar({ stage }) {
         <li
           className={classnames({
             active: stage >= 1,
-            complete: stage > 1,
+            complete: stage >= 1,
           })}
         >
-          {capitalize(t('createPassword'))}
+          {t('createPassword')}
         </li>
         <li
           className={classnames({
             active: stage >= 2,
-            complete: stage > 3,
+            complete: stage >= 3,
           })}
         >
-          {capitalize(t('secureWallet'))}
+          {t('secureWallet')}
         </li>
         <li
           className={classnames({
             active: stage >= 4,
-            complete: stage > 5,
+            complete: stage >= 5,
           })}
         >
-          {capitalize(t('confirmRecoveryPhrase'))}
+          {t('confirmRecoveryPhrase')}
         </li>
       </ul>
     </Box>
@@ -64,7 +63,7 @@ export function TwoStepProgressBar({ stage }) {
             complete: stage > 1,
           })}
         >
-          {capitalize(t('confirmRecoveryPhrase'))}
+          {t('confirmRecoveryPhrase')}
         </li>
         <li
           className={classnames('two-steps', {
@@ -72,7 +71,7 @@ export function TwoStepProgressBar({ stage }) {
             complete: stage > 2,
           })}
         >
-          {capitalize(t('createPassword'))}
+          {t('createPassword')}
         </li>
       </ul>
     </Box>

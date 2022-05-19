@@ -5,12 +5,14 @@
   flex-flow: row nowrap;
   align-items: center;
   min-height: 54px;
-  border: 1px solid var(--color-border-default);
+  // border: 1px solid #dedede;
   border-radius: 4px;
-  background-color: var(--color-background-default);
-  color: var(--color-text-default);
-  padding: 8px 10px;
+  // background-color: #fff;
+  color: #4d4d4d;
+  padding: 25px 10px;
   position: relative;
+  background: none;
+  border: 0;
 
   input[type="number"] {
     -moz-appearance: textfield;
@@ -32,18 +34,25 @@
     flex: 1 0 auto;
     display: flex;
     flex-flow: column nowrap;
+    align-items: center;
   }
 
   &__input {
     @include Paragraph;
 
-    color: var(--color-text-default);
-    background: transparent;
+    font-size: 30px;
     border: none;
     max-width: 15ch;
     overflow: hidden;
     text-overflow: ellipsis;
-    height: 16px;
+    height: 40px;
+    color: var(--gray-1);
+    background-color: var(--background);
+    font-size: 40px;
+    text-align: right;
+    &__disabled {
+      background-color: rgb(222, 222, 222);
+    }
   }
 
   &__input-container {
@@ -59,6 +68,10 @@
   }
 
   &--error {
-    border-color: var(--color-error-default);
+    border-color: var(--red);
+  }
+
+  &__disabled {
+    background-color: #f2f3f4;
   }
 }

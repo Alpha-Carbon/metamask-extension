@@ -15,19 +15,19 @@
     "message": "Valor"
   },
   "appDescription": {
-    "message": "Extensão para o browser de Ethereum",
+    "message": "Uma carteira de criptografia no seu navegador",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Carbon Wallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Carbon Wallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Carbon Wallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {

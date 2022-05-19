@@ -11,12 +11,12 @@ describe('Breadcrumbs Component', () => {
     expect(wrapper.find('.breadcrumb')).toHaveLength(3);
     expect(
       wrapper.find('.breadcrumb').at(0).props().style.backgroundColor,
-    ).toStrictEqual('var(--color-background-default)');
+    ).toStrictEqual('#FFFFFF');
     expect(
       wrapper.find('.breadcrumb').at(1).props().style.backgroundColor,
-    ).toStrictEqual('var(--color-background-alternative)');
+    ).toStrictEqual('#D8D8D8');
     expect(
       wrapper.find('.breadcrumb').at(2).props().style.backgroundColor,
-    ).toStrictEqual('var(--color-background-default)');
+    ).toStrictEqual('#FFFFFF');
   });
 });

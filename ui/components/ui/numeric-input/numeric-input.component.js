@@ -44,11 +44,7 @@ export default function NumericInput({
         placeholder={placeholder}
       />
       {detailText && (
-        <Typography
-          color={COLORS.TEXT_ALTERNATIVE}
-          variant={TYPOGRAPHY.H7}
-          tag="span"
-        >
+        <Typography color={COLORS.UI4} variant={TYPOGRAPHY.H7} tag="span">
           {detailText}
         </Typography>
       )}

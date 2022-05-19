@@ -36,43 +36,33 @@ export default function OnboardingMetametrics() {
   const firstTimeSelectionMetaMetricsName =
     firstTimeFlowTypeNameMap[firstTimeFlowType];
 
-  const trackEvent = useContext(MetaMetricsContext);
+  const metricsEvent = useContext(MetaMetricsContext);
 
   const onConfirm = async () => {
     const [, metaMetricsId] = await dispatch(setParticipateInMetaMetrics(true));
 
     try {
       if (!participateInMetaMetrics) {
-        trackEvent(
-          {
+        metricsEvent({
+          eventOpts: {
             category: 'Onboarding',
-            event: 'Metrics Opt In',
-            properties: {
-              action: 'Metrics Option',
-              legacy_event: true,
-            },
+            action: 'Metrics Option',
+            name: 'Metrics Opt In',
           },
-          {
-            isOptIn: true,
-            flushImmediately: true,
-          },
-        );
-      }
-      trackEvent(
-        {
-          category: 'Onboarding',
-          event: firstTimeSelectionMetaMetricsName,
-          properties: {
-            action: 'Import or Create',
-            legacy_event: true,
-          },
-        },
-        {
           isOptIn: true,
-          metaMetricsId,
           flushImmediately: true,
+        });
+      }
+      metricsEvent({
+        eventOpts: {
+          category: 'Onboarding',
+          action: 'Import or Create',
+          name: firstTimeSelectionMetaMetricsName,
         },
-      );
+        isOptIn: true,
+        metaMetricsId,
+        flushImmediately: true,
+      });
     } finally {
       history.push(nextRoute);
     }
@@ -83,20 +73,15 @@ export default function OnboardingMetametrics() {
 
     try {
       if (!participateInMetaMetrics) {
-        trackEvent(
-          {
+        metricsEvent({
+          eventOpts: {
             category: 'Onboarding',
-            event: 'Metrics Opt Out',
-            properties: {
-              action: 'Metrics Option',
-              legacy_event: true,
-            },
+            action: 'Metrics Option',
+            name: 'Metrics Opt Out',
           },
-          {
-            isOptIn: true,
-            flushImmediately: true,
-          },
-        );
+          isOptIn: true,
+          flushImmediately: true,
+        });
       }
     } finally {
       history.push(nextRoute);
@@ -138,7 +123,7 @@ export default function OnboardingMetametrics() {
         </li>
       </ul>
       <Typography
-        color={COLORS.TEXT_ALTERNATIVE}
+        color={COLORS.UI4}
         align={TEXT_ALIGN.CENTER}
         variant={TYPOGRAPHY.H6}
         className="onboarding-metametrics__terms"

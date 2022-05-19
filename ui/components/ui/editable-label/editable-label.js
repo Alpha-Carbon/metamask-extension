@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import Button from '../button';
 
 class EditableLabel extends Component {
   static propTypes = {
@@ -8,6 +9,7 @@ class EditableLabel extends Component {
     defaultValue: PropTypes.string,
     className: PropTypes.string,
     accountsNames: PropTypes.array,
+    onClose: PropTypes.func,
   };
 
   static contextTypes = {
@@ -15,7 +17,7 @@ class EditableLabel extends Component {
   };
 
   state = {
-    isEditing: false,
+    // isEditing: false,
     value: this.props.defaultValue || '',
   };
 
@@ -27,9 +29,10 @@ class EditableLabel extends Component {
       return;
     }
 
-    Promise.resolve(this.props.onSubmit(value)).then(() =>
-      this.setState({ isEditing: false }),
-    );
+    // Promise.resolve(this.props.onSubmit(value)).then(() =>
+    //   this.setState({ isEditing: false }),
+    // );
+    Promise.resolve(this.props.onSubmit(value));
   }
 
   renderEditing() {
@@ -43,11 +46,11 @@ class EditableLabel extends Component {
         required
         dir="auto"
         value={this.state.value}
-        onKeyPress={(event) => {
-          if (event.key === 'Enter') {
-            this.handleSubmit();
-          }
-        }}
+        // onKeyPress={(event) => {
+        //   if (event.key === 'Enter') {
+        //     this.handleSubmit();
+        //   }
+        // }}
         onChange={(event) => this.setState({ value: event.target.value })}
         className={classnames('large-input', 'editable-label__input', {
           'editable-label__input--error':
@@ -55,13 +58,13 @@ class EditableLabel extends Component {
         })}
         autoFocus
       />,
-      <button
-        className="editable-label__icon-button"
-        key={2}
-        onClick={() => this.handleSubmit()}
-      >
-        <i className="fa fa-check editable-label__icon" />
-      </button>,
+      // <button
+      //   className="editable-label__icon-button"
+      //   key={2}
+      //   onClick={() => this.handleSubmit()}
+      // >
+      //   <i className="fa fa-check editable-label__icon" />
+      // </button>,
     ];
   }
 
@@ -73,7 +76,7 @@ class EditableLabel extends Component {
       <button
         key={2}
         className="editable-label__icon-button"
-        onClick={() => this.setState({ isEditing: true })}
+        // onClick={() => this.setState({ isEditing: true })}
       >
         <i className="fas fa-pencil-alt editable-label__icon" />
       </button>,
@@ -81,13 +84,38 @@ class EditableLabel extends Component {
   }
 
   render() {
-    const { isEditing, value } = this.state;
-    const { className, accountsNames } = this.props;
+    const {
+      // isEditing,
+      value,
+    } = this.state;
+    const { className, accountsNames, onClose } = this.props;
 
     return (
       <>
         <div className={classnames('editable-label', className)}>
-          {isEditing ? this.renderEditing() : this.renderReadonly()}
+          {/* {isEditing ? this.renderEditing() : this.renderReadonly()} */}
+          {this.renderEditing()}
+        </div>
+        <div className="editable__buttons">
+          <Button
+            onClick={() => {
+              onClose();
+            }}
+            type="cancel"
+            className=""
+          >
+            {this.context.t('cancel')}
+          </Button>
+          <Button
+            onClick={() => {
+              this.handleSubmit();
+              onClose();
+            }}
+            type="primaryGradient"
+            className=""
+          >
+            {this.context.t('confirm')}
+          </Button>
         </div>
         {accountsNames.includes(value) ? (
           <div

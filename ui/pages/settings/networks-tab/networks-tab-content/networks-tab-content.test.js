@@ -26,7 +26,6 @@ const renderComponent = (props) => {
 const defaultNetworks = defaultNetworksData.map((network) => ({
   ...network,
   viewOnly: true,
-  isATestNetwork: true,
 }));
 
 const props = {
@@ -41,16 +40,13 @@ const props = {
     blockExplorerUrl: '',
     viewOnly: false,
     rpcPrefs: {},
-    isATestNetwork: true,
   },
   shouldRenderNetworkForm: true,
 };
 
 describe('NetworksTabContent Component', () => {
   it('should render networks tab content correctly', async () => {
-    const { queryByText, getByDisplayValue, getAllByText } = renderComponent(
-      props,
-    );
+    const { queryByText, getByDisplayValue } = renderComponent(props);
 
     expect(queryByText('Ethereum Mainnet')).toBeInTheDocument();
     expect(queryByText('Ropsten Test Network')).toBeInTheDocument();
@@ -72,7 +68,9 @@ describe('NetworksTabContent Component', () => {
       getByDisplayValue(props.selectedNetwork.chainId),
     ).toBeInTheDocument();
     expect(getByDisplayValue(props.selectedNetwork.ticker)).toBeInTheDocument();
-    expect(getAllByText(props.selectedNetwork.blockExplorerUrl)).toBeDefined();
+    expect(
+      getByDisplayValue(props.selectedNetwork.blockExplorerUrl),
+    ).toBeInTheDocument();
 
     fireEvent.change(getByDisplayValue(props.selectedNetwork.label), {
       target: { value: 'LocalHost 8545' },

@@ -2,22 +2,38 @@
   display: inline;
 
   &--confirmed {
-    color: var(--color-success-default);
+    color: var(--function-1);
   }
 
-  &--failed,
-  &--cancelled,
-  &--dropped,
+  &--submitted{
+    color: var(--function-3);
+  }
+
+  &--unapproved {
+    color: var(--Orange-500);
+  }
+
+  &--failed {
+    color: var(--Red-500);
+  }
+
+  &--cancelled {
+    color: var(--Red-500);
+  }
+
+  &--dropped {
+    color: var(--Red-500);
+  }
+
   &--rejected {
-    color: var(--color-error-default);
+    color: var(--Red-500);
   }
 
-  &--unapproved,
   &--pending {
-    color: var(--color-secondary-default);
+    color: var(--function-3);
   }
 
   &--queued {
-    color: var(--color-text-alternative);
+    color: var(--Grey-500);
   }
 }

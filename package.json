@@ -1,6 +1,6 @@
 {
-  "name": "metamask-crx",
-  "version": "10.12.4",
+  "name": "Alpha-Carbon",
+  "version": "1.2.0",
   "private": true,
   "repository": {
     "type": "git",
@@ -13,12 +13,14 @@
     "start:mv3": "ENABLE_MV3=true yarn build:dev dev",
     "start:lavamoat": "yarn build dev",
     "dist": "yarn build prod",
+    "dist:mv3": "ENABLE_MV3=true yarn build prod",
     "build": "yarn lavamoat:build",
     "build:dev": "node development/build/index.js",
     "start:test": "SEGMENT_HOST='https://api.segment.io' SEGMENT_WRITE_KEY='FAKE' yarn build testDev",
     "benchmark:chrome": "SELENIUM_BROWSER=chrome node test/e2e/benchmark.js",
     "benchmark:firefox": "SELENIUM_BROWSER=firefox node test/e2e/benchmark.js",
     "build:test": "SEGMENT_HOST='https://api.segment.io' SEGMENT_WRITE_KEY='FAKE' yarn build test",
+    "build:test_mv3": "ENABLE_MV3=true SEGMENT_HOST='https://api.segment.io' SEGMENT_WRITE_KEY='FAKE' yarn build test",
     "build:test:flask": "yarn build test --build-type flask",
     "test": "yarn lint && yarn test:unit && yarn test:unit:jest",
     "dapp": "node development/static-server.js node_modules/@metamask/test-dapp/dist --port 8080",
@@ -103,6 +105,7 @@
   },
   "dependencies": {
     "3box": "^1.10.2",
+    "@alphacarbon/inpage-provider": "^0.1.0",
     "@babel/runtime": "^7.5.5",
     "@download/blockies": "^1.0.3",
     "@ensdomains/content-hash": "^2.5.6",

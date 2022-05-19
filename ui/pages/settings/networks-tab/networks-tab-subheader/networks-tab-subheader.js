@@ -19,7 +19,7 @@ const NetworksFormSubheader = ({ addNewNetwork }) => {
       <span className="settings-page__sub-header-text">{t('networks')}</span>
       <div className="networks-tab__add-network-header-button-wrapper">
         <Button
-          type="primary"
+          type="primaryGradient"
           onClick={(event) => {
             event.preventDefault();
             history.push(ADD_NETWORK_ROUTE);

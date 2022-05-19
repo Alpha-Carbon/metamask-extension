@@ -7,7 +7,6 @@ import ContactList from '../../../../components/app/contact-list';
 import RecipientGroup from '../../../../components/app/contact-list/recipient-group/recipient-group.component';
 import { ellipsify } from '../../send.utils';
 import Button from '../../../../components/ui/button';
-import IconCaretLeft from '../../../../components/ui/icon/icon-caret-left';
 import Confusable from '../../../../components/ui/confusable';
 
 export default class AddRecipient extends Component {
@@ -16,14 +15,14 @@ export default class AddRecipient extends Component {
     ownedAccounts: PropTypes.array,
     addressBook: PropTypes.array,
     updateRecipient: PropTypes.func,
-    ensResolution: PropTypes.string,
+    // ensResolution: PropTypes.string,
     ensError: PropTypes.string,
     ensWarning: PropTypes.string,
-    addressBookEntryName: PropTypes.string,
+    // addressBookEntryName: PropTypes.string,
     contacts: PropTypes.array,
     nonContacts: PropTypes.array,
     useMyAccountsForRecipientSearch: PropTypes.func,
-    useContactListForRecipientSearch: PropTypes.func,
+    // useContactListForRecipientSearch: PropTypes.func,
     isUsingMyAccountsForRecipientSearch: PropTypes.bool,
     recipient: PropTypes.shape({
       address: PropTypes.string,
@@ -57,6 +56,9 @@ export default class AddRecipient extends Component {
         { name: 'address', weight: 0.5 },
       ],
     });
+    this.state = {
+      isMyAccountShow: true,
+    };
   }
 
   static contextTypes = {
@@ -96,33 +98,51 @@ export default class AddRecipient extends Component {
 
   render() {
     const {
-      ensResolution,
-      recipient,
-      userInput,
-      addressBookEntryName,
+      // ensResolution,
+      // recipient,
+      // userInput,
+      useMyAccountsForRecipientSearch,
+      // addressBookEntryName,
       isUsingMyAccountsForRecipientSearch,
     } = this.props;
+    const { isMyAccountShow } = this.state;
+    const { t } = this.context;
+    // let content;
 
-    let content;
-
-    if (recipient.address) {
-      content = this.renderExplicitAddress(
-        recipient.address,
-        recipient.nickname,
-      );
-    } else if (ensResolution) {
-      content = this.renderExplicitAddress(
-        ensResolution,
-        addressBookEntryName || userInput,
-      );
-    } else if (isUsingMyAccountsForRecipientSearch) {
-      content = this.renderTransfer();
-    }
+    // if (recipient.address) {
+    //   content = this.renderExplicitAddress(
+    //     recipient.address,
+    //     recipient.nickname,
+    //   );
+    // } else if (ensResolution) {
+    //   content = this.renderExplicitAddress(
+    //     ensResolution,
+    //     addressBookEntryName || userInput,
+    //   );
+    // } else if (isUsingMyAccountsForRecipientSearch) {
+    //   content = this.renderTransfer();
+    // }
 
     return (
       <div className="send__select-recipient-wrapper">
+        {isMyAccountShow ? (
+          <Button
+            type="link"
+            className="send__select-recipient-wrapper__list__link"
+            onClick={() => {
+              useMyAccountsForRecipientSearch();
+              this.setState({ isMyAccountShow: !isMyAccountShow });
+            }}
+          >
+            {t('transferBetweenAccounts')}
+          </Button>
+        ) : null}
+
         {this.renderDialogs()}
-        {content || this.renderMain()}
+
+        {isUsingMyAccountsForRecipientSearch ? this.renderTransfer() : null}
+        {/* {content || this.renderMain()} */}
+        {this.renderMain()}
       </div>
     );
   }
@@ -153,7 +173,7 @@ export default class AddRecipient extends Component {
     let { ownedAccounts } = this.props;
     const {
       userInput,
-      useContactListForRecipientSearch,
+      // useContactListForRecipientSearch,
       isUsingMyAccountsForRecipientSearch,
     } = this.props;
     const { t } = this.context;
@@ -168,30 +188,31 @@ export default class AddRecipient extends Component {
 
     return (
       <div className="send__select-recipient-wrapper__list">
-        <Button
+        {/* <Button
           type="link"
           className="send__select-recipient-wrapper__list__link"
           onClick={useContactListForRecipientSearch}
         >
-          <IconCaretLeft className="send__select-recipient-wrapper__list__back-caret" />
+          <div className="send__select-recipient-wrapper__list__back-caret" />
           {t('backToAll')}
-        </Button>
+        </Button> */}
         <RecipientGroup
           label={t('myAccounts')}
           items={ownedAccounts}
           onSelect={this.selectRecipient}
+          isMyAccount
         />
       </div>
     );
   }
 
   renderMain() {
-    const { t } = this.context;
+    // const { t } = this.context;
     const {
-      userInput,
-      ownedAccounts = [],
+      // userInput,
+      // ownedAccounts = [],
       addressBook,
-      useMyAccountsForRecipientSearch,
+      // useMyAccountsForRecipientSearch,
     } = this.props;
 
     return (
@@ -202,7 +223,7 @@ export default class AddRecipient extends Component {
           searchForRecents={this.searchForRecents.bind(this)}
           selectRecipient={this.selectRecipient.bind(this)}
         >
-          {ownedAccounts && ownedAccounts.length > 1 && !userInput && (
+          {/* {ownedAccounts && ownedAccounts.length > 1 && !userInput && (
             <Button
               type="link"
               className="send__select-recipient-wrapper__list__link"
@@ -210,7 +231,7 @@ export default class AddRecipient extends Component {
             >
               {t('transferBetweenAccounts')}
             </Button>
-          )}
+          )} */}
         </ContactList>
       </div>
     );

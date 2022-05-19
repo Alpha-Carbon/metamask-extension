@@ -1,3 +1,17 @@
+.transaction-list-popover {
+  & > header {
+    padding: 0 !important;
+
+    & .popover-header__title {
+      padding-bottom: 0 !important;
+    }
+
+    & .popover-header__button {
+      padding: 13px 13px 0 0 !important;
+    }
+  }
+}
+
 .transaction-list-item-details {
   div.disclosure + div.disclosure {
     margin-top: 0;
@@ -16,7 +30,7 @@
   &__sender-to-recipient-header {
     display: flex;
     font-size: 14px;
-    color: var(--color-text-default);
+    color: var(--Black-100);
     font-weight: bold;
     padding-bottom: 7px;
 
@@ -34,7 +48,7 @@
 
     & > div:first-child {
       font-size: 14px;
-      color: var(--color-text-default);
+      color: var(--gray-1);
       font-weight: bold;
     }
 
@@ -47,22 +61,24 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    justify-content: space-between;
+    height: 44px;
 
     .btn-link {
       font-size: 12px;
       line-height: 100%;
       padding: 0;
+      height: auto;
     }
 
     & > div:first-child {
-      padding-bottom: 16px;
+      // padding-bottom: 16px;
     }
   }
 
   &__operations {
-    margin: 0 0 16px 16px;
+    margin-left: 16px;
     display: flex;
-    justify-content: end;
   }
 
   &__header {
@@ -83,11 +99,19 @@
   }
 
   & &__header-button {
+    
+    &-renew{
+      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+      padding: 0;
+    }
     &-rounded-button {
       @include H8;
 
-      padding: 0 16px;
+      line-height: 130%;
+      padding: 0px 5px;
       margin-right: 8px;
+      width: 80px;
+      height: 30px;
     }
 
     &-tooltip-container {
@@ -140,6 +164,63 @@
 
     .transaction-activity-log__title {
       display: none;
+    }
+  }
+
+  &-title {
+    text-align: center;
+
+    &-txt {
+      @include H3;
+
+      background: linear-gradient(147.15deg, var(--primary-start) 29.03%, var(--primary-end) 84.89%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  &__address {
+    display: flex;
+    justify-content: flex-start;
+    border-top: 1px solid var(--gray-4);
+    border-bottom: 1px solid var(--gray-4);
+    padding: 12px 0;
+    position: relative;
+
+    & > div {
+      color: var(--gray-1);
+      flex: 1;
+      @include H7;
+      @include roundeBold;
+
+      & > div {
+        margin-bottom: 8px;
+      }
+
+    }
+    &-txt{
+      color: var(--secondary-3);
+      cursor: pointer;
+      margin-left: 8px;
+    }
+
+    &-to {
+      text-align: left;
+      margin-left: 20px;
+    }
+    &-tooltip{
+      display: flex !important;
+      align-items: center;
+    }
+
+    &-line {
+      position: absolute;
+      left: 50%;
+      height: calc(100% - 32px);
+      background-color: var(--gray-4);
+      width: 1px;
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
 }

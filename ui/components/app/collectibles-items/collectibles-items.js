@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { isEqual } from 'lodash';
 import Box from '../../ui/box';
 import Typography from '../../ui/typography/typography';
 import Card from '../../ui/card';
@@ -51,7 +50,7 @@ export default function CollectiblesItems({
     if (
       chainId !== undefined &&
       selectedAddress !== undefined &&
-      !isEqual(previousCollectionKeys, collectionsKeys) &&
+      previousCollectionKeys !== collectionsKeys &&
       (collectiblesDropdownState?.[selectedAddress]?.[chainId] === undefined ||
         Object.keys(collectiblesDropdownState?.[selectedAddress]?.[chainId])
           .length === 0)
@@ -160,7 +159,7 @@ export default function CollectiblesItems({
                 collectionName,
               )}
               <Typography
-                color={COLORS.TEXT_DEFAULT}
+                color={COLORS.BLACK}
                 variant={TYPOGRAPHY.H5}
                 margin={[0, 0, 0, 2]}
               >

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+// import classnames from 'classnames';
+import AccountTreeIcon from '../icon/account-tree-icon.component';
 
 const IconWithFallback = ({
   name = '',
@@ -27,11 +28,12 @@ const IconWithFallback = ({
       {...props}
     />
   ) : (
-    <span
-      className={classnames('icon-with-fallback__fallback', fallbackClassName)}
-    >
-      {name && name.length ? name.charAt(0).toUpperCase() : ''}
-    </span>
+    // <span
+    //   className={classnames('icon-with-fallback__fallback', fallbackClassName)}
+    // >
+    //   {name && name.length ? name.charAt(0).toUpperCase() : ''}
+    // </span>
+    <AccountTreeIcon />
   );
 };
 

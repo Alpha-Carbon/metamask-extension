@@ -253,23 +253,23 @@ class ConnectHardwareForm extends Component {
       description,
     )
       .then((_) => {
-        this.context.trackEvent({
-          category: 'Accounts',
-          event: `Connected Account with: ${device}`,
-          properties: {
+        this.context.metricsEvent({
+          eventOpts: {
+            category: 'Accounts',
             action: 'Connected Hardware Wallet',
-            legacy_event: true,
+            name: `Connected Account with: ${device}`,
           },
         });
         history.push(mostRecentOverviewPage);
       })
       .catch((e) => {
-        this.context.trackEvent({
-          category: 'Accounts',
-          event: 'Error connecting hardware wallet',
-          properties: {
+        this.context.metricsEvent({
+          eventOpts: {
+            category: 'Accounts',
             action: 'Connected Hardware Wallet',
-            legacy_event: true,
+            name: 'Error connecting hardware wallet',
+          },
+          customVariables: {
             error: e.message,
           },
         });
@@ -414,7 +414,7 @@ const mapDispatchToProps = (dispatch) => {
 
 ConnectHardwareForm.contextTypes = {
   t: PropTypes.func,
-  trackEvent: PropTypes.func,
+  metricsEvent: PropTypes.func,
 };
 
 export default connect(

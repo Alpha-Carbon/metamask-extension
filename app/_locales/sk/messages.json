@@ -44,6 +44,12 @@
   "addSuggestedTokens": {
     "message": "Pridať navrhované tokeny"
   },
+  "addToAddressBook": {
+    "message": "Pridať do adresára"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "napr. Ján D."
+  },
   "addToken": {
     "message": "Přidat token"
   },
@@ -57,19 +63,19 @@
     "message": "Částka"
   },
   "appDescription": {
-    "message": "Ethereum rozšíření prohlížeče",
+    "message": "Krypto peněženka ve vašem prohlížeči",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Carbon Wallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Carbon Wallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Carbon Wallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -327,6 +333,9 @@
   },
   "ensRegistrationError": {
     "message": "Chyba pri registrácii názvu ENS"
+  },
+  "enterAnAlias": {
+    "message": "Zadať alias"
   },
   "enterPassword": {
     "message": "Zadejte heslo"
@@ -725,6 +734,9 @@
   "restore": {
     "message": "Obnoviť"
   },
+  "restoreAccountWithSeed": {
+    "message": "Obnoviť účet pomocou seed frázy"
+  },
   "revealSeedWords": {
     "message": "Zobrazit slova klíčové fráze"
   },
@@ -769,6 +781,9 @@
   },
   "securityAndPrivacy": {
     "message": "Bezpečnosť a súkromie"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "Každé slovo oddeľte jednou medzerou"
   },
   "seedPhraseReq": {
     "message": "klíčové fráze mají 12 slov"

@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 import { COLORS } from '../../../helpers/constants/design-system';
 import { PRIMARY, SECONDARY } from '../../../helpers/constants/common';
+import { hexWEIToDecGWEI } from '../../../helpers/utils/conversions.util';
 import { getPreferences } from '../../../selectors';
 import { useGasFeeContext } from '../../../contexts/gasFee';
 
@@ -22,8 +23,7 @@ const GasDetailsItem = ({ userAcknowledgedGasMissing = false }) => {
     hasSimulationError,
     maximumCostInHexWei: hexMaximumTransactionFee,
     minimumCostInHexWei: hexMinimumTransactionFee,
-    maxPriorityFeePerGas,
-    maxFeePerGas,
+    transaction,
   } = useGasFeeContext();
 
   const { useNativeCurrencyAsPrimaryCurrency } = useSelector(getPreferences);
@@ -36,7 +36,7 @@ const GasDetailsItem = ({ userAcknowledgedGasMissing = false }) => {
     <TransactionDetailItem
       key="gas-item"
       detailTitle={<GasDetailsItemTitle />}
-      detailTitleColor={COLORS.TEXT_DEFAULT}
+      detailTitleColor={COLORS.BLACK}
       detailText={
         <div className="gas-details-item__currency-container">
           <LoadingHeartBeat estimateUsed={estimateUsed} />
@@ -90,8 +90,10 @@ const GasDetailsItem = ({ userAcknowledgedGasMissing = false }) => {
       }
       subTitle={
         <GasTiming
-          maxPriorityFeePerGas={maxPriorityFeePerGas}
-          maxFeePerGas={maxFeePerGas}
+          maxPriorityFeePerGas={hexWEIToDecGWEI(
+            transaction.txParams.maxPriorityFeePerGas,
+          )}
+          maxFeePerGas={hexWEIToDecGWEI(transaction.txParams.maxFeePerGas)}
         />
       }
     />

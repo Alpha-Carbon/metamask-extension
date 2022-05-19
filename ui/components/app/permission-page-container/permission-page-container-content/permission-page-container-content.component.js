@@ -74,7 +74,6 @@ export default class PermissionPageContainerContent extends PureComponent {
       selectedPermissions,
     } = this.props;
     const { t } = this.context;
-
     if (subjectMetadata.extensionId) {
       return t('externalExtension', [subjectMetadata.extensionId]);
     } else if (!selectedPermissions.eth_accounts) {
@@ -112,6 +111,7 @@ export default class PermissionPageContainerContent extends PureComponent {
                 : t('allowThisSiteTo')
             }
             siteOrigin={subjectMetadata.origin}
+            errorIcon
           />
           <section className="permission-approval-container__permissions-container">
             {this.renderRequestedPermissions()}

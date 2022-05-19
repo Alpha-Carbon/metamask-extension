@@ -13,12 +13,14 @@ import {
   addEth,
 } from '../../helpers/utils/confirm-tx.util';
 
-import { sumHexes } from '../../helpers/utils/transactions.util';
+import {
+  getTransactionData,
+  sumHexes,
+} from '../../helpers/utils/transactions.util';
 
 import { conversionUtil } from '../../../shared/modules/conversion.utils';
 import { getAveragePriceEstimateInHexWEI } from '../../selectors/custom-gas';
-import { isEqualCaseInsensitive } from '../../../shared/modules/string-utils';
-import { parseStandardTokenTransactionData } from '../../../shared/modules/transaction.utils';
+import { isEqualCaseInsensitive } from '../../helpers/utils/util';
 
 // Actions
 const createActionType = (action) => `metamask/confirm-transaction/${action}`;
@@ -283,7 +285,7 @@ export function setTransactionToConfirm(transactionId) {
       if (txParams.data) {
         const { to: tokenAddress, data } = txParams;
 
-        const tokenData = parseStandardTokenTransactionData(data);
+        const tokenData = getTransactionData(data);
         const tokens = getTokens(state);
         const currentToken = tokens?.find(({ address }) =>
           isEqualCaseInsensitive(tokenAddress, address),

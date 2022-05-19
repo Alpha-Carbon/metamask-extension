@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
-import MetaFoxLogo from '../../../components/ui/metafox-logo';
+// import MetaFoxLogo from '../../../components/ui/metafox-logo';
 import {
   INITIALIZE_CREATE_PASSWORD_ROUTE,
   INITIALIZE_IMPORT_WITH_SEED_PHRASE_ROUTE,
@@ -18,6 +18,10 @@ export default class CreatePassword extends PureComponent {
     onCreateNewAccountFromSeed: PropTypes.func,
   };
 
+  static contextTypes = {
+    t: PropTypes.func,
+  };
+
   componentDidMount() {
     const { isInitialized, history } = this.props;
 
@@ -28,10 +32,14 @@ export default class CreatePassword extends PureComponent {
 
   render() {
     const { onCreateNewAccount, onCreateNewAccountFromSeed } = this.props;
-
+    const { t } = this.context;
     return (
       <div className="first-time-flow__wrapper">
-        <MetaFoxLogo />
+        {/* <MetaFoxLogo /> */}
+        <div className="first-time-flow__logo">
+          <img src="./images/alphaCarbon/logo.png" alt="alpha-carbon-logo" />
+          <p>{t('carbonWallet')}</p>
+        </div>
         <Switch>
           <Route
             exact

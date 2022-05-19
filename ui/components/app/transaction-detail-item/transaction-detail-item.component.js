@@ -15,10 +15,10 @@ import {
 
 export default function TransactionDetailItem({
   detailTitle = '',
-  detailText = '',
-  detailTitleColor = COLORS.TEXT_DEFAULT,
+  // detailText = '',
+  detailTitleColor = COLORS.BLACK,
   detailTotal = '',
-  subTitle = '',
+  // subTitle = '',
   subText = '',
   boldHeadings = true,
   flexWidthValues = false,
@@ -43,13 +43,13 @@ export default function TransactionDetailItem({
             'transaction-detail-item__detail-values--flex-width': flexWidthValues,
           })}
         >
-          {detailText && (
-            <Typography variant={TYPOGRAPHY.H6} color={COLORS.TEXT_ALTERNATIVE}>
+          {/* {detailText && (
+            <Typography variant={TYPOGRAPHY.H6} color={COLORS.UI4}>
               {detailText}
             </Typography>
-          )}
+          )} */}
           <Typography
-            color={COLORS.TEXT_DEFAULT}
+            color={COLORS.BLACK}
             fontWeight={boldHeadings ? FONT_WEIGHT.BOLD : FONT_WEIGHT.NORMAL}
             variant={TYPOGRAPHY.H6}
             margin={[1, 0, 1, 1]}
@@ -60,22 +60,24 @@ export default function TransactionDetailItem({
         </div>
       </div>
       <div className="transaction-detail-item__row">
-        {React.isValidElement(subTitle) ? (
+        {/* {React.isValidElement(subTitle) ? (
           <div>{subTitle}</div>
         ) : (
-          <Typography variant={TYPOGRAPHY.H7} color={COLORS.TEXT_ALTERNATIVE}>
+          <Typography variant={TYPOGRAPHY.H7} color={COLORS.UI4}>
             {subTitle}
           </Typography>
-        )}
-
-        <Typography
+        )} */}
+        {/* <Typography
           variant={TYPOGRAPHY.H7}
-          color={COLORS.TEXT_ALTERNATIVE}
+          color={COLORS.UI4}
           align="end"
           className="transaction-detail-item__row-subText"
         >
           {subText}
-        </Typography>
+        </Typography> */}
+        <div className="d-flex justify-content-space-between align-items-center w-100">
+          {subText}
+        </div>
       </div>
     </div>
   );
@@ -93,7 +95,7 @@ TransactionDetailItem.propTypes = {
   /**
    * Text to show on the left of the detailTotal. Wrapped in Typography component.
    */
-  detailText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  // detailText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * Total amount to show. Wrapped in Typography component. Will be bold if boldHeadings is true
    */
@@ -101,7 +103,7 @@ TransactionDetailItem.propTypes = {
   /**
    * Subtitle text. Checks if React.isValidElement before displaying. Displays under detailTitle
    */
-  subTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  // subTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
    * Text to show under detailTotal. Wrapped in Typography component.
    */

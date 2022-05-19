@@ -1,7 +1,7 @@
 import EventEmitter from 'events';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Mascot from '../../../components/ui/mascot';
+// import Mascot from '../../../components/ui/mascot';
 import Button from '../../../components/ui/button';
 import {
   INITIALIZE_CREATE_PASSWORD_ROUTE,
@@ -48,19 +48,22 @@ export default class Welcome extends PureComponent {
     return (
       <div className="welcome-page__wrapper">
         <div className="welcome-page">
-          <Mascot
+          {/* <Mascot
             animationEventEmitter={this.animationEventEmitter}
             width="125"
             height="125"
-          />
+          /> */}
+          <img src="./images/alphaCarbon/logo.png" alt="alpha-carbon-logo" />
           {isBeta() ? <BetaWelcomeFooter /> : <WelcomeFooter />}
-          <Button
-            type="primary"
-            className="first-time-flow__button"
-            onClick={this.handleContinue}
-          >
-            {t('getStarted')}
-          </Button>
+          <div className="first-time-flow__button-wrap">
+            <Button
+              type="secondaryGradient"
+              className="first-time-flow__button"
+              onClick={this.handleContinue}
+            >
+              {t('getStarted')}
+            </Button>
+          </div>
         </div>
       </div>
     );

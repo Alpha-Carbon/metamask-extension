@@ -16,14 +16,7 @@ import { useCurrencyDisplay } from '../useCurrencyDisplay';
 import { useUserPreferencedCurrency } from '../useUserPreferencedCurrency';
 import { feeParamsAreCustom, getGasFeeEstimate } from './utils';
 
-const getMaxPriorityFeePerGasFromTransaction = (
-  transaction,
-  gasFeeEstimates,
-) => {
-  if (gasFeeEstimates?.[transaction?.userFeeLevel]) {
-    return gasFeeEstimates[transaction.userFeeLevel]
-      .suggestedMaxPriorityFeePerGas;
-  }
+const getMaxPriorityFeePerGasFromTransaction = (transaction) => {
   const { maxPriorityFeePerGas, maxFeePerGas, gasPrice } =
     transaction?.txParams || {};
   return Number(
@@ -71,7 +64,7 @@ export function useMaxPriorityFeePerGasInput({
   const showFiat = useSelector(getShouldShowFiat);
 
   const initialMaxPriorityFeePerGas = supportsEIP1559
-    ? getMaxPriorityFeePerGasFromTransaction(transaction, gasFeeEstimates)
+    ? getMaxPriorityFeePerGasFromTransaction(transaction)
     : 0;
 
   const [maxPriorityFeePerGas, setMaxPriorityFeePerGas] = useState(() => {

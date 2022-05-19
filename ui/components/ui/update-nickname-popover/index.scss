@@ -8,7 +8,7 @@
     width: auto;
 
     .popover-header {
-      border-bottom: 1px solid var(--color-border-muted);
+      border-bottom: 1px solid #d2d8dd;
       margin-bottom: 16px;
       border-radius: 10px;
     }
@@ -19,8 +19,33 @@
     }
   }
 
+  &__add {
+    & > header {
+      padding: 8px 13px;
+      margin-bottom: 0 !important;
+      border-bottom: none !important;
+
+      &.popover-header__title {
+        padding-bottom: 0 !important;
+      }
+    }
+
+    & > footer {
+      border-top: none !important;
+    }
+  }
+
   &__cancel {
     margin-right: 16px;
+    height: 40px;
+  }
+
+  &__save {
+    height: 40px;
+  }
+
+  &__icon {
+    text-align: center;
   }
 
   &__content {
@@ -39,11 +64,25 @@
       line-height: initial !important;
     }
 
+    &__title {
+      text-align: center;
+
+      @include H3;
+      @include roundeBold;
+
+      background: linear-gradient(147.15deg, #19113e 29.03%, #041d75 84.89%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      margin-bottom: 24px;
+    }
+
     &__address {
       margin-top: 8px;
       font-size: 13px;
-      color: var(--color-text-alternative);
-      margin-bottom: 16px;
+      color: #bbc0c5;
+      margin-bottom: 30px;
       overflow-wrap: break-word;
     }
 
@@ -51,14 +90,24 @@
     &__label--capitalized {
       text-transform: capitalize;
       margin-top: 16px;
-      color: var(--color-text-default);
+      color: var(--gray-1);
       font-size: 14px;
+
+      @include roundeBold;
     }
 
     &__nickname-label {
       margin-bottom: 8px;
-      color: var(--color-text-default);
+      color: var(--gray-1);
       font-size: 14px;
+
+      @include roundeBold;
+    }
+
+    & .MuiFormControl-root {
+      & > div {
+        border-color: var(--gray-1);
+      }
     }
   }
 }

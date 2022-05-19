@@ -44,6 +44,12 @@
   "addSuggestedTokens": {
     "message": "Dodaj predložene tokene"
   },
+  "addToAddressBook": {
+    "message": "Dodaj u imenik"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "npr. Ivan M."
+  },
   "addToken": {
     "message": "Dodaj token"
   },
@@ -57,19 +63,19 @@
     "message": "Iznos"
   },
   "appDescription": {
-    "message": "Novčanik Ethereum u vašem pregledniku",
+    "message": "Kripto novčanik u vašem pregledniku",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Carbon Wallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Carbon Wallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Carbon Wallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -333,6 +339,9 @@
   },
   "ensRegistrationError": {
     "message": "Greška u registraciji naziva ENS"
+  },
+  "enterAnAlias": {
+    "message": "Upiši pseudonim"
   },
   "enterPassword": {
     "message": "Upiši lozinku"
@@ -749,6 +758,9 @@
   "restore": {
     "message": "Vrati"
   },
+  "restoreAccountWithSeed": {
+    "message": "Obnovite svoj račun početnom rečenicom"
+  },
   "revealSeedWords": {
     "message": "Otkrij početne riječi"
   },
@@ -799,6 +811,9 @@
   },
   "securityAndPrivacy": {
     "message": "Sigurnost i privatnost"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "Odvojite pojedinačne riječi jednim razmakom"
   },
   "seedPhraseReq": {
     "message": "Početne rečenice imaju 12 riječi"

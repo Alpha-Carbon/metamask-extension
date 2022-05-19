@@ -6,13 +6,13 @@ import InfoTooltipIcon from '../info-tooltip/info-tooltip-icon';
 
 const CLASSNAME_WARNING = 'actionable-message--warning';
 const CLASSNAME_DANGER = 'actionable-message--danger';
-const CLASSNAME_SUCCESS = 'actionable-message--success';
+const CLASSNAME_INFO = 'actionable-message--info';
 const CLASSNAME_WITH_RIGHT_BUTTON = 'actionable-message--with-right-button';
 
-export const typeHash = {
+const typeHash = {
   warning: CLASSNAME_WARNING,
   danger: CLASSNAME_DANGER,
-  success: CLASSNAME_SUCCESS,
+  info: CLASSNAME_INFO,
   default: '',
 };
 
@@ -136,7 +136,7 @@ ActionableMessage.propTypes = {
   /**
    * change color theme for the component that already predefined in css
    */
-  type: PropTypes.oneOf(Object.keys(typeHash)),
+  type: PropTypes.string,
   /**
    * change text align to left and button to bottom right
    */

@@ -2,10 +2,12 @@
   display: flex;
   justify-content: space-between;
   height: 100%;
+  // position: relative;
 }
 
 .address-book {
   flex: 0.4 1 100%;
+  padding-top: 15px;
 
   @media screen and (max-width: $break-small) {
     flex: 1;
@@ -14,6 +16,33 @@
     &__container {
       min-height: 100%;
     }
+  }
+
+  & .send__select-recipient-wrapper__list {
+    background-color: var(--white);
+    margin-top: 65px;
+
+    @media screen and (max-width: $break-small) {
+      margin-top: 0;
+      background-color: var(--background);
+    }
+  }
+
+  &__entry {
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 16px 14px;
+    flex: 0 0 auto;
+    border-bottom: 1px solid #dedede;
+
+    &:hover {
+      border: 1px solid var(--primary-blue);
+      cursor: pointer;
+    }
+  }
+
+  &__name {
+    padding: 3px;
   }
 
   &__header,
@@ -37,7 +66,7 @@
       @include H6;
 
       justify-content: flex-end;
-      color: var(--color-error-default);
+      color: var(--accent-red);
     }
   }
 
@@ -48,11 +77,6 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-  }
-
-  &__icon {
-    margin-bottom: 16px;
-    display: block;
   }
 
   &__title {
@@ -68,20 +92,20 @@
   }
 
   &__link {
-    background-color: transparent;
-    color: var(--color-primary-default);
+    background-color: #fff;
+    color: var(--secondary-3);
   }
 
   &__input {
     @include H4;
 
-    border: 1px solid var(--color-border-muted);
+    border: 1px solid var(--Grey-200);
     border-radius: 6px;
-    color: var(--color-text-muted);
+    color: var(--Grey-800);
     padding: 0.875rem 1rem;
 
     &:focus-within {
-      border-color: var(--color-primary-default);
+      border-color: var(--Blue-500);
     }
 
     margin-top: 0.25rem;
@@ -117,7 +141,7 @@
       &__label--capitalized {
         @include H7;
 
-        color: var(--color-text-alternative);
+        color: var(--Grey-500);
         margin-bottom: 0.25rem;
       }
 
@@ -131,7 +155,7 @@
 
         display: flex;
         flex-flow: row nowrap;
-        color: var(--color-text-muted);
+        color: var(--Grey-800);
         word-break: break-word;
 
         &--address {
@@ -156,7 +180,7 @@
           cursor: pointer;
 
           &:hover {
-            color: var(--color-text-default);
+            color: black;
           }
         }
       }
@@ -164,6 +188,10 @@
       .unit-input__input {
         max-width: 100%;
         width: 100%;
+      }
+
+      & > button {
+        height: 40px;
       }
     }
   }
@@ -202,7 +230,47 @@
       @include H7;
 
       left: 8px;
-      color: var(--color-error-default);
+      color: var(--red);
+    }
+  }
+
+  &__my-accounts-button {
+    display: flex;
+    flex-flow: column;
+    cursor: pointer;
+    padding: 15px;
+
+    &:hover {
+      background-color: rgba(222, 222, 222, 0.2);
+    }
+
+    &__header {
+      @include H4;
+
+      color: #000;
+    }
+
+    &__content {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__text {
+      @include Paragraph;
+
+      color: #6a737d;
+    }
+
+    &__caret {
+      display: block;
+      background-image: url(/images/caret-right.svg);
+      width: 30px;
+      opacity: 0.5;
+      background-repeat: no-repeat;
+
+      [dir='rtl'] & {
+        transform: rotate(180deg);
+      }
     }
   }
 }
@@ -210,13 +278,21 @@
 .address-book-add-button {
   &__button {
     position: absolute;
-    top: 80px;
+    top: 85px;
     right: 16px;
+    // bottom: 15px;
+    // left: 0px;
     width: auto;
+    height: 40px;
 
     @media screen and (max-width: $break-small) {
-      top: 8px;
-      right: 60px;
+      // top: 16px;
+      // right: 60px;
+      bottom: 15px;
+      top: unset;
+      left: 50%;
+      transform: translateX(-50%);
+      right: unset;
 
       &--hidden {
         display: none;
@@ -231,8 +307,18 @@
 
 .address-book-contact-content {
   flex: 0.4 1 100%;
+  margin-top: 70px;
 
   @media screen and (max-width: $break-small) {
     flex: 1;
+    margin-top: 0;
+  }
+
+  & .settings-page__content-row {
+    & .page-container__footer {
+      & > footer {
+        background-color: var(--white);
+      }
+    }
   }
 }

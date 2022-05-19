@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import React, { PureComponent } from 'react';
 import { MenuItem } from '../../ui/menu';
 import ConnectedAccountsListItem from './connected-accounts-list-item';
@@ -33,7 +34,7 @@ export default class ConnectedAccountsList extends PureComponent {
       if (typeof props[propName] !== 'boolean') {
         return new Error(
           `Warning: Failed prop type: '${propName}' of component '${componentName}' must be a boolean. Received: ${typeof props[
-            propName
+          propName
           ]}`,
         );
       } else if (props[propName] && !props.removePermittedAccount) {
@@ -104,7 +105,10 @@ export default class ConnectedAccountsList extends PureComponent {
         onShowOptions={this.showAccountOptions.bind(null, address)}
         show={accountWithOptionsShown === address}
       >
-        <MenuItem iconClassName="fa fa-ban" onClick={this.disconnectAccount}>
+        <MenuItem
+          iconClassName="disconnect-icon"
+          onClick={this.disconnectAccount}
+        >
           {t('disconnectThisAccount')}
         </MenuItem>
       </ConnectedAccountsListOptions>
@@ -134,7 +138,12 @@ export default class ConnectedAccountsList extends PureComponent {
 
     return (
       <>
-        <main className="connected-accounts-list">
+        <main
+          // className="connected-accounts-list"
+          className={classnames('connected-accounts-list',
+            { 'connected-accounts-list-border': connectedAccounts.length > 0 }
+          )}
+        >
           {this.renderUnconnectedAccount()}
           {connectedAccounts.map(({ address, name }, index) => {
             return (

@@ -1,12 +1,15 @@
 .info-tab {
   &__logo-wrapper {
+    height: 80px;
     margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
   }
 
   &__logo {
-    height: 80px;
+    max-height: 100%;
+    max-width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   &__item {
@@ -38,19 +41,21 @@
     @include H6;
 
     padding-top: 5px;
-    color: var(--color-text-muted);
+    color: var(--dusty-gray);
   }
 
   &__separator {
     margin: 15px 0;
     width: 80px;
+    border-color: var(--alto);
     border: none;
     height: 1px;
-    background-color: var(--color-border-muted);
+    background-color: var(--alto);
+    color: var(--alto);
   }
 
   &__about {
-    color: var(--color-text-muted);
+    color: var(--dusty-gray);
     margin-bottom: 15px;
   }
 }

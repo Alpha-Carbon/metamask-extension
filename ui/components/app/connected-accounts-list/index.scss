@@ -2,6 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  
+  &-border{
+    border-top: 1px solid var(--gray-2);
+    border-bottom: 1px solid var(--gray-2);
+  }
 
   &__identicon {
     margin-right: 8px;
@@ -12,6 +17,7 @@
 
     display: inline;
     font-weight: bold;
+    color: var(--gray-1);
   }
 
   %account-status-typography {
@@ -24,7 +30,7 @@
     @extend %account-status-typography;
 
     display: inline;
-    color: var(--color-text-alternative);
+    color: var(--gray-2);
   }
 
   &__account-status-link {
@@ -34,7 +40,7 @@
 
     &,
     &:hover {
-      color: var(--color-primary-default);
+      color: var(--primary-blue);
       cursor: pointer;
     }
   }
@@ -46,11 +52,11 @@
     align-items: center;
     width: 100%;
     padding: 16px 24px;
-    border-top: 1px solid var(--color-border-muted);
+    
 
     &--highlight {
-      background-color: var(--color-warning-muted);
-      border: 1px solid var(--color-warning-default);
+      background-color: var(--Yellow-000);
+      border: 1px solid var(--accent-yellow);
       box-sizing: border-box;
       padding: 16px;
       margin-bottom: 16px;
@@ -66,10 +72,17 @@
 }
 
 .connected-accounts-options {
+  &__menu{
+    & .menu-item{
+      display: flex;
+      padding: 11px 0px !important;
+    }
+  }
   &__button {
     font-size: $font-size-h4;
     background: inherit;
-    color: var(--color-icon-default);
+    color: #323232;
+    transform: rotate(90deg);
   }
 }
 

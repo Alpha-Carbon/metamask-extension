@@ -55,11 +55,7 @@ export const FormFieldWithTitleDetail = (args) => {
     text: <div style={{ fontSize: '12px' }}>Detail</div>,
     button: (
       <button
-        style={{
-          backgroundColor: clicked
-            ? 'var(--color-secondary-default)'
-            : 'var(--color-background-alternative)',
-        }}
+        style={{ backgroundColor: clicked ? 'orange' : 'rgb(239, 239, 239)' }}
         onClick={() => setClicked(!clicked)}
       >
         Click Me

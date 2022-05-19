@@ -44,6 +44,12 @@
   "addSuggestedTokens": {
     "message": "Tilføj foreslåede tokens"
   },
+  "addToAddressBook": {
+    "message": "Føj til adressebogen"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "f.eks. John D."
+  },
   "addToken": {
     "message": "Tilføj Polet"
   },
@@ -57,19 +63,19 @@
     "message": "Beløb"
   },
   "appDescription": {
-    "message": "En Ethereum-pung i din browser",
+    "message": "En Crypto Wallet i din browser",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Carbon Wallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Carbon Wallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Carbon Wallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -333,6 +339,9 @@
   },
   "ensRegistrationError": {
     "message": "Fejl i ENS-navneregistrering"
+  },
+  "enterAnAlias": {
+    "message": "Indtast et alias"
   },
   "enterPassword": {
     "message": "Indtast kodeord"
@@ -737,6 +746,9 @@
   "restore": {
     "message": "Gendan"
   },
+  "restoreAccountWithSeed": {
+    "message": "Gendan din konto med Seed-sætning"
+  },
   "revealSeedWords": {
     "message": "Vis Seedord"
   },
@@ -787,6 +799,9 @@
   },
   "securityAndPrivacy": {
     "message": "Sikkerhed & Privatliv"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "Adskil hvert ord med et enkelt mellemrum"
   },
   "seedPhraseReq": {
     "message": "Backupsætninger er 12 ord lange"

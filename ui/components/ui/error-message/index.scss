@@ -2,9 +2,10 @@
   @include H7;
 
   min-height: 32px;
-  border: 1px solid var(--color-error-default);
-  color: var(--color-text-default);
-  background-color: var(--color-error-muted);
+  border: 1px solid var(--Red-300);
+  color: var(--function-2);
+  // background: var(--error-2);
+  background: rgba(207, 57, 57 , 10%);
   border-radius: 8px;
   display: flex;
   justify-content: flex-start;
@@ -14,7 +15,6 @@
   &__icon {
     margin-right: 8px;
     flex: 0 0 auto;
-    color: var(--color-error-default);
   }
 
   &__text {

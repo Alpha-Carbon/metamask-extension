@@ -3,17 +3,17 @@
   flex-direction: column;
   justify-content: flex-start;
 
+
   &__tab {
     @include Paragraph;
 
-    color: var(--color-text-default);
     display: flex;
     flex-flow: row nowrap;
-    align-items: center;
+    align-items: baseline;
     min-width: 0;
     flex: 0 0 auto;
     box-sizing: border-box;
-    opacity: 0.5;
+    opacity: 1;
     transition: opacity 200ms ease-in-out;
     background-color: unset;
     text-align: start;
@@ -31,16 +31,22 @@
     @media screen and (max-width: $break-small) {
       @include H4;
 
-      border-bottom: 1px solid var(--color-border-muted);
+      border-bottom: 1px solid var(--alto);
       opacity: 1;
     }
 
     &__content {
-      padding: 12px 18px;
+      padding: 8px 18px;
       display: flex;
-      flex: 1 1 auto;
+      flex-flow: row wrap;
       align-items: center;
       position: relative;
+      z-index: 201;
+      background: var(--secondary-2-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      @include roundeBold;
 
       &__title {
         @include H4;
@@ -63,15 +69,10 @@
         }
       }
 
-      &__icon {
-        display: flex;
-        justify-content: center;
-        margin-inline-end: 16px;
-        flex: 0 0 18px;
 
-        @media screen and (min-width: $break-large) {
-          flex: 0 0 14px;
-        }
+      &__icon {
+        // margin-inline-end: 16px;
+        display: flex;
       }
     }
 
@@ -80,8 +81,15 @@
 
       @media screen and (max-width: $break-small) {
         display: block;
+        background-image: url('/images/caret-right.svg');
+        width: 8.27px;
+        height: 13.64px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
         margin-inline-start: auto;
-        margin-inline-end: 8px;
+        margin-top: 16px;
+        margin-inline-end: 16px;
 
         [dir='rtl'] & {
           transform: rotate(180deg);
@@ -91,6 +99,15 @@
 
     &--active {
       opacity: 1 !important;
+
+      & .tab-bar__tab__content {
+        @media screen and (min-width: $break-small) {
+          background: var(--secondary-2-gradient);
+          border-radius: 30px;
+          color: var(--white);
+          -webkit-text-fill-color: unset;
+        }
+      }
     }
   }
 

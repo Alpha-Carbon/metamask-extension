@@ -2,16 +2,16 @@
 
 .transaction-breakdown {
   &__title {
-    padding-bottom: 4px;
-    padding-top: 8px;
+    padding: 8px 0px;
     font-size: 14px;
-    color: var(--color-text-default);
+    color: var(--gray-1);
     font-weight: bold;
     text-transform: capitalize;
   }
 
   &__row-title {
     text-transform: capitalize;
+    color: var(--gray-2);
   }
 
   &__value {
@@ -21,14 +21,29 @@
     overflow: hidden;
     text-overflow: ellipsis;
 
+
     &--eth-total {
       font-weight: bold;
-      color: var(--color-text-default);
+      color: var(--gray-1);
     }
 
     &--amount {
       font-weight: bold;
-      color: var(--color-text-default);
+      color: var(--gray-1);
+    }
+
+    &.linear-gradient {
+      background: var(--secondary-2-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  &__total{
+    margin-top: 16px;
+    & .transaction-breakdown-row__title{
+      font-weight: bold;
+      color: var(--gray-2);
     }
   }
 }

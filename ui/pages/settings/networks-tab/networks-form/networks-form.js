@@ -549,7 +549,7 @@ const NetworksForm = ({
         <ActionableMessage
           type="warning"
           message={t('onlyAddTrustedNetworks')}
-          iconFillColor="var(--color-warning-default)"
+          iconFillColor="#f8c000"
           useIcon
           withRightButton
         />
@@ -614,14 +614,14 @@ const NetworksForm = ({
               </Button>
             )}
             <Button
-              type="secondary"
+              type="secondaryGradient"
               onClick={onCancel}
               disabled={stateUnchanged}
             >
               {t('cancel')}
             </Button>
             <Button
-              type="primary"
+              type="primaryGradient"
               disabled={isSubmitDisabled}
               onClick={onSubmit}
             >

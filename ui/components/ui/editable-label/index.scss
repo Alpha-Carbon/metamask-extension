@@ -3,6 +3,8 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  width: 100%;
+  padding: 0 15px;
 
   &__value {
     max-width: 250px;
@@ -14,14 +16,14 @@
   &__input {
     @include H6;
 
-    color: var(--color-text-default);
-    background-color: var(--color-background-default);
-    width: 250px;
-    text-align: center;
-    border: 1px solid var(--color-border-default);
+    // width: 250px;
+    width: 100%;
+    text-align: left;
+    border: 1px solid var(--gray-1);
+    border-radius: 4px;
 
     &--error {
-      border: 1px solid var(--color-error-default);
+      border: 1px solid var(--function-2);
     }
   }
 
@@ -34,17 +36,28 @@
 
   &__icon {
     cursor: pointer;
-    color: var(--color-icon-default);
+    color: var(--dusty-gray);
   }
 
   &__error {
     @include H7;
 
     left: 8px;
-    color: var(--color-error-default);
+    color: var(--red);
   }
 
   &__error-amount {
     margin-top: 5px;
+  }
+}
+
+.editable__buttons {
+  display: flex;
+  width: 100%;
+  margin: 15px;
+  padding: 0 15px;
+
+  & > button {
+    margin: 0 5px;
   }
 }

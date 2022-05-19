@@ -45,11 +45,14 @@ $sizes: (
       &#{$self}--partial-filled #{$self}__inner-circle {
         background-color: var($color);
       }
+      &#{$self}--partial-filled {
+        background-color: var($color);
+      }
       &#{$self}--filled {
         background-color: var($color);
       }
       & #{$self}__icon {
-        color: var(--color-icon-default);
+        color: var(--black);
       }
     }
   }

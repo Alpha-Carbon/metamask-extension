@@ -1,8 +1,7 @@
-import React, { useState, useMemo, useContext } from 'react';
+import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import zxcvbn from 'zxcvbn';
-import { useSelector } from 'react-redux';
+import { useNewMetricEvent } from '../../../hooks/useMetricEvent';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import Button from '../../../components/ui/button';
 import Typography from '../../../components/ui/typography';
@@ -26,10 +25,6 @@ import {
   TwoStepProgressBar,
   twoStepStages,
 } from '../../../components/app/step-progress-bar';
-import ZENDESK_URLS from '../../../helpers/constants/zendesk-url';
-import { getFirstTimeFlowType } from '../../../selectors';
-import { FIRST_TIME_FLOW_TYPES } from '../../../helpers/constants/onboarding';
-import { MetaMetricsContext } from '../../../contexts/metametrics';
 
 export default function CreatePassword({
   createNewAccount,
@@ -40,14 +35,15 @@ export default function CreatePassword({
   const [confirmPassword, setConfirmPassword] = useState('');
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const [passwordStrength, setPasswordStrength] = useState('');
-  const [passwordStrengthText, setPasswordStrengthText] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
   const [termsChecked, setTermsChecked] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const history = useHistory();
-  const firstTimeFlowType = useSelector(getFirstTimeFlowType);
-  const trackEvent = useContext(MetaMetricsContext);
+
+  const submitPasswordEvent = useNewMetricEvent({
+    event: 'Submit Password',
+    category: 'Onboarding',
+  });
 
   const isValid = useMemo(() => {
     if (!password || !confirmPassword || password !== confirmPassword) {
@@ -61,51 +57,19 @@ export default function CreatePassword({
     return !passwordError && !confirmPasswordError;
   }, [password, confirmPassword, passwordError, confirmPasswordError]);
 
-  const getPasswordStrengthLabel = (score, translation) => {
-    if (score >= 4) {
-      return {
-        className: 'create-password__strong',
-        text: translation('strong'),
-        description: '',
-      };
-    } else if (score === 3) {
-      return {
-        className: 'create-password__average',
-        text: translation('average'),
-        description: t('passwordStrengthDescription'),
-      };
-    }
-    return {
-      className: 'create-password__weak',
-      text: translation('weak'),
-      description: t('passwordStrengthDescription'),
-    };
-  };
-
   const handlePasswordChange = (passwordInput) => {
+    let error = '';
     let confirmError = '';
-    const passwordEvaluation = zxcvbn(passwordInput);
-    const passwordStrengthLabel = getPasswordStrengthLabel(
-      passwordEvaluation.score,
-      t,
-    );
-    const passwordStrengthDescription = passwordStrengthLabel.description;
-    const passwordStrengthInput = t('passwordStrength', [
-      <span
-        key={passwordEvaluation.score}
-        className={passwordStrengthLabel.className}
-      >
-        {passwordStrengthLabel.text}
-      </span>,
-    ]);
+    if (passwordInput && passwordInput.length < 8) {
+      error = t('passwordNotLongEnough');
+    }
 
     if (confirmPassword && passwordInput !== confirmPassword) {
       confirmError = t('passwordsDontMatch');
     }
 
     setPassword(passwordInput);
-    setPasswordStrength(passwordStrengthInput);
-    setPasswordStrengthText(passwordStrengthDescription);
+    setPasswordError(error);
     setConfirmPasswordError(confirmError);
   };
 
@@ -126,10 +90,7 @@ export default function CreatePassword({
       return;
     }
     // If secretRecoveryPhrase is defined we are in import wallet flow
-    if (
-      secretRecoveryPhrase &&
-      firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT
-    ) {
+    if (secretRecoveryPhrase) {
       await importWithRecoveryPhrase(password, secretRecoveryPhrase);
       history.push(ONBOARDING_COMPLETION_ROUTE);
     } else {
@@ -138,10 +99,7 @@ export default function CreatePassword({
         if (createNewAccount) {
           await createNewAccount(password);
         }
-        trackEvent({
-          event: 'Submit Password',
-          category: 'Onboarding',
-        });
+        submitPasswordEvent();
         history.push(ONBOARDING_SECURE_YOUR_WALLET_ROUTE);
       } catch (error) {
         setPasswordError(error.message);
@@ -151,8 +109,7 @@ export default function CreatePassword({
 
   return (
     <div className="create-password__wrapper">
-      {secretRecoveryPhrase &&
-      firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT ? (
+      {secretRecoveryPhrase ? (
         <TwoStepProgressBar stage={twoStepStages.PASSWORD_CREATE} />
       ) : (
         <ThreeStepProgressBar stage={threeStepStages.PASSWORD_CREATE} />
@@ -176,8 +133,7 @@ export default function CreatePassword({
           <FormField
             dataTestId="create-password-new"
             autoFocus
-            passwordStrength={passwordStrength}
-            passwordStrengthText={passwordStrengthText}
+            error={passwordError}
             onChange={handlePasswordChange}
             password={!showPassword}
             titleText={t('newPassword')}
@@ -215,33 +171,30 @@ export default function CreatePassword({
             justifyContent={JUSTIFY_CONTENT.SPACE_BETWEEN}
             marginBottom={4}
           >
-            <label className="create-password__form__terms-label">
-              <CheckBox
-                dataTestId="create-password-terms"
-                onClick={() => setTermsChecked(!termsChecked)}
-                checked={termsChecked}
-              />
-              <Typography variant={TYPOGRAPHY.H5} boxProps={{ marginLeft: 3 }}>
-                {t('passwordTermsWarning', [
-                  <a
-                    onClick={(e) => e.stopPropagation()}
-                    key="create-password__link-text"
-                    href={ZENDESK_URLS.PASSWORD_ARTICLE}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span className="create-password__link-text">
-                      {t('learnMoreUpperCase')}
-                    </span>
-                  </a>,
-                ])}
-              </Typography>
-            </label>
+            <CheckBox
+              dataTestId="create-password-terms"
+              onClick={() => setTermsChecked(!termsChecked)}
+              checked={termsChecked}
+            />
+            <Typography variant={TYPOGRAPHY.H5} boxProps={{ marginLeft: 3 }}>
+              {t('passwordTermsWarning', [
+                <a
+                  onClick={(e) => e.stopPropagation()}
+                  key="create-password__link-text"
+                  href="https://metamask.io/terms.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="create-password__link-text">
+                    {t('learnMore')}
+                  </span>
+                </a>,
+              ])}
+            </Typography>
           </Box>
           <Button
             data-testid={
-              secretRecoveryPhrase &&
-              firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT
+              secretRecoveryPhrase
                 ? 'create-password-import'
                 : 'create-password-wallet'
             }
@@ -250,10 +203,7 @@ export default function CreatePassword({
             disabled={!isValid || !termsChecked}
             onClick={handleCreate}
           >
-            {secretRecoveryPhrase &&
-            firstTimeFlowType === FIRST_TIME_FLOW_TYPES.IMPORT
-              ? t('importMyWallet')
-              : t('createNewWallet')}
+            {secretRecoveryPhrase ? t('importMyWallet') : t('createNewWallet')}
           </Button>
         </form>
       </Box>

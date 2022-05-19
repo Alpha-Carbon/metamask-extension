@@ -7,13 +7,14 @@ import {
   INITIALIZE_SEED_PHRASE_ROUTE,
 } from '../../../../helpers/constants/routes';
 import { exportAsFile } from '../../../../helpers/utils/util';
+import BackIcon from '../../../../components/ui/icon/back-icon.component';
 import DraggableSeed from './draggable-seed.component';
 
 const EMPTY_SEEDS = Array(12).fill(null);
 
 export default class ConfirmSeedPhrase extends PureComponent {
   static contextTypes = {
-    trackEvent: PropTypes.func,
+    metricsEvent: PropTypes.func,
     t: PropTypes.func,
   };
 
@@ -77,12 +78,11 @@ export default class ConfirmSeedPhrase extends PureComponent {
     }
 
     try {
-      this.context.trackEvent({
-        category: 'Onboarding',
-        event: 'Verify Complete',
-        properties: {
+      this.context.metricsEvent({
+        eventOpts: {
+          category: 'Onboarding',
           action: 'Seed Phrase Setup',
-          legacy_event: true,
+          name: 'Verify Complete',
         },
       });
 
@@ -141,7 +141,8 @@ export default class ConfirmSeedPhrase extends PureComponent {
             }}
             href="#"
           >
-            {`< ${t('back')}`}
+            <BackIcon className="mr-2" />
+            {t('back')}
           </a>
         </div>
         <div className="first-time-flow__header">
@@ -188,7 +189,7 @@ export default class ConfirmSeedPhrase extends PureComponent {
           })}
         </div>
         <Button
-          type="primary"
+          type="secondaryGradient"
           className="first-time-flow__button"
           onClick={this.handleSubmit}
           disabled={!this.isValid()}
@@ -221,6 +222,7 @@ export default class ConfirmSeedPhrase extends PureComponent {
           setHoveringIndex={this.setHoveringIndex}
           onDrop={this.onDrop}
           draggable
+          indexShow
         />
       );
     });

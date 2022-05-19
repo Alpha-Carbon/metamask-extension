@@ -37,13 +37,13 @@ export default function ConnectedStatusIndicator({ onClick }) {
   }
 
   let indicatorType = ColorIndicator.TYPES.OUTLINE;
-  let indicatorColor = COLORS.ICON_DEFAULT;
+  let indicatorColor = COLORS.SECONDARY3;
 
   if (status === STATUS_CONNECTED) {
-    indicatorColor = COLORS.SUCCESS_DEFAULT;
+    indicatorColor = COLORS.SUCCESS1;
     indicatorType = ColorIndicator.TYPES.PARTIAL;
   } else if (status === STATUS_CONNECTED_TO_ANOTHER_ACCOUNT) {
-    indicatorColor = COLORS.ERROR_DEFAULT;
+    indicatorColor = COLORS.ALERT1;
   }
 
   const text =

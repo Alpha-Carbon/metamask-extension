@@ -10,7 +10,8 @@ import {
   INITIALIZE_SEED_PHRASE_INTRO_ROUTE,
   DEFAULT_ROUTE,
 } from '../../../helpers/constants/routes';
-import MetaFoxLogo from '../../../components/ui/metafox-logo';
+// import MetaFoxLogo from '../../../components/ui/metafox-logo';
+import AlphaCarbonLogo from '../../../components/ui/alpha-carbon-logo';
 import ConfirmSeedPhrase from './confirm-seed-phrase';
 import RevealSeedPhrase from './reveal-seed-phrase';
 import SeedPhraseIntro from './seed-phrase-intro';
@@ -20,6 +21,10 @@ export default class SeedPhrase extends PureComponent {
     history: PropTypes.object,
     seedPhrase: PropTypes.string,
     verifySeedPhrase: PropTypes.func,
+  };
+
+  static contextTypes = {
+    t: PropTypes.func,
   };
 
   state = {
@@ -44,13 +49,22 @@ export default class SeedPhrase extends PureComponent {
     const { seedPhrase, history } = this.props;
     const { verifiedSeedPhrase } = this.state;
     const pathname = history?.location?.pathname;
+    const { t } = this.context;
     const introClass =
       pathname === INITIALIZE_SEED_PHRASE_INTRO_ROUTE ? 'intro' : '';
-
+    const seedPhraseClass =
+      pathname === INITIALIZE_SEED_PHRASE_ROUTE ? 'seedPhrase' : '';
     return (
       <DragDropContextProvider backend={HTML5Backend}>
-        <div className={`first-time-flow__wrapper ${introClass}`}>
-          <MetaFoxLogo />
+        <div
+          className={`first-time-flow__wrapper ${introClass} ${seedPhraseClass}`}
+        >
+          {/* <MetaFoxLogo /> */}
+          <div className="first-time-flow__logo-wrap">
+            <AlphaCarbonLogo />
+            <span>{t('carbonWallet')}</span>
+          </div>
+
           <Switch>
             <Route
               exact

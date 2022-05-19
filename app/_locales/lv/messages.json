@@ -44,6 +44,12 @@
   "addSuggestedTokens": {
     "message": "Pievienot ieteiktos marķierus"
   },
+  "addToAddressBook": {
+    "message": "Pievienot adrešu grāmatai"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "piemēram, Džons D."
+  },
   "addToken": {
     "message": "Pievienot žetonu"
   },
@@ -57,19 +63,19 @@
     "message": "Apjoms"
   },
   "appDescription": {
-    "message": "Ethereum maks pārlūkā",
+    "message": "Kripto maku jūsu pārlūkprogrammā",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Carbon Wallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Carbon Wallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Carbon Wallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -333,6 +339,9 @@
   },
   "ensRegistrationError": {
     "message": "Kļūda ENS vārda reģistrācijā"
+  },
+  "enterAnAlias": {
+    "message": "Ievadiet segvārdu"
   },
   "enterPassword": {
     "message": "Ievadiet paroli"
@@ -752,6 +761,9 @@
   "restore": {
     "message": "Atjaunot"
   },
+  "restoreAccountWithSeed": {
+    "message": "Atjaunojiet savu kontu ar atkopšanas frāzi"
+  },
   "revealSeedWords": {
     "message": "Parādīt atkopšanas vārdus"
   },
@@ -802,6 +814,9 @@
   },
   "securityAndPrivacy": {
     "message": "Drošība un konfidencialitāte"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "Atdaliet katru vārdu ar vienu atstarpi"
   },
   "seedPhraseReq": {
     "message": "Atkopšanas frāzes ir 12 vārdus garas"

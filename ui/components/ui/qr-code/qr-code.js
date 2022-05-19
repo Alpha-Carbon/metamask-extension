@@ -6,7 +6,8 @@ import { isHexPrefixed } from 'ethereumjs-util';
 import { useCopyToClipboard } from '../../../hooks/useCopyToClipboard';
 import { toChecksumHexAddress } from '../../../../shared/modules/hexstring-utils';
 import Tooltip from '../tooltip';
-import CopyIcon from '../icon/copy-icon.component';
+// import CopyIcon from '../icon/copy-icon.component';
+import CopySecondaryGradientIcon from '../icon/copy-secondary-gradient-icon.component';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 
 export default connect(mapStateToProps)(QrCodeView);
@@ -49,7 +50,7 @@ function QrCodeView(props) {
       ) : (
         header
       )}
-      {warning ? <span className="qr-code__error">{warning}</span> : null}
+      {warning ? <span className="qr_code__error">{warning}</span> : null}
       <div
         className="qr-code__wrapper"
         dangerouslySetInnerHTML={{
@@ -67,10 +68,11 @@ function QrCodeView(props) {
             handleCopy(toChecksumHexAddress(data));
           }}
         >
+          <CopySecondaryGradientIcon size={12} />
           <div className="qr-code__address">{toChecksumHexAddress(data)}</div>
-          <div className="qr-code__copy-icon">
+          {/* <div className="qr-code__copy-icon">
             <CopyIcon size={11} className="qr-code__copy-icon__svg" color="" />
-          </div>
+          </div> */}
         </div>
       </Tooltip>
     </div>

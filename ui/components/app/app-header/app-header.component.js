@@ -1,11 +1,19 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Identicon from '../../ui/identicon';
-import MetaFoxLogo from '../../ui/metafox-logo';
-import { DEFAULT_ROUTE } from '../../../helpers/constants/routes';
+// import { useSelector } from 'react-redux';
+// import Identicon from '../../ui/identicon';
+// import MetaFoxLogo from '../../ui/metafox-logo';
+import AlphaCarbonLogoGradient from '../../ui/alpha-carbon-logo-gradient';
+import {
+  DEFAULT_ROUTE,
+  // UNLOCK_ROUTE
+} from '../../../helpers/constants/routes';
 import NetworkDisplay from '../network-display';
-
+import MenuIcon from '../../ui/icon/menu-icon.component';
+import { getEnvironmentType } from '../../../../app/scripts/lib/util';
+import { ENVIRONMENT_TYPE_FULLSCREEN } from '../../../../shared/constants/app';
+// import { getAccountMenuState } from '../../../ducks/metamask/metamask';
 export default class AppHeader extends PureComponent {
   static propTypes = {
     history: PropTypes.object,
@@ -13,7 +21,7 @@ export default class AppHeader extends PureComponent {
     showNetworkDropdown: PropTypes.func,
     hideNetworkDropdown: PropTypes.func,
     toggleAccountMenu: PropTypes.func,
-    selectedAddress: PropTypes.string,
+    // selectedAddress: PropTypes.string,
     isUnlocked: PropTypes.bool,
     hideNetworkIndicator: PropTypes.bool,
     disabled: PropTypes.bool,
@@ -24,7 +32,7 @@ export default class AppHeader extends PureComponent {
 
   static contextTypes = {
     t: PropTypes.func,
-    trackEvent: PropTypes.func,
+    metricsEvent: PropTypes.func,
   };
 
   handleNetworkIndicatorClick(event) {
@@ -44,12 +52,11 @@ export default class AppHeader extends PureComponent {
     }
 
     if (networkDropdownOpen === false) {
-      this.context.trackEvent({
-        category: 'Navigation',
-        event: 'Opened Network Menu',
-        properties: {
+      this.context.metricsEvent({
+        eventOpts: {
+          category: 'Navigation',
           action: 'Home',
-          legacy_event: true,
+          name: 'Opened Network Menu',
         },
       });
       showNetworkDropdown();
@@ -62,11 +69,12 @@ export default class AppHeader extends PureComponent {
     const {
       isUnlocked,
       toggleAccountMenu,
-      selectedAddress,
+      // selectedAddress,
       disabled,
       isAccountMenuOpen,
     } = this.props;
-
+    // const accountMenuState = useSelector(getAccountMenuState);
+    // console.log(accountMenuState, 'getAccountMenuState');
     return (
       isUnlocked && (
         <div
@@ -76,19 +84,19 @@ export default class AppHeader extends PureComponent {
           onClick={() => {
             if (!disabled) {
               !isAccountMenuOpen &&
-                this.context.trackEvent({
-                  category: 'Navigation',
-                  event: 'Opened Main Menu',
-                  properties: {
+                this.context.metricsEvent({
+                  eventOpts: {
+                    category: 'Navigation',
                     action: 'Home',
-                    legacy_event: true,
+                    name: 'Opened Main Menu',
                   },
                 });
               toggleAccountMenu();
             }
           }}
         >
-          <Identicon address={selectedAddress} diameter={32} addBorder />
+          {/* <Identicon address={selectedAddress} diameter={32} addBorder /> */}
+          <MenuIcon />
         </div>
       )
     );
@@ -97,6 +105,9 @@ export default class AppHeader extends PureComponent {
   render() {
     const {
       history,
+      isUnlocked,
+      isAccountMenuOpen,
+      networkDropdownOpen,
       hideNetworkIndicator,
       disableNetworkIndicator,
       disabled,
@@ -104,9 +115,16 @@ export default class AppHeader extends PureComponent {
     } = this.props;
 
     return (
-      <div className="app-header">
+      <div
+        className={classnames('app-header', {
+          'app-header--back-drop': isUnlocked,
+          'app-header--filter':
+            (isAccountMenuOpen || networkDropdownOpen) &&
+            getEnvironmentType() !== ENVIRONMENT_TYPE_FULLSCREEN,
+        })}
+      >
         <div className="app-header__contents">
-          <MetaFoxLogo
+          {/* <MetaFoxLogo
             unsetIconHeight
             onClick={async () => {
               if (onClick) {
@@ -114,11 +132,26 @@ export default class AppHeader extends PureComponent {
               }
               history.push(DEFAULT_ROUTE);
             }}
-          />
+          /> */}
+          {isUnlocked && (
+            <AlphaCarbonLogoGradient
+              unsetIconHeight
+              onClick={async () => {
+                if (onClick) {
+                  await onClick();
+                }
+                history.push(DEFAULT_ROUTE);
+              }}
+            />
+          )}
+
           <div className="app-header__account-menu-container">
             {!hideNetworkIndicator && (
               <div className="app-header__network-component-wrapper">
                 <NetworkDisplay
+                  colored={false}
+                  outline
+                  iconClassName="app-header__network-down-arrow"
                   onClick={(event) => this.handleNetworkIndicatorClick(event)}
                   disabled={disabled || disableNetworkIndicator}
                 />

@@ -24,19 +24,19 @@
     "message": "தொகை"
   },
   "appDescription": {
-    "message": "எதெரியும்  பிரௌசர்  நீட்டிப்பு",
+    "message": "உங்கள் உலாவியில் ஒரு கிரிப்டோ வாலட்",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "மேடமஸ்க் ",
+    "message": "அமினோ",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Carbon Wallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Carbon Wallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {

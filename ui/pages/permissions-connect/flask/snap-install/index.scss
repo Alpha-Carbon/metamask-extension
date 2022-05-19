@@ -13,21 +13,16 @@
     @include H7;
 
     display: flex;
-    color: var(--color-text-alternative);
+    color: var(--ui-4);
 
     .link {
-      color: var(--color-primary-default);
+      color: var(--primary-blue);
       margin-inline-start: 4px;
       cursor: pointer;
     }
   }
 
-  .version {
-    font-family: monospace;
-  }
-
   .page-container__footer {
     width: 100%;
-    margin-top: 12px;
   }
 }

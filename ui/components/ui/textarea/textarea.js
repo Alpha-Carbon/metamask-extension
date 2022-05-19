@@ -34,8 +34,7 @@ const TextArea = ({
   );
   return (
     <Box
-      backgroundColor={COLORS.BACKGROUND_DEFAULT}
-      borderColor={COLORS.BORDER_DEFAULT}
+      borderColor={COLORS.UI3}
       borderRadius={SIZES.SM}
       borderStyle={BORDER_STYLE.SOLID}
       padding={[4, 4]}

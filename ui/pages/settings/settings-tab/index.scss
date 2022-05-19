@@ -2,7 +2,7 @@
   &__error {
     padding-bottom: 20px;
     text-align: center;
-    color: var(--color-error-default);
+    color: var(--crimson);
   }
 
   &__rpc-save-button {
@@ -14,15 +14,15 @@
 
   &__button--red {
     border-color: lighten($monzo, 10%);
-    color: var(--color-error-default);
+    color: var(--monzo);
 
     &:active {
       background: lighten($monzo, 55%);
-      border-color: var(--color-error-default);
+      border-color: var(--monzo);
     }
 
     &:hover {
-      border-color: var(--color-error-default);
+      border-color: var(--monzo);
     }
   }
 
@@ -37,6 +37,67 @@
 
     &:not(:last-child) {
       margin-right: 16px;
+    }
+
+    & #native-primary-currency,
+    & #fiat-primary-currency {
+      display: none;
+    }
+
+    & .radio-wrap {
+      position: relative;
+      cursor: pointer;
+    }
+
+    & .radio {
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: #313149;
+      padding: 7px;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      display: inline-block;
+      transition: ease-in-out 0.2s;
+
+      &-disable {
+        border: 2px solid var(--gray-1);
+      }
+
+      &-enable {
+        background: linear-gradient(#fff 0 0) padding-box, linear-gradient(to right, #227bff, #451dff) border-box;
+
+        &::before {
+          background: linear-gradient(91.07deg, #227bff 4.72%, #451dff 73%);
+        }
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 2px;
+        top: 2px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        transition: ease-in-out 0.2s;
+      }
+
+      &-label {
+        margin-left: 20px;
+        cursor: pointer;
+
+        &-enable {
+          background: var(--secondary-2-gradient);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        &-disable {
+          background: none;
+          color: var(--gray-2);
+        }
+      }
     }
   }
 

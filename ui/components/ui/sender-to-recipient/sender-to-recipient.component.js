@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import copyToClipboard from 'copy-to-clipboard';
 import Tooltip from '../tooltip';
-import IconCaretRight from '../icon/icon-caret-right';
 import Identicon from '../identicon';
 import { shortenAddress } from '../../../helpers/utils/util';
 import AccountMismatchWarning from '../account-mismatch-warning/account-mismatch-warning.component';
 import { useI18nContext } from '../../../hooks/useI18nContext';
 import { toChecksumHexAddress } from '../../../../shared/modules/hexstring-utils';
 import NicknamePopovers from '../../app/modals/nickname-popovers';
+import EastIcon from '../icon/east-icon.component';
 import {
   DEFAULT_VARIANT,
   CARDS_VARIANT,
@@ -121,16 +121,23 @@ export function RecipientWithAddress({
         <div className="sender-to-recipient__sender-icon">
           <Identicon address={checksummedRecipientAddress} diameter={24} />
         </div>
-        <div className="sender-to-recipient__name">
-          {addressOnly
-            ? recipientNickname ||
+        <Tooltip
+          position="bottom"
+          html={t('viewDetail')}
+          wrapperClassName="sender-to-recipient__tooltip-wrapper"
+          containerClassName="sender-to-recipient__tooltip-container"
+        >
+          <div className="sender-to-recipient__name">
+            {addressOnly
+              ? recipientNickname ||
               recipientEns ||
               shortenAddress(checksummedRecipientAddress)
-            : recipientNickname ||
+              : recipientNickname ||
               recipientEns ||
               recipientName ||
               t('newContract')}
-        </div>
+          </div>
+        </Tooltip>
       </div>
       {showNicknamePopovers ? (
         <NicknamePopovers
@@ -154,13 +161,14 @@ RecipientWithAddress.propTypes = {
 function Arrow({ variant }) {
   return variant === DEFAULT_VARIANT ? (
     <div className="sender-to-recipient__arrow-container">
-      <div className="sender-to-recipient__arrow-circle">
-        <i className="fa fa-arrow-right sender-to-recipient__arrow-circle__icon" />
-      </div>
+      {/* <div className="sender-to-recipient__arrow-circle">
+        <img height="15" width="15" src="./images/arrow-right.svg" alt="" />
+      </div> */}
+      <EastIcon />
     </div>
   ) : (
     <div className="sender-to-recipient__arrow-container">
-      <IconCaretRight />
+      <img height="20" src="./images/caret-right.svg" alt="" />
     </div>
   );
 }

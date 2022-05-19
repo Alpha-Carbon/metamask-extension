@@ -44,6 +44,12 @@
   "addSuggestedTokens": {
     "message": "Tambah Token yang Disyorkan"
   },
+  "addToAddressBook": {
+    "message": "Tambah kepada buku alamat"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "cth. John D."
+  },
   "addToken": {
     "message": "Tambah Token"
   },
@@ -57,19 +63,19 @@
     "message": "Jumlah"
   },
   "appDescription": {
-    "message": "Dompat Ethereum di Pelayar anda",
+    "message": "Dompet Kripto dalam Penyemak Imbas anda",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Carbon Wallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Carbon Wallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Carbon Wallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -330,6 +336,9 @@
   },
   "ensRegistrationError": {
     "message": "Ralat dalam pendaftaran nama ENS"
+  },
+  "enterAnAlias": {
+    "message": "Masukkan alias"
   },
   "enterPassword": {
     "message": "Masukkan kata laluan"
@@ -736,6 +745,9 @@
   "restore": {
     "message": "Pulihkan"
   },
+  "restoreAccountWithSeed": {
+    "message": "Pulihkan Akaun anda dengan Ungkapan Benih"
+  },
   "revealSeedWords": {
     "message": "Dedahkan Ungkapan Benih"
   },
@@ -786,6 +798,9 @@
   },
   "securityAndPrivacy": {
     "message": "Keselamatan & Privasi"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "Pisahkan setiap perkataan dengan satu ruang"
   },
   "seedPhraseReq": {
     "message": "Frasa benih panjangnya 12 patah perkataan"

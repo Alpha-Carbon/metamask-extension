@@ -22,9 +22,8 @@ const Disclosure = ({ children, title, size }) => {
     <div className="disclosure" onClick={() => setOpen((state) => !state)}>
       {title ? (
         <details>
-          <summary className="disclosure__summary">
-            <i className="fa fa-plus" />
-            {title}
+          <summary className="disclosure__title disclosure__summary typography--weight-bold typography--color-black">
+            {title}:{' '}
           </summary>
           <div className={classnames('disclosure__content', size)}>
             {children}

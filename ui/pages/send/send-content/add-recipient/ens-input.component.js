@@ -17,14 +17,14 @@ export default class EnsInput extends Component {
   static propTypes = {
     className: PropTypes.string,
     selectedAddress: PropTypes.string,
-    selectedName: PropTypes.string,
-    scanQrCode: PropTypes.func,
+    // selectedName: PropTypes.string,
+    // scanQrCode: PropTypes.func,
     onPaste: PropTypes.func,
     onValidAddressTyped: PropTypes.func,
     internalSearch: PropTypes.bool,
     userInput: PropTypes.string,
     onChange: PropTypes.func.isRequired,
-    onReset: PropTypes.func.isRequired,
+    // onReset: PropTypes.func.isRequired,
     lookupEnsName: PropTypes.func.isRequired,
     initializeEnsSlice: PropTypes.func.isRequired,
     resetEnsResolution: PropTypes.func.isRequired,
@@ -83,33 +83,36 @@ export default class EnsInput extends Component {
 
   render() {
     const { t } = this.context;
-    const { className, selectedAddress, selectedName, userInput } = this.props;
+    const {
+      className,
+      selectedAddress,
+      //  selectedName,
+      userInput,
+    } = this.props;
 
     const hasSelectedAddress = Boolean(selectedAddress);
 
     return (
       <div className={classnames('ens-input', className)}>
         <div
-          className={classnames('ens-input__wrapper', {
-            'ens-input__wrapper__status-icon--error': false,
-            'ens-input__wrapper__status-icon--valid': false,
-            'ens-input__wrapper--valid': hasSelectedAddress,
-          })}
+          className={classnames(
+            // 'ens-input__wrapper',
+            {
+              'ens-input__wrapper': !hasSelectedAddress,
+              'ens-input__wrapper__status-icon--error': false,
+              'ens-input__wrapper__status-icon--valid': false,
+              'ens-input__wrapper--valid': !hasSelectedAddress,
+            },
+          )}
         >
-          <i
-            className={classnames('ens-input__wrapper__status-icon', 'fa', {
-              'fa-check-circle': hasSelectedAddress,
-              'fa-search': !hasSelectedAddress,
+          {/* <div
+            className={classnames('ens-input__wrapper__status-icon', {
+              'ens-input__wrapper__status-icon--valid': hasSelectedAddress,
             })}
-            style={{
-              color: hasSelectedAddress
-                ? 'var(--color-success-default)'
-                : 'var(--color-icon-muted)',
-            }}
-          />
+          /> */}
           {hasSelectedAddress ? (
             <>
-              <div className="ens-input__wrapper__input ens-input__wrapper__input--selected">
+              {/* <div className="ens-input__wrapper__input ens-input__wrapper__input--selected">
                 <div className="ens-input__selected-input__title">
                   {selectedName || selectedAddress}
                 </div>
@@ -119,18 +122,10 @@ export default class EnsInput extends Component {
                   </div>
                 )}
               </div>
-              <button
+              <div
+                className="ens-input__wrapper__action-icon ens-input__wrapper__action-icon--erase"
                 onClick={this.props.onReset}
-                className="ens-input__wrapper__action-icon-button"
-              >
-                <i
-                  className="fa fa-times"
-                  style={{
-                    color: 'var(--color-icon-default)',
-                  }}
-                  title={t('close')}
-                />
-              </button>
+              /> */}
             </>
           ) : (
             <>
@@ -147,7 +142,10 @@ export default class EnsInput extends Component {
                 data-testid="ens-input"
               />
               <button
-                className="ens-input__wrapper__action-icon-button"
+                className={classnames('ens-input__wrapper__action-icon', {
+                  'ens-input__wrapper__action-icon--erase': userInput,
+                  'ens-input__wrapper__action-icon--qrcode': !userInput,
+                })}
                 onClick={() => {
                   if (userInput) {
                     this.props.onReset();
@@ -155,20 +153,7 @@ export default class EnsInput extends Component {
                     this.props.scanQrCode();
                   }
                 }}
-              >
-                <i
-                  className={classnames('fa', {
-                    'fa-times': userInput,
-                    'fa-qrcode': !userInput,
-                  })}
-                  title={t(userInput ? 'close' : 'scanQrCode')}
-                  style={{
-                    color: userInput
-                      ? 'var(--color-icon-default)'
-                      : 'var(--color-primary-default)',
-                  }}
-                />
-              </button>
+              />
             </>
           )}
         </div>

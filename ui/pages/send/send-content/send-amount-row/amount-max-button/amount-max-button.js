@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -7,24 +7,23 @@ import {
   toggleSendMaxMode,
 } from '../../../../../ducks/send';
 import { useI18nContext } from '../../../../../hooks/useI18nContext';
-import { MetaMetricsContext } from '../../../../../contexts/metametrics';
+import { useMetricEvent } from '../../../../../hooks/useMetricEvent';
 
 export default function AmountMaxButton() {
   const isDraftTransactionInvalid = useSelector(isSendFormInvalid);
   const maxModeOn = useSelector(getSendMaxModeState);
   const dispatch = useDispatch();
-  const trackEvent = useContext(MetaMetricsContext);
+  const trackClickedMax = useMetricEvent({
+    eventOpts: {
+      category: 'Transactions',
+      action: 'Edit Screen',
+      name: 'Clicked "Amount Max"',
+    },
+  });
   const t = useI18nContext();
 
   const onMaxClick = () => {
-    trackEvent({
-      event: 'Clicked "Amount Max"',
-      category: 'Transactions',
-      properties: {
-        action: 'Edit Screen',
-        legacy_event: true,
-      },
-    });
+    trackClickedMax();
     dispatch(toggleSendMaxMode());
   };
 

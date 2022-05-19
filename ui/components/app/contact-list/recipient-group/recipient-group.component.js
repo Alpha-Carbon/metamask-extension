@@ -13,19 +13,37 @@ export default function RecipientGroup({
   items,
   onSelect,
   selectedAddress,
+  isMyAccount,
+  isRecent,
+  isAddressBook,
 }) {
   if (!items || !items.length) {
     return null;
   }
-
   return (
     <div
       className="send__select-recipient-wrapper__group"
       data-testid="recipient-group"
     >
-      {label && (
-        <div className="send__select-recipient-wrapper__group-label">
-          {label}
+      {isRecent && (
+        <div className="send__select-recipient-wrapper__group-label recent">
+          <div className="send__select-recipient-wrapper__group-label-line"></div>
+          <p>{label}</p>
+          <div className="send__select-recipient-wrapper__group-label-line"></div>
+        </div>
+      )}
+      {isMyAccount && (
+        <div className="send__select-recipient-wrapper__group-label my-account">
+          <div className="send__select-recipient-wrapper__group-label-line"></div>
+          <p>{label}</p>
+          <div className="send__select-recipient-wrapper__group-label-line"></div>
+        </div>
+      )}
+      {isAddressBook && (
+        <div className="send__select-recipient-wrapper__group-label is-address">
+          <div className="send__select-recipient-wrapper__group-label-line"></div>
+          <p>{label}</p>
+          <div className="send__select-recipient-wrapper__group-label-line"></div>
         </div>
       )}
       {items.map(({ address, name }) => (
@@ -44,19 +62,36 @@ export default function RecipientGroup({
           })}
         >
           <Identicon address={address} diameter={28} />
-          <div
-            className="send__select-recipient-wrapper__group-item__content"
-            data-testid="recipient"
-          >
-            <div className="send__select-recipient-wrapper__group-item__title">
-              {name || ellipsify(address)}
-            </div>
-            {name && (
-              <div className="send__select-recipient-wrapper__group-item__subtitle">
-                {ellipsify(address)}
+          {isMyAccount ? (
+            <div
+              className="send__select-recipient-wrapper__group-item__content"
+              data-testid="recipient"
+            >
+              <div className="send__select-recipient-wrapper__group-item__title">
+                {name || ellipsify(address)}
               </div>
-            )}
-          </div>
+              {name && (
+                <div className="send__select-recipient-wrapper__group-item__subtitle">
+                  {ellipsify(address)}
+                </div>
+              )}
+            </div>
+          ) : (
+            <div
+              className="send__select-recipient-wrapper__group-item__content"
+              data-testid="recipient"
+            >
+              <div className="send__select-recipient-wrapper__group-item__title">
+                {name || ellipsify(address)}
+                {/* {ellipsify(address)} */}
+              </div>
+              {name && (
+                <div className="send__select-recipient-wrapper__group-item__subtitle">
+                  {ellipsify(address)}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       ))}
     </div>
@@ -73,4 +108,7 @@ RecipientGroup.propTypes = {
   ),
   onSelect: PropTypes.func.isRequired,
   selectedAddress: PropTypes.string,
+  isMyAccount: PropTypes.bool,
+  isRecent: PropTypes.bool,
+  isAddressBook: PropTypes.bool,
 };

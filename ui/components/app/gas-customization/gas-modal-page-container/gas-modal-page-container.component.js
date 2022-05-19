@@ -14,6 +14,7 @@ import BasicTabContent from './basic-tab-content';
 export default class GasModalPageContainer extends Component {
   static contextTypes = {
     t: PropTypes.func,
+    metricsEvent: PropTypes.func,
     trackEvent: PropTypes.func,
   };
 
@@ -218,12 +219,11 @@ export default class GasModalPageContainer extends Component {
           onClose={() => cancelAndClose()}
           onSubmit={() => {
             if (isSpeedUp) {
-              this.context.trackEvent({
-                category: 'Navigation',
-                event: 'Saved "Speed Up"',
-                properties: {
+              this.context.metricsEvent({
+                eventOpts: {
+                  category: 'Navigation',
                   action: 'Activity Log',
-                  legacy_event: true,
+                  name: 'Saved "Speed Up"',
                 },
               });
             }

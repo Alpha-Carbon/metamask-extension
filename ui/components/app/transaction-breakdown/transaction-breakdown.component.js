@@ -217,7 +217,7 @@ export default class TransactionBreakdown extends PureComponent {
             )}
           </TransactionBreakdownRow>
         )}
-        <TransactionBreakdownRow title={t('total')}>
+        <TransactionBreakdownRow title={t('total')} className="transaction-breakdown__total">
           <UserPreferencedCurrencyDisplay
             className="transaction-breakdown__value transaction-breakdown__value--eth-total"
             type={PRIMARY}

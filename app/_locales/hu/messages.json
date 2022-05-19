@@ -44,6 +44,12 @@
   "addSuggestedTokens": {
     "message": "Javasolt tokenek hozzáadása"
   },
+  "addToAddressBook": {
+    "message": "Hozzáadás a címjegyzékhez"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "pl. John D."
+  },
   "addToken": {
     "message": "Token hozzáadása"
   },
@@ -57,19 +63,19 @@
     "message": "Összeg"
   },
   "appDescription": {
-    "message": "Ethereum tárca a böngészőjében",
+    "message": "Kriptotárca a böngészőben",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Carbon Wallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Carbon Wallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Carbon Wallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -333,6 +339,9 @@
   },
   "ensRegistrationError": {
     "message": "Hiba történt az ENS név regisztrációjakor"
+  },
+  "enterAnAlias": {
+    "message": "Adjon meg álnevet"
   },
   "enterPassword": {
     "message": "Adja meg a jelszót"
@@ -749,6 +758,9 @@
   "restore": {
     "message": "Visszaállítás"
   },
+  "restoreAccountWithSeed": {
+    "message": "Fiók helyreállítása a seed mondat segítségével"
+  },
   "revealSeedWords": {
     "message": "Seed szavak megjelenítése"
   },
@@ -799,6 +811,9 @@
   },
   "securityAndPrivacy": {
     "message": "Biztonság és adatvédelem"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "A szavakat egy-egy szóközzel válassza el"
   },
   "seedPhraseReq": {
     "message": "A seed mondat 12 szóból áll"

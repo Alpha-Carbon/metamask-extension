@@ -44,6 +44,12 @@
   "addSuggestedTokens": {
     "message": "Dodaj sugerowane tokeny."
   },
+  "addToAddressBook": {
+    "message": "Dodaj do książki adresowej"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "np. John D."
+  },
   "addToken": {
     "message": "Dodaj token"
   },
@@ -57,19 +63,19 @@
     "message": "Ilość"
   },
   "appDescription": {
-    "message": "Wtyczka przeglądarki do Ethereum",
+    "message": "Portfel kryptograficzny w Twojej przeglądarce",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Carbon Wallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Carbon Wallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Carbon Wallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -333,6 +339,9 @@
   },
   "ensRegistrationError": {
     "message": "Błąd w rejestracji nazwy ENS"
+  },
+  "enterAnAlias": {
+    "message": "Wpisz alias"
   },
   "enterPassword": {
     "message": "Wpisz hasło"
@@ -750,6 +759,9 @@
   "restore": {
     "message": "Przywróć"
   },
+  "restoreAccountWithSeed": {
+    "message": "Przywróć konto frazą seed"
+  },
   "revealSeedWords": {
     "message": "Pokaż słowa seed"
   },
@@ -800,6 +812,9 @@
   },
   "securityAndPrivacy": {
     "message": "Bezpieczeństwo i prywatność"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "Oddziel słowa pojedynczą spacją"
   },
   "seedPhraseReq": {
     "message": "Frazy seed mają 12 słów"

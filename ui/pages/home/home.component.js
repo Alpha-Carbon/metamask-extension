@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, Route } from 'react-router-dom';
 ///: BEGIN:ONLY_INCLUDE_IN(main)
-import { SUPPORT_LINK } from '../../helpers/constants/common';
+// import { SUPPORT_LINK } from '../../helpers/constants/common';
 ///: END:ONLY_INCLUDE_IN
 import { formatDate } from '../../helpers/utils/util';
 import AssetList from '../../components/app/asset-list';
@@ -10,22 +10,26 @@ import CollectiblesTab from '../../components/app/collectibles-tab';
 import HomeNotification from '../../components/app/home-notification';
 import MultipleNotifications from '../../components/app/multiple-notifications';
 import TransactionList from '../../components/app/transaction-list';
-import MenuBar from '../../components/app/menu-bar';
+// import MenuBar from '../../components/app/menu-bar';
 import Popover from '../../components/ui/popover';
 import Button from '../../components/ui/button';
-import Box from '../../components/ui/box';
 import ConnectedSites from '../connected-sites';
 import ConnectedAccounts from '../connected-accounts';
 import { Tabs, Tab } from '../../components/ui/tabs';
-import { EthOverview } from '../../components/app/wallet-overview';
+import {
+  // EthOverview,
+  ActOverview,
+} from '../../components/app/wallet-overview';
 import WhatsNewPopup from '../../components/app/whats-new-popup';
 import RecoveryPhraseReminder from '../../components/app/recovery-phrase-reminder';
 import ActionableMessage from '../../components/ui/actionable-message/actionable-message';
 import Typography from '../../components/ui/typography/typography';
+// import ImportTokenLink from '../../components/app/import-token-link';
+// import { detectNewTokens } from '../../store/actions';
+
 import {
   TYPOGRAPHY,
   FONT_WEIGHT,
-  DISPLAY,
   ///: BEGIN:ONLY_INCLUDE_IN(flask)
   COLORS,
   ///: END:ONLY_INCLUDE_IN
@@ -47,10 +51,10 @@ import {
   ADD_COLLECTIBLE_ROUTE,
 } from '../../helpers/constants/routes';
 ///: BEGIN:ONLY_INCLUDE_IN(beta)
-import BetaHomeFooter from './beta/beta-home-footer.component';
+// import BetaHomeFooter from './beta/beta-home-footer.component';
 ///: END:ONLY_INCLUDE_IN
 ///: BEGIN:ONLY_INCLUDE_IN(flask)
-import FlaskHomeFooter from './flask/flask-home-footer.component';
+// import FlaskHomeFooter from './flask/flask-home-footer.component';
 ///: END:ONLY_INCLUDE_IN
 
 const LEARN_MORE_URL =
@@ -100,8 +104,6 @@ export default class Home extends PureComponent {
     setConnectedStatusPopoverHasBeenShown: PropTypes.func,
     connectedStatusPopoverHasBeenShown: PropTypes.bool,
     defaultHomeActiveTabName: PropTypes.string,
-    firstTimeFlowType: PropTypes.string,
-    completedOnboarding: PropTypes.bool,
     onTabClick: PropTypes.func.isRequired,
     haveSwapsQuotes: PropTypes.bool.isRequired,
     showAwaitingSwapScreen: PropTypes.bool.isRequired,
@@ -274,68 +276,80 @@ export default class Home extends PureComponent {
           ///: BEGIN:ONLY_INCLUDE_IN(flask)
           shouldShowErrors
             ? Object.entries(errorsToShow).map(([errorId, error]) => {
-                return (
-                  <HomeNotification
-                    classNames={['home__error-message']}
-                    infoText={error.data.snapId}
-                    descriptionText={
-                      <>
-                        <Typography
-                          color={COLORS.TEXT_MUTED}
-                          variant={TYPOGRAPHY.H5}
-                          fontWeight={FONT_WEIGHT.NORMAL}
-                        >
-                          {t('somethingWentWrong')}
-                        </Typography>
-                        <Typography
-                          color={COLORS.TEXT_MUTED}
-                          variant={TYPOGRAPHY.H7}
-                          fontWeight={FONT_WEIGHT.NORMAL}
-                        >
-                          {t('snapError', [error.message, error.code])}
-                        </Typography>
-                      </>
-                    }
-                    onIgnore={async () => {
-                      await removeSnapError(errorId);
-                    }}
-                    ignoreText="Dismiss"
-                    key="home-error-message"
-                  />
-                );
-              })
+              return (
+                <HomeNotification
+                  classNames={['home__error-message']}
+                  infoText={error.data.snapId}
+                  descriptionText={
+                    <>
+                      <Typography
+                        color={COLORS.UI1}
+                        variant={TYPOGRAPHY.H5}
+                        fontWeight={FONT_WEIGHT.NORMAL}
+                      >
+                        {t('somethingWentWrong')}
+                      </Typography>
+                      <Typography
+                        color={COLORS.UI1}
+                        variant={TYPOGRAPHY.H7}
+                        fontWeight={FONT_WEIGHT.NORMAL}
+                      >
+                        {t('snapError', [error.message, error.code])}
+                      </Typography>
+                    </>
+                  }
+                  onIgnore={async () => {
+                    await removeSnapError(errorId);
+                  }}
+                  ignoreText="Dismiss"
+                  key="home-error-message"
+                />
+              );
+            })
             : null
           ///: END:ONLY_INCLUDE_IN
         }
-        {newCollectibleAddedMessage === 'success' ? (
+        {newCollectibleAddedMessage ? (
           <ActionableMessage
-            type="success"
+            type={newCollectibleAddedMessage === 'success' ? 'info' : 'warning'}
             className="home__new-network-notification"
             message={
-              <Box display={DISPLAY.INLINE_FLEX}>
-                <i className="fa fa-check-circle home__new-nft-notification-icon" />
+              <div className="home__new-network-notification-message">
+                {newCollectibleAddedMessage === 'success' ? (
+                  <img
+                    src="./images/check_circle.svg"
+                    className="home__new-network-notification-message--image"
+                  />
+                ) : null}
                 <Typography
                   variant={TYPOGRAPHY.H7}
                   fontWeight={FONT_WEIGHT.NORMAL}
                 >
-                  {t('newCollectibleAddedMessage')}
+                  {newCollectibleAddedMessage === 'success'
+                    ? t('newCollectibleAddedMessage')
+                    : t('newCollectibleAddFailed', [
+                      newCollectibleAddedMessage,
+                    ])}
                 </Typography>
                 <button
-                  className="fas fa-times home__new-nft-notification-close"
+                  className="fas fa-times home__close"
                   title={t('close')}
                   onClick={() => setNewCollectibleAddedMessage('')}
                 />
-              </Box>
+              </div>
             }
           />
         ) : null}
         {newNetworkAdded ? (
           <ActionableMessage
-            type="success"
+            type="info"
             className="home__new-network-notification"
             message={
-              <Box display={DISPLAY.INLINE_FLEX}>
-                <i className="fa fa-check-circle home__new-network-notification-icon" />
+              <div className="home__new-network-notification-message">
+                <img
+                  src="./images/check_circle.svg"
+                  className="home__new-network-notification-message--image"
+                />
                 <Typography
                   variant={TYPOGRAPHY.H7}
                   fontWeight={FONT_WEIGHT.NORMAL}
@@ -343,11 +357,11 @@ export default class Home extends PureComponent {
                   {t('newNetworkAdded', [newNetworkAdded])}
                 </Typography>
                 <button
-                  className="fas fa-times home__new-network-notification-close"
+                  className="fas fa-times home__close"
                   title={t('close')}
                   onClick={() => setNewNetworkAdded('')}
                 />
-              </Box>
+              </div>
             }
           />
         ) : null}
@@ -494,8 +508,6 @@ export default class Home extends PureComponent {
       hideWhatsNewPopup,
       seedPhraseBackedUp,
       showRecoveryPhraseReminder,
-      firstTimeFlowType,
-      completedOnboarding,
     } = this.props;
 
     if (forgottenPassword) {
@@ -504,11 +516,7 @@ export default class Home extends PureComponent {
       return null;
     }
 
-    const showWhatsNew =
-      ((completedOnboarding && firstTimeFlowType === 'import') ||
-        !completedOnboarding) &&
-      notificationsToShow &&
-      showWhatsNewPopup;
+    const showWhatsNew = notificationsToShow && showWhatsNewPopup;
 
     return (
       <div className="main-container">
@@ -530,9 +538,10 @@ export default class Home extends PureComponent {
             ? this.renderPopover()
             : null}
           <div className="home__main-view">
-            <MenuBar />
+            {/* <MenuBar /> */}
             <div className="home__balance-wrapper">
-              <EthOverview />
+              {/* <EthOverview /> */}
+              <ActOverview />
             </div>
             <Tabs
               defaultActiveTabName={defaultHomeActiveTabName}
@@ -566,7 +575,7 @@ export default class Home extends PureComponent {
                 </Tab>
               ) : null}
               <Tab
-                activeClassName="home__tab--active"
+                activeClassName="home__tab--active activity"
                 className="home__tab"
                 data-testid="home__activity-tab"
                 name={t('activity')}
@@ -574,7 +583,20 @@ export default class Home extends PureComponent {
                 <TransactionList />
               </Tab>
             </Tabs>
-            <div className="home__support">
+
+            {/* <div className="home__import-token">
+              <p className="mr-1">{t('missingToken')}</p>
+              <Button
+                className="import-token-link__link mr-1"
+                type="link"
+                onClick={() => detectNewTokens()}
+              >
+                {t('refreshList')}
+              </Button>
+              {t('or')}
+              <ImportTokenLink />
+            </div> */}
+            {/* <div className="home__support">
               {
                 ///: BEGIN:ONLY_INCLUDE_IN(main)
                 t('needHelp', [
@@ -599,7 +621,7 @@ export default class Home extends PureComponent {
                 <FlaskHomeFooter />
                 ///: END:ONLY_INCLUDE_IN
               }
-            </div>
+            </div> */}
           </div>
 
           {this.renderNotifications()}

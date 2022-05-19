@@ -7,7 +7,7 @@
   &__detail-header {
     @include H7;
 
-    color: var(--color-text-alternative);
+    color: var(--Grey-400);
     margin-bottom: 2px;
     display: flex;
   }
@@ -15,7 +15,7 @@
   &__detail-content {
     @include H6;
 
-    color: var(--color-text-default);
+    color: var(--Black-100);
 
     > div {
       justify-content: flex-start;
@@ -23,22 +23,26 @@
   }
 
   &__conversion-rate {
-    color: var(--color-text-default);
+    color: var(--Black-100);
     justify-content: flex-start;
     align-items: center;
     height: inherit;
 
     .view-quote__conversion-rate-eth-label {
-      color: var(--color-text-default);
+      color: var(--Black-100);
     }
 
     i {
-      color: var(--color-primary-default);
+      color: var(--Blue-500);
     }
 
     * {
       margin-right: 4px;
     }
+  }
+
+  .view-quote__view-other-button {
+    margin-top: 20px;
   }
 
   &__popover-wrap {
@@ -48,7 +52,7 @@
   }
 
   &__light-grey {
-    color: var(--color-border-muted);
+    color: #bbc0c5;
   }
 
   &__row {
@@ -58,7 +62,7 @@
     display: flex;
     flex-flow: column;
     justify-content: center;
-    border-top: 1px solid var(--color-background-alternative);
+    border-top: 1px solid var(--Grey-100);
 
     &--high {
       min-height: 60px;
@@ -69,7 +73,7 @@
   .view-quote__conversion-rate-token-label {
     @include H6;
 
-    color: var(--color-text-default);
+    color: var(--Black-100);
     font-weight: bold;
     margin-left: 2px;
   }

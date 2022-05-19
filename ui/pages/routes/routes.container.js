@@ -5,7 +5,6 @@ import {
   getNetworkIdentifier,
   getPreferences,
   isNetworkLoading,
-  getTheme,
 } from '../../selectors';
 import {
   lockMetamask,
@@ -20,14 +19,25 @@ import Routes from './routes.component';
 
 function mapStateToProps(state) {
   const { appState } = state;
-  const { alertOpen, alertMessage, isLoading, loadingMessage } = appState;
+  const {
+    alertOpen,
+    alertMessage,
+    isLoading,
+    loadingMessage,
+    networkDropdownOpen,
+  } = appState;
   const { autoLockTimeLimit = 0 } = getPreferences(state);
+  const {
+    metamask: { isAccountMenuOpen },
+  } = state;
 
   return {
     alertOpen,
     alertMessage,
     textDirection: state.metamask.textDirection,
     isLoading,
+    isAccountMenuOpen,
+    networkDropdownOpen,
     loadingMessage,
     isUnlocked: state.metamask.isUnlocked,
     isNetworkLoading: isNetworkLoading(state),
@@ -38,7 +48,6 @@ function mapStateToProps(state) {
     browserEnvironmentContainter: state.metamask.browserEnvironment?.browser,
     providerId: getNetworkIdentifier(state),
     providerType: state.metamask.provider?.type,
-    theme: getTheme(state),
     sendStage: getSendStage(state),
   };
 }

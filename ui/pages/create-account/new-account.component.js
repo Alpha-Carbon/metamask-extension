@@ -27,23 +27,23 @@ export default class NewAccountCreateForm extends Component {
     const createClick = (_) => {
       createAccount(newAccountName || defaultAccountName)
         .then(() => {
-          this.context.trackEvent({
-            category: 'Accounts',
-            event: 'Added New Account',
-            properties: {
+          this.context.metricsEvent({
+            eventOpts: {
+              category: 'Accounts',
               action: 'Add New Account',
-              legacy_event: true,
+              name: 'Added New Account',
             },
           });
           history.push(mostRecentOverviewPage);
         })
         .catch((e) => {
-          this.context.trackEvent({
-            category: 'Accounts',
-            event: 'Error',
-            properties: {
+          this.context.metricsEvent({
+            eventOpts: {
+              category: 'Accounts',
               action: 'Add New Account',
-              legacy_event: true,
+              name: 'Error',
+            },
+            customVariables: {
               errorMessage: e.message,
             },
           });
@@ -63,7 +63,7 @@ export default class NewAccountCreateForm extends Component {
         <div className="new-account-create-form__input-label">
           {this.context.t('accountName')}
         </div>
-        <div>
+        <div className="new-account-create-form-cont">
           <input
             className={classnames('new-account-create-form__input', {
               'new-account-create-form__input__error': existingAccountName,
@@ -87,16 +87,14 @@ export default class NewAccountCreateForm extends Component {
           ) : null}
           <div className="new-account-create-form__buttons">
             <Button
-              type="secondary"
-              large
+              type="cancel"
               className="new-account-create-form__button"
               onClick={() => history.push(mostRecentOverviewPage)}
             >
               {this.context.t('cancel')}
             </Button>
             <Button
-              type="primary"
-              large
+              type="primaryGradient"
               className="new-account-create-form__button"
               onClick={createClick}
               disabled={existingAccountName}
@@ -120,5 +118,5 @@ NewAccountCreateForm.propTypes = {
 
 NewAccountCreateForm.contextTypes = {
   t: PropTypes.func,
-  trackEvent: PropTypes.func,
+  metricsEvent: PropTypes.func,
 };

@@ -19,6 +19,7 @@ const NicknamePopovers = ({ address, onClose }) => {
 
   const [popoverToDisplay, setPopoverToDisplay] = useState(
     SHOW_NICKNAME_POPOVER,
+    ADD_NICKNAME_POPOVER,
   );
 
   const addressBook = useSelector(getAddressBook);
@@ -37,7 +38,6 @@ const NicknamePopovers = ({ address, onClose }) => {
     { blockExplorerUrl: rpcPrefs?.blockExplorerUrl ?? null },
     null,
   );
-
   if (popoverToDisplay === ADD_NICKNAME_POPOVER) {
     return (
       <UpdateNicknamePopover
@@ -45,6 +45,7 @@ const NicknamePopovers = ({ address, onClose }) => {
         nickname={recipientNickname || null}
         memo={addressBookEntryObject?.memo}
         onClose={() => setPopoverToDisplay(SHOW_NICKNAME_POPOVER)}
+        // onClose={onClose}
         onAdd={(recipient, nickname, memo) =>
           dispatch(addToAddressBook(recipient, nickname, memo))
         }

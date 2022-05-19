@@ -381,10 +381,10 @@ export default function reduceApp(state = {}, action) {
         ...appState,
         ledgerTransportStatus: action.value,
       };
-    case actionConstants.TOGGLE_CURRENCY_INPUT_SWITCH:
+    case actionConstants.SET_CURRENCY_INPUT_SWITCH:
       return {
         ...appState,
-        sendInputCurrencySwitched: !appState.sendInputCurrencySwitched,
+        sendInputCurrencySwitched: action.value,
       };
     default:
       return appState;
@@ -434,6 +434,6 @@ export function getLedgerTransportStatus(state) {
   return state.appState.ledgerTransportStatus;
 }
 
-export function toggleCurrencySwitch() {
-  return { type: actionConstants.TOGGLE_CURRENCY_INPUT_SWITCH };
+export function toggleCurrencySwitch(value) {
+  return { type: actionConstants.SET_CURRENCY_INPUT_SWITCH, value };
 }

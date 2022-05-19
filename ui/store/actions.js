@@ -8,6 +8,8 @@ import {
   loadRelativeTimeFormatLocaleData,
 } from '../helpers/utils/i18n-helper';
 import { getMethodDataAsync } from '../helpers/utils/transactions.util';
+import { getSymbolAndDecimals } from '../helpers/utils/token-util';
+import { isEqualCaseInsensitive } from '../helpers/utils/util';
 import switchDirection from '../helpers/utils/switch-direction';
 import {
   ENVIRONMENT_TYPE_NOTIFICATION,
@@ -21,6 +23,7 @@ import {
   getMetaMaskAccounts,
   getPermittedAccountsForCurrentTab,
   getSelectedAddress,
+  getTokenList,
 } from '../selectors';
 import { computeEstimatedGasLimit, resetSendState } from '../ducks/send';
 import { switchedToUnconnectedAccount } from '../ducks/alerts/unconnected-account';
@@ -32,7 +35,6 @@ import {
   LEDGER_USB_VENDOR_ID,
 } from '../../shared/constants/hardware-wallets';
 import { parseSmartTransactionsError } from '../pages/swaps/swaps.util';
-import { isEqualCaseInsensitive } from '../../shared/modules/string-utils';
 import * as actionConstants from './actionConstants';
 
 let background = null;
@@ -681,96 +683,6 @@ const updateMetamaskStateFromBackground = () => {
     });
   });
 };
-
-export function updatePreviousGasParams(txId, previousGasParams) {
-  return async (dispatch) => {
-    let updatedTransaction;
-    try {
-      updatedTransaction = await promisifiedBackground.updatePreviousGasParams(
-        txId,
-        previousGasParams,
-      );
-    } catch (error) {
-      dispatch(txError(error));
-      log.error(error.message);
-      throw error;
-    }
-
-    return updatedTransaction;
-  };
-}
-
-export function updateSwapApprovalTransaction(txId, txSwapApproval) {
-  return async (dispatch) => {
-    let updatedTransaction;
-    try {
-      updatedTransaction = await promisifiedBackground.updateSwapApprovalTransaction(
-        txId,
-        txSwapApproval,
-      );
-    } catch (error) {
-      dispatch(txError(error));
-      log.error(error.message);
-      throw error;
-    }
-
-    return updatedTransaction;
-  };
-}
-
-export function updateEditableParams(txId, editableParams) {
-  return async (dispatch) => {
-    let updatedTransaction;
-    try {
-      updatedTransaction = await promisifiedBackground.updateEditableParams(
-        txId,
-        editableParams,
-      );
-    } catch (error) {
-      dispatch(txError(error));
-      log.error(error.message);
-      throw error;
-    }
-
-    return updatedTransaction;
-  };
-}
-
-export function updateTransactionGasFees(txId, txGasFees) {
-  return async (dispatch) => {
-    let updatedTransaction;
-    try {
-      updatedTransaction = await promisifiedBackground.updateTransactionGasFees(
-        txId,
-        txGasFees,
-      );
-    } catch (error) {
-      dispatch(txError(error));
-      log.error(error.message);
-      throw error;
-    }
-
-    return updatedTransaction;
-  };
-}
-
-export function updateSwapTransaction(txId, txSwap) {
-  return async (dispatch) => {
-    let updatedTransaction;
-    try {
-      updatedTransaction = await promisifiedBackground.updateSwapTransaction(
-        txId,
-        txSwap,
-      );
-    } catch (error) {
-      dispatch(txError(error));
-      log.error(error.message);
-      throw error;
-    }
-
-    return updatedTransaction;
-  };
-}
 
 export function updateTransaction(txData, dontShowLoadingIndicator) {
   return async (dispatch) => {
@@ -1604,7 +1516,6 @@ export function rejectWatchAsset(suggestedAssetID) {
     dispatch(showLoadingIndication());
     try {
       await promisifiedBackground.rejectWatchAsset(suggestedAssetID);
-      await forceUpdateMetamaskState(dispatch);
     } catch (error) {
       log.error(error);
       dispatch(displayWarning(error.message));
@@ -1621,7 +1532,6 @@ export function acceptWatchAsset(suggestedAssetID) {
     dispatch(showLoadingIndication());
     try {
       await promisifiedBackground.acceptWatchAsset(suggestedAssetID);
-      await forceUpdateMetamaskState(dispatch);
     } catch (error) {
       log.error(error);
       dispatch(displayWarning(error.message));
@@ -2142,12 +2052,10 @@ export function showSendTokenPage() {
 export function buyEth(opts) {
   return async (dispatch) => {
     const url = await getBuyUrl(opts);
-    if (url) {
-      global.platform.openTab({ url });
-      dispatch({
-        type: actionConstants.BUY_ETH,
-      });
-    }
+    global.platform.openTab({ url });
+    dispatch({
+      type: actionConstants.BUY_ETH,
+    });
   };
 }
 
@@ -2422,18 +2330,6 @@ export function setEIP1559V2Enabled(val) {
     log.debug(`background.setEIP1559V2Enabled`);
     try {
       await promisifiedBackground.setEIP1559V2Enabled(val);
-    } finally {
-      dispatch(hideLoadingIndication());
-    }
-  };
-}
-
-export function setTheme(val) {
-  return async (dispatch) => {
-    dispatch(showLoadingIndication());
-    log.debug(`background.setTheme`);
-    try {
-      await promisifiedBackground.setTheme(val);
     } finally {
       dispatch(hideLoadingIndication());
     }
@@ -2934,6 +2830,46 @@ export function loadingTokenParamsFinished() {
   };
 }
 
+export function getTokenParams(address) {
+  return (dispatch, getState) => {
+    const tokenList = getTokenList(getState());
+    const existingTokens = getState().metamask.tokens;
+    const { selectedAddress } = getState().metamask;
+    const { chainId } = getState().metamask.provider;
+    const existingCollectibles = getState().metamask?.allCollectibles?.[
+      selectedAddress
+    ]?.[chainId];
+    const existingToken = existingTokens.find(({ address: tokenAddress }) =>
+      isEqualCaseInsensitive(address, tokenAddress),
+    );
+    const existingCollectible = existingCollectibles?.find(
+      ({ address: collectibleAddress }) =>
+        isEqualCaseInsensitive(address, collectibleAddress),
+    );
+
+    if (existingCollectible) {
+      return null;
+    }
+
+    if (existingToken) {
+      return Promise.resolve({
+        symbol: existingToken.symbol,
+        decimals: existingToken.decimals,
+      });
+    }
+
+    dispatch(loadingTokenParamsStarted());
+    log.debug(`loadingTokenParams`);
+
+    return getSymbolAndDecimals(address, tokenList).then(
+      ({ symbol, decimals }) => {
+        dispatch(addToken(address, symbol, Number(decimals)));
+        dispatch(loadingTokenParamsFinished());
+      },
+    );
+  };
+}
+
 export function setSeedPhraseBackedUp(seedPhraseBackupState) {
   return (dispatch) => {
     log.debug(`background.setSeedPhraseBackedUp`);
@@ -3270,10 +3206,7 @@ export async function setWeb3ShimUsageAlertDismissed(origin) {
 }
 
 // Smart Transactions Controller
-export async function setSmartTransactionsOptInStatus(
-  optInState,
-  prevOptInState,
-) {
+export async function setSmartTransactionsOptInStatus(optInState) {
   trackMetaMetricsEvent({
     event: 'STX OptIn',
     category: 'swaps',
@@ -3281,7 +3214,6 @@ export async function setSmartTransactionsOptInStatus(
       stx_enabled: true,
       current_stx_enabled: true,
       stx_user_opt_in: optInState,
-      stx_prev_user_opt_in: prevOptInState,
     },
   });
   await promisifiedBackground.setSmartTransactionsOptInStatus(optInState);

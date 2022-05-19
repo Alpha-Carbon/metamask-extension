@@ -1,23 +1,25 @@
 .check-box {
   -webkit-appearance: none;
   appearance: none;
-  background: var(--color-background-default);
-  color: var(--color-icon-muted);
+  // background: var(--white);
+  background: transparent;
+  color: var(--white);
   width: 18px;
   height: 18px;
   font-size: 21px;
   line-height: 0.9;
-  border-radius: 2px;
+  border-radius: 4px;
   display: flex;
 
   &__checked,
   &__indeterminate {
-    color: var(--color-primary-default);
-    border-color: var(--color-primary-default);
+    // color: var(--primary-blue);
+    color: var(--white);
+    border-color: var(--primary-blue);
   }
 
   &:disabled {
-    color: var(--color-icon-muted);
+    color: var(--Grey-100);
     cursor: not-allowed;
   }
 }

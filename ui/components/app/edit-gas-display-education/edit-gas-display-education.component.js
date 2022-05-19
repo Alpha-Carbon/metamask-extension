@@ -14,53 +14,37 @@ export default function EditGasDisplayEducation() {
 
   return (
     <div className="edit-gas-display-education">
-      <Typography
-        tag="p"
-        color={COLORS.TEXT_ALTERNATIVE}
-        variant={TYPOGRAPHY.H6}
-      >
+      <Typography tag="p" color={COLORS.UI4} variant={TYPOGRAPHY.H6}>
         {t('editGasEducationModalIntro')}
       </Typography>
       <Typography
-        color={COLORS.TEXT_DEFAULT}
+        color={COLORS.BLACK}
         variant={TYPOGRAPHY.h6}
         fontWeight={FONT_WEIGHT.BOLD}
       >
         {t('editGasHigh')}
       </Typography>
-      <Typography
-        tag="p"
-        color={COLORS.TEXT_ALTERNATIVE}
-        variant={TYPOGRAPHY.H6}
-      >
+      <Typography tag="p" color={COLORS.UI4} variant={TYPOGRAPHY.H6}>
         {t('editGasEducationHighExplanation')}
       </Typography>
       <Typography
-        color={COLORS.TEXT_DEFAULT}
+        color={COLORS.BLACK}
         variant={TYPOGRAPHY.h6}
         fontWeight={FONT_WEIGHT.BOLD}
       >
         {t('editGasMedium')}
       </Typography>
-      <Typography
-        tag="p"
-        color={COLORS.TEXT_ALTERNATIVE}
-        variant={TYPOGRAPHY.H6}
-      >
+      <Typography tag="p" color={COLORS.UI4} variant={TYPOGRAPHY.H6}>
         {t('editGasEducationMediumExplanation')}
       </Typography>
       <Typography
-        color={COLORS.TEXT_DEFAULT}
+        color={COLORS.BLACK}
         variant={TYPOGRAPHY.h6}
         fontWeight={FONT_WEIGHT.BOLD}
       >
         {t('editGasLow')}
       </Typography>
-      <Typography
-        tag="p"
-        color={COLORS.TEXT_ALTERNATIVE}
-        variant={TYPOGRAPHY.H6}
-      >
+      <Typography tag="p" color={COLORS.UI4} variant={TYPOGRAPHY.H6}>
         {t('editGasEducationLowExplanation')}
       </Typography>
     </div>

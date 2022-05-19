@@ -19,12 +19,12 @@ const styles = {
   },
   rail: {
     borderRadius: 50,
-    background: 'var(--color-background-alternative)',
+    background: '#D6D9DC',
     height: 6,
   },
   track: {
     borderRadius: 50,
-    background: 'var(--color-primary-default)',
+    background: '#037DD6',
     height: 6,
   },
   thumb: {
@@ -32,8 +32,8 @@ const styles = {
     width: 20,
     marginTop: -7,
     marginLeft: -7,
-    backgroundColor: 'var(--color-primary-default)',
-    border: '1px solid var(--color-border-muted)',
+    backgroundColor: '#037DD6',
+    border: '1px solid #EAF6FF',
     boxSizing: 'border-box',
     boxShadow: '0px 0px 14px 0px rgba(0, 0, 0, 0.18)',
     '&:focus, &$active': {
@@ -80,20 +80,14 @@ const Slider = ({
           <InfoTooltip position="top" contentText={tooltipText} />
         )}
         {valueText && (
-          <Typography
-            tag={TYPOGRAPHY.Paragraph}
-            color={COLORS.TEXT_ALTERNATIVE}
-          >
+          <Typography tag={TYPOGRAPHY.Paragraph} color={COLORS.UI4}>
             {valueText}
           </Typography>
         )}
       </div>
       {titleDetail && (
         <div className="slider__heading-detail">
-          <Typography
-            tag={TYPOGRAPHY.Paragraph}
-            color={COLORS.TEXT_ALTERNATIVE}
-          >
+          <Typography tag={TYPOGRAPHY.Paragraph} color={COLORS.UI4}>
             {titleDetail}
           </Typography>
         </div>
@@ -103,10 +97,7 @@ const Slider = ({
     <div className="slider__footer">
       <div className="slider__footer-info">
         {infoText && (
-          <Typography
-            tag={TYPOGRAPHY.Paragraph}
-            color={COLORS.TEXT_ALTERNATIVE}
-          >
+          <Typography tag={TYPOGRAPHY.Paragraph} color={COLORS.UI4}>
             {infoText}
           </Typography>
         )}

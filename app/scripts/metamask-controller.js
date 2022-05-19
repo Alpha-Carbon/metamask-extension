@@ -385,6 +385,10 @@ export default class MetamaskController extends EventEmitter {
       state: initState.CurrencyController,
     });
 
+    this.currencyRateController.setNativeCurrency(
+      this.networkController.getProviderConfig().ticker
+    );
+
     const tokenListMessenger = this.controllerMessenger.getRestricted({
       name: 'TokenListController',
     });
@@ -1099,10 +1103,10 @@ export default class MetamaskController extends EventEmitter {
           params:
             newAccounts.length < 2
               ? // If the length is 1 or 0, the accounts are sorted by definition.
-                newAccounts
+              newAccounts
               : // If the length is 2 or greater, we have to execute
-                // `eth_accounts` vi this method.
-                await this.getPermittedAccounts(origin),
+              // `eth_accounts` vi this method.
+              await this.getPermittedAccounts(origin),
         });
       }
 
@@ -1814,8 +1818,8 @@ export default class MetamaskController extends EventEmitter {
       // DetectCollectibleController
       detectCollectibles: process.env.COLLECTIBLES_V1
         ? collectibleDetectionController.detectCollectibles.bind(
-            collectibleDetectionController,
-          )
+          collectibleDetectionController,
+        )
         : null,
     };
   }
@@ -2328,9 +2332,8 @@ export default class MetamaskController extends EventEmitter {
    */
 
   getAccountLabel(name, index, hdPathDescription) {
-    return `${name[0].toUpperCase()}${name.slice(1)} ${
-      parseInt(index, 10) + 1
-    } ${hdPathDescription || ''}`.trim();
+    return `${name[0].toUpperCase()}${name.slice(1)} ${parseInt(index, 10) + 1
+      } ${hdPathDescription || ''}`.trim();
   }
 
   /**
@@ -3122,7 +3125,7 @@ export default class MetamaskController extends EventEmitter {
 
     // messages between inpage and background
     this.setupProviderConnection(
-      mux.createStream('metamask-provider'),
+      mux.createStream('carbon-provider'),
       sender,
       _subjectType,
     );

@@ -55,6 +55,12 @@
   "addSuggestedTokens": {
     "message": "Aggiungi Token Suggeriti"
   },
+  "addToAddressBook": {
+    "message": "Aggiungi alla rubrica"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "Ad esempio, John D."
+  },
   "addToken": {
     "message": "Aggiungi Token"
   },
@@ -102,19 +108,19 @@
     "message": "Importo"
   },
   "appDescription": {
-    "message": "Ethereum Browser Extension",
+    "message": "A Crypto Wallet in your Browser",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Carbon Wallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Carbon Wallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Carbon Wallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approvalAndAggregatorTxFeeCost": {
@@ -520,6 +526,9 @@
   },
   "ensRegistrationError": {
     "message": "Errore nella registrazione del nome ENS"
+  },
+  "enterAnAlias": {
+    "message": "Inserisci un alias"
   },
   "enterMaxSpendLimit": {
     "message": "Inserisici Limite Spesa"
@@ -1143,6 +1152,9 @@
   "restore": {
     "message": "Ripristina"
   },
+  "restoreAccountWithSeed": {
+    "message": "Ripristina Account con la Frase Seed"
+  },
   "restoreWalletPreferences": {
     "message": "È stato trovato un backup dei tuoi dati da $1. Vuoi ripristinare le preferenze del portafoglio?",
     "description": "$1 is the date at which the data was backed up"
@@ -1206,6 +1218,12 @@
   },
   "securityAndPrivacy": {
     "message": "Sicurezza & Privacy"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "Separa ogni parola con un singolo spazio"
+  },
+  "seedPhrasePlaceholderPaste": {
+    "message": "Incolla frase seed dagli appunti"
   },
   "seedPhraseReq": {
     "message": "le frasi seed sono lunghe 12 parole"
@@ -1282,6 +1300,9 @@
   },
   "showPrivateKeys": {
     "message": "Mostra Chiave Privata"
+  },
+  "showSeedPhrase": {
+    "message": "Mostra frase seed"
   },
   "sigRequest": {
     "message": "Firma Richiesta"

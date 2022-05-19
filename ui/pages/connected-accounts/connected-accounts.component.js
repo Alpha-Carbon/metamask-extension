@@ -4,6 +4,7 @@ import Popover from '../../components/ui/popover';
 import ConnectedAccountsList from '../../components/app/connected-accounts-list';
 import ConnectedAccountsPermissions from '../../components/app/connected-accounts-permissions';
 import { getURLHost } from '../../helpers/utils/util';
+import NetworkTreeIcon from '../../components/ui/icon/network-tree-icon.component';
 
 export default class ConnectedAccounts extends PureComponent {
   static contextTypes = {
@@ -52,20 +53,32 @@ export default class ConnectedAccounts extends PureComponent {
 
     return (
       <Popover
-        title={
-          isActiveTabExtension
-            ? t('currentExtension')
-            : getURLHost(activeTabOrigin)
-        }
-        subtitle={
-          connectedAccounts.length
-            ? connectedAccountsDescription
-            : t('connectedAccountsEmptyDescription')
-        }
+        // title={
+        //   isActiveTabExtension
+        //     ? t('currentExtension')
+        //     : getURLHost(activeTabOrigin)
+        // }
+        // subtitle={
+        //   connectedAccounts.length
+        //     ? connectedAccountsDescription
+        //     : t('connectedAccountsEmptyDescription')
+        // }
+        className="connected-accounts__wrap"
         onClose={() => history.push(mostRecentOverviewPage)}
         footerClassName="connected-accounts__footer"
         footer={<ConnectedAccountsPermissions permissions={permissions} />}
       >
+        <NetworkTreeIcon className="connected-accounts__icon" />
+        <h2 className="connected-accounts__title">
+          {isActiveTabExtension
+            ? t('currentExtension')
+            : getURLHost(activeTabOrigin)}
+        </h2>
+        <p className="connected-accounts__subtitle">
+          {connectedAccounts.length
+            ? connectedAccountsDescription
+            : t('connectedAccountsEmptyDescription')}
+        </p>
         <ConnectedAccountsList
           accountToConnect={accountToConnect}
           connectAccount={connectAccount}

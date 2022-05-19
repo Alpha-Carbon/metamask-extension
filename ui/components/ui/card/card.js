@@ -11,12 +11,12 @@ import {
 const Card = ({
   border = true,
   padding = 4,
-  backgroundColor = COLORS.BACKGROUND_DEFAULT,
+  backgroundColor = COLORS.WHITE,
   children,
   ...props
 }) => {
   const defaultBorderProps = {
-    borderColor: border && COLORS.BORDER_MUTED,
+    borderColor: border && COLORS.UI2,
     borderRadius: border && SIZES.MD,
     borderStyle: border && BORDER_STYLE.SOLID,
   };
@@ -48,7 +48,7 @@ Card.propTypes = {
   padding: Box.propTypes.padding,
   /**
    * The background color of the card
-   * Defaults to COLORS.BACKGROUND_DEFAULT
+   * Defaults to COLORS.WHITE
    */
   backgroundColor: Box.propTypes.backgroundColor,
   /**

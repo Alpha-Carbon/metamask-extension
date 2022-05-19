@@ -27,16 +27,15 @@ import {
   createCancelTransaction,
   createSpeedUpTransaction,
   hideModal,
-  updateTransactionGasFees,
+  updateTransaction,
   updateCustomSwapsEIP1559GasParams,
   updateSwapsUserFeeLevel,
-  hideLoadingIndication,
-  showLoadingIndication,
 } from '../../../store/actions';
 import LoadingHeartBeat from '../../ui/loading-heartbeat';
 import { checkNetworkAndAccountSupports1559 } from '../../../selectors';
 import { useIncrementedGasFees } from '../../../hooks/useIncrementedGasFees';
 import { isLegacyTransaction } from '../../../helpers/utils/transactions.util';
+import TuneIcon from '../../ui/icon/tune-icon.component';
 
 export default function EditGasPopover({
   popoverTitle = '',
@@ -136,7 +135,7 @@ export default function EditGasPopover({
     }
   }, [onClose, dispatch]);
 
-  const onSubmit = useCallback(async () => {
+  const onSubmit = useCallback(() => {
     if (!updatedTransaction || !mode) {
       closePopover();
     }
@@ -189,14 +188,7 @@ export default function EditGasPopover({
         );
         break;
       case EDIT_GAS_MODES.MODIFY_IN_PLACE:
-        newGasSettings.userEditedGasLimit = updatedTxMeta.userEditedGasLimit;
-        newGasSettings.userFeeLevel = updatedTxMeta.userFeeLevel;
-
-        dispatch(showLoadingIndication());
-        await dispatch(
-          updateTransactionGasFees(updatedTxMeta.id, newGasSettings),
-        );
-        dispatch(hideLoadingIndication());
+        dispatch(updateTransaction(updatedTxMeta));
         break;
       case EDIT_GAS_MODES.SWAPS:
         // This popover component should only be used for the "FEE_MARKET" type in Swaps.
@@ -242,7 +234,7 @@ export default function EditGasPopover({
   const footerButtonText = confirmButtonText || t('save');
   return (
     <Popover
-      title={title}
+      // title={title}
       onClose={closePopover}
       className="edit-gas-popover__wrapper"
       onBack={
@@ -252,7 +244,8 @@ export default function EditGasPopover({
         showEducationContent ? null : (
           <>
             <Button
-              type="primary"
+              className="edit-gas-popover__save"
+              type="primaryGradient"
               onClick={onSubmit}
               disabled={
                 hasGasErrors ||
@@ -267,6 +260,10 @@ export default function EditGasPopover({
         )
       }
     >
+      <div className="edit-gas-popover__title">
+        <TuneIcon />
+        <p>{title}</p>
+      </div>
       <div style={{ padding: '0 20px 20px 20px', position: 'relative' }}>
         {showEducationContent ? (
           <EditGasDisplayEducation />

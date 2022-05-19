@@ -15,19 +15,19 @@
     "message": "राशि"
   },
   "appDescription": {
-    "message": "इथीरियम ब्राउज़र एक्सटेंशन",
+    "message": "आपके ब्राउज़र में एक क्रिप्टो वॉलेट",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "मेटामास्क/MetaMask",
+    "message": "Carbon Wallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Carbon Wallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Carbon Wallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {

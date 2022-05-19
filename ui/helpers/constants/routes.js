@@ -7,6 +7,7 @@ const GENERAL_ROUTE = '/settings/general';
 const ADVANCED_ROUTE = '/settings/advanced';
 const EXPERIMENTAL_ROUTE = '/settings/experimental';
 const SECURITY_ROUTE = '/settings/security';
+const EXPORT_PRIVATE_KEY_ROUTE = '/settings/security/export-private-key';
 const ABOUT_US_ROUTE = '/settings/about-us';
 const ALERTS_ROUTE = '/settings/alerts';
 const NETWORKS_ROUTE = '/settings/networks';
@@ -88,7 +89,6 @@ const CONFIRM_SEND_TOKEN_PATH = '/send-token';
 const CONFIRM_DEPLOY_CONTRACT_PATH = '/deploy-contract';
 const CONFIRM_APPROVE_PATH = '/approve';
 const CONFIRM_TRANSFER_FROM_PATH = '/transfer-from';
-const CONFIRM_SAFE_TRANSFER_FROM_PATH = '/safe-transfer-from';
 const CONFIRM_TOKEN_METHOD_PATH = '/token-method';
 const SIGNATURE_REQUEST_PATH = '/signature-request';
 const DECRYPT_MESSAGE_REQUEST_PATH = '/decrypt-message-request';
@@ -107,6 +107,7 @@ const PATH_NAME_MAP = {
   [ADVANCED_ROUTE]: 'Advanced Settings Page',
   [EXPERIMENTAL_ROUTE]: 'Experimental Settings Page',
   [SECURITY_ROUTE]: 'Security Settings Page',
+  [EXPORT_PRIVATE_KEY_ROUTE]: 'Export Private Key Page',
   [ABOUT_US_ROUTE]: 'About Us Page',
   [ALERTS_ROUTE]: 'Alerts Settings Page',
   [NETWORKS_ROUTE]: 'Network Settings Page',
@@ -141,7 +142,6 @@ const PATH_NAME_MAP = {
   [`${CONFIRM_TRANSACTION_ROUTE}/:id${CONFIRM_DEPLOY_CONTRACT_PATH}`]: 'Confirm Deploy Contract Transaction Page',
   [`${CONFIRM_TRANSACTION_ROUTE}/:id${CONFIRM_APPROVE_PATH}`]: 'Confirm Approve Transaction Page',
   [`${CONFIRM_TRANSACTION_ROUTE}/:id${CONFIRM_TRANSFER_FROM_PATH}`]: 'Confirm Transfer From Transaction Page',
-  [`${CONFIRM_TRANSACTION_ROUTE}/:id${CONFIRM_SAFE_TRANSFER_FROM_PATH}`]: 'Confirm Safe Transfer From Transaction Page',
   [`${CONFIRM_TRANSACTION_ROUTE}/:id${SIGNATURE_REQUEST_PATH}`]: 'Signature Request Page',
   [`${CONFIRM_TRANSACTION_ROUTE}/:id${DECRYPT_MESSAGE_REQUEST_PATH}`]: 'Decrypt Message Request Page',
   [`${CONFIRM_TRANSACTION_ROUTE}/:id${ENCRYPTION_PUBLIC_KEY_REQUEST_PATH}`]: 'Encryption Public Key Request Page',
@@ -202,7 +202,6 @@ export {
   CONFIRM_DEPLOY_CONTRACT_PATH,
   CONFIRM_APPROVE_PATH,
   CONFIRM_TRANSFER_FROM_PATH,
-  CONFIRM_SAFE_TRANSFER_FROM_PATH,
   CONFIRM_TOKEN_METHOD_PATH,
   SIGNATURE_REQUEST_PATH,
   DECRYPT_MESSAGE_REQUEST_PATH,
@@ -212,6 +211,7 @@ export {
   ADVANCED_ROUTE,
   EXPERIMENTAL_ROUTE,
   SECURITY_ROUTE,
+  EXPORT_PRIVATE_KEY_ROUTE,
   GENERAL_ROUTE,
   ABOUT_US_ROUTE,
   SNAPS_LIST_ROUTE,

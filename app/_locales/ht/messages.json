@@ -39,19 +39,19 @@
     "message": "Kantite lajan"
   },
   "appDescription": {
-    "message": "Ekstansyon Navigatè Ethereum",
+    "message": "Yon bous Crypto nan navigatè ou a",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Carbon Wallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Carbon Wallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Carbon Wallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -478,6 +478,9 @@
   },
   "restore": {
     "message": "Retabli"
+  },
+  "restoreAccountWithSeed": {
+    "message": "Retabli kont ou avèk yo Seed Fraz"
   },
   "revealSeedWords": {
     "message": "Revele Seed Mo Yo"

@@ -16,7 +16,7 @@ import SiteIcon from '../../ui/site-icon';
 export default class SignatureRequestOriginal extends Component {
   static contextTypes = {
     t: PropTypes.func.isRequired,
-    trackEvent: PropTypes.func.isRequired,
+    metricsEvent: PropTypes.func.isRequired,
   };
 
   static propTypes = {
@@ -262,7 +262,7 @@ export default class SignatureRequestOriginal extends Component {
       txData: { type },
       hardwareWalletRequiresConnection,
     } = this.props;
-    const { trackEvent, t } = this.context;
+    const { metricsEvent, t } = this.context;
 
     return (
       <div className="request-signature__footer">
@@ -272,12 +272,13 @@ export default class SignatureRequestOriginal extends Component {
           className="request-signature__footer__cancel-button"
           onClick={async (event) => {
             await cancel(event);
-            trackEvent({
-              category: 'Transactions',
-              event: 'Cancel',
-              properties: {
+            metricsEvent({
+              eventOpts: {
+                category: 'Transactions',
                 action: 'Sign Request',
-                legacy_event: true,
+                name: 'Cancel',
+              },
+              customVariables: {
                 type,
               },
             });
@@ -295,12 +296,13 @@ export default class SignatureRequestOriginal extends Component {
           disabled={hardwareWalletRequiresConnection}
           onClick={async (event) => {
             await sign(event);
-            trackEvent({
-              category: 'Transactions',
-              event: 'Confirm',
-              properties: {
+            metricsEvent({
+              eventOpts: {
+                category: 'Transactions',
                 action: 'Sign Request',
-                legacy_event: true,
+                name: 'Confirm',
+              },
+              customVariables: {
                 type,
               },
             });

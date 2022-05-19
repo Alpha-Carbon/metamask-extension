@@ -21,10 +21,7 @@ export default class Breadcrumbs extends PureComponent {
               key={i}
               className="breadcrumb"
               style={{
-                backgroundColor:
-                  i === currentIndex
-                    ? 'var(--color-background-alternative)'
-                    : 'var(--color-background-default)',
+                backgroundColor: i === currentIndex ? '#D8D8D8' : '#FFFFFF',
               }}
             />
           ))}

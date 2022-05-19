@@ -1,6 +1,37 @@
 .asset-list-item {
+  height: 60px;
+  overflow: hidden;
+  margin-top: 0 !important;
+  padding: 0px 8px !important;
+  position: relative;
+  background-color: var(--background) !important;
+  box-shadow: none !important;
+  border-top: none;
+  & .list-item__top-wrap{
+    justify-content: space-between;
+    & .list-item__icon{
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.5;
+      height: 44px;
+      width: 66px;
+      overflow: hidden;
+      &>svg,&>div,&>img{
+        position: absolute;
+        top: 50%;
+        left: 0px;
+        transform: translateY(-50%);
+      }
+    }
+  }
   & .list-item__heading {
     max-width: 100%;
+  }
+
+  & .list-item__right-content{
+    transform: translateY(10px);
   }
 
   &__token-button {
@@ -8,29 +39,38 @@
     min-width: 0;
     min-height: 0;
     text-align: start;
-    color: var(--color-text-default);
 
     & h2 {
       display: flex;
     }
 
     & span {
-      padding-right: 5px;
+      @include H6;
+      @include roundeBold;
+
+      margin-left: 8px;
     }
   }
 
+  &__token-balance{
+    color: var(--gray-1);
+  }
+
   &__token-value {
+    @include roundeNormal;
+    @include H3;
+
+    color: var(--gray-1);
     flex: 1;
     padding-right: 5px;
     white-space: nowrap;
     text-overflow: ellipsis;
     max-width: 100%;
-    display: block;
     overflow: hidden;
   }
 
   &__chevron-right {
-    color: var(--color-icon-default);
+    color: var(--Grey-500);
   }
 
   .list-item__right-content {

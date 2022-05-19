@@ -10,12 +10,12 @@ export default class MetaMetricsOptInModal extends Component {
   };
 
   static contextTypes = {
-    trackEvent: PropTypes.func,
+    metricsEvent: PropTypes.func,
     t: PropTypes.func,
   };
 
   render() {
-    const { trackEvent, t } = this.context;
+    const { metricsEvent, t } = this.context;
     const { setParticipateInMetaMetrics, hideModal } = this.props;
 
     return (
@@ -108,17 +108,16 @@ export default class MetaMetricsOptInModal extends Component {
             <PageContainerFooter
               onCancel={() => {
                 setParticipateInMetaMetrics(false).then(() => {
-                  trackEvent(
+                  metricsEvent(
                     {
-                      category: 'Onboarding',
-                      event: 'Metrics Opt Out',
-                      properties: {
+                      eventOpts: {
+                        category: 'Onboarding',
                         action: 'Metrics Option',
-                        legacy_event: true,
+                        name: 'Metrics Opt Out',
                       },
+                      isOptIn: true,
                     },
                     {
-                      isOptIn: true,
                       excludeMetaMetricsId: true,
                     },
                   );
@@ -129,19 +128,14 @@ export default class MetaMetricsOptInModal extends Component {
               hideCancel={false}
               onSubmit={() => {
                 setParticipateInMetaMetrics(true).then(() => {
-                  trackEvent(
-                    {
+                  metricsEvent({
+                    eventOpts: {
                       category: 'Onboarding',
-                      event: 'Metrics Opt In',
-                      properties: {
-                        action: 'Metrics Option',
-                        legacy_event: true,
-                      },
+                      action: 'Metrics Option',
+                      name: 'Metrics Opt In',
                     },
-                    {
-                      isOptIn: true,
-                    },
-                  );
+                    isOptIn: true,
+                  });
                   hideModal();
                 });
               }}

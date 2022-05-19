@@ -44,6 +44,12 @@
   "addSuggestedTokens": {
     "message": "הוסף/י אסימונים מוצעים"
   },
+  "addToAddressBook": {
+    "message": "הוסף לפנקס הכתובות"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "למשל ג'ון ד'"
+  },
   "addToken": {
     "message": "הוסף/י אסימון"
   },
@@ -57,19 +63,19 @@
     "message": "כמות"
   },
   "appDescription": {
-    "message": "ארנק אתריום בדפדפן שלך",
+    "message": "ארנק קריפטו בדפדפן שלך",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Carbon Wallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Carbon Wallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Carbon Wallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -333,6 +339,9 @@
   },
   "ensRegistrationError": {
     "message": "שגיאה ברישום שם ENS"
+  },
+  "enterAnAlias": {
+    "message": "יש להזין כינוי"
   },
   "enterPassword": {
     "message": "יש להזין ססמה"
@@ -753,6 +762,9 @@
   "restore": {
     "message": "שחזר"
   },
+  "restoreAccountWithSeed": {
+    "message": "שחזר את חשבונך באמצעות צירוף הגרעין"
+  },
   "revealSeedWords": {
     "message": "גלה מילות Seed"
   },
@@ -800,6 +812,9 @@
   },
   "securityAndPrivacy": {
     "message": "אבטחה ופרטיות"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "הפרד/י בין המילים ברווח אחד"
   },
   "seedPhraseReq": {
     "message": "צירופי גרעין מורכבים מ-12 מילים"

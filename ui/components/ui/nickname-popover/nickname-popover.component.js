@@ -1,5 +1,4 @@
 import React, { useCallback, useContext } from 'react';
-import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { I18nContext } from '../../../contexts/i18n';
 import Tooltip from '../tooltip';
@@ -9,7 +8,6 @@ import Identicon from '../identicon/identicon.component';
 import { shortenAddress } from '../../../helpers/utils/util';
 import CopyIcon from '../icon/copy-icon.component';
 import { useCopyToClipboard } from '../../../hooks/useCopyToClipboard';
-import { getUseTokenDetection, getTokenList } from '../../../selectors';
 
 const NicknamePopover = ({
   address,
@@ -25,8 +23,6 @@ const NicknamePopover = ({
   }, [onAdd]);
 
   const [copied, handleCopy] = useCopyToClipboard();
-  const useTokenDetection = useSelector(getUseTokenDetection);
-  const tokenList = useSelector(getTokenList);
 
   return (
     <div className="nickname-popover">
@@ -35,8 +31,6 @@ const NicknamePopover = ({
           address={address}
           diameter={36}
           className="nickname-popover__identicon"
-          useTokenDetection={useTokenDetection}
-          tokenList={tokenList}
         />
         <div className="nickname-popover__address">
           {nickname || shortenAddress(address)}
@@ -57,7 +51,7 @@ const NicknamePopover = ({
               }}
               title=""
             >
-              <CopyIcon size={11} color="var(--color-icon-default)" />
+              <CopyIcon size={13} color="#525252" />
             </button>
           </Tooltip>
         </div>
@@ -79,7 +73,7 @@ const NicknamePopover = ({
           </Button>
         </div>
         <Button
-          type="primary"
+          type="primaryGradient"
           className="nickname-popover__footer-button"
           onClick={onAddClick}
         >

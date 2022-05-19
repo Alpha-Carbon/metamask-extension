@@ -44,6 +44,12 @@
   "addSuggestedTokens": {
     "message": "اضافه رمزیاب های پیشنهاد شده"
   },
+  "addToAddressBook": {
+    "message": "به کتاب آدرسها اضافه کنید"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "مثلًا. John D."
+  },
   "addToken": {
     "message": "یک رمز یاب اضافه کنید"
   },
@@ -57,19 +63,19 @@
     "message": "مبلغ"
   },
   "appDescription": {
-    "message": "یک کیف ایتریوم در براوزر شما",
+    "message": "یک کیف پول رمزنگاری شده در مرورگر شما",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Carbon Wallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Carbon Wallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Carbon Wallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -333,6 +339,9 @@
   },
   "ensRegistrationError": {
     "message": "خطا در ثبت نام ENS"
+  },
+  "enterAnAlias": {
+    "message": "یک نام مستعار را وارد کنید"
   },
   "enterPassword": {
     "message": "رمز عبور را وارد کنید"
@@ -756,6 +765,9 @@
   "restore": {
     "message": "بازیابی"
   },
+  "restoreAccountWithSeed": {
+    "message": "حساب تان را با عبارت بازیاب، بازیابی کنید"
+  },
   "revealSeedWords": {
     "message": "کلمات بازیاب را آشکار کنید"
   },
@@ -806,6 +818,9 @@
   },
   "securityAndPrivacy": {
     "message": "امنیت و حریم خصوصی"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "هر کلمه را با یک فاصله واحد جدا سازید"
   },
   "seedPhraseReq": {
     "message": "عبارات بازیاب 12 کلمه اند"

@@ -1,6 +1,15 @@
 .transaction-list-item {
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--gray-4);
+  cursor: pointer;
+  // margin: 0 25px;
+
+  &:hover {
+    background-color: var(--Grey-000);
+  }
+
   &__primary-currency {
-    color: var(--color-text-default);
+    color: var(--Black-100);
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -9,27 +18,30 @@
     @include H7;
 
     margin-top: 4px;
-    color: var(--color-text-alternative);
+    color: var(--Grey-500);
   }
 
   & &--unconfirmed {
-    color: var(--color-text-alternative);
+    color: var(--Grey-500);
   }
 
   &--unconfirmed &__primary-currency {
-    color: var(--color-text-alternative);
+    color: var(--Grey-500);
   }
 
   &__pending-actions {
-    padding-top: 12px;
+    padding-top: 8px;
     display: flex;
+    margin-left: 36px;
 
     .button {
       @include H8;
 
+      line-height: 130%;
       padding: 8px;
-      width: 75px;
+      width: 80px;
       white-space: nowrap;
+      height: 30px;
     }
 
     & > .button:first-child {
@@ -49,8 +61,8 @@
   }
 
   .transaction-status::after {
-    content: "·";
-    margin: 0 4px;
+    // content: "·";
+    // margin: 0 4px;
   }
 
   &__origin,
@@ -63,5 +75,61 @@
   &__origin {
     /*rtl:ignore*/
     direction: rtl;
+  }
+
+  &__title {
+    color: var(--gray-3);
+
+    @include H6;
+    letter-spacing: 1px;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+
+    & > svg {
+      margin-right: 15px;
+    }
+
+    &-status {
+      &-title {
+        &-send {
+          color: var(--gray-1);
+        }
+
+        &-receive {
+          color: var(--gray-1);
+        }
+      }
+    }
+  }
+
+  &__balance {
+    @include H4;
+
+    flex: 1;
+    text-align: right;
+    padding-top: 20px;
+
+    &>span:nth-child(1){
+      color: var(--gray-1);
+      @include roundeBold;
+    }
+
+    &-send {
+      color: var(--gray-1);
+      &>span:nth-child(1){
+        @include roundeBold;
+      }
+    }
+
+    &-receive {
+      color: var(--gray-1);
+    }
+
+    @media screen and (max-width: $break-small) {
+      @include H5;
+    }
   }
 }

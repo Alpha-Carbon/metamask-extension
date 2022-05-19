@@ -1,7 +1,7 @@
 .new-account-modal {
   display: flex;
   flex-flow: column nowrap;
-  background-color: var(--color-background-default);
+  background-color: var(--white);
   border-radius: 10px;
   box-shadow: 0 5px 16px rgba($black, 0.25);
 
@@ -9,7 +9,7 @@
     @extend %col-nowrap;
 
     padding: 1.5rem;
-    border-bottom: 1px solid var(--color-border-muted);
+    border-bottom: 1px solid var(--Grey-100);
 
     &__header {
       @include H4;
@@ -23,29 +23,28 @@
     &__header-close {
       @include H4;
 
-      color: var(--color-icon-default);
+      color: #24292e;
       background: none;
     }
   }
 
   &__input-label {
-    color: var(--color-text-alternative);
+    color: var(--Grey-600);
     margin-top: 1.25rem;
   }
 
   &__input {
     @include H4;
 
-    background: var(--color-background-default);
-    border: 1px solid var(--color-border-muted);
-    color: var(--color-text-default);
+    background: var(--white);
+    border: 1px solid var(--Grey-100);
     box-sizing: border-box;
     border-radius: 8px;
     padding: 0.625rem 0.75rem;
     margin-top: 0.75rem;
 
     &::placeholder {
-      color: var(--color-text-muted);
+      color: var(--Grey-300);
     }
   }
 

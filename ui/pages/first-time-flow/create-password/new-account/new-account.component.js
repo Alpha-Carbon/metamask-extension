@@ -2,14 +2,16 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../../../components/ui/button';
 import {
-  INITIALIZE_SEED_PHRASE_INTRO_ROUTE,
+  // INITIALIZE_SEED_PHRASE_INTRO_ROUTE,
   INITIALIZE_SELECT_ACTION_ROUTE,
+  INITIALIZE_SEED_PHRASE_ROUTE,
 } from '../../../../helpers/constants/routes';
 import TextField from '../../../../components/ui/text-field';
+import BackIcon from '../../../../components/ui/icon/back-icon.component';
 
 export default class NewAccount extends PureComponent {
   static contextTypes = {
-    trackEvent: PropTypes.func,
+    metricsEvent: PropTypes.func,
     t: PropTypes.func,
   };
 
@@ -20,11 +22,19 @@ export default class NewAccount extends PureComponent {
 
   state = {
     password: '',
+    passwordShow: false,
+    passwordHide: 'password',
     confirmPassword: '',
+    confirmPasswordShow: false,
+    confirmPasswordHide: 'password',
     passwordError: '',
     confirmPasswordError: '',
     termsChecked: false,
   };
+
+  createPasswordRef = React.createRef();
+
+  confirmPasswordRef = React.createRef();
 
   isValid() {
     const {
@@ -100,28 +110,27 @@ export default class NewAccount extends PureComponent {
     try {
       await onSubmit(password);
 
-      this.context.trackEvent({
-        category: 'Onboarding',
-        event: 'Submit Password',
-        properties: {
+      this.context.metricsEvent({
+        eventOpts: {
+          category: 'Onboarding',
           action: 'Create Password',
-          legacy_event: true,
+          name: 'Submit Password',
         },
       });
 
-      history.push(INITIALIZE_SEED_PHRASE_INTRO_ROUTE);
+      // history.push(INITIALIZE_SEED_PHRASE_INTRO_ROUTE);
+      history.push(INITIALIZE_SEED_PHRASE_ROUTE);
     } catch (error) {
       this.setState({ passwordError: error.message });
     }
   };
 
   toggleTermsCheck = () => {
-    this.context.trackEvent({
-      category: 'Onboarding',
-      event: 'Check ToS',
-      properties: {
+    this.context.metricsEvent({
+      eventOpts: {
+        category: 'Onboarding',
         action: 'Create Password',
-        legacy_event: true,
+        name: 'Check ToS',
       },
     });
 
@@ -140,7 +149,11 @@ export default class NewAccount extends PureComponent {
     const { t } = this.context;
     const {
       password,
+      passwordShow,
+      passwordHide,
       confirmPassword,
+      confirmPasswordShow,
+      confirmPasswordHide,
       passwordError,
       confirmPasswordError,
       termsChecked,
@@ -152,52 +165,94 @@ export default class NewAccount extends PureComponent {
           <a
             onClick={(e) => {
               e.preventDefault();
-              this.context.trackEvent({
-                category: 'Onboarding',
-                event: 'Go Back from Onboarding Create',
-                properties: {
+              this.context.metricsEvent({
+                eventOpts: {
+                  category: 'Onboarding',
                   action: 'Create Password',
-                  legacy_event: true,
+                  name: 'Go Back from Onboarding Create',
                 },
               });
               this.props.history.push(INITIALIZE_SELECT_ACTION_ROUTE);
             }}
             href="#"
           >
-            {`< ${t('back')}`}
+            <BackIcon className="mr-2" />
+            {t('back')}
           </a>
         </div>
         <div className="first-time-flow__header">{t('createPassword')}</div>
         <form className="first-time-flow__form" onSubmit={this.handleCreate}>
-          <TextField
-            id="create-password"
-            label={t('newPassword')}
-            type="password"
-            className="first-time-flow__input"
-            value={password}
-            onChange={(event) => this.handlePasswordChange(event.target.value)}
-            error={passwordError}
-            autoFocus
-            autoComplete="new-password"
-            margin="normal"
-            fullWidth
-            largeLabel
-          />
-          <TextField
-            id="confirm-password"
-            label={t('confirmPassword')}
-            type="password"
-            className="first-time-flow__input"
-            value={confirmPassword}
-            onChange={(event) =>
-              this.handleConfirmPasswordChange(event.target.value)
-            }
-            error={confirmPasswordError}
-            autoComplete="confirm-password"
-            margin="normal"
-            fullWidth
-            largeLabel
-          />
+          <div className="first-time-flow__input-wrap">
+            <TextField
+              inputRef={this.createPasswordRef}
+              id="create-password"
+              label={t('newPassword')}
+              type={passwordHide}
+              className="first-time-flow__input"
+              value={password}
+              onChange={(event) =>
+                this.handlePasswordChange(event.target.value)
+              }
+              error={passwordError}
+              autoFocus
+              autoComplete="new-password"
+              margin="normal"
+              fullWidth
+              largeLabel
+              placeholder={t('newPassword')}
+            />
+            <button
+              className="first-time-flow__show_btn"
+              onClick={(e) => {
+                e.preventDefault();
+                passwordShow
+                  ? this.setState({
+                      passwordHide: 'password',
+                    })
+                  : this.setState({
+                      passwordHide: 'text',
+                    });
+                this.setState({ passwordShow: !passwordShow });
+              }}
+            >
+              {passwordShow ? t('hide') : t('show')}
+            </button>
+          </div>
+          <div className="first-time-flow__input-wrap">
+            <TextField
+              id="confirm-password"
+              label={t('confirmPassword')}
+              type={confirmPasswordHide}
+              className="first-time-flow__input"
+              value={confirmPassword}
+              onChange={(event) =>
+                this.handleConfirmPasswordChange(event.target.value)
+              }
+              error={confirmPasswordError}
+              autoComplete="confirm-password"
+              margin="normal"
+              fullWidth
+              largeLabel
+              placeholder={t('confirmPassword')}
+            />
+            <button
+              className="first-time-flow__show_btn"
+              onClick={(e) => {
+                e.preventDefault();
+                confirmPasswordShow
+                  ? this.setState({
+                      confirmPasswordHide: 'password',
+                    })
+                  : this.setState({
+                      confirmPasswordHide: 'text',
+                    });
+                this.setState({ confirmPasswordShow: !confirmPasswordShow });
+              }}
+            >
+              {confirmPasswordShow ? t('hide') : t('show')}
+            </button>
+          </div>
+
           <div
             className="first-time-flow__checkbox-container"
             onClick={this.toggleTermsCheck}
@@ -210,7 +265,7 @@ export default class NewAccount extends PureComponent {
               aria-checked={termsChecked}
               aria-labelledby="ftf-chk1-label"
             >
-              {termsChecked ? <i className="fa fa-check fa-2x" /> : null}
+              {termsChecked ? <i className="fa fa-check fa-1x" /> : null}
             </div>
             <span
               id="ftf-chk1-label"
@@ -232,7 +287,7 @@ export default class NewAccount extends PureComponent {
             </span>
           </div>
           <Button
-            type="primary"
+            type="secondaryGradient"
             className="first-time-flow__button"
             disabled={!this.isValid() || !termsChecked}
             onClick={this.handleCreate}

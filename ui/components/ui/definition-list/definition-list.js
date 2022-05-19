@@ -53,7 +53,7 @@ export default function DefinitionList({
           </Typography>
           <Typography
             variant={TYPOGRAPHY.H6}
-            color={COLORS.TEXT_ALTERNATIVE}
+            color={COLORS.UI4}
             {...definitionTypography}
             boxProps={{
               marginTop: 0,

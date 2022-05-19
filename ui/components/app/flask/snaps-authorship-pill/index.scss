@@ -6,11 +6,11 @@
   &:hover,
   &:focus {
     .chip {
-      background-color: var(--color-background-alternative);
+      background-color: var(--ui-1);
     }
   }
 }
 
 .snaps-authorship-icon {
-  color: var(--color-icon-default);
+  color: var(--ui-4);
 }

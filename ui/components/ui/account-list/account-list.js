@@ -21,6 +21,7 @@ const AccountList = ({
 }) => {
   const t = useI18nContext();
   const selectedAccountScrollRef = useRef(null);
+
   useLayoutEffect(() => {
     selectedAccountScrollRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, []);
@@ -79,7 +80,7 @@ const AccountList = ({
       <div className="choose-account-list__wrapper">
         <div className="choose-account-list__list">
           {accounts.map((account, index) => {
-            const { address, addressLabel, balance } = account;
+            const { address, balance, label } = account;
             const isSelectedAccount = selectedAccounts.has(address);
             return (
               <div
@@ -96,13 +97,13 @@ const AccountList = ({
                   <Identicon diameter={34} address={address} />
                   <div className="choose-account-list__account__info">
                     <div className="choose-account-list__account__label">
-                      {addressLabel}
+                      {label}
                     </div>
                     <UserPreferencedCurrencyDisplay
                       className="choose-account-list__account__balance"
                       type={PRIMARY}
                       value={balance}
-                      style={{ color: 'var(--color-text-alternative)' }}
+                      style={{ color: '#6A737D' }}
                       suffix={nativeCurrency}
                     />
                   </div>
@@ -127,6 +128,7 @@ const AccountList = ({
   return (
     <div className="choose-account-list">
       <Header />
+      <div className="choose-account-list-line"></div>
       <List />
     </div>
   );
@@ -142,6 +144,7 @@ AccountList.propTypes = {
       addressLabel: PropTypes.string,
       lastConnectedDate: PropTypes.string,
       balance: PropTypes.string,
+      label: PropTypes.string,
     }),
   ).isRequired,
   /**

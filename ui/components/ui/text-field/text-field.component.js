@@ -7,55 +7,52 @@ const inputLabelBase = {
   transform: 'none',
   transition: 'none',
   position: 'initial',
-  color: 'var(--color-text-default)',
+  color: '#5b5b5b',
 };
 
 const styles = {
   materialLabel: {
     '&$materialFocused': {
-      color: 'var(--color-text-alternative)',
+      color: '#BABABA',
     },
     '&$materialError': {
-      color: 'var(--color-text-alternative)',
+      color: '#BABABA',
     },
     fontWeight: '400',
-    color: 'var(--color-text-alternative)',
+    color: '#BABABA',
   },
   materialFocused: {},
   materialUnderline: {
-    '&:before': {
-      borderBottom: '1px solid var(--color-text-default) !important', // Visible bottom border
-    },
     '&:after': {
-      borderBottom: `2px solid var(--color-primary-default)`, // Animated bottom border
+      borderBottom: `2px solid rgb(3, 125, 214)`,
     },
   },
   materialError: {},
   materialWhitePaddedRoot: {
-    color: 'var(--color-text-alternative)',
+    color: '#BABABA',
   },
   materialWhitePaddedInput: {
     padding: '8px',
 
     '&::placeholder': {
-      color: 'var(--color-text-alternative)',
+      color: '#BABABA',
     },
   },
   materialWhitePaddedFocused: {
-    color: 'var(--color-background-default)',
+    color: '#fff',
   },
   materialWhitePaddedUnderline: {
     '&:after': {
-      borderBottom: '2px solid var(--color-background-default)', // @TODO: Replace with border-muted ?
+      borderBottom: '2px solid #fff',
     },
   },
   // Non-material styles
   formLabel: {
     '&$formLabelFocused': {
-      color: 'var(--color-text-alternative)',
+      color: '#5b5b5b',
     },
     '&$materialError': {
-      color: 'var(--color-text-alternative)',
+      color: '#5b5b5b',
     },
   },
   formLabelFocused: {},
@@ -64,16 +61,15 @@ const styles = {
     'label + &': {
       marginTop: '9px',
     },
-    backgroundColor: 'var(--color-background-default)',
-    border: '1px solid var(--color-border-default)',
-    color: 'var(--color-text-default)',
-    height: '48px',
-    borderRadius: '6px',
+    backgroundColor: 'white',
+    border: '1px solid #222222',
+    height: '40px',
+    borderRadius: '4px',
     padding: '0 16px',
     display: 'flex',
     alignItems: 'center',
     '&$inputFocused': {
-      border: '1px solid var(--color-primary-default)',
+      border: '1px solid #227BFF',
     },
   },
   largeInputLabel: {
@@ -93,7 +89,6 @@ const getMaterialThemeInputProps = ({
   dir,
   classes: { materialLabel, materialFocused, materialError, materialUnderline },
   startAdornment,
-  endAdornment,
   min,
   max,
   autoComplete,
@@ -107,7 +102,6 @@ const getMaterialThemeInputProps = ({
   },
   InputProps: {
     startAdornment,
-    endAdornment,
     classes: {
       underline: materialUnderline,
     },
@@ -129,14 +123,12 @@ const getMaterialWhitePaddedThemeInputProps = ({
     materialWhitePaddedUnderline,
   },
   startAdornment,
-  endAdornment,
   min,
   max,
   autoComplete,
 }) => ({
   InputProps: {
     startAdornment,
-    endAdornment,
     classes: {
       root: materialWhitePaddedRoot,
       focused: materialWhitePaddedFocused,
@@ -166,7 +158,6 @@ const getBorderedThemeInputProps = ({
   },
   largeLabel,
   startAdornment,
-  endAdornment,
   min,
   max,
   autoComplete,
@@ -182,7 +173,6 @@ const getBorderedThemeInputProps = ({
   },
   InputProps: {
     startAdornment,
-    endAdornment,
     disableUnderline: true,
     classes: {
       root: inputRoot,
@@ -205,12 +195,10 @@ const themeToInputProps = {
 };
 
 const TextField = ({
-  'data-testid': dataTestId,
   error,
   classes,
   theme,
   startAdornment,
-  endAdornment,
   largeLabel,
   dir,
   min,
@@ -222,7 +210,6 @@ const TextField = ({
   const inputProps = themeToInputProps[theme]({
     classes,
     startAdornment,
-    endAdornment,
     largeLabel,
     dir,
     min,
@@ -230,7 +217,7 @@ const TextField = ({
     autoComplete,
   });
 
-  if (onPaste || dataTestId) {
+  if (onPaste) {
     if (!inputProps.InputProps) {
       inputProps.InputProps = {};
     }
@@ -238,7 +225,6 @@ const TextField = ({
       inputProps.InputProps.inputProps = {};
     }
     inputProps.InputProps.inputProps.onPaste = onPaste;
-    inputProps.InputProps.inputProps['data-testid'] = dataTestId;
   }
 
   return (
@@ -259,10 +245,6 @@ TextField.defaultProps = {
 
 TextField.propTypes = {
   /**
-   * A test ID that gets set on the input element
-   */
-  'data-testid': PropTypes.string,
-  /**
    * Show error message
    */
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
@@ -276,7 +258,6 @@ TextField.propTypes = {
    */
   theme: PropTypes.oneOf(['bordered', 'material', 'material-white-padded']),
   startAdornment: PropTypes.element,
-  endAdornment: PropTypes.element,
   /**
    * Show large label
    */

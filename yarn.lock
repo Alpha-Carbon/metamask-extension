@@ -62,6 +62,24 @@
   resolved "https://registry.yarnpkg.com/@agoric/transform-module/-/transform-module-0.4.1.tgz#9fb152364faf372e1bda535cb4ef89717724f57c"
   integrity sha512-4TJJHXeXAWu1FCA7yXCAZmhBNoGTB/BEAe2pv+J2X8W/mJTr9b395OkDCSRMpzvmSshLfBx6wT0D7dqWIWEC1w==
 
+"@alphacarbon/inpage-provider@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@alphacarbon/inpage-provider/-/inpage-provider-0.1.0.tgz#62385a564dfa18f0bbf80b0edf0fe12f940e10cb"
+  integrity sha512-SJUPZ6DQwORaCpuiPTfgKwOO9O2acKnbngA0hhlHk2rbg5/asCvQTr2GjVLCCQRJ6MLHRQhPA4QojJL7y0amag==
+  dependencies:
+    "@metamask/object-multiplex" "^1.1.0"
+    "@metamask/safe-event-emitter" "^2.0.0"
+    "@types/chrome" "^0.0.136"
+    detect-browser "^5.2.0"
+    eth-rpc-errors "^4.0.2"
+    extension-port-stream "^2.0.1"
+    fast-deep-equal "^2.0.1"
+    is-stream "^2.0.0"
+    json-rpc-engine "^6.1.0"
+    json-rpc-middleware-stream "^3.0.0"
+    pump "^3.0.0"
+    webextension-polyfill-ts "^0.25.0"
+
 "@apocentre/alias-sampling@^0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@apocentre/alias-sampling/-/alias-sampling-0.5.3.tgz#897ff181b48ad7b2bcb4ecf29400214888244f08"

@@ -1,10 +1,10 @@
 .numeric-input {
-  border: 1px solid var(--color-border-default);
+  border: 1px solid var(--ui-3);
   position: relative;
   border-radius: 6px;
 
   &--error {
-    border-color: var(--color-error-default);
+    border-color: var(--error-1);
   }
 
   input {
@@ -12,8 +12,6 @@
     border: 0;
     padding: 10px;
     border-radius: 6px;
-    background-color: var(--color-background-default);
-    color: var(--color-text-default);
 
     /* ensures the increment/decrement arrows always display */
     &::-webkit-inner-spin-button,

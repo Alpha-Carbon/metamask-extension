@@ -2,18 +2,22 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { debounce } from 'lodash';
 import Fuse from 'fuse.js';
+import { getAccountLink } from '@metamask/etherscan-link';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import classnames from 'classnames';
-import { ENVIRONMENT_TYPE_POPUP } from '../../../../shared/constants/app';
+import {
+  ENVIRONMENT_TYPE_POPUP,
+  ENVIRONMENT_TYPE_FULLSCREEN,
+} from '../../../../shared/constants/app';
 import { getEnvironmentType } from '../../../../app/scripts/lib/util';
 import Identicon from '../../ui/identicon';
 import SiteIcon from '../../ui/site-icon';
 import UserPreferencedCurrencyDisplay from '../user-preferenced-currency-display';
 import {
   PRIMARY,
-  SUPPORT_LINK,
+  // SUPPORT_LINK,
   ///: BEGIN:ONLY_INCLUDE_IN(beta,flask)
-  SUPPORT_REQUEST_LINK,
+  // SUPPORT_REQUEST_LINK,
   ///: END:ONLY_INCLUDE_IN
 } from '../../../helpers/constants/common';
 import {
@@ -22,17 +26,14 @@ import {
   IMPORT_ACCOUNT_ROUTE,
   CONNECT_HARDWARE_ROUTE,
   DEFAULT_ROUTE,
+  CONNECTED_ROUTE,
 } from '../../../helpers/constants/routes';
 import TextField from '../../ui/text-field';
 import SearchIcon from '../../ui/search-icon';
-import IconCheck from '../../ui/icon/icon-check';
-import IconSpeechBubbles from '../../ui/icon/icon-speech-bubbles';
-import IconConnect from '../../ui/icon/icon-connect';
-import IconCog from '../../ui/icon/icon-cog';
-import IconPlus from '../../ui/icon/icon-plus';
-import IconImport from '../../ui/icon/icon-import';
-
+// import ExpandIcon from '../../ui/icon/expend-icon.component';
+import EastIcon from '../../ui/icon/east-icon.component';
 import Button from '../../ui/button';
+import { getURLHostName } from '../../../helpers/utils/util';
 import KeyRingLabel from './keyring-label';
 
 export function AccountMenuItem(props) {
@@ -68,6 +69,7 @@ AccountMenuItem.propTypes = {
 export default class AccountMenu extends Component {
   static contextTypes = {
     t: PropTypes.func,
+    metricsEvent: PropTypes.func,
     trackEvent: PropTypes.func,
   };
 
@@ -83,6 +85,10 @@ export default class AccountMenu extends Component {
     toggleAccountMenu: PropTypes.func,
     addressConnectedSubjectMap: PropTypes.object,
     originOfCurrentTab: PropTypes.string,
+    rpcPrefs: PropTypes.object,
+    chainId: PropTypes.string,
+    selectedIdentity: PropTypes.object,
+    provider: PropTypes.object,
   };
 
   accountsRef;
@@ -132,7 +138,7 @@ export default class AccountMenu extends Component {
           marginLeft: '8px',
         }}
       >
-        <SearchIcon color="currentColor" />
+        <SearchIcon />
       </InputAdornment>
     );
 
@@ -191,17 +197,15 @@ export default class AccountMenu extends Component {
       const addressSubjects =
         addressConnectedSubjectMap[identity.address] || {};
       const iconAndNameForOpenSubject = addressSubjects[originOfCurrentTab];
-
       return (
         <div
           className="account-menu__account account-menu__item--clickable"
           onClick={() => {
-            this.context.trackEvent({
-              category: 'Navigation',
-              event: 'Switched Account',
-              properties: {
+            this.context.metricsEvent({
+              eventOpts: {
+                category: 'Navigation',
                 action: 'Main Menu',
-                legacy_event: true,
+                name: 'Switched Account',
               },
             });
             showAccountDetail(identity.address);
@@ -210,10 +214,12 @@ export default class AccountMenu extends Component {
         >
           <div className="account-menu__check-mark">
             {isSelected ? (
-              <IconCheck color="var(--color-success-default)" />
+              <div className="account-menu__check-mark-icon" />
             ) : null}
           </div>
           <Identicon address={identity.address} diameter={24} />
+          {/* <img className='account-menu__img' src="./images/alphaCarbon/avatar.svg" alt="" /> */}
+
           <div className="account-menu__account-info">
             <div className="account-menu__name">{identity.name || ''}</div>
             <UserPreferencedCurrencyDisplay
@@ -279,30 +285,40 @@ export default class AccountMenu extends Component {
         className="account-menu__scroll-button"
         onClick={this.handleScrollDown}
       >
-        <i className="fa fa-arrow-down" title={this.context.t('scrollDown')} />
+        <img
+          src="./images/icons/down-arrow.svg"
+          width="28"
+          height="28"
+          alt={this.context.t('scrollDown')}
+        />
       </div>
     );
   }
 
   render() {
-    const { t, trackEvent } = this.context;
+    const { t, metricsEvent, trackEvent } = this.context;
     const {
       shouldShowAccountsSearch,
       isAccountMenuOpen,
       toggleAccountMenu,
       lockMetamask,
       history,
+      rpcPrefs,
+      selectedIdentity,
+      chainId,
+      provider,
     } = this.props;
+    const { address } = selectedIdentity || {};
 
     if (!isAccountMenuOpen) {
       return null;
     }
 
-    let supportText = t('support');
-    let supportLink = SUPPORT_LINK;
+    // let supportText = t('support');
+    // let supportLink = SUPPORT_LINK;
     ///: BEGIN:ONLY_INCLUDE_IN(beta,flask)
-    supportText = t('needHelpSubmitTicket');
-    supportLink = SUPPORT_REQUEST_LINK;
+    // supportText = t('needHelpSubmitTicket');
+    // supportLink = SUPPORT_REQUEST_LINK;
     ///: END:ONLY_INCLUDE_IN
 
     return (
@@ -310,16 +326,14 @@ export default class AccountMenu extends Component {
         <div className="account-menu__close-area" onClick={toggleAccountMenu} />
         <AccountMenuItem className="account-menu__header">
           {t('myAccounts')}
-          <Button
-            className="account-menu__lock-button"
-            type="secondary"
+          <button
+            className="account-menu__back-button"
             onClick={() => {
-              lockMetamask();
-              history.push(DEFAULT_ROUTE);
+              toggleAccountMenu();
             }}
           >
-            {t('lock')}
-          </Button>
+            <EastIcon color="#FFFFFF" opacity="1" />
+          </button>
         </AccountMenuItem>
         <div className="account-menu__divider" />
         <div className="account-menu__accounts-container">
@@ -339,36 +353,41 @@ export default class AccountMenu extends Component {
         <AccountMenuItem
           onClick={() => {
             toggleAccountMenu();
-            trackEvent({
-              category: 'Navigation',
-              event: 'Clicked Create Account',
-              properties: {
+            metricsEvent({
+              eventOpts: {
+                category: 'Navigation',
                 action: 'Main Menu',
-                legacy_event: true,
+                name: 'Clicked Create Account',
               },
             });
             history.push(NEW_ACCOUNT_ROUTE);
           }}
-          icon={<IconPlus color="var(--color-icon-default)" />}
+          icon={
+            <img
+              className="account-menu__item-icon"
+              src="images/alphaCarbon/add.svg"
+              alt={t('createAccount')}
+            />
+          }
           text={t('createAccount')}
         />
         <AccountMenuItem
           onClick={() => {
             toggleAccountMenu();
-            trackEvent({
-              category: 'Navigation',
-              event: 'Clicked Import Account',
-              properties: {
+            metricsEvent({
+              eventOpts: {
+                category: 'Navigation',
                 action: 'Main Menu',
-                legacy_event: true,
+                name: 'Clicked Import Account',
               },
             });
             history.push(IMPORT_ACCOUNT_ROUTE);
           }}
           icon={
-            <IconImport
-              color="var(--color-icon-default)"
-              ariaLabel={t('importAccount')}
+            <img
+              className="account-menu__item-icon"
+              src="images/alphaCarbon/exit_to_app.svg"
+              alt={t('importAccount')}
             />
           }
           text={t('importAccount')}
@@ -376,12 +395,11 @@ export default class AccountMenu extends Component {
         <AccountMenuItem
           onClick={() => {
             toggleAccountMenu();
-            trackEvent({
-              category: 'Navigation',
-              event: 'Clicked Connect Hardware',
-              properties: {
+            metricsEvent({
+              eventOpts: {
+                category: 'Navigation',
                 action: 'Main Menu',
-                legacy_event: true,
+                name: 'Clicked Connect Hardware',
               },
             });
             if (getEnvironmentType() === ENVIRONMENT_TYPE_POPUP) {
@@ -391,48 +409,117 @@ export default class AccountMenu extends Component {
             }
           }}
           icon={
-            <IconConnect
-              color="var(--color-icon-default)"
-              ariaLabel={t('connectHardwareWallet')}
+            <img
+              className="account-menu__item-icon"
+              src="images/alphaCarbon/usb.svg"
+              alt={t('connectHardwareWallet')}
             />
           }
           text={t('connectHardwareWallet')}
         />
-        <div className="account-menu__divider" />
         <AccountMenuItem
+          onClick={() => {
+            const accountLink = getAccountLink(address, chainId, rpcPrefs);
+
+            trackEvent({
+              category: 'Navigation',
+              event: 'Clicked Block Explorer Link',
+              properties: {
+                link_type: 'Account Tracker',
+                action: 'Account Details Modal',
+                block_explorer_domain: getURLHostName(accountLink),
+              },
+            });
+            global.platform.openTab({
+              url: accountLink,
+            });
+            toggleAccountMenu();
+          }}
+          icon={
+            <img
+              className="account-menu__item-icon"
+              src="images/alphaCarbon/remove_red_eye.svg"
+              alt={t('etherscanViewOn')}
+            />
+          }
+          text={
+            rpcPrefs.blockExplorerUrl
+              ? t('blockExplorerView', [
+                // getURLHostName(rpcPrefs.blockExplorerUrl),
+                provider.nickname,
+              ])
+              : t('etherscanViewOn')
+          }
+        />
+        <AccountMenuItem
+          onClick={() => {
+            history.push(CONNECTED_ROUTE);
+            toggleAccountMenu();
+          }}
+          icon={
+            <img
+              className="account-menu__item-icon"
+              src="images/alphaCarbon/account_tree.svg"
+              alt={t('connectedSites')}
+            />
+          }
+          text={t('connectedSites')}
+        />
+        {getEnvironmentType() === ENVIRONMENT_TYPE_FULLSCREEN ? null : (
+          <AccountMenuItem
+            onClick={() => {
+              global.platform.openExtensionInBrowser();
+            }}
+            icon={
+              <img
+                className="account-menu__item-icon"
+                src="images/alphaCarbon/open_in_full.svg"
+                alt={t('expandView')}
+              />
+            }
+            text={t('expandView')}
+          />
+        )}
+        {/* <div className="account-menu__divider" /> */}
+        {/* <AccountMenuItem
           onClick={() => {
             global.platform.openTab({ url: supportLink });
           }}
-          icon={
-            <IconSpeechBubbles
-              color="var(--color-icon-default)"
-              ariaLabel={supportText}
-            />
-          }
+        icon={<img src="images/support.svg" alt={supportText} />}
           text={supportText}
-        />
+        /> */}
 
         <AccountMenuItem
           onClick={() => {
             toggleAccountMenu();
             history.push(SETTINGS_ROUTE);
-            this.context.trackEvent({
-              category: 'Navigation',
-              event: 'Opened Settings',
-              properties: {
+            this.context.metricsEvent({
+              eventOpts: {
+                category: 'Navigation',
                 action: 'Main Menu',
-                legacy_event: true,
+                name: 'Opened Settings',
               },
             });
           }}
           icon={
-            <IconCog
-              color="var(--color-icon-default)"
-              ariaLabel={t('settings')}
+            <img
+              className="account-menu__item-icon"
+              src="images/alphaCarbon/settings.svg"
             />
           }
           text={t('settings')}
         />
+        <div className="account-menu__lock-wrap">
+          <Button
+            className="account-menu__lock-button"
+            onClick={() => {
+              lockMetamask();
+              history.push(DEFAULT_ROUTE);
+            }}
+          >
+            {t('lock')}
+          </Button>
+        </div>
       </div>
     );
   }

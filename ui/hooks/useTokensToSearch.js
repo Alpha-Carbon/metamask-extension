@@ -19,7 +19,6 @@ import { isSwapsDefaultTokenSymbol } from '../../shared/modules/swaps.utils';
 import { toChecksumHexAddress } from '../../shared/modules/hexstring-utils';
 import { useEqualityCheck } from './useEqualityCheck';
 
-/** TODO: Remove during TOKEN_DETECTION_V2 feature flag clean up */
 const shuffledContractMap = shuffle(
   Object.entries(contractMap)
     .map(([address, tokenData]) => ({
@@ -39,6 +38,10 @@ export function getRenderableTokenData(
   useTokenDetection,
 ) {
   const { symbol, name, address, iconUrl, string, balance, decimals } = token;
+  // token from dynamic api list is fetched when useTokenDetection is true
+  // And since the token.address from allTokens is checksumaddress
+  // token Address have to be changed to lowercase when we are using dynamic list
+  const tokenAddress = useTokenDetection ? address?.toLowerCase() : address;
   const formattedFiat =
     getTokenFiatAmount(
       isSwapsDefaultTokenSymbol(symbol, chainId)
@@ -61,21 +64,11 @@ export function getRenderableTokenData(
       symbol,
       false,
     ) || '';
-  let tokenAddress;
-  let tokenIconUrl;
-  if (process.env.TOKEN_DETECTION_V2) {
-    tokenAddress = address?.toLowerCase();
-    tokenIconUrl = tokenList[tokenAddress]?.iconUrl;
-  } else {
-    // token from dynamic api list is fetched when useTokenDetection is true
-    // And since the token.address from allTokens is checksumaddress
-    // token Address have to be changed to lowercase when we are using dynamic list
-    tokenAddress = useTokenDetection ? address?.toLowerCase() : address;
-    tokenIconUrl = useTokenDetection
-      ? tokenList[tokenAddress]?.iconUrl
-      : `images/contract/${tokenList[tokenAddress].iconUrl}`;
-  }
-  const usedIconUrl = iconUrl || tokenIconUrl || token?.image;
+  const usedIconUrl =
+    iconUrl ||
+    (tokenList[tokenAddress] &&
+      `images/contract/${tokenList[tokenAddress].iconUrl}`) ||
+    token?.image;
   return {
     ...token,
     primaryLabel: symbol,
@@ -104,13 +97,10 @@ export function useTokensToSearch({
   const defaultSwapsToken = useSelector(getSwapsDefaultToken, shallowEqual);
   const tokenList = useSelector(getTokenList, isEqual);
   const useTokenDetection = useSelector(getUseTokenDetection);
-  let shuffledTokenList = shuffledTokensList;
-  if (!process.env.TOKEN_DETECTION_V2) {
-    // token from dynamic api list is fetched when useTokenDetection is true
-    shuffledTokenList = useTokenDetection
-      ? shuffledTokensList
-      : shuffledContractMap;
-  }
+  // token from dynamic api list is fetched when useTokenDetection is true
+  const shuffledTokenList = useTokenDetection
+    ? shuffledTokensList
+    : shuffledContractMap;
   const memoizedTopTokens = useEqualityCheck(topTokens);
   const memoizedUsersToken = useEqualityCheck(usersTokens);
 

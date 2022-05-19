@@ -35,7 +35,8 @@ import ActionableMessage from '../../ui/actionable-message/actionable-message';
 
 import { I18nContext } from '../../../contexts/i18n';
 import GasTiming from '../gas-timing';
-import { MetaMetricsContext } from '../../../contexts/metametrics';
+
+import { useMetricEvent } from '../../../hooks/useMetricEvent';
 
 export default function EditGasDisplay({
   mode = EDIT_GAS_MODES.MODIFY_IN_PLACE,
@@ -132,7 +133,14 @@ export default function EditGasDisplay({
     errorKey = 'gasEstimatesUnavailableWarning';
   }
 
-  const trackEvent = useContext(MetaMetricsContext);
+  const clickedAdvancedOptionsMetricsEvent = useMetricEvent({
+    eventOpts: {
+      category: 'Transactions',
+      action: 'Edit Screen',
+      name: 'Clicked "Advanced Options"',
+    },
+  });
+
   return (
     <div className="edit-gas-display">
       <div className="edit-gas-display__content">
@@ -146,7 +154,7 @@ export default function EditGasDisplay({
             <ActionableMessage
               className="actionable-message--warning"
               message={warningMessage}
-              iconFillColor="var(--color-warning-default)"
+              iconFillColor="#f8c000"
               useIcon
             />
           </div>
@@ -156,7 +164,7 @@ export default function EditGasDisplay({
             <ActionableMessage
               className="actionable-message--warning"
               message={t('gasDisplayDappWarning', [transaction.origin])}
-              iconFillColor="var(--color-warning-default)"
+              iconFillColor="#f8c000"
               useIcon
             />
           </div>
@@ -166,7 +174,7 @@ export default function EditGasDisplay({
             <ActionableMessage
               className="actionable-message--warning"
               message={t('networkIsBusy')}
-              iconFillColor="var(--color-warning-default)"
+              iconFillColor="#f8c000"
               useIcon
             />
           </div>
@@ -174,7 +182,7 @@ export default function EditGasDisplay({
         {mode === EDIT_GAS_MODES.SPEED_UP && (
           <div className="edit-gas-display__top-tooltip">
             <Typography
-              color={COLORS.TEXT_DEFAULT}
+              color={COLORS.BLACK}
               variant={TYPOGRAPHY.H8}
               fontWeight={FONT_WEIGHT.BOLD}
             >
@@ -278,14 +286,7 @@ export default function EditGasDisplay({
               className="edit-gas-display__advanced-button"
               onClick={() => {
                 setShowAdvancedForm(!showAdvancedForm);
-                trackEvent({
-                  event: 'Clicked "Advanced Options"',
-                  category: 'Transactions',
-                  properties: {
-                    action: 'Edit Screen',
-                    legacy_event: true,
-                  },
-                });
+                clickedAdvancedOptionsMetricsEvent();
               }}
             >
               {t('advancedOptions')}{' '}

@@ -34,6 +34,7 @@ import Alerts from '../../components/app/alerts';
 import Asset from '../asset';
 import OnboardingAppHeader from '../onboarding-flow/onboarding-app-header/onboarding-app-header';
 import TokenDetailsPage from '../token-details';
+import { SEND_STAGES } from '../../ducks/send';
 
 import {
   IMPORT_TOKEN_ROUTE,
@@ -63,13 +64,13 @@ import {
 
 import {
   ENVIRONMENT_TYPE_NOTIFICATION,
-  ENVIRONMENT_TYPE_POPUP,
+  // ENVIRONMENT_TYPE_POPUP,
+  ENVIRONMENT_TYPE_FULLSCREEN,
 } from '../../../shared/constants/app';
 import { getEnvironmentType } from '../../../app/scripts/lib/util';
 import ConfirmationPage from '../confirmation';
 import OnboardingFlow from '../onboarding-flow/onboarding-flow';
 import QRHardwarePopover from '../../components/app/qr-hardware-popover';
-import { SEND_STAGES } from '../../ducks/send';
 
 export default class Routes extends Component {
   static propTypes = {
@@ -82,6 +83,8 @@ export default class Routes extends Component {
     isNetworkLoading: PropTypes.bool,
     alertOpen: PropTypes.bool,
     isUnlocked: PropTypes.bool,
+    isAccountMenuOpen: PropTypes.bool,
+    networkDropdownOpen: PropTypes.bool,
     setLastActiveTime: PropTypes.func,
     history: PropTypes.object,
     location: PropTypes.object,
@@ -95,7 +98,6 @@ export default class Routes extends Component {
     prepareToLeaveSwaps: PropTypes.func,
     browserEnvironmentOs: PropTypes.string,
     browserEnvironmentBrowser: PropTypes.string,
-    theme: PropTypes.string,
     sendStage: PropTypes.string,
   };
 
@@ -104,20 +106,12 @@ export default class Routes extends Component {
     metricsEvent: PropTypes.func,
   };
 
-  componentDidUpdate(prevProps) {
-    const { theme } = this.props;
-    if (theme !== prevProps.theme) {
-      document.documentElement.setAttribute('data-theme', theme);
-    }
-  }
-
   UNSAFE_componentWillMount() {
     const {
       currentCurrency,
       pageChanged,
       setCurrentCurrencyToUSD,
       history,
-      theme,
     } = this.props;
     if (!currentCurrency) {
       setCurrentCurrencyToUSD();
@@ -128,7 +122,6 @@ export default class Routes extends Component {
         pageChanged(locationObj.pathname);
       }
     });
-    document.documentElement.setAttribute('data-theme', theme);
   }
 
   renderRoutes() {
@@ -278,9 +271,9 @@ export default class Routes extends Component {
       return true;
     }
 
-    if (windowType === ENVIRONMENT_TYPE_POPUP && this.onConfirmPage()) {
-      return true;
-    }
+    // if (windowType === ENVIRONMENT_TYPE_POPUP && this.onConfirmPage()) {
+    //   return true;
+    // }
 
     const isHandlingPermissionsRequest = Boolean(
       matchPath(location.pathname, {
@@ -289,14 +282,15 @@ export default class Routes extends Component {
       }),
     );
 
-    const isHandlingAddEthereumChainRequest = Boolean(
-      matchPath(location.pathname, {
-        path: CONFIRMATION_V_NEXT_ROUTE,
-        exact: false,
-      }),
-    );
+    // const isHandlingAddEthereumChainRequest = Boolean(
+    //   matchPath(location.pathname, {
+    //     path: CONFIRMATION_V_NEXT_ROUTE,
+    //     exact: false,
+    //   }),
+    // );
 
-    return isHandlingPermissionsRequest || isHandlingAddEthereumChainRequest;
+    // return isHandlingPermissionsRequest || isHandlingAddEthereumChainRequest;
+    return isHandlingPermissionsRequest;
   }
 
   showOnboardingHeader() {
@@ -327,6 +321,8 @@ export default class Routes extends Component {
       isNetworkLoading,
       setMouseUserState,
       isMouseUser,
+      isAccountMenuOpen,
+      networkDropdownOpen,
       browserEnvironmentOs: os,
       browserEnvironmentBrowser: browser,
     } = this.props;
@@ -369,7 +365,14 @@ export default class Routes extends Component {
         )}
         <NetworkDropdown />
         <AccountMenu />
-        <div className="main-container-wrapper">
+        <div
+          // className="main-container-wrapper"
+          className={classnames('main-container-wrapper', {
+            'main-container-wrapper--filter':
+              (isAccountMenuOpen || networkDropdownOpen) &&
+              getEnvironmentType() !== ENVIRONMENT_TYPE_FULLSCREEN,
+          })}
+        >
           {isLoading ? <Loading loadingMessage={loadMessage} /> : null}
           {!isLoading && isNetworkLoading ? <LoadingNetwork /> : null}
           {this.renderRoutes()}

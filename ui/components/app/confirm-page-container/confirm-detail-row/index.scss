@@ -7,9 +7,9 @@
 
   &__label {
     @include H7;
+    @include roundeBold;
 
-    font-weight: 500;
-    color: var(--color-text-allternative);
+    color: var(--black);
     text-transform: uppercase;
   }
 
@@ -26,7 +26,7 @@
   }
 
   &__secondary {
-    color: var(--color-icon-default);
+    color: var(--oslo-gray);
     justify-content: flex-end;
   }
 
@@ -35,10 +35,10 @@
 
     text-transform: uppercase;
     margin-bottom: 6px;
-    color: var(--color-icon-default);
+    color: var(--scorpion);
 
     &--edit {
-      color: var(--color-primary-default);
+      color: var(--primary-blue);
       cursor: pointer;
     }
 
@@ -52,10 +52,15 @@
   }
 
   .custom-nonce-input {
+    & .MuiInputBase-root{
+      height: 28px;
+      border: none !important;
+    }
     input {
       @include Paragraph;
 
-      width: 90px;
+      width: 120px;
+      padding: 0;
     }
   }
 }

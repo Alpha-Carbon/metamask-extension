@@ -6,10 +6,26 @@
 
   &__main-view {
     flex: 1 1 66.5%;
-    background: var(--color-background-default);
+    background: var(--background);
     min-width: 0;
     display: flex;
     flex-direction: column;
+    & .tabs{
+      display: flex;
+      flex-direction: column;
+      &__content{
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        margin-top: 16px !important;
+        & > .box{
+          flex-grow: 1;
+          display: flex;
+          justify-content: flex-end;
+          flex-direction: column;
+        }
+      }
+    }
   }
 
   &__balance-wrapper {
@@ -22,24 +38,52 @@
 
   // TODO: fix style import order so this isn't required to override specificity of `tab` class
   &__main-view &__tabs {
-    border: none;
-    box-shadow: 0 3px 4px rgba(135, 134, 134, 0.16);
+    // box-shadow: 0 3px 4px rgba(135, 134, 134, 0.16);
+    background-color: var(--background);
+    border-bottom: 1px solid var(--gray-4);
+
   }
 
   &__main-view &__tab {
     @include H6;
 
-    flex-grow: 1;
-    color: var(--color-icon-default);
+    // flex-grow: 1;
+    width: 100%;
+    color: var(--gray-3);
     font-weight: 500;
+    display: flex;
+    padding: 0 20px;
+    cursor: pointer;
   }
 
   &__main-view &__tab--active {
-    color: var(--color-primary-default);
+    position: relative;
+
+    & > button {
+      background: var(--secondary-2-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: calc(100% - 30px);
+      bottom: -1px;
+      left: 50%;
+      height: 2px;
+      background: var(--secondary-2-gradient);
+      border-radius: 10px;
+      transform: translateX(-50%);
+    }
   }
 
   &__main-view &__tab button {
     padding: 16px 8px;
+    width: auto;
+    margin: auto;
+
+    @include roundeBold;
   }
 
   &__connect-status-text {
@@ -50,7 +94,7 @@
 
     padding-left: 24px;
     padding-right: 24px;
-    color: var(--color-text-default);
+    color: var(--Grey-800);
 
     div {
       margin-bottom: 20px;
@@ -103,7 +147,7 @@
 
       a,
       a:hover {
-        color: var(--color-primary-alternative);
+        color: var(--dodger-blue);
         cursor: pointer;
       }
     }
@@ -125,12 +169,20 @@
     width: 100%;
   }
 
+  &__import-token {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
   &__support {
     padding: 10px 0 20px 0;
     text-align: center;
 
     a {
-      color: var(--color-primary-default);
+      color: var(--primary-1);
     }
   }
 
@@ -138,42 +190,22 @@
     margin-bottom: 50px;
   }
 
-  &__new-network-notification {
+  &__new-network-notification-message {
     display: flex;
     flex-direction: row;
-    align-items: center;
 
-    &-icon {
-      margin-right: 8px;
-      padding-top: 8px;
-      color: var(--color-success-default);
+    &--image {
+      margin-right: 10px;
     }
+  }
 
-    &-close {
-      color: var(--color-icon-default);
-      background: none;
-      margin-left: 20px;
-    }
+  &__close {
+    color: var(--ui-black);
+    background: none;
+    margin-left: 20px;
   }
 
   &__error-message {
     left: 8px;
-  }
-
-  &__new-nft-notification {
-    margin-bottom: 24px;
-    margin-right: 8px;
-
-    &-icon {
-      margin-right: 10px;
-      padding-top: 6px;
-      color: var(--color-success-default);
-    }
-
-    &-close {
-      color: var(--color-icon-default);
-      background: none;
-      margin-left: 44px;
-    }
   }
 }

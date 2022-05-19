@@ -3,6 +3,7 @@ import { tryReverseResolveAddress } from '../../../store/actions';
 import {
   getAddressBook,
   getRpcPrefsForCurrentProvider,
+  getAddressBookEntry,
 } from '../../../selectors';
 import { toChecksumHexAddress } from '../../../../shared/modules/hexstring-utils';
 import TransactionListItemDetails from './transaction-list-item-details.component';
@@ -11,7 +12,9 @@ const mapStateToProps = (state, ownProps) => {
   const { metamask } = state;
   const { ensResolutionsByAddress } = metamask;
   const { recipientAddress, senderAddress } = ownProps;
+  const to = ownProps.toAddress;
   let recipientEns;
+  const contact = getAddressBookEntry(state, to);
   if (recipientAddress) {
     const address = toChecksumHexAddress(recipientAddress);
     recipientEns = ensResolutionsByAddress[address] || '';
@@ -31,6 +34,7 @@ const mapStateToProps = (state, ownProps) => {
     recipientEns,
     senderNickname: getNickName(senderAddress),
     recipientNickname: recipientAddress ? getNickName(recipientAddress) : null,
+    toName: contact?.name || ownProps.toName,
   };
 };
 

@@ -1,10 +1,40 @@
 .connected-accounts {
+  &__wrap{
+    & .popover-header {
+      padding: 12px 12px 0px !important;
+    }
+  }
+  &__icon{
+    margin: auto;
+  }
+
+  &__title{
+    @include H3;
+    @include roundeBold;
+
+    text-align: center;
+    margin: 12px;
+    background: var(--primary-background);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+
+  }
+  
+  &__subtitle{
+    color: var(--gray-1);
+    margin: 0px 16px;
+    margin-bottom: 16px;
+  }
+
   &__footer {
+    border-top: none !important;
     a,
     a:hover {
       @include H6;
 
-      color: var(--color-primary-default);
+      color: var(--primary-blue);
       cursor: pointer;
     }
   }

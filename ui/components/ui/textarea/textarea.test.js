@@ -20,7 +20,7 @@ describe('TextArea', () => {
       resize: RESIZE.BOTH,
       scrollable: false,
       boxProps: {
-        borderColor: COLORS.BORDER_MUTED,
+        borderColor: COLORS.UI3,
         borderRadius: SIZES.SM,
         borderStyle: BORDER_STYLE.SOLID,
         padding: [2, 4],

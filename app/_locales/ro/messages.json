@@ -44,6 +44,12 @@
   "addSuggestedTokens": {
     "message": "Adăugați indicativele sugerate"
   },
+  "addToAddressBook": {
+    "message": "Adăugați în agendă"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "de ex. John D."
+  },
   "addToken": {
     "message": "Adăugare simbol"
   },
@@ -57,19 +63,19 @@
     "message": "Sumă"
   },
   "appDescription": {
-    "message": "Un portofel Ethereum în browserul dvs.",
+    "message": "Un portofel Crypto în browser",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Carbon Wallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Carbon Wallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Carbon Wallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -333,6 +339,9 @@
   },
   "ensRegistrationError": {
     "message": "Eroare la înregistrarea numelui ENS"
+  },
+  "enterAnAlias": {
+    "message": "Introduceți un alias"
   },
   "enterPassword": {
     "message": "Introduceți parola"
@@ -743,6 +752,9 @@
   "restore": {
     "message": "Restabilește"
   },
+  "restoreAccountWithSeed": {
+    "message": "Restaurați-vă contul folosind fraza inițială"
+  },
   "revealSeedWords": {
     "message": "Arată cuvintele din seed"
   },
@@ -793,6 +805,9 @@
   },
   "securityAndPrivacy": {
     "message": "Securitate și confidențialitate"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "Despărțiți fiecare cuvânt cu un spațiu"
   },
   "seedPhraseReq": {
     "message": "Expresiile seed sunt lungi de 12 cuvinte"

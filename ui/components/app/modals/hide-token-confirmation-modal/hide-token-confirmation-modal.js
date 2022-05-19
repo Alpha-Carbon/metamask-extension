@@ -5,6 +5,8 @@ import * as actions from '../../../../store/actions';
 import Identicon from '../../../ui/identicon';
 import Button from '../../../ui/button';
 import { DEFAULT_ROUTE } from '../../../../helpers/constants/routes';
+import CloseIcon from '../../../ui/icon/close-icon.component';
+import VisibilityIcon from '../../../ui/icon/visibility-icon.component';
 
 function mapStateToProps(state) {
   return {
@@ -49,8 +51,15 @@ class HideTokenConfirmationModal extends Component {
     return (
       <div className="hide-token-confirmation">
         <div className="hide-token-confirmation__container">
+          <button
+            className="hide-token-confirmation__close"
+            onClick={() => hideModal()}
+          >
+            <CloseIcon />
+          </button>
           <div className="hide-token-confirmation__title">
-            {this.context.t('hideTokenPrompt')}
+            <VisibilityIcon color="#525252" width="36" height="31" />
+            <p>{this.context.t('hideTokenPrompt')}</p>
           </div>
           <Identicon
             className="hide-token-confirmation__identicon"
@@ -64,7 +73,7 @@ class HideTokenConfirmationModal extends Component {
           </div>
           <div className="hide-token-confirmation__buttons">
             <Button
-              type="secondary"
+              type="cancel"
               className="hide-token-confirmation__button"
               data-testid="hide-token-confirmation__cancel"
               onClick={() => hideModal()}
@@ -72,12 +81,13 @@ class HideTokenConfirmationModal extends Component {
               {this.context.t('cancel')}
             </Button>
             <Button
-              type="primary"
+              type="primaryGradient"
               className="hide-token-confirmation__button"
               data-testid="hide-token-confirmation__hide"
               onClick={() => {
                 hideToken(address);
                 history.push(DEFAULT_ROUTE);
+                hideModal();
               }}
             >
               {this.context.t('hide')}

@@ -1,20 +1,21 @@
-import React, { useMemo, useContext } from 'react';
+import React from 'react'; // { useMemo }
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+// import { useDispatch } from 'react-redux';
+// import { useHistory } from 'react-router-dom';
 import Identicon from '../../ui/identicon';
 import ListItem from '../../ui/list-item';
 import Tooltip from '../../ui/tooltip';
 import InfoIcon from '../../ui/icon/info-icon.component';
-import Button from '../../ui/button';
-import { useI18nContext } from '../../../hooks/useI18nContext';
-import { updateSendAsset } from '../../../ducks/send';
-import { SEND_ROUTE } from '../../../helpers/constants/routes';
+// import Button from '../../ui/button';
+// import { useI18nContext } from '../../../hooks/useI18nContext';
+// import { useMetricEvent } from '../../../hooks/useMetricEvent';
+// import { ASSET_TYPES, updateSendAsset } from '../../../ducks/send';
+// import { SEND_ROUTE } from '../../../helpers/constants/routes';
 import { SEVERITIES } from '../../../helpers/constants/design-system';
-import { INVALID_ASSET_TYPE } from '../../../helpers/constants/error-keys';
-import { ASSET_TYPES } from '../../../../shared/constants/transaction';
-import { MetaMetricsContext } from '../../../contexts/metametrics';
+// import { INVALID_ASSET_TYPE } from '../../../helpers/constants/error-keys';
+import ActAvatar from '../../ui/icon/act-avatar-icon.component';
+import ActCoinIcon from '../../ui/icon/act-coin-icon.component';
 
 const AssetListItem = ({
   className,
@@ -23,18 +24,25 @@ const AssetListItem = ({
   onClick,
   tokenAddress,
   tokenSymbol,
-  tokenDecimals,
+  // tokenDecimals,
   tokenImage,
   warning,
   primary,
   secondary,
   identiconBorder,
   isERC721,
+  nativeCurrency,
 }) => {
-  const t = useI18nContext();
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const trackEvent = useContext(MetaMetricsContext);
+  // const t = useI18nContext();
+  // const dispatch = useDispatch();
+  // const history = useHistory();
+  // const sendTokenEvent = useMetricEvent({
+  //   eventOpts: {
+  //     category: 'Navigation',
+  //     action: 'Home',
+  //     name: 'Clicked Send: Token',
+  //   },
+  // });
   const titleIcon = warning ? (
     <Tooltip
       wrapperClassName="asset-list-item__warning-tooltip"
@@ -53,71 +61,64 @@ const AssetListItem = ({
     </>
   ) : null;
 
-  const sendTokenButton = useMemo(() => {
-    if (tokenAddress === null || tokenAddress === undefined) {
-      return null;
-    }
-    return (
-      <Button
-        type="link"
-        className="asset-list-item__send-token-button"
-        onClick={async (e) => {
-          e.stopPropagation();
-          trackEvent({
-            event: 'Clicked Send: Token',
-            category: 'Navigation',
-            properties: {
-              action: 'Home',
-              legacy_event: true,
-            },
-          });
-          try {
-            await dispatch(
-              updateSendAsset({
-                type: ASSET_TYPES.TOKEN,
-                details: {
-                  address: tokenAddress,
-                  decimals: tokenDecimals,
-                  symbol: tokenSymbol,
-                },
-              }),
-            );
-            history.push(SEND_ROUTE);
-          } catch (err) {
-            if (!err.message.includes(INVALID_ASSET_TYPE)) {
-              throw err;
-            }
-          }
-        }}
-      >
-        {t('sendSpecifiedTokens', [tokenSymbol])}
-      </Button>
-    );
-  }, [
-    tokenSymbol,
-    trackEvent,
-    tokenAddress,
-    tokenDecimals,
-    history,
-    t,
-    dispatch,
-  ]);
-
+  // const sendTokenButton = useMemo(() => {
+  //   if (tokenAddress === null || tokenAddress === undefined) {
+  //     return null;
+  //   }
+  //   return (
+  //     <Button
+  //       type="link"
+  //       className="asset-list-item__send-token-button"
+  //       onClick={async (e) => {
+  //         e.stopPropagation();
+  //         sendTokenEvent();
+  //         try {
+  //           await dispatch(
+  //             updateSendAsset({
+  //               type: ASSET_TYPES.TOKEN,
+  //               details: {
+  //                 address: tokenAddress,
+  //                 decimals: tokenDecimals,
+  //                 symbol: tokenSymbol,
+  //               },
+  //             }),
+  //           );
+  //           history.push(SEND_ROUTE);
+  //         } catch (err) {
+  //           if (!err.message.includes(INVALID_ASSET_TYPE)) {
+  //             throw err;
+  //           }
+  //         }
+  //       }}
+  //     >
+  //       {t('sendSpecifiedTokens', [tokenSymbol])}
+  //     </Button>
+  //   );
+  // }, [
+  //   tokenSymbol,
+  //   sendTokenEvent,
+  //   tokenAddress,
+  //   tokenDecimals,
+  //   history,
+  //   t,
+  //   dispatch,
+  // ]);
   return (
     <ListItem
       className={classnames('asset-list-item', className)}
       data-testid={dataTestId}
       title={
-        <button
-          className="asset-list-item__token-button"
-          onClick={onClick}
-          title={`${primary} ${tokenSymbol}`}
-        >
-          <h2>
-            <span className="asset-list-item__token-value">{primary}</span>
-            <span className="asset-list-item__token-symbol">{tokenSymbol}</span>
-          </h2>
-        </button>
+        <>
+          <button
+            className="asset-list-item__token-button"
+            onClick={onClick}
+            title={`${primary} ${tokenSymbol}`}
+          >
+            <h2>
+              {/* <span className="asset-list-item__token-value">{primary}</span> */}
+            </h2>
+          </button>
+        </>
       }
       titleIcon={titleIcon}
       subtitle={secondary ? <h3 title={secondary}>{secondary}</h3> : null}
@@ -125,7 +126,7 @@ const AssetListItem = ({
       icon={
         <Identicon
           className={iconClassName}
-          diameter={32}
+          diameter={56}
           address={tokenAddress}
           image={tokenImage}
           alt={`${primary} ${tokenSymbol}`}
@@ -136,8 +137,10 @@ const AssetListItem = ({
       rightContent={
         !isERC721 && (
           <>
-            <i className="fas fa-chevron-right asset-list-item__chevron-right" />
-            {sendTokenButton}
+            {/* <i className="fas fa-chevron-right asset-list-item__chevron-right" /> */}
+            {/* {sendTokenButton} */}
+            <span className="asset-list-item__token-value">{primary}</span>
+            <span className="asset-list-item__token-balance">{tokenSymbol}</span>
           </>
         )
       }
@@ -152,7 +155,7 @@ AssetListItem.propTypes = {
   onClick: PropTypes.func.isRequired,
   tokenAddress: PropTypes.string,
   tokenSymbol: PropTypes.string,
-  tokenDecimals: PropTypes.number,
+  // tokenDecimals: PropTypes.number,
   tokenImage: PropTypes.string,
   warning: PropTypes.node,
   primary: PropTypes.string,

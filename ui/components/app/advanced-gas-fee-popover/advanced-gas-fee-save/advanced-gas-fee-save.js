@@ -11,7 +11,7 @@ import I18nValue from '../../../ui/i18n-value';
 import { useAdvancedGasFeePopoverContext } from '../context';
 
 const AdvancedGasFeeSaveButton = () => {
-  const { closeModal } = useTransactionModalContext();
+  const { closeAllModals } = useTransactionModalContext();
   const { updateTransactionEventFragment } = useTransactionEventFragment();
   const { updateTransaction } = useGasFeeContext();
   const {
@@ -33,7 +33,7 @@ const AdvancedGasFeeSaveButton = () => {
         gas_edit_type: 'advanced',
       },
     });
-    closeModal(['advancedGasFee', 'editGasFee']);
+    closeAllModals();
   };
 
   return (

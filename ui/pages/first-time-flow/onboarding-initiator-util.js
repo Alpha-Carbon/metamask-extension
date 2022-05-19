@@ -1,3 +1,4 @@
+// import extension from 'extensionizer';
 import browser from 'webextension-polyfill';
 import log from 'loglevel';
 
@@ -24,7 +25,7 @@ const returnToOnboardingInitiatorTab = async (onboardingInitiator) => {
   if (tab) {
     window.close();
   } else {
-    // this case can happen if the tab was closed since being checked with `browser.tabs.get`
+    // this case can happen if the tab was closed since being checked with `extension.tabs.get`
     log.warn(
       `Setting current tab to onboarding initiator has failed; falling back to redirect`,
     );

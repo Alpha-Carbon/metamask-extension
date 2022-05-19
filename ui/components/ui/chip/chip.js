@@ -9,7 +9,7 @@ export default function Chip({
   dataTestId,
   className,
   children,
-  borderColor = COLORS.BORDER_DEFAULT,
+  borderColor = COLORS.UI1,
   backgroundColor,
   label,
   labelProps = {},
@@ -47,7 +47,7 @@ export default function Chip({
           className="chip__label"
           variant={TYPOGRAPHY.H6}
           tag="span"
-          color={COLORS.TEXT_ALTERNATIVE}
+          color={COLORS.BLACK}
           {...labelProps}
         >
           {label}

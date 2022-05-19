@@ -7,10 +7,6 @@ import {
   CONTACT_VIEW_ROUTE,
 } from '../../../helpers/constants/routes';
 import Button from '../../../components/ui/button';
-import {
-  getNumberOfSettingsInSection,
-  handleSettingsRefs,
-} from '../../../helpers/utils/settings-search';
 import EditContact from './edit-contact';
 import AddContact from './add-contact';
 import ViewContact from './view-contact';
@@ -30,24 +26,6 @@ export default class ContactListTab extends Component {
     showContactContent: PropTypes.bool,
     hideAddressBook: PropTypes.bool,
   };
-
-  settingsRefs = Array(
-    getNumberOfSettingsInSection(this.context.t, this.context.t('contacts')),
-  )
-    .fill(undefined)
-    .map(() => {
-      return React.createRef();
-    });
-
-  componentDidUpdate() {
-    const { t } = this.context;
-    handleSettingsRefs(t, t('contacts'), this.settingsRefs);
-  }
-
-  componentDidMount() {
-    const { t } = this.context;
-    handleSettingsRefs(t, t('contacts'), this.settingsRefs);
-  }
 
   renderAddresses() {
     const { addressBook, history, selectedAddress } = this.props;
@@ -72,10 +50,7 @@ export default class ContactListTab extends Component {
     return (
       <div className="address-book__container">
         <div>
-          <i
-            className="fa fa-address-book fa-4x address-book__icon"
-            title={t('addressBookIcon')}
-          />
+          <img src="./images/address-book.svg" alt={t('addressBookIcon')} />
           <h4 className="address-book__title">{t('buildContactList')}</h4>
           <p className="address-book__sub-title">
             {t('addFriendsAndAddresses')}
@@ -104,7 +79,7 @@ export default class ContactListTab extends Component {
             'address-book-add-button__button--hidden':
               viewingContact || editingContact,
           })}
-          type="secondary"
+          type="primaryGradient"
           onClick={() => {
             history.push(CONTACT_ADD_ROUTE);
           }}
@@ -149,11 +124,7 @@ export default class ContactListTab extends Component {
     const { hideAddressBook } = this.props;
 
     if (!hideAddressBook) {
-      return (
-        <div ref={this.settingsRefs[0]} className="address-book">
-          {this.renderAddresses()}
-        </div>
-      );
+      return <div className="address-book">{this.renderAddresses()}</div>;
     }
     return null;
   }

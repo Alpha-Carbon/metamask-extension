@@ -30,7 +30,7 @@
     "message": "活動紀錄"
   },
   "addAcquiredTokens": {
-    "message": "將您已經擁有的代幣顯示於 MetaMask"
+    "message": "將您已經擁有的代幣顯示於 Carbon Wallet"
   },
   "addAlias": {
     "message": "新增化名"
@@ -40,6 +40,12 @@
   },
   "addSuggestedTokens": {
     "message": "加入建議的代幣"
+  },
+  "addToAddressBook": {
+    "message": "新增至位址簿中"
+  },
+  "addToAddressBookModalPlaceholder": {
+    "message": "如 John D。"
   },
   "addToken": {
     "message": "加入代幣"
@@ -54,19 +60,19 @@
     "message": "數量"
   },
   "appDescription": {
-    "message": "以太坊瀏覽器擴充插件",
+    "message": "加密貨幣錢包",
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Carbon Wallet",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Carbon Wallet Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Carbon Wallet Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -97,7 +103,7 @@
     "message": "自動登出計時器（分）"
   },
   "autoLockTimeLimitDescription": {
-    "message": "設定閒置分鐘上限，時間到時 MetaMask 將自動登出"
+    "message": "設定閒置分鐘上限，時間到時 Carbon Wallet 將自動登出"
   },
   "average": {
     "message": "平均"
@@ -109,7 +115,7 @@
     "message": "回到所有"
   },
   "backupApprovalInfo": {
-    "message": "在裝置遺失、忘記密碼、需要重新安裝 MetaMask、或是想在另一裝置開啟錢包的情形下，你需要此秘密代碼來復原錢包。"
+    "message": "在裝置遺失、忘記密碼、需要重新安裝 Carbon Wallet、或是想在另一裝置開啟錢包的情形下，你需要此秘密代碼來復原錢包。"
   },
   "backupApprovalNotice": {
     "message": "備份你的秘密還原代碼，安全防護錢包與資金。"
@@ -118,7 +124,7 @@
     "message": "現在備份"
   },
   "balance": {
-    "message": "餘額："
+    "message": "餘額"
   },
   "balanceOutdated": {
     "message": "顯示餘額不一定是最新資訊"
@@ -143,7 +149,7 @@
     "message": "用 Wyre 購買 ETH"
   },
   "buyWithWyreDescription": {
-    "message": "Wyre 讓你使用信用卡在 MetaMask 帳號中直接存入 ETH。"
+    "message": "Wyre 讓你使用信用卡在 Carbon Wallet 帳號中直接存入 ETH。"
   },
   "bytes": {
     "message": "位元組"
@@ -157,11 +163,14 @@
   "cancelled": {
     "message": "已取消"
   },
+  "carbonWallet": {
+    "message": "Carbon Wallet"
+  },
   "chainId": {
     "message": "鏈 ID"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "您需要在 Google Chrome 瀏覽器使用 MetaMask 連結您的硬體錢包"
+    "message": "您需要在 Google Chrome 瀏覽器使用 Carbon Wallet 連結您的硬體錢包"
   },
   "clickToRevealSeed": {
     "message": "點選顯示助憶詞"
@@ -189,6 +198,9 @@
   },
   "connectHardwareWallet": {
     "message": "連線硬體錢包"
+  },
+  "connectToSite": {
+    "message": "連接到 "
   },
   "connectingTo": {
     "message": "連線到$1"
@@ -240,6 +252,9 @@
   },
   "createAccount": {
     "message": "建立帳戶"
+  },
+  "createGetStart": {
+    "message": "歡迎, 請創建一個新錢包或使用您已擁有的錢包"
   },
   "createPassword": {
     "message": "建立密碼"
@@ -317,13 +332,13 @@
     "message": "不要分享此助記祠給任何人"
   },
   "endOfFlowMessage5": {
-    "message": "小心網路釣魚！MetaMask 永遠不會主動詢問你的助記詞。"
+    "message": "小心網路釣魚！Carbon Wallet 永遠不會主動詢問你的助記詞。"
   },
   "endOfFlowMessage6": {
     "message": "如你需要再次備份助記詞，可至設定 -> 安全。"
   },
   "endOfFlowMessage8": {
-    "message": "MetaMask 無法還原你的助記詞。暸解更多"
+    "message": "Carbon Wallet 無法還原你的助記詞。暸解更多"
   },
   "endOfFlowMessage9": {
     "message": "深入瞭解。"
@@ -333,6 +348,9 @@
   },
   "ensRegistrationError": {
     "message": "ENS 名稱註冊錯誤"
+  },
+  "enterAnAlias": {
+    "message": "輸入化名"
   },
   "enterPassword": {
     "message": "請輸入密碼"
@@ -354,6 +372,9 @@
   },
   "exportPrivateKey": {
     "message": "導出私鑰"
+  },
+  "extension": {
+    "message": "Extension"
   },
   "failed": {
     "message": "交易失败"
@@ -428,7 +449,7 @@
     "message": "連線硬體錢包"
   },
   "hardwareWalletsMsg": {
-    "message": "選擇要連線到 MetaMask 的硬體錢包"
+    "message": "選擇要連線到 Carbon Wallet 的硬體錢包"
   },
   "here": {
     "message": "這裡",
@@ -454,10 +475,13 @@
     "message": "匯入帳戶"
   },
   "importAccountMsg": {
-    "message": " 匯入的帳戶與您原有 MetaMask 帳戶的助憶詞並無關聯。請查看與匯入帳戶相關的資料 "
+    "message": " 匯入的帳戶與您原有 Carbon Wallet 帳戶的助憶詞並無關聯。 "
   },
   "importAccountSeedPhrase": {
     "message": "利用助憶詞還原"
+  },
+  "importFromSeed": {
+    "message": "引入帳號"
   },
   "importWallet": {
     "message": "匯入錢包"
@@ -549,10 +573,10 @@
     "message": "訊息"
   },
   "metamaskDescription": {
-    "message": "MetaMask 是以太坊安全身份識別金庫"
+    "message": "Carbon Wallet 是以太坊安全身份識別金庫"
   },
   "metamaskVersion": {
-    "message": "MetaMask 版本"
+    "message": "Carbon Wallet 版本"
   },
   "mustSelectOne": {
     "message": "必須選擇至少 1 代幣"
@@ -596,7 +620,7 @@
     "message": "新密碼（至少8個字元）"
   },
   "newToMetaMask": {
-    "message": "新來到 MetaMask？"
+    "message": "新來到 Carbon Wallet？"
   },
   "newTotal": {
     "message": "總費用"
@@ -644,7 +668,7 @@
     "message": "參與 MetaMetrics"
   },
   "participateInMetaMetricsDescription": {
-    "message": "參與 MetaMetrics 來協助我們打造更好的 MetaMask"
+    "message": "參與 MetaMetrics 來協助我們打造更好的 Carbon Wallet"
   },
   "password": {
     "message": "密碼"
@@ -723,6 +747,9 @@
   "removeAccountDescription": {
     "message": "此帳戶將由錢包中移除。在繼續進行之前請確認您已經匯出並妥善備份助憶詞或私鑰。"
   },
+  "rename": {
+    "message": "重新命名"
+  },
   "requestsAwaitingAcknowledgement": {
     "message": "請求正在等待確認"
   },
@@ -737,6 +764,9 @@
   },
   "resetAccountDescription": {
     "message": "重置帳戶將清除您的交易紀錄"
+  },
+  "restoreAccountWithSeed": {
+    "message": "透過助憶詞還原您的帳戶"
   },
   "revealSeedWords": {
     "message": "顯示助憶詞"
@@ -765,6 +795,9 @@
   "saveAsCsvFile": {
     "message": "儲存為CSV格式檔案"
   },
+  "saveYourPrivateKey": {
+    "message": "儲存在安全和秘密的地方"
+  },
   "scanInstructions": {
     "message": "請將 QR code 放在攝影鏡頭前面"
   },
@@ -788,6 +821,9 @@
   },
   "securityAndPrivacy": {
     "message": "安全＆隱私"
+  },
+  "seedPhrasePlaceholder": {
+    "message": "單詞之間請用空白分隔"
   },
   "seedPhraseReq": {
     "message": "助憶詞為 12 個詞語"
@@ -836,6 +872,15 @@
   },
   "showHexDataDescription": {
     "message": "在交易時顯示16進位資料"
+  },
+  "showPrivateKey": {
+    "message": "顯示私鑰"
+  },
+  "showPrivateKeyDescription": {
+    "message": "這是目前所選帳戶的私鑰：“$1”。請勿洩露此密鑰。 任何取得這把私鑰的人都可以竊取這個帳戶中的所有資產。"
+  },
+  "showPrivateKeyTitle": {
+    "message": "顯示 “$1” 私鑰"
   },
   "showPrivateKeys": {
     "message": "顯示私鑰"
@@ -904,16 +949,16 @@
     "message": "掃描代碼時確保沒有其他人在看你的螢幕"
   },
   "syncWithMobileComplete": {
-    "message": "你的資料已成功同步。開始活用 MetaMask 移動 app！"
+    "message": "你的資料已成功同步。開始活用 Carbon Wallet 移動 app！"
   },
   "syncWithMobileDesc": {
-    "message": "你可以用移動裝置同步帳號與資訊。開啟 MetaMask 移動 app，至「設定」並點擊「自瀏覽器擴充功能同步」"
+    "message": "你可以用移動裝置同步帳號與資訊。開啟 Carbon Wallet 移動 app，至「設定」並點擊「自瀏覽器擴充功能同步」"
   },
   "syncWithMobileDescNewUsers": {
-    "message": "如你是第一次開啟 MetaMask 移動 app，只要跟著手機上的指示操作即可。"
+    "message": "如你是第一次開啟 Carbon Wallet 移動 app，只要跟著手機上的指示操作即可。"
   },
   "syncWithMobileScanThisCode": {
-    "message": "用你的 MetaMask 移動 app 掃描此代碼"
+    "message": "用你的 Carbon Wallet 移動 app 掃描此代碼"
   },
   "syncWithMobileTitle": {
     "message": "和移動裝置同步"
@@ -1055,7 +1100,7 @@
     "message": "造訪我們的網站"
   },
   "welcome": {
-    "message": "歡迎來到 MetaMask"
+    "message": "歡迎來到 Carbon Wallet"
   },
   "welcomeBack": {
     "message": "歡迎回來!"
@@ -1072,10 +1117,16 @@
   "youSign": {
     "message": "正在簽署"
   },
+  "yourPrivateKey": {
+    "message": "您的私鑰"
+  },
   "yourPrivateSeedPhrase": {
     "message": "您的助憶詞"
   },
   "zeroGasPriceOnSpeedUpError": {
     "message": "加速的 Gas 價格為 0"
+  },
+  "viewDetail": {
+    "message": "查看詳細內容"
   }
 }
