@@ -123,7 +123,8 @@
 
     color: var(--black);
     width: 100%;
-    align-items: baseline !important;
+    display: block !important;
+    align-items: unset !important;
     justify-content: center;
     & .currency-display-component__suffix {
       @include roundeBold;
