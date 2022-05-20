@@ -101,7 +101,11 @@ const AssetList = ({ onClickAsset }) => {
         }}
       />
       <Box marginTop={4} marginBottom={2}>
-        <Box flexWrap={FLEX_WRAP.WRAP} justifyContent={JUSTIFY_CONTENT.CENTER} alignItems={ALIGN_ITEMS.CENTER}>
+        <Box
+          flexWrap={FLEX_WRAP.WRAP}
+          justifyContent={JUSTIFY_CONTENT.CENTER}
+          alignItems={ALIGN_ITEMS.CENTER}
+        >
           <Typography
             color={COLORS.UI4}
             variant={TYPOGRAPHY.H6}

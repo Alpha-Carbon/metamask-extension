@@ -39,10 +39,10 @@ const COLOR_MAP = {
   [TRANSACTION_STATUSES.CONFIRMED]: OK_COLOR,
 };
 
-export default function TransactionIcon({ status, category, size = "28" }) {
+export default function TransactionIcon({ status, category, size = '28' }) {
   const dispatch = useDispatch();
   // const isConfirm = status === TRANSACTION_STATUSES.CONFIRMED;
-  let color = COLOR_MAP[status] || OK_COLOR;
+  const color = COLOR_MAP[status] || OK_COLOR;
   // let color;
   // if (isConfirm && category === TRANSACTION_GROUP_CATEGORIES.SEND) {
   //   color = '#CF3939';
@@ -86,4 +86,5 @@ TransactionIcon.propTypes = {
     TRANSACTION_GROUP_CATEGORIES.RECEIVE,
     TRANSACTION_GROUP_CATEGORIES.SWAP,
   ]).isRequired,
+  size: PropTypes.string,
 };

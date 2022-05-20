@@ -1,9 +1,22 @@
 {
+  "QRHardwareScanInstructions": {
+    "message": "為了保護您的隱私，螢幕是模糊的，但不影響對條碼的讀取。"
+  },
+  "QRHardwareWalletSteps1Title": {
+    "message": "基於 QR 的硬體錢包"
+  },
+  "QRHardwareWalletSteps2Description": {
+    "message": "AirGap Vault & Ngrave (即將上線)"
+  },
   "about": {
     "message": "關於"
   },
   "acceleratingATransaction": {
     "message": "* 提高交易費 Gas 價格將可加速處理時間，但不保證會有顯著效果"
+  },
+  "acceptTermsOfUse": {
+    "message": "我已閱讀並同意 $1",
+    "description": "$1 is the `terms` message"
   },
   "accessingYourCamera": {
     "message": "正在存取您的攝影鏡頭..."
@@ -29,11 +42,23 @@
   "activityLog": {
     "message": "活動紀錄"
   },
+  "addANetwork": {
+    "message": "添加網絡"
+  },
   "addAcquiredTokens": {
     "message": "將您已經擁有的代幣顯示於 Carbon Wallet"
   },
   "addAlias": {
     "message": "新增化名"
+  },
+  "addContact": {
+    "message": "添加聯絡人"
+  },
+  "addFriendsAndAddresses": {
+    "message": "添加您信任的朋友和地址"
+  },
+  "addMemo": {
+    "message": "添加備忘錄"
   },
   "addNetwork": {
     "message": "新增網路"
@@ -53,8 +78,26 @@
   "advanced": {
     "message": "進階"
   },
+  "advancedGasPriceTitle": {
+    "message": "燃料價格"
+  },
   "advancedOptions": {
     "message": "進階選項"
+  },
+  "alertSettingsUnconnectedAccount": {
+    "message": "選擇了未連接的賬戶時瀏覽網站"
+  },
+  "alertSettingsUnconnectedAccountDescription": {
+    "message": "當您在瀏覽已連接的 Web3 網站，但當前選擇的賬戶沒有連接時，該提醒會在彈出的窗口中顯示。"
+  },
+  "alertSettingsWeb3ShimUsage": {
+    "message": "當網站嘗試使用已經刪除的 window.web3 API"
+  },
+  "alertSettingsWeb3ShimUsageDescription": {
+    "message": "當您在瀏覽的網站嘗試使用已經刪除的 window.web3 API 時，該提醒會在彈出的窗口中顯示。"
+  },
+  "alerts": {
+    "message": "提醒"
   },
   "amount": {
     "message": "數量"
@@ -142,6 +185,12 @@
   "browserNotSupported": {
     "message": "您的瀏覽器尚未支援..."
   },
+  "buildContactList": {
+    "message": "建立您的添加聯絡人列表"
+  },
+  "builtAroundTheWorld": {
+    "message": "Carbon Wallet是在世界各地設計和建造的。"
+  },
   "buy": {
     "message": "買"
   },
@@ -202,6 +251,13 @@
   "connectToSite": {
     "message": "連接到 "
   },
+  "connectedSites": {
+    "message": "已連接的網站"
+  },
+  "connectedSitesEmptyDescription": {
+    "message": "$1 還沒連接任何網站。",
+    "description": "$1 is the account name"
+  },
   "connectingTo": {
     "message": "連線到$1"
   },
@@ -220,8 +276,11 @@
   "connectingToRopsten": {
     "message": "連線到 Ropsten 測試網路"
   },
-  "continue":{
-    "message":"繼續"
+  "contacts": {
+    "message": "聯絡人"
+  },
+  "continue": {
+    "message": "繼續"
   },
   "continueToWyre": {
     "message": "繼續至 Wyre"
@@ -298,6 +357,12 @@
   "details": {
     "message": "詳情"
   },
+  "dismissReminderDescriptionField": {
+    "message": "開啟此選項以關閉賬戶助記詞備份提醒消息。 我們強烈建議您備份您的賬戶助記詞，以避免資金損失"
+  },
+  "dismissReminderField": {
+    "message": "消除賬戶助記詞備份提醒"
+  },
   "done": {
     "message": "完成"
   },
@@ -318,6 +383,12 @@
   },
   "editContact": {
     "message": "編輯聯絡資訊"
+  },
+  "editGasPriceTooltip": {
+    "message": "此網絡在提交交易時需要一個“燃料價格”欄。燃料價格是您將按單位支付的金額。"
+  },
+  "editGasTitle": {
+    "message": "编辑優先級"
   },
   "endOfFlowMessage1": {
     "message": "你通過測試了—安全存放助記詞，這是你的責任！"
@@ -467,6 +538,9 @@
   "hideTokenPrompt": {
     "message": "隱藏代幣？"
   },
+  "hideZeroBalanceTokens": {
+    "message": "隱藏沒有餘額的代幣"
+  },
   "history": {
     "message": "紀錄"
   },
@@ -499,6 +573,9 @@
   },
   "importFromSeed": {
     "message": "引入帳號"
+  },
+  "importTokens": {
+    "message": "導入代幣"
   },
   "importWallet": {
     "message": "匯入錢包"
@@ -537,6 +614,12 @@
   "invalidSeedPhrase": {
     "message": "無效的助憶詞"
   },
+  "ipfsGateway": {
+    "message": "IPFS 網路"
+  },
+  "ipfsGatewayDescription": {
+    "message": "輸入要用於 ENS 內容解析的 IPFS CID 網路的 URL。"
+  },
   "jsonFile": {
     "message": "JSON 格式檔案",
     "description": "format for importing an account"
@@ -552,6 +635,13 @@
   },
   "ledgerAccountRestriction": {
     "message": "您必須使用最後的帳戶才能產生新帳戶"
+  },
+  "ledgerConnectionPreferenceDescription": {
+    "message": "自定義您如何連接您的Ledger到Carbon Wallet。建議$1 但其他選項可用。請閱讀更多內容：$2",
+    "description": "A description that appears above a dropdown where users can select between up to three options - Ledger Live, U2F or WebHID - depending on what is supported in their browser. $1 is the recommended browser option, it will be either WebHID or U2f. $2 is a link to an article where users can learn more, but will be the translation of the learnMore message."
+  },
+  "ledgerDeviceOpenFailureMessage": {
+    "message": "Ledger設備打開失敗。您的Ledger可能已連接到其他軟體。 請關閉Ledger Live或其他連接到您Ledger設備的應用程序，並嘗試再次連接。"
   },
   "letsGoSetUp": {
     "message": "好，我們開始吧！"
@@ -594,6 +684,9 @@
   },
   "metamaskVersion": {
     "message": "Carbon Wallet 版本"
+  },
+  "missingToken": {
+    "message": "找不到您的代幣？"
   },
   "mustSelectOne": {
     "message": "必須選擇至少 1 代幣"
@@ -654,6 +747,9 @@
   "noAlreadyHaveSeed": {
     "message": "不，我已經有助記詞"
   },
+  "noConversionDateAvailable": {
+    "message": "沒有可用的貨幣轉換日期"
+  },
   "noConversionRateAvailable": {
     "message": "尚未有匯率比較值"
   },
@@ -665,6 +761,12 @@
   },
   "noWebcamFoundTitle": {
     "message": "找不到攝影鏡頭"
+  },
+  "nonceField": {
+    "message": "自定義交易 nonce"
+  },
+  "nonceFieldDescription": {
+    "message": "開啟此功能可以改變確認螢幕上的 nonce（交易號）。此為高級功能，請謹慎使用。"
   },
   "notEnoughGas": {
     "message": "Gas 不夠"
@@ -706,6 +808,10 @@
   "personalAddressDetected": {
     "message": "偵測為個人位址，請輸入代幣合約位址"
   },
+  "preferredLedgerConnectionType": {
+    "message": "首選Ledger連接類型",
+    "description": "A header for a dropdown in the advanced section of settings. Appears above the ledgerConnectionPreferenceDescription message"
+  },
   "primaryCurrencySetting": {
     "message": "主要顯示"
   },
@@ -730,6 +836,9 @@
   },
   "readdToken": {
     "message": "未來可以隨時重新加入此代幣"
+  },
+  "receive": {
+    "message": "接收"
   },
   "recents": {
     "message": "最近"
@@ -836,11 +945,20 @@
   "secretBackupPhraseWarning": {
     "message": "警告: 絕對不要洩漏您的助憶詞。任何人只要得知助憶詞代表他可以竊取您所有的以太幣和代幣。"
   },
+  "secretPhrase": {
+    "message": "只有這個錢包上的第一個帳戶將自動載入。 完成此流程後，點擊下選單，然後選擇創建賬戶。"
+  },
+  "secretRecoveryPhrase": {
+    "message": "賬戶助記詞"
+  },
   "securityAndPrivacy": {
     "message": "安全＆隱私"
   },
   "seedPhrasePlaceholder": {
     "message": "單詞之間請用空白分隔"
+  },
+  "seedPhrasePlaceholderPaste": {
+    "message": "從剪貼板複製賬戶助記詞"
   },
   "seedPhraseReq": {
     "message": "助憶詞為 12 個詞語"
@@ -890,6 +1008,12 @@
   "showHexDataDescription": {
     "message": "在交易時顯示16進位資料"
   },
+  "showIncomingTransactions": {
+    "message": "顯示收到的交易"
+  },
+  "showIncomingTransactionsDescription": {
+    "message": "選擇該選項可使用 Etherscan（以太坊瀏覽器）（以太坊瀏覽器）在交易列表中顯示收到的交易。"
+  },
   "showPrivateKey": {
     "message": "顯示私鑰"
   },
@@ -901,6 +1025,12 @@
   },
   "showPrivateKeys": {
     "message": "顯示私鑰"
+  },
+  "showTestnetNetworks": {
+    "message": "顯示測試網絡"
+  },
+  "showTestnetNetworksDescription": {
+    "message": "選擇此項以在網路列表中顯示測試網路"
   },
   "sigRequest": {
     "message": "請求簽署"
@@ -941,6 +1071,34 @@
   "stateLogsDescription": {
     "message": "狀態紀錄包含您的公開帳戶位址和已傳送的交易資訊"
   },
+  "step1LatticeWallet": {
+    "message": "請確保您的 Lattice1 已準備好連接"
+  },
+  "step1LatticeWalletMsg": {
+    "message": "您可以在設置後在線連接Carbon Wallet到您的 Lattice1 設備。 解鎖您的設備並準備好您的設備ID。若要更多地使用硬件錢包，$1",
+    "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
+  },
+  "step1LedgerWallet": {
+    "message": "下載Ledger應用"
+  },
+  "step1LedgerWalletMsg": {
+    "message": "下載、設置和輸入您的密碼以解鎖 $1。",
+    "description": "$1 represents the `ledgerLiveApp` localization value"
+  },
+  "step1TrezorWallet": {
+    "message": "插入Trezor錢包"
+  },
+  "step1TrezorWalletMsg": {
+    "message": "將您的錢包直接連接到電腦。如果使用硬體錢包設備，關於使用您的錢包更多詳情，$1",
+    "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
+  },
+  "step2LedgerWallet": {
+    "message": "插入Ledger錢包"
+  },
+  "step2LedgerWalletMsg": {
+    "message": "將您的錢包直接連接到電腦。解鎖Ledger並打開Ethereum應用程序。關於使用您的硬體錢包設備的更多，$1。",
+    "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
+  },
   "storePhrase": {
     "message": "您可以用密碼管理系統例如 1Password 等軟體儲存助憶詞。"
   },
@@ -980,6 +1138,15 @@
   "syncWithMobileTitle": {
     "message": "和移動裝置同步"
   },
+  "syncWithThreeBox": {
+    "message": "使用 3Box 同步數據（實驗功能）"
+  },
+  "syncWithThreeBoxDescription": {
+    "message": "開啟後可以用 3Box 備份您的設置。此功能目前是實驗功能，使用時風險自負。"
+  },
+  "syncWithThreeBoxDisabled": {
+    "message": "由於初始同步過程中出現錯誤，3Box 已被禁用。"
+  },
   "terms": {
     "message": "使用條款"
   },
@@ -1004,6 +1171,9 @@
   "tokenContractAddress": {
     "message": "代幣合同位址"
   },
+  "tokenDetails": {
+    "message": "代幣詳情"
+  },
   "tokenSymbol": {
     "message": "代幣代號"
   },
@@ -1024,6 +1194,18 @@
   },
   "transactionCreated": {
     "message": "交易產生 數量 $1 時間 $2"
+  },
+  "transactionData": {
+    "message": "交易數據"
+  },
+  "transactionDetailGasHeading": {
+    "message": "估計燃料費用"
+  },
+  "transactionDetailGasTooltipExplanation": {
+    "message": "燃料費用由網絡設定，並根據網絡流量和交易複雜性產生波動。"
+  },
+  "transactionDetailGasTooltipIntro": {
+    "message": "燃料費用支付給在$1網絡上處理交易的加密礦工。Carbon Wallet不會從燃料費用中獲利。"
   },
   "transactionDropped": {
     "message": "交易廢除 時間 $2"
@@ -1101,6 +1283,12 @@
   "urlErrorMsg": {
     "message": "URIs 需要加入適當的 HTTP/HTTPS 前綴字"
   },
+  "usePhishingDetection": {
+    "message": "使用網絡釣魚檢測"
+  },
+  "usePhishingDetectionDescription": {
+    "message": "顯示針對 Ethereum 用戶釣魚域名的警告。"
+  },
   "usedByClients": {
     "message": "可用於各種不同的客戶端"
   },
@@ -1112,6 +1300,12 @@
   },
   "viewContact": {
     "message": "觀看聯絡資訊"
+  },
+  "viewDetail": {
+    "message": "查看詳細內容"
+  },
+  "viewOnBlockExplorer": {
+    "message": "在區塊瀏覽器上查看"
   },
   "visitWebSite": {
     "message": "造訪我們的網站"
@@ -1142,199 +1336,5 @@
   },
   "zeroGasPriceOnSpeedUpError": {
     "message": "加速的 Gas 價格為 0"
-  },
-  "viewDetail": {
-    "message": "查看詳細內容"
-  },
-  "missingToken": {
-    "message": "找不到您的代幣？"
-  },
-  "importTokens": {
-    "message": "導入代幣"
-  },
-  "receive": {
-    "message": "接收"
-  },
-  "transactionDetailGasHeading": {
-    "message": "估計燃料費用"
-  },
-  "transactionDetailGasTooltipExplanation": {
-    "message": "燃料費用由網絡設定，並根據網絡流量和交易複雜性產生波動。"
-  },
-  "transactionDetailGasTooltipIntro": {
-    "message": "燃料費用支付給在$1網絡上處理交易的加密礦工。Carbon Wallet不會從燃料費用中獲利。"
-  },
-  "advancedGasPriceTitle": {
-    "message": "燃料價格"
-  },
-  "editGasPriceTooltip": {
-    "message": "此網絡在提交交易時需要一個“燃料價格”欄。燃料價格是您將按單位支付的金額。"
-  },
-  "editGasTitle": {
-    "message": "编辑優先級"
-  },
-  "viewOnBlockExplorer": {
-    "message": "在區塊瀏覽器上查看"
-  },
-  "transactionData": {
-    "message": "交易數據"
-  },
-  "connectedSites": {
-    "message": "已連接的網站"
-  },
-  "step1LatticeWallet": {
-    "message": "請確保您的 Lattice1 已準備好連接"
-  },
-  "step1LatticeWalletMsg": {
-    "message": "您可以在設置後在線連接Carbon Wallet到您的 Lattice1 設備。 解鎖您的設備並準備好您的設備ID。若要更多地使用硬件錢包，$1",
-    "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
-  },
-  "step1LedgerWallet": {
-    "message": "下載Ledger應用"
-  },
-  "step1LedgerWalletMsg": {
-    "message": "下載、設置和輸入您的密碼以解鎖 $1。",
-    "description": "$1 represents the `ledgerLiveApp` localization value"
-  },
-  "step1TrezorWallet": {
-    "message": "插入Trezor錢包"
-  },
-  "step1TrezorWalletMsg": {
-    "message": "將您的錢包直接連接到電腦。如果使用硬體錢包設備，關於使用您的錢包更多詳情，$1",
-    "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
-  },
-  "step2LedgerWallet": {
-    "message": "插入Ledger錢包"
-  },
-  "step2LedgerWalletMsg": {
-    "message": "將您的錢包直接連接到電腦。解鎖Ledger並打開Ethereum應用程序。關於使用您的硬體錢包設備的更多，$1。",
-    "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
-  },
-  "QRHardwareWalletSteps1Title": {
-    "message": "基於 QR 的硬體錢包"
-  },
-  "QRHardwareWalletSteps2Description": {
-    "message": "AirGap Vault & Ngrave (即將上線)"
-  },
-  "QRHardwareScanInstructions": {
-    "message": "為了保護您的隱私，螢幕是模糊的，但不影響對條碼的讀取。"
-  },
-  "connectedSitesEmptyDescription": {
-    "message": "$1 還沒連接任何網站。",
-    "description": "$1 is the account name"
-  },
-  "noConversionDateAvailable": {
-    "message": "沒有可用的貨幣轉換日期"
-  },
-  "hideZeroBalanceTokens": {
-    "message": "隱藏沒有餘額的代幣"
-  },
-  "showTestnetNetworks": {
-    "message": "顯示測試網絡"
-  },
-  "showTestnetNetworksDescription": {
-    "message": "選擇此項以在網路列表中顯示測試網路"
-  },
-  "nonceField": {
-    "message": "自定義交易 nonce"
-  },
-  "nonceFieldDescription": {
-    "message": "開啟此功能可以改變確認螢幕上的 nonce（交易號）。此為高級功能，請謹慎使用。"
-  },
-  "syncWithThreeBox": {
-    "message": "使用 3Box 同步數據（實驗功能）"
-  },
-  "syncWithThreeBoxDescription": {
-    "message": "開啟後可以用 3Box 備份您的設置。此功能目前是實驗功能，使用時風險自負。"
-  },
-  "syncWithThreeBoxDisabled": {
-    "message": "由於初始同步過程中出現錯誤，3Box 已被禁用。"
-  },
-  "ipfsGateway": {
-    "message": "IPFS 網路"
-  },
-  "ipfsGatewayDescription": {
-    "message": "輸入要用於 ENS 內容解析的 IPFS CID 網路的 URL。"
-  },
-  "preferredLedgerConnectionType": {
-    "message": "首選Ledger連接類型",
-    "description": "A header for a dropdown in the advanced section of settings. Appears above the ledgerConnectionPreferenceDescription message"
-  },
-  "ledgerConnectionPreferenceDescription": {
-    "message": "自定義您如何連接您的Ledger到Carbon Wallet。建議$1 但其他選項可用。請閱讀更多內容：$2",
-    "description": "A description that appears above a dropdown where users can select between up to three options - Ledger Live, U2F or WebHID - depending on what is supported in their browser. $1 is the recommended browser option, it will be either WebHID or U2f. $2 is a link to an article where users can learn more, but will be the translation of the learnMore message."
-  },
-  "ledgerDeviceOpenFailureMessage": {
-    "message": "Ledger設備打開失敗。您的Ledger可能已連接到其他軟體。 請關閉Ledger Live或其他連接到您Ledger設備的應用程序，並嘗試再次連接。"
-  },
-  "dismissReminderField": {
-    "message": "消除賬戶助記詞備份提醒"
-  },
-  "dismissReminderDescriptionField": {
-    "message": "開啟此選項以關閉賬戶助記詞備份提醒消息。 我們強烈建議您備份您的賬戶助記詞，以避免資金損失"
-  },
-  "buildContactList": {
-    "message": "建立您的添加聯絡人列表"
-  },
-  "addFriendsAndAddresses": {
-    "message": "添加您信任的朋友和地址"
-  },
-  "addMemo": {
-    "message": "添加備忘錄"
-  },
-  "addContact": {
-    "message": "添加聯絡人"
-  },
-  "contacts": {
-    "message": "聯絡人"
-  },
-  "showIncomingTransactions": {
-    "message": "顯示收到的交易"
-  },
-  "showIncomingTransactionsDescription": {
-    "message": "選擇該選項可使用 Etherscan（以太坊瀏覽器）（以太坊瀏覽器）在交易列表中顯示收到的交易。"
-  },
-  "usePhishingDetection": {
-    "message": "使用網絡釣魚檢測"
-  },
-  "usePhishingDetectionDescription": {
-    "message": "顯示針對 Ethereum 用戶釣魚域名的警告。"
-  },
-  "alerts": {
-    "message": "提醒"
-  },
-  "alertSettingsUnconnectedAccount": {
-    "message": "選擇了未連接的賬戶時瀏覽網站"
-  },
-  "alertSettingsUnconnectedAccountDescription": {
-    "message": "當您在瀏覽已連接的 Web3 網站，但當前選擇的賬戶沒有連接時，該提醒會在彈出的窗口中顯示。"
-  },
-  "addANetwork": {
-    "message": "添加網絡"
-  },
-  "builtAroundTheWorld": {
-    "message": "Carbon Wallet是在世界各地設計和建造的。"
-  },
-  "alertSettingsWeb3ShimUsage": {
-    "message": "當網站嘗試使用已經刪除的 window.web3 API"
-  },
-  "alertSettingsWeb3ShimUsageDescription": {
-    "message": "當您在瀏覽的網站嘗試使用已經刪除的 window.web3 API 時，該提醒會在彈出的窗口中顯示。"
-  },
-  "tokenDetails": {
-    "message": "代幣詳情"
-  },
-  "secretPhrase": {
-    "message": "只有這個錢包上的第一個帳戶將自動載入。 完成此流程後，點擊下選單，然後選擇創建賬戶。"
-  },
-  "secretRecoveryPhrase": {
-    "message": "賬戶助記詞"
-  },
-  "seedPhrasePlaceholderPaste": {
-    "message": "從剪貼板複製賬戶助記詞"
-  },
-  "acceptTermsOfUse": {
-    "message": "我已閱讀並同意 $1",
-    "description": "$1 is the `terms` message"
   }
 }

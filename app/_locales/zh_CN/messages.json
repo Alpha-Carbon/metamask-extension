@@ -3063,6 +3063,9 @@
   "tokenDecimalFetchFailed": {
     "message": "需要代币十进制。"
   },
+  "tokenDetails": {
+    "message": "代币详细讯息"
+  },
   "tokenDetectionAnnouncement": {
     "message": "新功能！改进的代币检测可以作为实验功能在Ethereum Mainnet上进行。$1"
   },
@@ -3315,6 +3318,9 @@
   "viewContact": {
     "message": "查看联系人"
   },
+  "viewDetail": {
+    "message": "查看详细信息"
+  },
   "viewFullTransactionDetails": {
     "message": "查看全部交易详情"
   },
@@ -3432,11 +3438,5 @@
   },
   "zeroGasPriceOnSpeedUpError": {
     "message": "加速时无燃料价格"
-  },
-  "viewDetail": {
-    "message": "查看详细信息"
-  },
-  "tokenDetails": {
-    "message": "代币详细讯息"
   }
 }

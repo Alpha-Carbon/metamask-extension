@@ -8,7 +8,11 @@ import {
   getNativeCurrencyImage,
   getMetaMaskAccountsOrdered,
 } from '../../../../selectors';
-import { updateSendAsset, getSendAsset, getSendStage } from '../../../../ducks/send';
+import {
+  updateSendAsset,
+  getSendAsset,
+  getSendStage,
+} from '../../../../ducks/send';
 import { showAccountDetail } from '../../../../store/actions';
 import SendAssetRow from './send-asset-row.component';
 

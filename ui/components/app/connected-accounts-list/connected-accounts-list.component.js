@@ -34,7 +34,7 @@ export default class ConnectedAccountsList extends PureComponent {
       if (typeof props[propName] !== 'boolean') {
         return new Error(
           `Warning: Failed prop type: '${propName}' of component '${componentName}' must be a boolean. Received: ${typeof props[
-          propName
+            propName
           ]}`,
         );
       } else if (props[propName] && !props.removePermittedAccount) {
@@ -140,9 +140,9 @@ export default class ConnectedAccountsList extends PureComponent {
       <>
         <main
           // className="connected-accounts-list"
-          className={classnames('connected-accounts-list',
-            { 'connected-accounts-list-border': connectedAccounts.length > 0 }
-          )}
+          className={classnames('connected-accounts-list', {
+            'connected-accounts-list-border': connectedAccounts.length > 0,
+          })}
         >
           {this.renderUnconnectedAccount()}
           {connectedAccounts.map(({ address, name }, index) => {

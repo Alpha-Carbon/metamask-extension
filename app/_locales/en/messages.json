@@ -3693,6 +3693,9 @@
   "viewContact": {
     "message": "View Contact"
   },
+  "viewDetail": {
+    "message": "View Detail"
+  },
   "viewFullTransactionDetails": {
     "message": "View full transaction details"
   },
@@ -3813,8 +3816,5 @@
   },
   "zeroGasPriceOnSpeedUpError": {
     "message": "Zero gas price on speed up"
-  },
-  "viewDetail": {
-    "message": "View Detail"
   }
 }

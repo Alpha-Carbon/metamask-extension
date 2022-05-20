@@ -114,7 +114,7 @@ function TransactionListItemInner({
   const {
     title,
     subtitle,
-    subtitleContainsOrigin,
+    // subtitleContainsOrigin,
     date,
     category,
     primaryCurrency,
@@ -185,9 +185,15 @@ function TransactionListItemInner({
           toggleShowDetails();
         }}
       >
-        <div className="transaction-list-item__title">{date}&nbsp; | &nbsp;{subtitle} </div>
+        <div className="transaction-list-item__title">
+          {date}&nbsp; | &nbsp;{subtitle}{' '}
+        </div>
         <div className="transaction-list-item__info">
-          <TransactionIcon category={category} status={displayedStatusKey} size={24} />
+          <TransactionIcon
+            category={category}
+            status={displayedStatusKey}
+            size={24}
+          />
           <div className="transaction-list-item__info-status">
             <p
               className={classnames(

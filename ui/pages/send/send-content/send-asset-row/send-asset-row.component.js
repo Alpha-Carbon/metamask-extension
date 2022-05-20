@@ -115,6 +115,7 @@ export default class SendAssetRow extends Component {
   onEditTransactionPage() {
     return this.props.sendStage === SEND_STAGES.EDIT;
   }
+
   arrowIconOpacity() {
     return this.onEditTransactionPage() ? '0.5' : '1';
   }
@@ -182,7 +183,7 @@ export default class SendAssetRow extends Component {
       showAccountDetail,
       // selectedAddress,
       // nativeCurrency,
-      nativeCurrencyImage,
+      // nativeCurrencyImage,
       // sendAsset: { details, type },
       // updateSendAsset,
       // tokens,
@@ -264,17 +265,17 @@ export default class SendAssetRow extends Component {
       // accounts,
       selectedAddress,
       // nativeCurrency,
-      nativeCurrencyImage,
+      // nativeCurrencyImage,
       accountsList,
     } = this.props;
 
-    const { sendableTokens, sendableCollectibles } = this.state;
+    // const { sendableTokens, sendableCollectibles } = this.state;
 
     // const balanceValue = accounts[selectedAddress]
     //   ? accounts[selectedAddress].balance
     //   : '';
 
-    const sendableAssets = [...sendableTokens, ...sendableCollectibles];
+    // const sendableAssets = [...sendableTokens, ...sendableCollectibles];
     const selectedAccount = accountsList.find((identity) => {
       return identity.address === selectedAddress;
     });
@@ -323,7 +324,7 @@ export default class SendAssetRow extends Component {
     const {
       address,
       // symbol,
-      image,
+      // image,
     } = token;
     // const { t } = this.context;
     const { accountsList, selectedAddress } = this.props;
@@ -341,7 +342,7 @@ export default class SendAssetRow extends Component {
           <Identicon
             address={selectedAccount.address}
             diameter={30}
-          // image={image} 
+            // image={image}
           />
         </div>
         <div className="send-v2__asset-dropdown__asset-data">
@@ -368,7 +369,7 @@ export default class SendAssetRow extends Component {
     const {
       address,
       //  name,
-      image,
+      // image,
       tokenId,
     } = collectible;
     const { accountsList, selectedAddress } = this.props;
@@ -386,7 +387,7 @@ export default class SendAssetRow extends Component {
         <div className="send-v2__asset-dropdown__asset-icon">
           <Identicon
             address={address}
-          // diameter={30} image={image}
+            // diameter={30} image={image}
           />
         </div>
         <div className="send-v2__asset-dropdown__asset-data">

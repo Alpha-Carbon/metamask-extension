@@ -6,7 +6,7 @@ export default function ArrowIcon({
   width = '24',
   height = '24',
   color = '#525252',
-  opacity = '1'
+  opacity = '1',
 }) {
   return (
     <svg
