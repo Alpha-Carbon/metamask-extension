@@ -87,6 +87,7 @@
 
   &:hover {
     // border-color: var(--Blue-500);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), var(--secondary-gradient);
   }
 
   &:active {
@@ -215,6 +216,7 @@
 
   &:hover {
     // border-color: var(--hover-confirm);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), var(--primary-gradient);
   }
 
   &:active {
