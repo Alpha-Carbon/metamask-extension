@@ -176,7 +176,7 @@ export default class NewAccount extends PureComponent {
             }}
             href="#"
           >
-            <BackIcon className="mr-2" />
+            <BackIcon className="mr-2 back-icon" />
             {t('back')}
           </a>
         </div>
@@ -207,11 +207,11 @@ export default class NewAccount extends PureComponent {
                 e.preventDefault();
                 passwordShow
                   ? this.setState({
-                      passwordHide: 'password',
-                    })
+                    passwordHide: 'password',
+                  })
                   : this.setState({
-                      passwordHide: 'text',
-                    });
+                    passwordHide: 'text',
+                  });
                 this.setState({ passwordShow: !passwordShow });
               }}
             >
@@ -241,11 +241,11 @@ export default class NewAccount extends PureComponent {
                 e.preventDefault();
                 confirmPasswordShow
                   ? this.setState({
-                      confirmPasswordHide: 'password',
-                    })
+                    confirmPasswordHide: 'password',
+                  })
                   : this.setState({
-                      confirmPasswordHide: 'text',
-                    });
+                    confirmPasswordHide: 'text',
+                  });
                 this.setState({ confirmPasswordShow: !confirmPasswordShow });
               }}
             >

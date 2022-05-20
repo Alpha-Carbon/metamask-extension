@@ -69,6 +69,16 @@
   &__create-back {
     margin-top: 44px;
     margin-bottom: 16px;
+      &>a{
+        &:hover{
+          color: var(--white);
+          & .back-icon{
+            &>path{
+              fill: var(--white) !important;
+            } 
+          }
+        }
+      }  
   }
 
   &__header {
