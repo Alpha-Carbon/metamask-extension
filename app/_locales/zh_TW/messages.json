@@ -220,6 +220,9 @@
   "connectingToRopsten": {
     "message": "連線到 Ropsten 測試網路"
   },
+  "continue":{
+    "message":"繼續"
+  },
   "continueToWyre": {
     "message": "繼續至 Wyre"
   },
@@ -474,11 +477,25 @@
   "importAccount": {
     "message": "匯入帳戶"
   },
+  "importAccountLinkText": {
+    "message": "使用助憶詞導入"
+  },
   "importAccountMsg": {
     "message": " 匯入的帳戶與您原有 Carbon Wallet 帳戶的助憶詞並無關聯。 "
   },
   "importAccountSeedPhrase": {
     "message": "利用助憶詞還原"
+  },
+  "importAccountText": {
+    "message": "或 $1",
+    "description": "$1 represents the text from `importAccountLinkText` as a link"
+  },
+  "importExistingWalletDescription": {
+    "message": "輸入您創建$1錢包時提供的助憶詞還原（或Seed Phrase）。",
+    "description": "$1 is the words 'Learn More' from key 'learnMore', separated here so that it can be added as a link"
+  },
+  "importExistingWalletTitle": {
+    "message": "使用賬戶助記詞導入現有錢包"
   },
   "importFromSeed": {
     "message": "引入帳號"
@@ -1128,5 +1145,196 @@
   },
   "viewDetail": {
     "message": "查看詳細內容"
+  },
+  "missingToken": {
+    "message": "找不到您的代幣？"
+  },
+  "importTokens": {
+    "message": "導入代幣"
+  },
+  "receive": {
+    "message": "接收"
+  },
+  "transactionDetailGasHeading": {
+    "message": "估計燃料費用"
+  },
+  "transactionDetailGasTooltipExplanation": {
+    "message": "燃料費用由網絡設定，並根據網絡流量和交易複雜性產生波動。"
+  },
+  "transactionDetailGasTooltipIntro": {
+    "message": "燃料費用支付給在$1網絡上處理交易的加密礦工。Carbon Wallet不會從燃料費用中獲利。"
+  },
+  "advancedGasPriceTitle": {
+    "message": "燃料價格"
+  },
+  "editGasPriceTooltip": {
+    "message": "此網絡在提交交易時需要一個“燃料價格”欄。燃料價格是您將按單位支付的金額。"
+  },
+  "editGasTitle": {
+    "message": "编辑優先級"
+  },
+  "viewOnBlockExplorer": {
+    "message": "在區塊瀏覽器上查看"
+  },
+  "transactionData": {
+    "message": "交易數據"
+  },
+  "connectedSites": {
+    "message": "已連接的網站"
+  },
+  "step1LatticeWallet": {
+    "message": "請確保您的 Lattice1 已準備好連接"
+  },
+  "step1LatticeWalletMsg": {
+    "message": "您可以在設置後在線連接Carbon Wallet到您的 Lattice1 設備。 解鎖您的設備並準備好您的設備ID。若要更多地使用硬件錢包，$1",
+    "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
+  },
+  "step1LedgerWallet": {
+    "message": "下載Ledger應用"
+  },
+  "step1LedgerWalletMsg": {
+    "message": "下載、設置和輸入您的密碼以解鎖 $1。",
+    "description": "$1 represents the `ledgerLiveApp` localization value"
+  },
+  "step1TrezorWallet": {
+    "message": "插入Trezor錢包"
+  },
+  "step1TrezorWalletMsg": {
+    "message": "將您的錢包直接連接到電腦。如果使用硬體錢包設備，關於使用您的錢包更多詳情，$1",
+    "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
+  },
+  "step2LedgerWallet": {
+    "message": "插入Ledger錢包"
+  },
+  "step2LedgerWalletMsg": {
+    "message": "將您的錢包直接連接到電腦。解鎖Ledger並打開Ethereum應用程序。關於使用您的硬體錢包設備的更多，$1。",
+    "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
+  },
+  "QRHardwareWalletSteps1Title": {
+    "message": "基於 QR 的硬體錢包"
+  },
+  "QRHardwareWalletSteps2Description": {
+    "message": "AirGap Vault & Ngrave (即將上線)"
+  },
+  "QRHardwareScanInstructions": {
+    "message": "為了保護您的隱私，螢幕是模糊的，但不影響對條碼的讀取。"
+  },
+  "connectedSitesEmptyDescription": {
+    "message": "$1 還沒連接任何網站。",
+    "description": "$1 is the account name"
+  },
+  "noConversionDateAvailable": {
+    "message": "沒有可用的貨幣轉換日期"
+  },
+  "hideZeroBalanceTokens": {
+    "message": "隱藏沒有餘額的代幣"
+  },
+  "showTestnetNetworks": {
+    "message": "顯示測試網絡"
+  },
+  "showTestnetNetworksDescription": {
+    "message": "選擇此項以在網路列表中顯示測試網路"
+  },
+  "nonceField": {
+    "message": "自定義交易 nonce"
+  },
+  "nonceFieldDescription": {
+    "message": "開啟此功能可以改變確認螢幕上的 nonce（交易號）。此為高級功能，請謹慎使用。"
+  },
+  "syncWithThreeBox": {
+    "message": "使用 3Box 同步數據（實驗功能）"
+  },
+  "syncWithThreeBoxDescription": {
+    "message": "開啟後可以用 3Box 備份您的設置。此功能目前是實驗功能，使用時風險自負。"
+  },
+  "syncWithThreeBoxDisabled": {
+    "message": "由於初始同步過程中出現錯誤，3Box 已被禁用。"
+  },
+  "ipfsGateway": {
+    "message": "IPFS 網路"
+  },
+  "ipfsGatewayDescription": {
+    "message": "輸入要用於 ENS 內容解析的 IPFS CID 網路的 URL。"
+  },
+  "preferredLedgerConnectionType": {
+    "message": "首選Ledger連接類型",
+    "description": "A header for a dropdown in the advanced section of settings. Appears above the ledgerConnectionPreferenceDescription message"
+  },
+  "ledgerConnectionPreferenceDescription": {
+    "message": "自定義您如何連接您的Ledger到Carbon Wallet。建議$1 但其他選項可用。請閱讀更多內容：$2",
+    "description": "A description that appears above a dropdown where users can select between up to three options - Ledger Live, U2F or WebHID - depending on what is supported in their browser. $1 is the recommended browser option, it will be either WebHID or U2f. $2 is a link to an article where users can learn more, but will be the translation of the learnMore message."
+  },
+  "ledgerDeviceOpenFailureMessage": {
+    "message": "Ledger設備打開失敗。您的Ledger可能已連接到其他軟體。 請關閉Ledger Live或其他連接到您Ledger設備的應用程序，並嘗試再次連接。"
+  },
+  "dismissReminderField": {
+    "message": "消除賬戶助記詞備份提醒"
+  },
+  "dismissReminderDescriptionField": {
+    "message": "開啟此選項以關閉賬戶助記詞備份提醒消息。 我們強烈建議您備份您的賬戶助記詞，以避免資金損失"
+  },
+  "buildContactList": {
+    "message": "建立您的添加聯絡人列表"
+  },
+  "addFriendsAndAddresses": {
+    "message": "添加您信任的朋友和地址"
+  },
+  "addMemo": {
+    "message": "添加備忘錄"
+  },
+  "addContact": {
+    "message": "添加聯絡人"
+  },
+  "contacts": {
+    "message": "聯絡人"
+  },
+  "showIncomingTransactions": {
+    "message": "顯示收到的交易"
+  },
+  "showIncomingTransactionsDescription": {
+    "message": "選擇該選項可使用 Etherscan（以太坊瀏覽器）（以太坊瀏覽器）在交易列表中顯示收到的交易。"
+  },
+  "usePhishingDetection": {
+    "message": "使用網絡釣魚檢測"
+  },
+  "usePhishingDetectionDescription": {
+    "message": "顯示針對 Ethereum 用戶釣魚域名的警告。"
+  },
+  "alerts": {
+    "message": "提醒"
+  },
+  "alertSettingsUnconnectedAccount": {
+    "message": "選擇了未連接的賬戶時瀏覽網站"
+  },
+  "alertSettingsUnconnectedAccountDescription": {
+    "message": "當您在瀏覽已連接的 Web3 網站，但當前選擇的賬戶沒有連接時，該提醒會在彈出的窗口中顯示。"
+  },
+  "addANetwork": {
+    "message": "添加網絡"
+  },
+  "builtAroundTheWorld": {
+    "message": "Carbon Wallet是在世界各地設計和建造的。"
+  },
+  "alertSettingsWeb3ShimUsage": {
+    "message": "當網站嘗試使用已經刪除的 window.web3 API"
+  },
+  "alertSettingsWeb3ShimUsageDescription": {
+    "message": "當您在瀏覽的網站嘗試使用已經刪除的 window.web3 API 時，該提醒會在彈出的窗口中顯示。"
+  },
+  "tokenDetails": {
+    "message": "代幣詳情"
+  },
+  "secretPhrase": {
+    "message": "只有這個錢包上的第一個帳戶將自動載入。 完成此流程後，點擊下選單，然後選擇創建賬戶。"
+  },
+  "secretRecoveryPhrase": {
+    "message": "賬戶助記詞"
+  },
+  "seedPhrasePlaceholderPaste": {
+    "message": "從剪貼板複製賬戶助記詞"
+  },
+  "acceptTermsOfUse": {
+    "message": "我已閱讀並同意 $1",
+    "description": "$1 is the `terms` message"
   }
 }

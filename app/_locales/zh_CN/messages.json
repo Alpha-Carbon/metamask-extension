@@ -3435,5 +3435,8 @@
   },
   "viewDetail": {
     "message": "查看详细信息"
+  },
+  "tokenDetails": {
+    "message": "代币详细讯息"
   }
 }
