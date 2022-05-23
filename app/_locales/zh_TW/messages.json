@@ -1336,5 +1336,45 @@
   },
   "zeroGasPriceOnSpeedUpError": {
     "message": "加速的 Gas 價格為 0"
+  },
+  "seedPhraseIntroTitle": {
+    "message": "保護您的錢包"
+  },
+  "seedPhraseIntroTitleCopy": {
+    "message": "在開始之前，觀看這個簡短的影片來了解您的賬戶助記詞以及如何保護您的錢包安全。"
+  },
+  "seedPhraseIntroSidebarTitleOne": {
+    "message": "什麼是賬戶助記詞？"
+  },
+  "seedPhraseIntroSidebarTitleThree": {
+    "message": "我是否應該分享我的賬戶助記詞？"
+  },
+  "seedPhraseIntroSidebarTitleTwo": {
+    "message": "如何保存我的賬戶助記詞？"
+  },
+  "seedPhraseIntroSidebarCopyOne": {
+    "message": "您的秘密恢復短語是一個12個詞，它是您錢包和資金的“主密鑰”"
+  },
+  "seedPhraseIntroSidebarCopyThree": {
+    "message": "如果有人要求您的恢復短語，他們可能會試圖欺騙您並偷竊您的錢包資金"
+  },
+  "seedPhraseIntroSidebarBulletFour": {
+    "message": "寫下並存儲在多個秘密位置。"
+  },
+  "seedPhraseIntroSidebarBulletOne": {
+    "message": "保存到密碼管理器"
+  },
+  "seedPhraseIntroSidebarBulletThree": {
+    "message": "存放在保險箱內。"
+  },
+  "seedPhraseIntroSidebarBulletTwo": {
+    "message": "儲存在銀行保險庫。"
+  },
+  "seedPhraseIntroSidebarCopyTwo": {
+    "message": "永遠不要分享您的賬戶助記詞，甚至不和Carbon Wallet分享！"
+  },
+  "endOfFlowMessage7": {
+    "message": "如果您有問題或看到一些可疑情況，請聯繫我們的$1支持。",
+    "description": "$1 is a clickable link with text defined by the 'here' key. The link will open to a form where users can file support tickets."
   }
 }
