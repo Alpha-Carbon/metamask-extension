@@ -18,6 +18,16 @@
   &__main {
     flex: 3;
     min-width: 0;
+    &-back{
+      &:hover{
+        &>a{
+          color: var(--white);
+          &>svg>path{
+            fill: var(--white);
+          }
+        }
+      }
+    }
   }
 
   &__side {

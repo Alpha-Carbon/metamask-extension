@@ -2,6 +2,14 @@
   &__back-button {
     margin-top: 45px;
     margin-bottom: 12px;
+    &>a{
+      &:hover{
+        color: var(--white);
+        &>svg>path{
+          fill: var(--white);
+        }
+      }
+    }
   }
 
   &__sorted-seed-words {
