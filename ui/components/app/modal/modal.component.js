@@ -25,7 +25,7 @@ export default class Modal extends PureComponent {
 
   static defaultProps = {
     submitType: 'primary',
-    cancelType: 'secondary',
+    cancelType: 'cancel',
   };
 
   render() {
