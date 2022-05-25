@@ -114,8 +114,7 @@ class RevealSeedPage extends Component {
       <div className="page-container__footer">
         <footer>
           <Button
-            type="secondary"
-            large
+            type="cancel"
             className="page-container__footer-button"
             onClick={() =>
               this.props.history.push(this.props.mostRecentOverviewPage)
@@ -124,8 +123,7 @@ class RevealSeedPage extends Component {
             {this.context.t('cancel')}
           </Button>
           <Button
-            type="primary"
-            large
+            type="primaryGradient"
             className="page-container__footer-button"
             onClick={(event) => this.handleSubmit(event)}
             disabled={this.state.password === ''}
@@ -141,8 +139,7 @@ class RevealSeedPage extends Component {
     return (
       <div className="page-container__footer">
         <Button
-          type="secondary"
-          large
+          type="cancel"
           className="page-container__footer-single-button"
           onClick={() =>
             this.props.history.push(this.props.mostRecentOverviewPage)
