@@ -47,10 +47,10 @@ const fetchWithTimeout = getFetchWithTimeout(SECOND * 30);
 // }
 const defaultProviderConfigOpts = {
   type: NETWORK_TYPE_RPC,
-  rpcUrl: 'https://leucine0.node.alphacarbon.network',
-  chainId: `0x${(31337).toString(16)}`,
+  rpcUrl: 'https://aminoxtestnet.node.alphacarbon.network/',
+  chainId: `0x${(13370).toString(16)}`,
   ticker: 'TACT',
-  nickname: 'Leucine100',
+  nickname: 'Amino X Testnet',
 };
 
 const defaultProviderConfig = {
