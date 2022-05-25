@@ -222,7 +222,7 @@
     "message": "您需要在 Google Chrome 瀏覽器使用 Carbon Wallet 連結您的硬體錢包"
   },
   "clickToRevealSeed": {
-    "message": "點選顯示助憶詞"
+    "message": "點選顯示助記詞"
   },
   "close": {
     "message": "關閉"
@@ -234,7 +234,7 @@
     "message": "確認密碼"
   },
   "confirmSecretBackupPhrase": {
-    "message": "確認您已經備份的助憶詞"
+    "message": "確認您已經備份的助記詞"
   },
   "confirmed": {
     "message": "已確認"
@@ -370,7 +370,7 @@
     "message": "下載 Google Chrome 瀏覽器"
   },
   "downloadSecretBackup": {
-    "message": "下載助憶詞文字檔案，並安全的保存在有加密功能的外接硬碟或其他儲存裝置。"
+    "message": "下載助記詞文字檔案，並安全的保存在有加密功能的外接硬碟或其他儲存裝置。"
   },
   "downloadStateLogs": {
     "message": "下載狀態紀錄"
@@ -556,20 +556,20 @@
     "message": "匯入帳戶"
   },
   "importAccountLinkText": {
-    "message": "使用助憶詞導入"
+    "message": "使用助記詞導入"
   },
   "importAccountMsg": {
-    "message": " 匯入的帳戶與您原有 Carbon Wallet 帳戶的助憶詞並無關聯。 "
+    "message": " 匯入的帳戶與您原有 Carbon Wallet 帳戶的助記詞並無關聯。 "
   },
   "importAccountSeedPhrase": {
-    "message": "利用助憶詞還原"
+    "message": "利用助記詞還原"
   },
   "importAccountText": {
     "message": "或 $1",
     "description": "$1 represents the text from `importAccountLinkText` as a link"
   },
   "importExistingWalletDescription": {
-    "message": "輸入您創建$1錢包時提供的助憶詞還原（或Seed Phrase）。",
+    "message": "輸入您創建$1錢包時提供的助記詞還原（或Seed Phrase）。",
     "description": "$1 is the words 'Learn More' from key 'learnMore', separated here so that it can be added as a link"
   },
   "importExistingWalletTitle": {
@@ -616,7 +616,7 @@
     "message": "無效的 RPC URI"
   },
   "invalidSeedPhrase": {
-    "message": "無效的助憶詞"
+    "message": "無效的助記詞"
   },
   "ipfsGateway": {
     "message": "IPFS 網路"
@@ -678,7 +678,7 @@
     "message": "備註"
   },
   "memorizePhrase": {
-    "message": "絕對不要忘記您的助憶詞。"
+    "message": "絕對不要忘記您的助記詞。"
   },
   "message": {
     "message": "訊息"
@@ -875,7 +875,7 @@
     "message": "移除帳戶"
   },
   "removeAccountDescription": {
-    "message": "此帳戶將由錢包中移除。在繼續進行之前請確認您已經匯出並妥善備份助憶詞或私鑰。"
+    "message": "此帳戶將由錢包中移除。在繼續進行之前請確認您已經匯出並妥善備份助記詞或私鑰。"
   },
   "rename": {
     "message": "重新命名"
@@ -896,19 +896,19 @@
     "message": "重置帳戶將清除您的交易紀錄"
   },
   "restoreAccountWithSeed": {
-    "message": "透過助憶詞還原您的帳戶"
+    "message": "透過助記詞還原您的帳戶"
   },
   "revealSeedWords": {
-    "message": "顯示助憶詞"
+    "message": "顯示助記詞"
   },
   "revealSeedWordsDescription": {
-    "message": "若想在不同瀏覽器或電腦登入，將需要使用助憶詞還原帳戶資訊。請妥善並安全的保管您的助憶詞。"
+    "message": "若想在不同瀏覽器或電腦登入，將需要使用助記詞還原帳戶資訊。請妥善並安全的保管您的助記詞。"
   },
   "revealSeedWordsWarning": {
-    "message": "絕對不要在公共場合輸入助憶詞！這可被用來竊取您的帳戶。"
+    "message": "絕對不要在公共場合輸入助記詞！這可被用來竊取您的帳戶。"
   },
   "revealSeedWordsWarningTitle": {
-    "message": "請勿將助憶詞洩漏予他人"
+    "message": "請勿將助記詞洩漏予他人"
   },
   "rinkeby": {
     "message": "Rinkeby 測試網路"
@@ -944,13 +944,16 @@
     "message": "搜尋代幣"
   },
   "secretBackupPhraseDescription": {
-    "message": "助憶詞將可協助您用更簡單的方式備份帳戶資訊。"
+    "message": "助記詞將可協助您用更簡單的方式備份帳戶資訊。"
   },
   "secretBackupPhraseWarning": {
-    "message": "警告: 絕對不要洩漏您的助憶詞。任何人只要得知助憶詞代表他可以竊取您所有的以太幣和代幣。"
+    "message": "警告: 絕對不要洩漏您的助記詞。任何人只要得知助記詞代表他可以竊取您所有的以太幣和代幣。"
   },
   "secretPhrase": {
     "message": "只有這個錢包上的第一個帳戶將自動載入。 完成此流程後，點擊下選單，然後選擇創建賬戶。"
+  },
+  "secretPhraseWarning": {
+    "message": "如果您使用另一個賬戶助記詞來還原，您當前的錢包、帳戶和資產將永久從這個應用中移除。 此操作不能取消。"
   },
   "secretRecoveryPhrase": {
     "message": "賬戶助記詞"
@@ -1001,7 +1004,7 @@
     "message": "從剪貼板複製賬戶助記詞"
   },
   "seedPhraseReq": {
-    "message": "助憶詞為 12 個詞語"
+    "message": "助記詞為 12 個詞語"
   },
   "selectAHigherGasFee": {
     "message": "選擇更高的交易費可加速您的交易處理時間 *"
@@ -1010,7 +1013,7 @@
     "message": "選擇帳戶"
   },
   "selectEachPhrase": {
-    "message": "請依照正確順序點選助憶詞"
+    "message": "請依照正確順序點選助記詞"
   },
   "selectPathHelp": {
     "message": "若看不到您已經擁有的 Ledger 帳戶，請嘗試切換路徑為 \"Legacy (MEW / MyCrypto)\""
@@ -1140,7 +1143,7 @@
     "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
   },
   "storePhrase": {
-    "message": "您可以用密碼管理系統例如 1Password 等軟體儲存助憶詞。"
+    "message": "您可以用密碼管理系統例如 1Password 等軟體儲存助記詞。"
   },
   "submitted": {
     "message": "已送出"
@@ -1357,7 +1360,7 @@
     "message": "歡迎回來!"
   },
   "writePhrase": {
-    "message": "將助憶詞寫在紙上，並保存在安全的場所。若想要更安全，將助憶詞分別寫在不同紙張上並存放在不同的地方。"
+    "message": "將助記詞寫在紙上，並保存在安全的場所。若想要更安全，將助記詞分別寫在不同紙張上並存放在不同的地方。"
   },
   "yesLetsTry": {
     "message": "了解，試試看"
@@ -1372,7 +1375,7 @@
     "message": "您的私鑰"
   },
   "yourPrivateSeedPhrase": {
-    "message": "您的助憶詞"
+    "message": "您的助記詞"
   },
   "zeroGasPriceOnSpeedUpError": {
     "message": "加速的 Gas 價格為 0"
