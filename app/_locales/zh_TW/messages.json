@@ -1033,6 +1033,9 @@
   "settings": {
     "message": "設定"
   },
+  "show": {
+    "message": "顯示"
+  },
   "showAdvancedGasInline": {
     "message": "顯示進階 Gas 控制選項"
   },
