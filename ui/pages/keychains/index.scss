@@ -17,6 +17,12 @@
     color: var(--black);
   }
 
+  & .create-new-vault__show-btn , & .create-new-vault__password-wrap-btn{
+    &>button{
+      color: var(--black);
+    }
+  }
+
   & .create-new-vault__form #password-label,
   .create-new-vault__form #confirm-password-label {
     color: var(--black);
@@ -83,6 +89,14 @@
     color: #22232c;
     position: absolute;
     top: -25px;
+    &:hover{
+      color: var(--secondary-3);
+      & .back-icon{
+        &>path{
+          fill: var(--secondary-3) !important;
+        } 
+      }
+    }
   }
 
   &__selector-label {
