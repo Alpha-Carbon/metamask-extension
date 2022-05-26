@@ -57,7 +57,7 @@ export default function ActCoinIcon({
 }
 
 ActCoinIcon.propTypes = {
-  className: PropTypes.object,
+  className: PropTypes.string,
   /**
    * Width of the icon
    */
