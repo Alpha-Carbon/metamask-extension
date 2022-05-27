@@ -21,7 +21,7 @@ export default function PermissionsRedirect({ subjectMetadata }) {
             {renderBrokenLine()}
           </div>
           <SiteIcon
-            icon="/images/alphaCarbon/alpha-gradient-logo.png"
+            icon="/images/alphaCarbon/logo_gradient.svg"
             size={64}
           />
         </div>
