@@ -62,11 +62,11 @@ export default class NewAccountModal extends Component {
           />
         </div>
         <div className="new-account-modal__footer">
-          <Button type="secondary" onClick={this.props.hideModal}>
+          <Button type="cancel" onClick={this.props.hideModal}>
             {t('cancel')}
           </Button>
           <Button
-            type="primary"
+            type="primaryGradient"
             onClick={this.onSubmit}
             disabled={!this.state.alias}
           >
