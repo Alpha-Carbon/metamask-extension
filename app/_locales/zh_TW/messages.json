@@ -2,6 +2,9 @@
   "QRHardwareScanInstructions": {
     "message": "為了保護您的隱私，螢幕是模糊的，但不影響對條碼的讀取。"
   },
+  "QRHardwareWalletSteps1Description": {
+    "message": "該類硬體錢包通過QR code實現通訊交互，做到完全脫離網路。官方支持的錢包有："
+  },
   "QRHardwareWalletSteps1Title": {
     "message": "基於 QR 的硬體錢包"
   },
@@ -35,6 +38,9 @@
   },
   "accountSelectionRequired": {
     "message": "必須先選擇一個帳戶!"
+  },
+  "active": {
+    "message": "當前"
   },
   "activity": {
     "message": "交易紀錄"
@@ -87,6 +93,9 @@
   "advancedOptions": {
     "message": "進階選項"
   },
+  "alertDisableTooltip": {
+    "message": "這個可以在“設定 > 提醒”中進行更改"
+  },
   "alertSettingsUnconnectedAccount": {
     "message": "選擇了未連接的賬戶時瀏覽網站"
   },
@@ -101,6 +110,9 @@
   },
   "alerts": {
     "message": "提醒"
+  },
+  "allowThisSiteTo": {
+    "message": "允許本網站："
   },
   "amount": {
     "message": "數量"
@@ -145,6 +157,9 @@
   "attributions": {
     "message": "來源"
   },
+  "authorizedPermissions": {
+    "message": "您已授權以下權限"
+  },
   "autoLockTimeLimit": {
     "message": "自動登出計時器（分）"
   },
@@ -161,10 +176,10 @@
     "message": "回到所有"
   },
   "backupApprovalInfo": {
-    "message": "在裝置遺失、忘記密碼、需要重新安裝 Carbon Wallet、或是想在另一裝置開啟錢包的情形下，你需要此秘密代碼來復原錢包。"
+    "message": "在裝置遺失、忘記密碼、需要重新安裝 Carbon Wallet、或是想在另一裝置開啟錢包的情形下，你需要此祕密代碼來復原錢包。"
   },
   "backupApprovalNotice": {
-    "message": "備份你的秘密還原代碼，安全防護錢包與資金。"
+    "message": "備份你的祕密還原代碼，安全防護錢包與資金。"
   },
   "backupNow": {
     "message": "現在備份"
@@ -251,11 +266,31 @@
   "connectHardwareWallet": {
     "message": "連線硬體錢包"
   },
+  "connectManually": {
+    "message": "手動連接到當前站點"
+  },
   "connectToSite": {
     "message": "連接到 "
   },
+  "connectWithMetaMask": {
+    "message": "使用 Carbon Wallet 連接"
+  },
+  "connectedAccountsDescriptionPlural": {
+    "message": "您有 $1 個賬戶連接到了該網站。",
+    "description": "$1 is the number of accounts"
+  },
+  "connectedAccountsDescriptionSingular": {
+    "message": "您有 1 個賬戶連接到了該網站。"
+  },
+  "connectedAccountsEmptyDescription": {
+    "message": "Carbon Wallet 沒有連接這個網站。要連接到 web3 網站，請在他們的網站上找到連接按鈕。"
+  },
   "connectedSites": {
     "message": "已連接的網站"
+  },
+  "connectedSitesDescription": {
+    "message": "$1 已連接到這些網站。他們可以查看您的賬戶地址。",
+    "description": "$1 is the account name"
   },
   "connectedSitesEmptyDescription": {
     "message": "$1 還沒連接任何網站。",
@@ -327,6 +362,9 @@
   "currencyConversion": {
     "message": "轉換匯率"
   },
+  "currentAccountNotConnected": {
+    "message": "您的當前賬戶沒有連接"
+  },
   "currentLanguage": {
     "message": "當前語言"
   },
@@ -360,6 +398,24 @@
   "details": {
     "message": "詳情"
   },
+  "disconnect": {
+    "message": "斷開"
+  },
+  "disconnectAllAccounts": {
+    "message": "斷開所有賬戶"
+  },
+  "disconnectAllAccountsConfirmationDescription": {
+    "message": "您確定要斷開連接嗎？您可能會失去網站功能。"
+  },
+  "disconnectPrompt": {
+    "message": "斷開 $1"
+  },
+  "disconnectThisAccount": {
+    "message": "斷開此賬戶的連接"
+  },
+  "dismiss": {
+    "message": "關閉"
+  },
   "dismissReminderDescriptionField": {
     "message": "開啟此選項以關閉賬戶助記詞備份提醒消息。 我們強烈建議您備份您的賬戶助記詞，以避免資金損失"
   },
@@ -368,6 +424,9 @@
   },
   "done": {
     "message": "完成"
+  },
+  "dontShowThisAgain": {
+    "message": "不再顯示"
   },
   "downloadGoogleChrome": {
     "message": "下載 Google Chrome 瀏覽器"
@@ -391,7 +450,7 @@
     "message": "此網絡在提交交易時需要一個“燃料價格”欄。燃料價格是您將按單位支付的金額。"
   },
   "editGasTitle": {
-    "message": "编辑優先級"
+    "message": "編輯優先級"
   },
   "endOfFlowMessage1": {
     "message": "你通過測試了—安全存放助記詞，這是你的責任！"
@@ -400,7 +459,7 @@
     "message": "都完成了"
   },
   "endOfFlowMessage2": {
-    "message": "安全儲存的小秘訣"
+    "message": "安全儲存的小祕訣"
   },
   "endOfFlowMessage3": {
     "message": "在多處儲存備份。"
@@ -458,7 +517,7 @@
     "message": "Extension"
   },
   "failed": {
-    "message": "交易失败"
+    "message": "交易失敗"
   },
   "fast": {
     "message": "快"
@@ -640,8 +699,11 @@
   "kovan": {
     "message": "Kovan 測試網路"
   },
+  "lastConnected": {
+    "message": "最後連接"
+  },
   "learnMore": {
-    "message": "了解更多"
+    "message": "瞭解更多"
   },
   "ledgerAccountRestriction": {
     "message": "您必須使用最後的帳戶才能產生新帳戶"
@@ -815,6 +877,13 @@
   "pending": {
     "message": "等待處理"
   },
+  "permission_ethereumAccounts": {
+    "message": "查看您允許的賬戶的地址（必填）",
+    "description": "The description for the `eth_accounts` permission"
+  },
+  "permissions": {
+    "message": "權限"
+  },
   "personalAddressDetected": {
     "message": "偵測為個人位址，請輸入代幣合約位址"
   },
@@ -901,6 +970,9 @@
   "resetAccountDescription": {
     "message": "重置帳戶將清除您的交易紀錄"
   },
+  "restore": {
+    "message": "恢復"
+  },
   "restoreAccountWithSeed": {
     "message": "透過助記詞還原您的帳戶"
   },
@@ -932,7 +1004,7 @@
     "message": "儲存為CSV格式檔案"
   },
   "saveYourPrivateKey": {
-    "message": "儲存在安全和秘密的地方"
+    "message": "儲存在安全和祕密的地方"
   },
   "scanInstructions": {
     "message": "請將 QR code 放在攝影鏡頭前面"
@@ -968,7 +1040,7 @@
     "message": "安全＆隱私"
   },
   "seedPhraseIntroSidebarBulletFour": {
-    "message": "寫下並存儲在多個秘密位置。"
+    "message": "寫下並存儲在多個祕密位置。"
   },
   "seedPhraseIntroSidebarBulletOne": {
     "message": "保存到密碼管理器"
@@ -980,7 +1052,7 @@
     "message": "儲存在銀行保險庫。"
   },
   "seedPhraseIntroSidebarCopyOne": {
-    "message": "您的秘密恢復短語是一個12個詞，它是您錢包和資金的“主密鑰”"
+    "message": "您的祕密恢復短語是一個12個詞，它是您錢包和資金的“主密鑰”"
   },
   "seedPhraseIntroSidebarCopyThree": {
     "message": "如果有人要求您的恢復短語，他們可能會試圖欺騙您並偷竊您的錢包資金"
@@ -1001,7 +1073,7 @@
     "message": "保護您的錢包"
   },
   "seedPhraseIntroTitleCopy": {
-    "message": "在開始之前，觀看這個簡短的影片來了解您的賬戶助記詞以及如何保護您的錢包安全。"
+    "message": "在開始之前，觀看這個簡短的影片來瞭解您的賬戶助記詞以及如何保護您的錢包安全。"
   },
   "seedPhrasePlaceholder": {
     "message": "單詞之間請用空白分隔"
@@ -1014,6 +1086,9 @@
   },
   "selectAHigherGasFee": {
     "message": "選擇更高的交易費可加速您的交易處理時間 *"
+  },
+  "selectAccounts": {
+    "message": "選擇賬戶"
   },
   "selectAnAccount": {
     "message": "選擇帳戶"
@@ -1168,6 +1243,9 @@
   },
   "switchNetworks": {
     "message": "切換網路"
+  },
+  "switchToThisAccount": {
+    "message": "切換到此賬戶"
   },
   "symbol": {
     "message": "符號"
@@ -1378,10 +1456,10 @@
     "message": "將助記詞寫在紙上，並保存在安全的場所。若想要更安全，將助記詞分別寫在不同紙張上並存放在不同的地方。"
   },
   "yesLetsTry": {
-    "message": "了解，試試看"
+    "message": "瞭解，試試看"
   },
   "youNeedToAllowCameraAccess": {
-    "message": "需要准許存取攝影鏡頭才能啟用此功能"
+    "message": "需要準許存取攝影鏡頭才能啟用此功能"
   },
   "youSign": {
     "message": "正在簽署"
