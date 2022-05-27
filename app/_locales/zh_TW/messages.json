@@ -54,6 +54,9 @@
   "addContact": {
     "message": "添加聯絡人"
   },
+  "addCustomToken": {
+    "message": "新增自定義代幣"
+  },
   "addFriendsAndAddresses": {
     "message": "添加您信任的朋友和地址"
   },
@@ -579,6 +582,9 @@
     "message": "引入帳號"
   },
   "importTokens": {
+    "message": "導入代幣"
+  },
+  "importTokensCamelCase": {
     "message": "導入代幣"
   },
   "importWallet": {
@@ -1116,6 +1122,12 @@
   },
   "stateLogsDescription": {
     "message": "狀態紀錄包含您的公開帳戶位址和已傳送的交易資訊"
+  },
+  "statusConnected": {
+    "message": "已連接"
+  },
+  "statusNotConnected": {
+    "message": "未連接"
   },
   "step1LatticeWallet": {
     "message": "請確保您的 Lattice1 已準備好連接"
