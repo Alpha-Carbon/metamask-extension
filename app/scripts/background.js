@@ -165,9 +165,11 @@ async function initialize(remotePort) {
 // State and Persistence
 //
 
-//merge rpc list 
+// merge rpc list
 function merge(a, b, prop) {
-  var reduced = a.filter(aitem => !b.find(bitem => aitem[prop] === bitem[prop]))
+  const reduced = a.filter(
+    (aitem) => !b.find((bitem) => aitem[prop] === bitem[prop]),
+  );
   return reduced.concat(b);
 }
 
@@ -185,10 +187,16 @@ async function loadStateFromPersistence() {
   // read from disk
   // first from preferred, async API:
   versionedData =
-    (await localStore.get() || migrator.generateInitialState(firstTimeState));
-  const oldFirstTimeState = versionedData.data.PreferencesController.frequentRpcListDetail;
-  const newFirstTimeState = firstTimeState.PreferencesController.frequentRpcListDetail;
-  versionedData.data.PreferencesController.frequentRpcListDetail = merge(oldFirstTimeState, newFirstTimeState, 'chainId');
+    (await localStore.get()) || migrator.generateInitialState(firstTimeState);
+  const oldFirstTimeState =
+    versionedData.data.PreferencesController.frequentRpcListDetail;
+  const newFirstTimeState =
+    firstTimeState.PreferencesController.frequentRpcListDetail;
+  versionedData.data.PreferencesController.frequentRpcListDetail = merge(
+    oldFirstTimeState,
+    newFirstTimeState,
+    'chainId',
+  );
 
   // check if somehow state is empty
   // this should never happen but new error reporting suggests that it has

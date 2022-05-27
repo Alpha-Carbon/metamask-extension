@@ -70,20 +70,20 @@ export default function NativeAsset({ nativeCurrency }) {
         assetName={nativeCurrency}
         onBack={() => history.push(DEFAULT_ROUTE)}
         isEthNetwork={!rpcPrefs.blockExplorerUrl}
-      // optionsButton={
-      //   <AssetOptions
-      //     isNativeAsset
-      //     onClickBlockExplorer={() => {
-      //       blockExplorerLinkClickedEvent();
-      //       global.platform.openTab({
-      //         url: accountLink,
-      //       });
-      //     }}
-      //     onViewAccountDetails={() => {
-      //       dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
-      //     }}
-      //   />
-      // }
+        // optionsButton={
+        //   <AssetOptions
+        //     isNativeAsset
+        //     onClickBlockExplorer={() => {
+        //       blockExplorerLinkClickedEvent();
+        //       global.platform.openTab({
+        //         url: accountLink,
+        //       });
+        //     }}
+        //     onViewAccountDetails={() => {
+        //       dispatch(showModal({ name: 'ACCOUNT_DETAILS' }));
+        //     }}
+        //   />
+        // }
       />
       <div className="asset-native__wrapper">
         {nativeCurrency === 'TACT' ? (
