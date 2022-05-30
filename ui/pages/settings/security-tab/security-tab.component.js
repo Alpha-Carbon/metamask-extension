@@ -318,7 +318,7 @@ export default class SecurityTab extends PureComponent {
             {this.renderSeedWords()}
             {this.renderIncomingTransactionsOptIn()}
             {this.renderPhishingDetectionToggle()}
-            {this.renderMetaMetricsOptIn()}
+            {/* {this.renderMetaMetricsOptIn()} */}
             {this.renderShowPrivateKey()}
           </>
         )}
