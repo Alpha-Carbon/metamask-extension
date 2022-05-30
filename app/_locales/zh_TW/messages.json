@@ -449,6 +449,13 @@
   "editGasPriceTooltip": {
     "message": "此網絡在提交交易時需要一個“燃料價格”欄。燃料價格是您將按單位支付的金額。"
   },
+  "editGasSubTextAmountLabel": {
+    "message": "最大金額：",
+    "description": "This is meant to be used as the $1 substitution editGasSubTextAmount"
+  },
+  "editGasSubTextFeeLabel": {
+    "message": "最高收費："
+  },
   "editGasTitle": {
     "message": "編輯優先級"
   },
@@ -661,6 +668,9 @@
   },
   "insufficientFunds": {
     "message": "資金不足"
+  },
+  "insufficientFundsForGas": {
+    "message": "燃料資金不足"
   },
   "insufficientTokens": {
     "message": "代幣不足"
@@ -1108,8 +1118,19 @@
   "sendAmount": {
     "message": "發送數量"
   },
+  "sendSpecifiedTokens": {
+    "message": "發送 $1",
+    "description": "Symbol of the specified token"
+  },
+  "sendTo": {
+    "message": "發送至"
+  },
   "sendTokens": {
     "message": "發送代幣"
+  },
+  "sendingNativeAsset": {
+    "message": "正在發送$1",
+    "description": "$1 represents the native currency symbol for the current network (e.g. ETH or BNB)"
   },
   "settings": {
     "message": "設定"
