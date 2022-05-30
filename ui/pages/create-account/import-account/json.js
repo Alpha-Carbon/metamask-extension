@@ -9,8 +9,7 @@ import { getMetaMaskAccounts } from '../../../selectors';
 import Button from '../../../components/ui/button';
 import { getMostRecentOverviewPage } from '../../../ducks/history/history';
 
-const HELP_LINK =
-  'https://alphacarbon.network/';
+const HELP_LINK = 'https://alphacarbon.network/';
 
 class JsonImportSubview extends Component {
   state = {

@@ -20,10 +20,7 @@ export default function PermissionsRedirect({ subjectMetadata }) {
             <span className="permissions-redirect__check" />
             {renderBrokenLine()}
           </div>
-          <SiteIcon
-            icon="/images/alphaCarbon/logo_gradient.svg"
-            size={64}
-          />
+          <SiteIcon icon="/images/alphaCarbon/logo_gradient.svg" size={64} />
         </div>
       </div>
     </div>
