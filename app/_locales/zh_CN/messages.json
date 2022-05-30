@@ -2611,6 +2611,9 @@
   "stateLogsDescription": {
     "message": "状态日志包含您的账户地址和已发送的交易。"
   },
+  "status": {
+    "message": "状态"
+  },
   "statusConnected": {
     "message": "已连接"
   },

@@ -49,7 +49,10 @@
     "message": "活動紀錄"
   },
   "addANetwork": {
-    "message": "添加網絡"
+    "message": "新增網絡"
+  },
+  "addANickname": {
+    "message": "新增名稱"
   },
   "addAcquiredTokens": {
     "message": "將您已經擁有的代幣顯示於 Carbon Wallet"
@@ -58,16 +61,16 @@
     "message": "新增化名"
   },
   "addContact": {
-    "message": "添加聯絡人"
+    "message": "新增聯絡人"
   },
   "addCustomToken": {
     "message": "新增自定義代幣"
   },
   "addFriendsAndAddresses": {
-    "message": "添加您信任的朋友和地址"
+    "message": "新增您信任的朋友和地址"
   },
   "addMemo": {
-    "message": "添加備忘錄"
+    "message": "新增備忘錄"
   },
   "addNetwork": {
     "message": "新增網路"
@@ -83,6 +86,9 @@
   },
   "addToken": {
     "message": "加入代幣"
+  },
+  "address": {
+    "message": "地址"
   },
   "advanced": {
     "message": "進階"
@@ -204,7 +210,7 @@
     "message": "您的瀏覽器尚未支援..."
   },
   "buildContactList": {
-    "message": "建立您的添加聯絡人列表"
+    "message": "建立您的新增聯絡人列表"
   },
   "builtAroundTheWorld": {
     "message": "Carbon Wallet是在世界各地設計和建造的。"
@@ -338,6 +344,9 @@
   "copyPrivateKey": {
     "message": "這是您的私鑰（點擊複製）"
   },
+  "copyRawTransactionData": {
+    "message": "複製原始交易數據"
+  },
   "copyToClipboard": {
     "message": "複製到剪貼簿"
   },
@@ -362,6 +371,9 @@
   "currencyConversion": {
     "message": "轉換匯率"
   },
+  "currencySymbol": {
+    "message": "貨幣符號"
+  },
   "currentAccountNotConnected": {
     "message": "您的當前賬戶沒有連接"
   },
@@ -376,6 +388,12 @@
   },
   "customToken": {
     "message": "自訂代幣"
+  },
+  "data": {
+    "message": "數據"
+  },
+  "dataHex": {
+    "message": "十六進制"
   },
   "decimal": {
     "message": "小數點精度"
@@ -770,6 +788,9 @@
   "missingToken": {
     "message": "找不到您的代幣？"
   },
+  "mobileSyncWarning": {
+    "message": "“同步擴展”功能暫時被禁用。 如果您想要在Carbon Wallet手機上使用您的擴展錢包，在您的手機應用上：返回錢包設置選項並選擇“使用賬戶助記詞導入”選項。 使用您的擴展錢包的助記詞來導入您的錢包。"
+  },
   "mustSelectOne": {
     "message": "必須選擇至少 1 代幣"
   },
@@ -785,6 +806,9 @@
   },
   "networkName": {
     "message": "網路名稱"
+  },
+  "networkSettingsChainIdDescription": {
+    "message": "鏈 ID 用於簽署交易。它必須與網路返回的鏈 ID 相匹配。您可以輸入十進制或'0x'前綴的十六進制數字，但我們將以十進制顯示。"
   },
   "networks": {
     "message": "網路"
@@ -823,6 +847,9 @@
   "next": {
     "message": "下一頁"
   },
+  "nickname": {
+    "message": "名稱"
+  },
   "noAddressForName": {
     "message": "此 ENS 尚未指定位址。"
   },
@@ -858,6 +885,15 @@
   },
   "on": {
     "message": "開啟"
+  },
+  "onlyAddTrustedNetworks": {
+    "message": "惡意網路提供商可能會顯示區塊鏈的狀態並記錄您的網路活動。只新增您信任的自定義網絡。"
+  },
+  "optional": {
+    "message": "可選"
+  },
+  "optionalWithParanthesis": {
+    "message": "(可選)"
   },
   "origin": {
     "message": "來源"
@@ -1219,6 +1255,9 @@
   "stateLogsDescription": {
     "message": "狀態紀錄包含您的公開帳戶位址和已傳送的交易資訊"
   },
+  "status": {
+    "message": "狀態"
+  },
   "statusConnected": {
     "message": "已連接"
   },
@@ -1354,6 +1393,9 @@
   },
   "transactionData": {
     "message": "交易數據"
+  },
+  "transactionDecodingUnsupportedNetworkError": {
+    "message": "交易解碼對鏈ID $1不可用"
   },
   "transactionDetailGasHeading": {
     "message": "估計燃料費用"
