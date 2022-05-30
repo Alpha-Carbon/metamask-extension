@@ -388,7 +388,7 @@ export default class TransactionListItemDetails extends PureComponent {
                   </Disclosure>
                 )}
                 {transactionGroup.initialTransaction?.txParams?.data ? (
-                  <Disclosure title="Transaction data" size="small">
+                  <Disclosure title={t('transactionData')} size="small">
                     <TransactionDecoding
                       title={t('transactionData')}
                       to={transactionGroup.initialTransaction.txParams?.to}
