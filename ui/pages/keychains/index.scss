@@ -117,7 +117,12 @@
 
 .reveal-seed {
   &__content {
-    padding: 20px;
+    padding: 20px 0px;
+    & .form-control{
+      border-radius: 4px;
+      height: 32px;
+      border: none;
+    }
   }
 
   &__label {
@@ -132,6 +137,7 @@
     color: var(--crimson);
     padding-top: 5px;
   }
+  
 }
 
 .page-container__footer-single-button {
