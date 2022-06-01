@@ -126,8 +126,9 @@
   }
 
   &__label {
+    @include roundeBold;
+
     padding-bottom: 10px;
-    font-weight: 400;
     display: inline-block;
   }
 
