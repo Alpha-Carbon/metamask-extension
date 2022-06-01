@@ -94,6 +94,9 @@
   &__link {
     background-color: #fff;
     color: var(--secondary-3);
+    @media screen and (max-width: $break-small) {
+      background-color: var(--background);
+    }
   }
 
   &__input {
