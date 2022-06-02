@@ -69,7 +69,7 @@ export const AMINOX_SYMBOL = 'TACT';
 
 export const ETH_TOKEN_IMAGE_URL = './images/eth_logo.svg';
 export const TEST_ETH_TOKEN_IMAGE_URL = './images/black-eth-logo.svg';
-export const BNB_TOKEN_IMAGE_URL = './images/bnb.png';
+export const BNB_TOKEN_IMAGE_URL = './images/BNB.svg';
 export const MATIC_TOKEN_IMAGE_URL = './images/matic-token.png';
 export const AVAX_TOKEN_IMAGE_URL = './images/avax-token.png';
 export const AMINO_TOKEN_IMAGE_URL = './images/act-icon.svg';
