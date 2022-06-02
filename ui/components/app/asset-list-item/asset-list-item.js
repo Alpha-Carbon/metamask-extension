@@ -121,7 +121,7 @@ const AssetListItem = ({
         </>
       }
       titleIcon={titleIcon}
-      subtitle={secondary ? <h3 title={secondary}>{secondary}</h3> : null}
+      // subtitle={secondary ? <h3 title={secondary}>{secondary}</h3> : null}
       onClick={onClick}
       icon={
         <Identicon
