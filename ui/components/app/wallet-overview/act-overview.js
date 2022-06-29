@@ -17,6 +17,7 @@ import {
   SEND_ROUTE,
   // BUILD_QUOTE_ROUTE,
   CONNECTED_ACCOUNTS_ROUTE,
+  BRIDGE_ROUTE,
 } from '../../../helpers/constants/routes';
 import { SECOND } from '../../../../shared/constants/time';
 import { shortenAddress } from '../../../helpers/utils/util';
@@ -30,6 +31,7 @@ import Tooltip from '../../ui/tooltip';
 import EditIcon from '../../ui/icon/edit-icon.component';
 import CopyIcon from '../../ui/icon/copy-icon.component';
 import SendIcon from '../../ui/icon/send-icon.component';
+import BridgeIcon from '../../ui/icon/bridge-icon.component';
 import ReceiveIcon from '../../ui/icon/receive-icon.component';
 import { I18nContext } from '../../../contexts/i18n';
 import Identicon from '../../ui/identicon';
@@ -160,7 +162,7 @@ const ActOverview = () => {
         >
           <ReceiveIcon
             className="act-overview__buttons-icon"
-            size={24}
+            size={17}
             color="#FFFFFF"
           />
           {t('receive')}
@@ -174,10 +176,24 @@ const ActOverview = () => {
         >
           <SendIcon
             className="act-overview__buttons-icon"
-            size={24}
+            size={17}
             color="#FFFFFF"
           />
           {t('send')}
+        </button>
+        <button
+          className="act-overview__buttons-send"
+          onClick={() => {
+            history.push(BRIDGE_ROUTE);
+
+          }}
+        >
+          <BridgeIcon
+            className="act-overview__buttons-icon"
+            size={17}
+            color="#FFFFFF"
+          />
+          bridge
         </button>
       </div>
     </div>

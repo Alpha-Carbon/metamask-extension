@@ -229,11 +229,11 @@
     justify-content: space-between;
 
     &-icon {
-      margin-right: 12px;
+      margin-right: 4px;
     }
 
     & > button {
-      width: 45%;
+      width: 32%;
       height: 32px;
       color: var(--white);
       border-radius: 4px;
@@ -243,7 +243,7 @@
 
       @include H5;
       @include roundeNormal;
-
+      font-size: 14px;
       transition: ease-in-out 0.4s;
     }
 
