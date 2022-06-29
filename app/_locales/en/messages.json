@@ -3816,5 +3816,17 @@
   },
   "zeroGasPriceOnSpeedUpError": {
     "message": "Zero gas price on speed up"
+  },
+  "targetChain":{
+    "message":"Target Chain"
+  },
+  "walletAddress":{
+    "message":"Wallet address"
+  },
+  "deposti":{
+    "message":"Deposti"
+  },
+  "bridge":{
+    "message":"Bridge"
   }
 }

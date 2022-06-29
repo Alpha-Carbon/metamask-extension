@@ -1,0 +1,268 @@
+.bridge{
+  &-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding:0 1rem;
+    &-back{
+      cursor: pointer;
+    }
+    &-title{
+      font-size: 20px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &-history{      
+      @include roundeBold;
+
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      background: var(--secondary-2-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+  &-container{
+    & .tabs{
+      display: flex;
+      flex-direction: column;
+      &__content{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        & .bridge-label{
+          padding: 0;
+        }
+      }
+    }
+  }
+  &-label{
+    @include roundeBold;
+
+    font-size: 14px;
+    color: var(--gray-1);
+    margin-bottom: 8px;
+    padding: 0 1rem;
+  }
+  &__tabs{
+    margin-top: 30px;
+    
+  }
+  &__tab{
+    @include H6;
+
+    width: 100%;
+    color: var(--gray-3);
+    font-weight: 500;
+    display: flex;
+    padding: 0 20px;
+    cursor: pointer;
+    &>button{
+      @include roundeBold;
+    }
+  }
+
+  
+
+  &__tab--active {
+    position: relative;
+
+    & > button {
+      background: var(--secondary-2-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: calc(100% - 30px);
+      bottom: -1px;
+      left: 50%;
+      height: 2px;
+      background: var(--secondary-2-gradient);
+      border-radius: 10px;
+      transform: translateX(-50%);
+    }
+  }
+  &-amount{
+    @include H6;
+
+    border: none;
+    border-radius: 6px;
+    background-color: var(--white);
+    padding: 8px 32px 8px 16px;
+    width: 100%;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+  &-dropdown{
+    &-target{
+      margin: 0 1rem;
+    }
+    &-token{
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+
+  &-deposti{
+    &-inputWrap{
+      margin-top: 24px;
+      position: relative;
+      &__tooltip-wrapper{
+        position: absolute;
+        right: 4px;
+        z-index: 100;
+        bottom: 4px;
+      }
+      &-copy{
+        background: var(--white);
+      }
+      & .MuiFormControl-root{
+        & .MuiFormLabel-root{
+          @include roundeBold;
+
+          font-size: 14px;
+          color: var(--gray-1);
+        }
+        & .MuiInputBase-root{
+          border: none;
+          padding-left: 12px;
+          & .MuiInputBase-input{
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+
+  &-ETH{
+    &-addressWrap{
+        position: relative;
+        &__action-icon{
+          position: absolute;
+          right: 9px;
+          bottom: 9px;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          &--qrcode{
+            background-image: url(/images/qr-code.svg);
+            background-color: unset;
+            width: 20px;
+            height: 20px;
+            margin: 0 0.25rem;
+          }
+          &--erase{
+            background-image: url(/images/close-gray.svg);
+            background-color: unset;
+            width: 0.75rem;
+            height: 0.75rem;
+            margin: 0 0.25rem;
+            right: 12px;
+            bottom: 14px;
+          }
+        }
+    }
+    &-container{
+      margin-top: 8px;
+      padding: 0px 1rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      & .bridge-label{
+        padding: 0;
+        margin-top: 20px;
+      }
+      & .MuiFormControl-root{
+        & .MuiFormLabel-root{
+          @include roundeBold;
+
+          font-size: 14px;
+          color: var(--gray-1);
+        }
+        & .MuiInputBase-root{
+          border: none;
+          padding-left: 12px;
+          & .MuiInputBase-input{
+            font-size: 13px;
+          }
+        }
+      }
+      & .bridge-footer{
+        margin-bottom: 24px;
+      }
+    }
+  }
+
+  &-footer{
+    margin: 0px 20px;
+    margin-bottom: 24px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    &>button{
+      margin-right: 0;
+    }
+  }
+
+  &-history{
+    @include roundeNormal;
+
+    font-size: 13px;
+    padding: 0 1rem;
+    &-list{
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      &.confirm{
+        border-left: 4px solid var(--secondary-3);
+      }
+      &-info{
+        display: flex;
+        margin-left: 6px;
+        &-list{
+          display: flex;
+          flex-direction: column;
+          &-chain{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 9px;
+            &-arrow{
+
+            }
+          }
+        }
+      }
+      &-detail{
+        display: flex;
+        align-items: center;
+        &-balance{
+          @include roundeBold;
+
+        }
+        &-chain{
+          margin-top: 9px;
+        }
+        &-status{
+          @include roundeBold;
+
+          margin-left: 16px;
+          padding: 4px;
+          color: var(--secondary-3);
+          border: 1px solid var(--secondary-3);
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+}

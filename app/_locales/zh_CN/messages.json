@@ -3441,5 +3441,17 @@
   },
   "zeroGasPriceOnSpeedUpError": {
     "message": "加速时无燃料价格"
+  },
+  "targetChain":{
+    "message":"Target Chain"
+  },
+  "walletAddress":{
+    "message":"Wallet address"
+  },
+  "deposti":{
+    "message":"Deposti"
+  },
+  "bridge":{
+    "message":"Bridge"
   }
 }

@@ -15,6 +15,7 @@ import NetworksFormModal from '../../../pages/settings/networks-tab/networks-for
 import DepositEtherModal from './deposit-ether-modal';
 import AccountDetailsModal from './account-details-modal';
 import AccountNameEdit from './account-name-edit-modal';
+import BridgeHistory from './bridge-history-modal';
 import ExportPrivateKeyModal from './export-private-key-modal';
 import HideTokenConfirmationModal from './hide-token-confirmation-modal';
 import QRScanner from './qr-scanner';
@@ -176,6 +177,11 @@ const MODALS = {
   },
   ACCOUNT_NAME_EDIT: {
     contents: <AccountNameEdit />,
+    ...accountModalStyle,
+  },
+
+  BRIDGE_HISTORY: {
+    contents: <BridgeHistory />,
     ...accountModalStyle,
   },
 

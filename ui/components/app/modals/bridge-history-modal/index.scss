@@ -1,0 +1,21 @@
+.bridge-history-modal{
+  padding: 0.5rem;
+  &-close{
+    text-align: right;
+  }
+  &-icon{
+    text-align: center;
+  }
+  &-title{
+    @include H3;
+    @include roundeBold;
+
+    color: var(--white);
+    background: var(--primary-background);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    text-align: center;
+  }
+}

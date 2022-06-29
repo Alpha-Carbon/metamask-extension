@@ -3,12 +3,7 @@ import React from 'react';
 import qrCode from 'qrcode-generator';
 import { connect } from 'react-redux';
 import { isHexPrefixed } from 'ethereumjs-util';
-import { useCopyToClipboard } from '../../../hooks/useCopyToClipboard';
 import { toChecksumHexAddress } from '../../../../shared/modules/hexstring-utils';
-import Tooltip from '../tooltip';
-// import CopyIcon from '../icon/copy-icon.component';
-import CopySecondaryGradientIcon from '../icon/copy-secondary-gradient-icon.component';
-import { useI18nContext } from '../../../hooks/useI18nContext';
 
 export default connect(mapStateToProps)(QrCodeView);
 
@@ -26,8 +21,7 @@ function QrCodeView(props) {
   const { message, data } = Qr;
   const address = `${isHexPrefixed(data) ? '' : ''
     }${toChecksumHexAddress(data)}`;
-  const [copied, handleCopy] = useCopyToClipboard();
-  const t = useI18nContext();
+  console.log(address, 'address');
   const qrImage = qrCode(4, 'M');
   qrImage.addData(address);
   qrImage.make();
@@ -56,24 +50,6 @@ function QrCodeView(props) {
           __html: qrImage.createTableTag(4),
         }}
       />
-      <Tooltip
-        wrapperClassName="qr-code__address-container__tooltip-wrapper"
-        position="bottom"
-        title={copied ? t('copiedExclamation') : t('copyToClipboard')}
-      >
-        <div
-          className="qr-code__address-container"
-          onClick={() => {
-            handleCopy(toChecksumHexAddress(data));
-          }}
-        >
-          <CopySecondaryGradientIcon size={12} />
-          <div className="qr-code__address">{toChecksumHexAddress(data)}</div>
-          {/* <div className="qr-code__copy-icon">
-            <CopyIcon size={11} className="qr-code__copy-icon__svg" color="" />
-          </div> */}
-        </div>
-      </Tooltip>
     </div>
   );
 }

@@ -1535,5 +1535,17 @@
   },
   "zeroGasPriceOnSpeedUpError": {
     "message": "加速的 Gas 價格為 0"
+  },
+  "targetChain":{
+    "message":"Target Chain"
+  },
+  "walletAddress":{
+    "message":"Wallet address"
+  },
+  "deposti":{
+    "message":"Deposti"
+  },
+  "bridge":{
+    "message":"Bridge"
   }
 }

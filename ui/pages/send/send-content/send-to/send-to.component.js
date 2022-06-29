@@ -40,7 +40,8 @@ function SendTo(accounts) {
         <div className="send-v2__to-cont-address">
           {selectedName !== selectedAddress ? (
             <>
-              {selectedName || selectedAccountName.name}
+              {selectedName ? selectedName || selectedAccountName.name : null}
+              {/* {selectedName || selectedAccountName.name || null} */}
               <br />
               <span>{ellipsify(selectedAddress)}</span>
             </>
