@@ -6,6 +6,7 @@ import IdleTimer from 'react-idle-timer';
 
 import FirstTimeFlow from '../first-time-flow';
 import SendTransactionScreen from '../send';
+import Bridge from '../birdge/bridge';
 import Swaps from '../swaps';
 import ConfirmTransaction from '../confirm-transaction';
 import Home from '../home';
@@ -50,6 +51,7 @@ import {
   RESTORE_VAULT_ROUTE,
   REVEAL_SEED_ROUTE,
   SEND_ROUTE,
+  BRIDGE_ROUTE,
   SWAPS_ROUTE,
   SETTINGS_ROUTE,
   UNLOCK_ROUTE,
@@ -158,6 +160,10 @@ export default class Routes extends Component {
           path={SEND_ROUTE}
           component={SendTransactionScreen}
           exact
+        />
+        <Authenticated
+          path={BRIDGE_ROUTE}
+          component={Bridge}
         />
         <Authenticated
           path={`${TOKEN_DETAILS}/:address/`}

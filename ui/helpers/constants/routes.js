@@ -29,6 +29,7 @@ const NEW_ACCOUNT_ROUTE = '/new-account';
 const IMPORT_ACCOUNT_ROUTE = '/new-account/import';
 const CONNECT_HARDWARE_ROUTE = '/new-account/connect';
 const SEND_ROUTE = '/send';
+const BRIDGE_ROUTE = '/bridge';
 const TOKEN_DETAILS = '/token-details';
 const CONNECT_ROUTE = '/connect';
 const CONNECT_CONFIRM_PERMISSIONS_ROUTE = '/confirm-permissions';
@@ -186,6 +187,7 @@ export {
   IMPORT_ACCOUNT_ROUTE,
   CONNECT_HARDWARE_ROUTE,
   SEND_ROUTE,
+  BRIDGE_ROUTE,
   TOKEN_DETAILS,
   INITIALIZE_ROUTE,
   INITIALIZE_WELCOME_ROUTE,
