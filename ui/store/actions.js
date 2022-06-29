@@ -545,6 +545,30 @@ export function signMsg(msgData) {
   };
 }
 
+export function bridgeSignPersonalMsgId(msgData, req) {
+  return async () => {
+    return await promisifiedBackground.bridgeNewUnsignedPersonalMessageId(msgData, req);
+  }
+}
+export function bridgeSignPersonalMsg(msgData) {
+  return async (dispatch) => {
+    dispatch(showLoadingIndication());
+    let rawSig;
+    try {
+      rawSig = await promisifiedBackground.bridgeSignPersonalMessage(msgData);
+    } catch (error) {
+      log.error(error);
+      dispatch(displayWarning(error.message));
+      throw error;
+    } finally {
+      dispatch(hideLoadingIndication());
+    }
+    dispatch(completedTx(msgData.metamaskId));
+    return rawSig;
+  };
+}
+
+
 export function signPersonalMsg(msgData) {
   log.debug('action - signPersonalMsg');
   return async (dispatch) => {
@@ -2393,12 +2417,12 @@ export function setPendingTokens(pendingTokens) {
   const tokens =
     address && symbol && decimals >= 0 <= 36
       ? {
-          ...selectedTokens,
-          [address]: {
-            ...customToken,
-            isCustom: true,
-          },
-        }
+        ...selectedTokens,
+        [address]: {
+          ...customToken,
+          isCustom: true,
+        },
+      }
       : selectedTokens;
 
   Object.keys(tokens).forEach((tokenAddress) => {
@@ -2588,6 +2612,74 @@ export function setInitialGasEstimate(initialAggId) {
     await promisifiedBackground.setInitialGasEstimate(initialAggId);
     await forceUpdateMetamaskState(dispatch);
   };
+}
+
+// Bridge
+
+export function getSignature(address) {
+  return async (dispatch) => {
+    dispatch(showLoadingIndication());
+    return await promisifiedBackground.getSignature(address);
+  };
+}
+
+export function connectWallet(address, signature) {
+  return async (dispatch) => {
+    dispatch(hideLoadingIndication());
+    return await promisifiedBackground.connectWallet(address, signature);
+  };
+}
+export function getSourceChain() {
+  return async () => {
+    return await promisifiedBackground.getSourceChain();
+  };
+}
+
+export function getPreloadChainOption() {
+  return async () => {
+    return await promisifiedBackground.getPreloadChainOption();
+  };
+}
+
+export function getChainConfig() {
+  return async (dispatch) => {
+    dispatch(showLoadingIndication());
+    try {
+      return await promisifiedBackground.getChainConfig();
+    } finally {
+      dispatch(hideLoadingIndication());
+    }
+  };
+}
+
+export function configFormData(formData) {
+  return async () => {
+    return promisifiedBackground.configFormData(formData);
+  }
+}
+
+export function resetDepositData() {
+  return async () => {
+    return promisifiedBackground.resetDepositData();
+  }
+}
+
+export function getToken() {
+  return async () => {
+    return promisifiedBackground.getToken();
+  }
+}
+
+export function getInternalAddress() {
+  return async () => {
+    return promisifiedBackground.getInternalAddress();
+  }
+}
+
+export function getTargetChain() {
+  return async () => {
+    return promisifiedBackground.getTargetChain();
+  }
 }
 
 // Permissions

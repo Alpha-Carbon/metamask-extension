@@ -117,6 +117,7 @@ import TypedMessageManager from './lib/typed-message-manager';
 import TransactionController from './controllers/transactions';
 import DetectTokensController from './controllers/detect-tokens';
 import SwapsController from './controllers/swaps';
+import BridgeController from './controllers/birdge';
 import accountImporter from './account-import-strategies';
 import seedPhraseVerifier from './lib/seed-phrase-verifier';
 import MetaMetricsController from './controllers/metametrics';
@@ -142,6 +143,7 @@ import createRPCMethodTrackingMiddleware from './lib/createRPCMethodTrackingMidd
 ///: BEGIN:ONLY_INCLUDE_IN(flask)
 import { getPlatform } from './lib/util';
 ///: END:ONLY_INCLUDE_IN
+
 
 export const METAMASK_CONTROLLER_EVENTS = {
   // Fired after state changes that impact the extension badge (unapproved msg count)
@@ -218,7 +220,6 @@ export default class MetamaskController extends EventEmitter {
     this.initializeProvider();
     this.provider = this.networkController.getProviderAndBlockTracker().provider;
     this.blockTracker = this.networkController.getProviderAndBlockTracker().blockTracker;
-
     this.preferencesController = new PreferencesController({
       initState: initState.PreferencesController,
       initLangCode: opts.initLangCode,
@@ -888,6 +889,18 @@ export default class MetamaskController extends EventEmitter {
         this.gasFeeController,
       ),
     });
+
+    this.bridgeController = new BridgeController({
+      networkController: this.networkController,
+      provider: this.provider,
+      getProviderConfig: this.networkController.getProviderConfig.bind(
+        this.networkController,
+      ),
+      getCurrentChainId: this.networkController.getCurrentChainId.bind(
+        this.networkController,
+      ),
+    })
+
     this.smartTransactionsController = new SmartTransactionsController(
       {
         onNetworkStateChange: this.networkController.store.subscribe.bind(
@@ -984,6 +997,7 @@ export default class MetamaskController extends EventEmitter {
         SubjectMetadataController: this.subjectMetadataController,
         ThreeBoxController: this.threeBoxController.store,
         SwapsController: this.swapsController.store,
+        BridgeController: this.bridgeController.store,
         EnsController: this.ensController.store,
         ApprovalController: this.approvalController,
         NotificationController: this.notificationController,
@@ -1103,10 +1117,10 @@ export default class MetamaskController extends EventEmitter {
           params:
             newAccounts.length < 2
               ? // If the length is 1 or 0, the accounts are sorted by definition.
-                newAccounts
+              newAccounts
               : // If the length is 2 or greater, we have to execute
-                // `eth_accounts` vi this method.
-                await this.getPermittedAccounts(origin),
+              // `eth_accounts` vi this method.
+              await this.getPermittedAccounts(origin),
         });
       }
 
@@ -1337,6 +1351,7 @@ export default class MetamaskController extends EventEmitter {
       preferencesController,
       qrHardwareKeyring,
       swapsController,
+      bridgeController,
       threeBoxController,
       tokensController,
       smartTransactionsController,
@@ -1601,6 +1616,10 @@ export default class MetamaskController extends EventEmitter {
       signPersonalMessage: this.signPersonalMessage.bind(this),
       cancelPersonalMessage: this.cancelPersonalMessage.bind(this),
 
+      //bridge personalMessageManager
+      bridgeSignPersonalMessage: this.bridgeSignPersonalMessage.bind(this),
+      bridgeNewUnsignedPersonalMessageId: this.bridgeNewUnsignedPersonalMessageId.bind(this),
+
       // typedMessageManager
       signTypedMessage: this.signTypedMessage.bind(this),
       cancelTypedMessage: this.cancelTypedMessage.bind(this),
@@ -1729,6 +1748,17 @@ export default class MetamaskController extends EventEmitter {
       setSwapsQuotesPollingLimitEnabled: swapsController.setSwapsQuotesPollingLimitEnabled.bind(
         swapsController,
       ),
+      // bridge 
+      getSignature: bridgeController.getSignature.bind(bridgeController),
+      connectWallet: bridgeController.connectWallet.bind(bridgeController),
+      getSourceChain: bridgeController.getSourceChain.bind(bridgeController),
+      getPreloadChainOption: bridgeController.getPreloadChainOption.bind(bridgeController),
+      getChainConfig: bridgeController.getChainConfig.bind(bridgeController),
+      configFormData: bridgeController.configFormData.bind(bridgeController),
+      getToken: bridgeController.getToken.bind(bridgeController),
+      getInternalAddress: bridgeController.getInternalAddress.bind(bridgeController),
+      getTargetChain: bridgeController.getTargetChain.bind(bridgeController),
+      resetDepositData: bridgeController.resetDepositData.bind(bridgeController),
 
       // Smart Transactions
       setSmartTransactionsOptInStatus: smartTransactionsController.setOptInState.bind(
@@ -1818,8 +1848,8 @@ export default class MetamaskController extends EventEmitter {
       // DetectCollectibleController
       detectCollectibles: process.env.COLLECTIBLES_V1
         ? collectibleDetectionController.detectCollectibles.bind(
-            collectibleDetectionController,
-          )
+          collectibleDetectionController,
+        )
         : null,
     };
   }
@@ -2332,9 +2362,8 @@ export default class MetamaskController extends EventEmitter {
    */
 
   getAccountLabel(name, index, hdPathDescription) {
-    return `${name[0].toUpperCase()}${name.slice(1)} ${
-      parseInt(index, 10) + 1
-    } ${hdPathDescription || ''}`.trim();
+    return `${name[0].toUpperCase()}${name.slice(1)} ${parseInt(index, 10) + 1
+      } ${hdPathDescription || ''}`.trim();
   }
 
   /**
@@ -2669,6 +2698,31 @@ export default class MetamaskController extends EventEmitter {
     this.sendUpdate();
     this.opts.showUserConfirmation();
     return promise;
+  }
+
+  //hack
+  bridgeNewUnsignedPersonalMessageId(msgParams, req) {
+    const msgId = this.personalMessageManager.bridgeAddUnapprovedMessage(
+      msgParams,
+      req,
+    );
+    return msgId;
+  }
+
+  //hack
+  async bridgeSignPersonalMessage(msgParams) {
+    const msgId = msgParams.metamaskId;
+    try {
+      const rawSig = await this.keyringController.signPersonalMessage(
+        msgParams,
+      );
+      this.personalMessageManager.setMsgStatusSigned(msgId, rawSig);
+      return rawSig;
+    } catch (error) {
+      log.info('MetaMaskController - eth_personalSign failed', error);
+      this.personalMessageManager.errorMessage(msgId, error);
+      throw error;
+    }
   }
 
   /**

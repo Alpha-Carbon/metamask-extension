@@ -151,6 +151,34 @@ export default class PersonalMessageManager extends EventEmitter {
     return msgId;
   }
 
+  //add bridge sign method
+  bridgeAddUnapprovedMessage(msgParams, req) {
+    // log.debug(
+    //   `PersonalMessageManager addUnapprovedMessage: ${JSON.stringify(
+    //     msgParams,
+    //   )}`,
+    // );
+    // add origin from request
+    log.info(req, 'bridgeAddUnapprovedMessage')
+    if (req) {
+      msgParams.origin = req.origin;
+    }
+    msgParams.data = this.normalizeMsgData(msgParams.data);
+    // create txData obj with parameters and meta data
+    const time = new Date().getTime();
+    const msgId = createId();
+    const msgData = {
+      id: msgId,
+      msgParams,
+      time,
+      status: 'unapproved',
+      type: MESSAGE_TYPE.PERSONAL_SIGN,
+    };
+    this.addMsg(msgData);
+
+    return msgId;
+  }
+
   /**
    * Adds a passed PersonalMessage to this.messages, and calls this._saveMsgList() to save the unapproved PersonalMessages from that
    * list to this.memStore.
