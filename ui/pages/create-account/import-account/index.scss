@@ -10,6 +10,7 @@
   flex-flow: column;
   align-items: center;
   padding: 0 30px 30px;
+  flex:1;
 
   @media screen and (max-width: $break-small) {
     padding: 0 22px 22px;
@@ -58,6 +59,7 @@
     align-items: flex-start;
     margin-top: 34px;
     width: 100%;
+    flex:1;
   }
 
   &__help-link {
@@ -90,5 +92,7 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+    flex: 1;
+    align-items: flex-end;
   }
 }
