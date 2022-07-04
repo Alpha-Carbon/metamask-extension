@@ -62,6 +62,9 @@ import { isEqual } from 'lodash';
 import { getTokens } from '../../ducks/metamask/metamask';
 import { useTokenTracker } from '../../hooks/useTokenTracker';
 
+//custom dropdown
+import DropdownCustom from '../../components/ui/dropdown-custom';
+
 
 function removeLeadingZeroes(str) {
     return str.replace(/^0*(?=\d)/u, '');
@@ -220,28 +223,21 @@ const Bridge = () => {
                 <div className="bridge-label">
                     {t('token')}
                 </div>
-                <select
-                    name=""
-                    id="bridge-dropdown-token"
-                    className="bridge-dropdown bridge-dropdown-token"
-                    value={selectedValue}
-                    onChange={(event) => {
+                <DropdownCustom
+                    options={TARGET_TOKEN}
+                    // defaultOption={}
+                    onChange={(value) => {
                         const chainConfig = chainOptions.find(
-                            (item) => item.value === chainId + '|' + event.target.value,
+                            (item) => item.value === chainId + '|' + value,
                         );
+                        console.log(chainConfig, 'chainConfig');
                         if (!chainConfig) {
                             return;
                         }
                         handleChange('symbol', chainConfig.meta.tokenCode);
-                        setSelectedValue(event.target.value)
+                        setSelectedValue(value)
                     }}
-                >
-                    <option value="" disabled key="select">
-                        {t('swapSelect')}
-                    </option>
-                    <option key={TARGET_TOKEN[0]} value={TARGET_TOKEN[0]}>{TARGET_TOKEN[0]}</option>
-                    <option key={TARGET_TOKEN[1]} value={TARGET_TOKEN[1]}>{TARGET_TOKEN[1]}</option>
-                </select>
+                />
             </>
         )
     }
@@ -291,12 +287,11 @@ const Bridge = () => {
                 <div className="bridge-label">
                     {t('targetChain')}
                 </div>
-                <DropDownBridge
-                    id="bridge-target_chain"
-                    className="bridge-dropdown-target"
+                <DropdownCustom
+                    className="target__chain"
                     options={targetChain}
-                    selectedOption={selectedTargetChain}
-                    onChange={async (value) => {
+                    // defaultOption={}
+                    onChange={(value) => {
                         setSelectedTargetChain(value);
                     }}
                 />
@@ -380,29 +375,21 @@ const Bridge = () => {
                                         console.log(value);
                                     }}
                                 /> */}
-                                <select
-                                    name="bridge-dropdown-token"
-                                    id="bridge-dropdown-token"
-                                    className="bridge-dropdown bridge-dropdown-token"
-                                    value={selectedValue}
-                                    onChange={(event) => {
+                                <DropdownCustom
+                                    options={TARGET_TOKEN}
+                                    // defaultOption={}
+                                    onChange={(value) => {
                                         const chainConfig = chainOptions.find(
-                                            (item) => item.value === chainId + '|' + event.target.value,
+                                            (item) => item.value === chainId + '|' + value,
                                         );
                                         console.log(chainConfig, 'chainConfig');
                                         if (!chainConfig) {
                                             return;
                                         }
                                         handleChange('symbol', chainConfig.meta.tokenCode);
-                                        setSelectedValue(event.target.value)
+                                        setSelectedValue(value)
                                     }}
-                                >
-                                    <option value="" disabled key="select">
-                                        {t('swapSelect')}
-                                    </option>
-                                    <option key={TARGET_TOKEN[0]} value={TARGET_TOKEN[0]}>{TARGET_TOKEN[0]}</option>
-                                    <option key={TARGET_TOKEN[1]} value={TARGET_TOKEN[1]}>{TARGET_TOKEN[1]}</option>
-                                </select>
+                                />
                                 {amountInput()}
                                 <div className="bridge-footer">
                                     <Button
@@ -542,6 +529,8 @@ const Bridge = () => {
             </Switch>
         );
     }
+
+
 
     return (
         <div className="page-container bridge-container">
