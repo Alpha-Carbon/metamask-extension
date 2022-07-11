@@ -405,11 +405,10 @@ export function getAccountsWithLabels(state) {
   return getMetaMaskAccountsOrdered(state).map(
     ({ address, name, balance }) => ({
       address,
-      addressLabel: `${
-        name.length < TRUNCATED_NAME_CHAR_LIMIT
-          ? name
-          : `${name.slice(0, TRUNCATED_NAME_CHAR_LIMIT - 1)}...`
-      } (${shortenAddress(address)})`,
+      addressLabel: `${name.length < TRUNCATED_NAME_CHAR_LIMIT
+        ? name
+        : `${name.slice(0, TRUNCATED_NAME_CHAR_LIMIT - 1)}...`
+        } (${shortenAddress(address)})`,
       label: name,
       balance,
     }),
@@ -904,4 +903,12 @@ export function getIsTokenDetectionSupported(state) {
 
 export function getState(state) {
   return state;
+}
+
+export function getNetworkDropdownOpen(state) {
+  return state.appState.networkDropdownOpen;
+}
+
+export function getDropdownSupportBridge(state) {
+  return state.appState.networkDropDownSupportBridge;
 }

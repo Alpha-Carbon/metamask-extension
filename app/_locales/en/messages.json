@@ -3828,5 +3828,20 @@
   },
   "bridge":{
     "message":"Bridge"
+  },
+  "sourceChain":{
+    "message":"Source Chain"
+  },
+  "onlyUSDT":{
+    "message":"This address only accepts: USDT"
+  },
+  "withdraw":{
+    "message":"Withdraw"
+  },
+  "recipientAddress":{
+    "message":"Recipient's address"
+  },
+  "pleaseSelectOneNetwork":{
+    "message":"Please select one of the following networks."
   }
 }

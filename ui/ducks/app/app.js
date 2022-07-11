@@ -26,6 +26,7 @@ export default function reduceApp(state = {}, action) {
     alertMessage: null,
     qrCodeData: null,
     networkDropdownOpen: false,
+    networkDropDownSupportBridge: false,
     accountDetail: {
       subview: 'transactions',
     },
@@ -75,7 +76,17 @@ export default function reduceApp(state = {}, action) {
         ...appState,
         networkDropdownOpen: false,
       };
-
+    // network dropdwon support bridge 
+    case actionConstants.NETWORK_SUPPORT_BRIDGE_OPEN:
+      return {
+        ...appState,
+        networkDropDownSupportBridge: true,
+      };
+    case actionConstants.NETWORK_SUPPORT_BRIDGE_CLOSE:
+      return {
+        ...appState,
+        networkDropDownSupportBridge: false,
+      };
     // alert methods
     case actionConstants.ALERT_OPEN:
       return {

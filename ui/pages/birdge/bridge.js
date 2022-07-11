@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Switch, Route, useHistory, useLocation } from 'react-router-dom';
 import classnames from 'classnames';
@@ -11,6 +11,8 @@ import {
     getSelectedIdentity,
     getCurrentChainId,
     getShouldHideZeroBalanceTokens,
+    getNetworkDropdownOpen,
+    getDropdownSupportBridge,
 } from '../../selectors/selectors';
 import {
     bridgeSignPersonalMsg,
@@ -26,6 +28,10 @@ import {
     getTargetChain,
     showModal,
     showQrScanner,
+    showNetworkDropdown,
+    hideNetworkDropdown,
+    supportBridgeDropdown,
+    unsupportBridgeDropdown
 } from '../../store/actions';
 import {
     updateSendAsset,
@@ -38,6 +44,7 @@ import {
     TARGET_TOKEN,
     ETH_CHAIN,
     HISTORY_PATH,
+    SUPPORT_BRIDGE_CHAIN_ID,
 } from './bridge.constants'
 
 import { ASSET_TYPES } from '../../../shared/constants/transaction';
@@ -95,6 +102,16 @@ const Bridge = () => {
     const [copyTimeOut, setCopyTimeOut] = useState('');
     const [selecedBalance, setSelectedBalance] = useState('0');
     const [ethAddress, setEthAddress] = useState('');
+
+    //select withdraw content
+    const [isWithdraw, setIsWithdraw] = useState(false);
+    const networkDropdownOpen = useSelector(getNetworkDropdownOpen);
+    const networkDropdownSupportBridge = useSelector(getDropdownSupportBridge);
+    console.log(networkDropdownOpen, 'networkDropdownOpen');
+
+    //tabs ref
+    const withdrawRef = useRef(null);
+    const depostiRef = useRef(null);
 
     //submit validate status
     const [amountIsValid, setAmountIsValid] = useState(false);
@@ -245,7 +262,7 @@ const Bridge = () => {
     const amountInput = () => {
         return (
             <>
-                <div className="bridge-label">
+                <div className="bridge-label mt-5">
                     {t('amount')}
                 </div>
                 <input
@@ -471,6 +488,188 @@ const Bridge = () => {
         )
     }
 
+    const bridgeContent = () => {
+        const supportChain = SUPPORT_BRIDGE_CHAIN_ID.includes(String(chainId));
+        return (
+            <Tabs
+                defaultActiveTabName={t('deposti')}
+                tabsClassName="bridge__tabs"
+                onTabClick={(tabName) => {
+                    console.log(tabName);
+                    tabName === t('withdraw') ? setIsWithdraw(true) : setIsWithdraw(false);
+                    if (!supportChain && tabName === t('withdraw')) {
+                        depostiRef.current.click();
+                        dispatch(supportBridgeDropdown());
+                        dispatch(showNetworkDropdown());
+                    }
+                }}
+            >
+                <Tab
+                    activeClassName="bridge__tab--active activity"
+                    className="bridge__tab"
+                    data-testid="bridge__deposti-tab"
+                    name={t('deposti')}
+                    ref={depostiRef}
+                >
+                    <div className="bridge-label">
+                        {t('sourceChain')}
+                    </div>
+                    <DropdownCustom
+                        options={chainOptions}
+                        onChange={(value) => {
+                            console.log(value, 'source chain value');
+                        }}
+                    />
+                    <div className="bridge-label mt-5">
+                        {t('targetChain')}
+                    </div>
+                    <DropdownCustom
+                        options={targetChain}
+                        onChange={(value) => {
+                            console.log(value, 'target Chain value');
+                        }}
+                    />
+                    <div className="bridge-only__USDT">
+                        {t('onlyUSDT')}
+                    </div>
+                    <QrCodeImg
+                        Qr={{
+                            data: internalAddress,
+                        }}
+                    />
+                    <div className="bridge-deposti-inputWrap">
+                        <Tooltip
+                            wrapperClassName="bridge-deposti-inputWrap__tooltip-wrapper"
+                            position="bottom"
+                            title={copied ? t('copiedExclamation') : t('copyToClipboard')}
+                        >
+                            <button
+                                className="bridge-deposti-inputWrap-copy"
+                                onClick={() => {
+                                    setCopied(true);
+                                }}
+                            >
+                                <Copy size={20} color="#227BFF" />
+                            </button>
+                        </Tooltip>
+                        <TextField
+                            className={'bridge-deposti-internal__address'}
+                            key="bridge-deposti-internal__address"
+                            id="bridge-deposti-internal__address"
+                            value={internalAddress}
+                            type={'text'}
+                            fullWidth
+                            // label={t('walletAddress')}
+                            inputProps={{ readOnly: true }}
+                        />
+                    </div>
+                </Tab>
+                <Tab
+                    activeClassName="bridge__tab--active"
+                    className="bridge__tab"
+                    data-testid="bridge__withdraw-tab"
+                    name={t('withdraw')}
+                    ref={withdrawRef}
+                >
+                    {isWithdraw && supportChain ?
+                        <>
+                            <div className="bridge-label">
+                                {t('targetChain')}
+                            </div>
+                            <DropdownCustom
+                                className="target__chain"
+                                options={targetChain}
+                                // defaultOption={}
+                                onChange={(value) => {
+                                    console.log(value, 'target value');
+                                }}
+                            />
+                            <div className="bridge-label mt-5">
+                                {t('token')}
+                            </div>
+                            <DropdownCustom
+                                options={TARGET_TOKEN}
+                                // defaultOption={}
+                                onChange={(value) => {
+                                    console.log(value, ' token value');
+                                }}
+                            />
+                            <div className="bridge-ETH-addressWrap">
+                                <TextField
+                                    className={'bridge-ETH__address'}
+                                    key="bridge-ETH__address"
+                                    id="bridge-ETH__address"
+                                    value={ethAddress}
+                                    type={'text'}
+                                    fullWidth
+                                    label={t('recipientAddress')}
+                                    onChange={(e) => {
+                                        setEthAddress(e.target.value)
+                                        const validate = ethers.utils.isAddress(e.target.value);
+                                        console.log(validate, 'check is eth address');
+                                    }}
+                                />
+                                <button
+                                    className={classnames('bridge-ETH-addressWrap__action-icon', {
+                                        'bridge-ETH-addressWrap__action-icon--erase': ethAddress,
+                                        'bridge-ETH-addressWrap__action-icon--qrcode': !ethAddress,
+                                    })}
+                                    onClick={() => {
+                                        if (ethAddress) {
+                                            setEthAddress('');
+                                        } else {
+                                            dispatch(showQrScanner());
+                                        }
+                                    }}
+                                >
+
+                                </button>
+                            </div>
+                            {amountInput()}
+                            <div className="bridge-footer">
+                                <Button
+                                    type={'primaryGradient'}
+                                    className={classnames(
+                                        'page-container__footer-button',
+                                    )}
+                                    disabled={!submitDisabled}
+                                    onClick={async () => {
+                                        const address = internalAddress;
+                                        const nickname = '';
+
+                                        try {
+                                            await dispatch(initializeSendState());
+                                            await dispatch(
+                                                updateSendAsset({
+                                                    type: ASSET_TYPES.TOKEN,
+                                                    details: token,
+                                                }),
+                                            );
+                                            await dispatch(updateSendAmount(amountValue));
+                                            await dispatch(updateRecipient({ address, nickname }));
+                                            const promise = await dispatch(signTransaction());
+                                            Promise.resolve(promise).then(() => {
+                                                history.push(CONFIRM_TRANSACTION_ROUTE);
+                                            });
+                                        } catch (err) {
+                                            throw err;
+                                        }
+                                    }}
+                                >
+                                    {t('submit')}
+                                </Button>
+                            </div>
+                        </>
+                        :
+                        <>
+                            <p>'alert network change modal'</p>
+                        </>
+                    }
+                </Tab>
+            </Tabs>
+        )
+    }
+
     const historyContent = () => {
         return (
             <div className="bridge-history">
@@ -499,7 +698,11 @@ const Bridge = () => {
                             <p className="bridge-history-list-detail-balance">100 USDT</p>
                             <p className="bridge-history-list-detail-chain">ETH Mainnet</p>
                         </div>
-                        <div className="bridge-history-list-detail-status">
+                        <div className={classnames('bridge-history-list-detail-status', {
+                            // 'confirm':status,
+                            'confirm': true,
+                            // 'fail': true
+                        })}>
                             confirmed
                         </div>
                     </div>
@@ -516,7 +719,8 @@ const Bridge = () => {
                     path="/bridge"
                     render={() => (
                         // default page
-                        depostiContent()
+                        // depostiContent()
+                        bridgeContent()
                     )}
                 />
                 <Route
@@ -529,8 +733,6 @@ const Bridge = () => {
             </Switch>
         );
     }
-
-
 
     return (
         <div className="page-container bridge-container">

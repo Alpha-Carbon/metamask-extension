@@ -1864,6 +1864,18 @@ export function hideNetworkDropdown() {
   };
 }
 
+export function supportBridgeDropdown() {
+  return {
+    type: actionConstants.NETWORK_SUPPORT_BRIDGE_OPEN,
+  };
+}
+
+export function unsupportBridgeDropdown() {
+  return {
+    type: actionConstants.NETWORK_SUPPORT_BRIDGE_CLOSE,
+  };
+}
+
 export function showModal(payload) {
   return {
     type: actionConstants.MODAL_OPEN,

@@ -26,6 +26,7 @@ import NetworkPrimaryGradientIcon from '../../ui/icon/network-primary-gradient-i
 import CheckIcon from '../../ui/icon/check-icon.component';
 import CloseIcon from '../../ui/icon/close-icon.component';
 import { Dropdown, DropdownMenuItem } from './dropdown';
+import { SUPPORT_BRIDGE_CHAIN_ID_HEX } from '../../../../ui/pages/birdge/bridge.constants';
 
 // classes from nodes of the toggle element.
 const notToggleElementClassnames = [
@@ -50,6 +51,7 @@ function mapStateToProps(state) {
     frequentRpcListDetail: state.metamask.frequentRpcListDetail || [],
     networkDropdownOpen: state.appState.networkDropdownOpen,
     showTestnetMessageInDropdown: state.metamask.showTestnetMessageInDropdown,
+    supportBridgeNetwork: state.appState.networkDropDownSupportBridge,
   };
 }
 
@@ -62,6 +64,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(actions.setRpcTarget(target, chainId, ticker, nickname));
     },
     hideNetworkDropdown: () => dispatch(actions.hideNetworkDropdown()),
+    unsupportBridgeDropdown: () => dispatch(actions.unsupportBridgeDropdown()),
     displayInvalidCustomNetworkAlert: (networkName) => {
       dispatch(displayInvalidCustomNetworkAlert(networkName));
     },
@@ -94,9 +97,11 @@ class NetworkDropdown extends Component {
     setProviderType: PropTypes.func.isRequired,
     setRpcTarget: PropTypes.func.isRequired,
     hideNetworkDropdown: PropTypes.func.isRequired,
+    unsupportBridgeDropdown: PropTypes.func.isRequired,
     frequentRpcListDetail: PropTypes.array.isRequired,
     // shouldShowTestNetworks: PropTypes.bool,
     networkDropdownOpen: PropTypes.bool.isRequired,
+    supportBridgeNetwork: PropTypes.bool.isRequired,
     displayInvalidCustomNetworkAlert: PropTypes.func.isRequired,
     showConfirmDeleteNetworkModal: PropTypes.func.isRequired,
     // showTestnetMessageInDropdown: PropTypes.bool.isRequired,
@@ -150,6 +155,7 @@ class NetworkDropdown extends Component {
             this.props.history.push(ADD_NETWORK_ROUTE);
           }
           this.props.hideNetworkDropdown();
+          this.props.unsupportBridgeDropdown();
         }}
       >
         {this.context.t('addNetwork')}
@@ -190,6 +196,7 @@ class NetworkDropdown extends Component {
             key={`common${rpcUrl}`}
             closeMenu={() => this.props.hideNetworkDropdown()}
             onClick={() => {
+              this.props.unsupportBridgeDropdown();
               if (isPrefixedFormattedHexString(chainId)) {
                 this.props.setRpcTarget(rpcUrl, chainId, ticker, nickname);
               } else {
@@ -314,6 +321,8 @@ class NetworkDropdown extends Component {
       // shouldShowTestNetworks,
       // showTestnetMessageInDropdown,
       // hideTestNetMessage,
+      supportBridgeNetwork,
+      unsupportBridgeDropdown,
     } = this.props;
     const rpcListDetail = this.props.frequentRpcListDetail;
     const rpcListDetailWithoutLocalHost = rpcListDetail.filter(
@@ -322,6 +331,13 @@ class NetworkDropdown extends Component {
     // const rpcListDetailForLocalHost = rpcListDetail.filter(
     //   (rpc) => rpc.rpcUrl === LOCALHOST_RPC_URL,
     // );
+
+    const rpcListSupportBridge = rpcListDetail.filter((rpc) => {
+      return SUPPORT_BRIDGE_CHAIN_ID_HEX.find((item) => {
+        return rpc.chainId === item
+      })
+    })
+
     const isOpen = this.props.networkDropdownOpen;
     const { t } = this.context;
 
@@ -339,6 +355,7 @@ class NetworkDropdown extends Component {
 
             if (notToggleElementIndex === -1) {
               event.stopPropagation();
+              unsupportBridgeDropdown();
               hideNetworkDropdown();
             }
           }}
@@ -371,13 +388,18 @@ class NetworkDropdown extends Component {
         >
           <div
             className="network-dropdown-close"
-            onClick={() => hideNetworkDropdown()}
+            onClick={() => {
+              unsupportBridgeDropdown();
+              hideNetworkDropdown();
+            }}
           >
             <CloseIcon />
           </div>
           <div className="network-dropdown-header">
             <NetworkPrimaryGradientIcon />
             <div className="network-dropdown-title">{t('networks')}</div>
+            {supportBridgeNetwork && <div className="network-dropdown-select_one" >{t('pleaseSelectOneNetwork')}</div>
+            }
             <div className="network-dropdown-divider" />
             {/* {showTestnetMessageInDropdown ? (
             <div className="network-dropdown-content">
@@ -404,14 +426,21 @@ class NetworkDropdown extends Component {
             </div>
           ) : null} */}
           </div>
-
           <div className="network-dropdown-list">
+            {!supportBridgeNetwork ?
+              this.renderCustomRpcList(
+                rpcListDetailWithoutLocalHost,
+                this.props.provider,
+              )
+              :
+              this.renderCustomRpcList(
+                rpcListSupportBridge,
+                this.props.provider,
+              )
+            }
             {/* {this.renderNetworkEntry('mainnet')} */}
 
-            {this.renderCustomRpcList(
-              rpcListDetailWithoutLocalHost,
-              this.props.provider,
-            )}
+
 
             {/* {shouldShowTestNetworks && (
             <>
@@ -428,12 +457,17 @@ class NetworkDropdown extends Component {
           )} */}
           </div>
 
-          {this.renderAddCustomButton()}
+          {!supportBridgeNetwork && this.renderAddCustomButton()}
+
         </Dropdown>
+
         {isOpen && (
           <div
             className="network-dropdown-area"
-            onClick={() => hideNetworkDropdown()}
+            onClick={() => {
+              unsupportBridgeDropdown();
+              hideNetworkDropdown();
+            }}
           />
         )}
       </>

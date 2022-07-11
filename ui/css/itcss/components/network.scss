@@ -168,6 +168,14 @@
   margin-top: 10px;
 }
 
+.network-dropdown-select_one{
+  @include roundeBold;
+
+  font-size: 14px;
+  color:var(--function-2);
+  text-align: center;
+}
+
 .network-dropdown-content {
   @include H6;
 

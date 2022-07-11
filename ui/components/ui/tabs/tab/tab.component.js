@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const Tab = (props) => {
+const Tab = React.forwardRef((props, ref) => {
   const {
     activeClassName,
     className,
@@ -24,11 +24,12 @@ const Tab = (props) => {
         event.preventDefault();
         onClick(tabIndex);
       }}
+      ref={ref}
     >
       <button>{name}</button>
     </li>
   );
-};
+});
 
 Tab.propTypes = {
   activeClassName: PropTypes.string,
