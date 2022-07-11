@@ -21,7 +21,6 @@ function QrCodeView(props) {
   const { message, data } = Qr;
   const address = `${isHexPrefixed(data) ? '' : ''
     }${toChecksumHexAddress(data)}`;
-  console.log(address, 'address');
   const qrImage = qrCode(4, 'M');
   qrImage.addData(address);
   qrImage.make();
