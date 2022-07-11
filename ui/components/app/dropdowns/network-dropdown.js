@@ -65,6 +65,7 @@ function mapDispatchToProps(dispatch) {
     },
     hideNetworkDropdown: () => dispatch(actions.hideNetworkDropdown()),
     unsupportBridgeDropdown: () => dispatch(actions.unsupportBridgeDropdown()),
+    supportBridgeChange: (chainId) => dispatch(actions.supportBridgeChange(chainId)),
     displayInvalidCustomNetworkAlert: (networkName) => {
       dispatch(displayInvalidCustomNetworkAlert(networkName));
     },
@@ -98,6 +99,7 @@ class NetworkDropdown extends Component {
     setRpcTarget: PropTypes.func.isRequired,
     hideNetworkDropdown: PropTypes.func.isRequired,
     unsupportBridgeDropdown: PropTypes.func.isRequired,
+    supportBridgeChange: PropTypes.func.isRequired,
     frequentRpcListDetail: PropTypes.array.isRequired,
     // shouldShowTestNetworks: PropTypes.bool,
     networkDropdownOpen: PropTypes.bool.isRequired,
@@ -167,6 +169,7 @@ class NetworkDropdown extends Component {
     rpcListDetail,
     provider,
     // opts = {}
+    openSupportBridge
   ) {
     // #TODO: Make sure should the networks in dropdown be reversed
     const reversedRpcListDetail = rpcListDetail.slice().reverse();
@@ -202,6 +205,7 @@ class NetworkDropdown extends Component {
               } else {
                 this.props.displayInvalidCustomNetworkAlert(nickname || rpcUrl);
               }
+              openSupportBridge ? this.props.supportBridgeChange(chainId) : this.props.supportBridgeChange('')
             }}
             style={{
               fontSize: '16px',
@@ -436,6 +440,7 @@ class NetworkDropdown extends Component {
               this.renderCustomRpcList(
                 rpcListSupportBridge,
                 this.props.provider,
+                true
               )
             }
             {/* {this.renderNetworkEntry('mainnet')} */}

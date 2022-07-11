@@ -1876,6 +1876,13 @@ export function unsupportBridgeDropdown() {
   };
 }
 
+export function supportBridgeChange(chainId) {
+  return {
+    type: actionConstants.NETWORK_SUPPORT_BRIDGE_CHANGE,
+    value: chainId,
+  }
+}
+
 export function showModal(payload) {
   return {
     type: actionConstants.MODAL_OPEN,

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from 'react';
+import React, { useContext, useEffect, useState, useRef, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Switch, Route, useHistory, useLocation } from 'react-router-dom';
 import classnames from 'classnames';
@@ -11,8 +11,7 @@ import {
     getSelectedIdentity,
     getCurrentChainId,
     getShouldHideZeroBalanceTokens,
-    getNetworkDropdownOpen,
-    getDropdownSupportBridge,
+    getSupportBridgeChainId,
 } from '../../selectors/selectors';
 import {
     bridgeSignPersonalMsg,
@@ -29,9 +28,7 @@ import {
     showModal,
     showQrScanner,
     showNetworkDropdown,
-    hideNetworkDropdown,
     supportBridgeDropdown,
-    unsupportBridgeDropdown
 } from '../../store/actions';
 import {
     updateSendAsset,
@@ -45,6 +42,7 @@ import {
     ETH_CHAIN,
     HISTORY_PATH,
     SUPPORT_BRIDGE_CHAIN_ID,
+    SUPPORT_BRIDGE_CHAIN_ID_HEX,
 } from './bridge.constants'
 
 import { ASSET_TYPES } from '../../../shared/constants/transaction';
@@ -105,9 +103,7 @@ const Bridge = () => {
 
     //select withdraw content
     const [isWithdraw, setIsWithdraw] = useState(false);
-    const networkDropdownOpen = useSelector(getNetworkDropdownOpen);
-    const networkDropdownSupportBridge = useSelector(getDropdownSupportBridge);
-    console.log(networkDropdownOpen, 'networkDropdownOpen');
+    const supportBridgeChainId = useSelector(getSupportBridgeChainId);
 
     //tabs ref
     const withdrawRef = useRef(null);
@@ -177,6 +173,11 @@ const Bridge = () => {
         tokenIsValid && amountIsValid ? setSubmitDisabled(true) : setSubmitDisabled(false);
     }, [amountIsValid, tokenIsValid, submitDisabled])
 
+    useEffect(() => {
+        if (SUPPORT_BRIDGE_CHAIN_ID.includes(String(chainId)) && SUPPORT_BRIDGE_CHAIN_ID_HEX.includes(supportBridgeChainId)) {
+            withdrawRef.current.click();
+        }
+    }, [chainId, supportBridgeChainId])
 
     const handleChange = async (name, val) => {
         depositData[name] = val
@@ -495,7 +496,6 @@ const Bridge = () => {
                 defaultActiveTabName={t('deposti')}
                 tabsClassName="bridge__tabs"
                 onTabClick={(tabName) => {
-                    console.log(tabName);
                     tabName === t('withdraw') ? setIsWithdraw(true) : setIsWithdraw(false);
                     if (!supportChain && tabName === t('withdraw')) {
                         depostiRef.current.click();

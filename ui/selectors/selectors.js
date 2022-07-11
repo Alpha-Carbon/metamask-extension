@@ -912,3 +912,7 @@ export function getNetworkDropdownOpen(state) {
 export function getDropdownSupportBridge(state) {
   return state.appState.networkDropDownSupportBridge;
 }
+
+export function getSupportBridgeChainId(state) {
+  return state.appState.supportBridgeChain;
+}
