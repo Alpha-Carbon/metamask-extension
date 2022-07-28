@@ -176,6 +176,8 @@ const Bridge = () => {
     useEffect(() => {
         if (SUPPORT_BRIDGE_CHAIN_ID.includes(String(chainId)) && SUPPORT_BRIDGE_CHAIN_ID_HEX.includes(supportBridgeChainId)) {
             withdrawRef.current.click();
+        } else {
+            depostiRef.current.click();
         }
     }, [chainId, supportBridgeChainId])
 
