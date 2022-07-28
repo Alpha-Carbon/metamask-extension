@@ -616,7 +616,7 @@ async function setupController(initState, initLangCode, remoteSourcePort) {
 
     // Finally, reject all approvals managed by the ApprovalController
     controller.approvalController.clear(
-      ethErrors.provider.userRejectedRequest(),
+      ethErrors.provider.userRejectedRequest().serialize(),
     );
 
     updateBadge();

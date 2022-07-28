@@ -84,7 +84,7 @@ async function getAlerts(pendingApproval) {
     if (
       matchedChain.nativeCurrency?.decimals !== 18 ||
       matchedChain.name.toLowerCase() !==
-        pendingApproval.requestData.chainName.toLowerCase() ||
+      pendingApproval.requestData.chainName.toLowerCase() ||
       matchedChain.nativeCurrency?.symbol !== pendingApproval.requestData.ticker
     ) {
       validated = false;
@@ -204,7 +204,7 @@ function getValues(pendingApproval, t, actions) {
     onCancel: () =>
       actions.rejectPendingApproval(
         pendingApproval.id,
-        ethErrors.provider.userRejectedRequest(),
+        ethErrors.provider.userRejectedRequest().serialize(),
       ),
     networkDisplay: true,
   };
