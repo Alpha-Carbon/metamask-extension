@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import { requestRevealSeedWords } from '../../store/actions';
 import ExportTextContainer from '../../components/ui/export-text-container';
 import { getMostRecentOverviewPage } from '../../ducks/history/history';
+import ErrorOutlineIcon from '../../components/ui/icon/error-outline-icon.component';
 
 import Button from '../../components/ui/button';
 
@@ -40,10 +41,16 @@ class RevealSeedPage extends Component {
   renderWarning() {
     return (
       <div className="page-container__warning-container">
-        <img
+        {/* <img
           className="page-container__warning-icon"
           src="images/warning.svg"
           alt=""
+        /> */}
+        <ErrorOutlineIcon
+          className="page-container__warning-icon"
+          width="30"
+          height="30"
+          color="#CF3939"
         />
         <div className="page-container__warning-message">
           <div className="page-container__warning-title">
@@ -114,8 +121,7 @@ class RevealSeedPage extends Component {
       <div className="page-container__footer">
         <footer>
           <Button
-            type="secondary"
-            large
+            type="cancel"
             className="page-container__footer-button"
             onClick={() =>
               this.props.history.push(this.props.mostRecentOverviewPage)
@@ -124,8 +130,7 @@ class RevealSeedPage extends Component {
             {this.context.t('cancel')}
           </Button>
           <Button
-            type="primary"
-            large
+            type="primaryGradient"
             className="page-container__footer-button"
             onClick={(event) => this.handleSubmit(event)}
             disabled={this.state.password === ''}
@@ -141,8 +146,7 @@ class RevealSeedPage extends Component {
     return (
       <div className="page-container__footer">
         <Button
-          type="secondary"
-          large
+          type="cancel"
           className="page-container__footer-single-button"
           onClick={() =>
             this.props.history.push(this.props.mostRecentOverviewPage)

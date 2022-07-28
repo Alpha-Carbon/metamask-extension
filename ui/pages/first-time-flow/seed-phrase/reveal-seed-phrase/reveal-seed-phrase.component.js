@@ -1,18 +1,18 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Box from '../../../../components/ui/box';
+// import Box from '../../../../components/ui/box';
 import LockIcon from '../../../../components/ui/lock-icon';
 import Button from '../../../../components/ui/button';
 import Snackbar from '../../../../components/ui/snackbar';
 import {
   INITIALIZE_CONFIRM_SEED_PHRASE_ROUTE,
   DEFAULT_ROUTE,
-  INITIALIZE_SEED_PHRASE_INTRO_ROUTE,
+  // INITIALIZE_SEED_PHRASE_INTRO_ROUTE,
 } from '../../../../helpers/constants/routes';
 import { exportAsFile } from '../../../../helpers/utils/util';
 import { returnToOnboardingInitiator } from '../../onboarding-initiator-util';
-import BackIcon from '../../../../components/ui/icon/back-icon.component';
+// import BackIcon from '../../../../components/ui/icon/back-icon.component';
 
 export default class RevealSeedPhrase extends PureComponent {
   static contextTypes = {
@@ -140,7 +140,7 @@ export default class RevealSeedPhrase extends PureComponent {
         <div>
           <div className="seed-phrase__sections">
             <div className="seed-phrase__main">
-              <Box marginBottom={4}>
+              {/* <Box marginBottom={4} className="seed-phrase__main-back">
                 <a
                   href="#"
                   onClick={(e) => {
@@ -151,7 +151,7 @@ export default class RevealSeedPhrase extends PureComponent {
                   <BackIcon className="mr-2" />
                   {t('back')}
                 </a>
-              </Box>
+              </Box> */}
               <div className="first-time-flow__header">
                 {t('secretRecoveryPhrase')}
               </div>
@@ -166,7 +166,7 @@ export default class RevealSeedPhrase extends PureComponent {
           </div>
           <div className="reveal-seed-phrase__buttons">
             <Button
-              type="cancel"
+              type="cancelSecond"
               className="first-time-flow__button"
               onClick={this.handleSkip}
             >

@@ -445,9 +445,9 @@ export default class AccountMenu extends Component {
           text={
             rpcPrefs.blockExplorerUrl
               ? t('blockExplorerView', [
-                // getURLHostName(rpcPrefs.blockExplorerUrl),
-                provider.nickname,
-              ])
+                  // getURLHostName(rpcPrefs.blockExplorerUrl),
+                  provider.nickname,
+                ])
               : t('etherscanViewOn')
           }
         />

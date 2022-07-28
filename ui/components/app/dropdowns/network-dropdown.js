@@ -430,7 +430,12 @@ class NetworkDropdown extends Component {
 
           {this.renderAddCustomButton()}
         </Dropdown>
-        {isOpen && <div className="network-dropdown-area" onClick={() => hideNetworkDropdown()} />}
+        {isOpen && (
+          <div
+            className="network-dropdown-area"
+            onClick={() => hideNetworkDropdown()}
+          />
+        )}
       </>
     );
   }

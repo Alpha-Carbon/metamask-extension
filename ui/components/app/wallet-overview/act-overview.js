@@ -33,8 +33,7 @@ import SendIcon from '../../ui/icon/send-icon.component';
 import ReceiveIcon from '../../ui/icon/receive-icon.component';
 import { I18nContext } from '../../../contexts/i18n';
 import Identicon from '../../ui/identicon';
-import UserPreferencedCurrencyDisplay from '../../../components/app/user-preferenced-currency-display';
-
+import UserPreferencedCurrencyDisplay from '../user-preferenced-currency-display';
 
 const ActOverview = () => {
   const dispatch = useDispatch();
@@ -55,7 +54,7 @@ const ActOverview = () => {
   const parts = useCurrencyDisplay(balance, {
     currency: currentCurrency,
   });
-  //connected
+  // connected
   const origin = useSelector(getOriginOfCurrentTab);
   const showStatus =
     getEnvironmentType() === ENVIRONMENT_TYPE_POPUP &&
@@ -102,9 +101,11 @@ const ActOverview = () => {
               <EditIcon color="#222222" />
             </span>
           </div>
-          <div className={classnames("d-flex align-items-center", {
-            "justify-content-space-between": showStatus,
-          })}>
+          <div
+            className={classnames('d-flex align-items-center', {
+              'justify-content-space-between': showStatus,
+            })}
+          >
             <Tooltip
               wrapperClassName="selected-account__tooltip-wrapper"
               position="bottom"

@@ -156,7 +156,7 @@ const MODALS = {
       borderRadius: '10px',
     },
     laptopModalStyle: {
-      width: '375px',
+      width: '340px',
       top: '10%',
       boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 2px 2px',
       transform: 'none',

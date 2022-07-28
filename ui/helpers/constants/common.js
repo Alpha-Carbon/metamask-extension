@@ -17,7 +17,7 @@ export const GAS_ESTIMATE_TYPES = {
 };
 
 let _supportLink = 'https://support.metamask.io';
-let _supportRequestLink = 'https://metamask.zendesk.com/hc/en-us/requests/new';
+let _supportRequestLink = 'https://alphacarbon.network/';
 
 ///: BEGIN:ONLY_INCLUDE_IN(flask)
 _supportLink = 'https://metamask-flask.zendesk.com/hc';

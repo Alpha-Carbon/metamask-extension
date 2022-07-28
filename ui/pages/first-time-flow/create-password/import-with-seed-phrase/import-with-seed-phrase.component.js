@@ -82,7 +82,7 @@ export default class ImportWithSeedPhrase extends PureComponent {
             }}
             href="#"
           >
-            <BackIcon className="mr-2" />
+            <BackIcon className="mr-2 back-icon" />
             {t('back')}
           </a>
         </div>

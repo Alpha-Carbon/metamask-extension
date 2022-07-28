@@ -14,8 +14,8 @@ import InfoIcon from '../../ui/icon/info-icon.component';
 // import { SEND_ROUTE } from '../../../helpers/constants/routes';
 import { SEVERITIES } from '../../../helpers/constants/design-system';
 // import { INVALID_ASSET_TYPE } from '../../../helpers/constants/error-keys';
-import ActAvatar from '../../ui/icon/act-avatar-icon.component';
-import ActCoinIcon from '../../ui/icon/act-coin-icon.component';
+// import ActAvatar from '../../ui/icon/act-avatar-icon.component';
+// import ActCoinIcon from '../../ui/icon/act-coin-icon.component';
 
 const AssetListItem = ({
   className,
@@ -31,7 +31,7 @@ const AssetListItem = ({
   secondary,
   identiconBorder,
   isERC721,
-  nativeCurrency,
+  // nativeCurrency,
 }) => {
   // const t = useI18nContext();
   // const dispatch = useDispatch();
@@ -121,7 +121,7 @@ const AssetListItem = ({
         </>
       }
       titleIcon={titleIcon}
-      subtitle={secondary ? <h3 title={secondary}>{secondary}</h3> : null}
+      // subtitle={secondary ? <h3 title={secondary}>{secondary}</h3> : null}
       onClick={onClick}
       icon={
         <Identicon
@@ -140,7 +140,9 @@ const AssetListItem = ({
             {/* <i className="fas fa-chevron-right asset-list-item__chevron-right" /> */}
             {/* {sendTokenButton} */}
             <span className="asset-list-item__token-value">{primary}</span>
-            <span className="asset-list-item__token-balance">{tokenSymbol}</span>
+            <span className="asset-list-item__token-balance">
+              {tokenSymbol}
+            </span>
           </>
         )
       }

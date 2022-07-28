@@ -47,7 +47,8 @@ const initialState = {
         chainId: `0x${(13370).toString(16)}`,
         ticker: 'TACT',
         rpcPrefs: {
-          blockExplorerUrl: 'https://aminoxtestnet.blockscout.alphacarbon.network/',
+          blockExplorerUrl:
+            'https://aminoxtestnet.blockscout.alphacarbon.network/',
         },
         viewOnly: true,
       },

@@ -12,6 +12,7 @@ const CLASSNAME_ROUNDED = 'btn--rounded';
 const CLASSNAME_FIRST_TIME = 'btn--first-time';
 const CLASSNAME_INLINE = 'btn--inline';
 const CLASSNAME_CANCEL = 'btn-cancel';
+const CLASSNAME_CANCEL_SECOND = 'btn-cancel-second';
 // add linear gradient button
 const CLASSNAME_PRIMARY_GRADIENT = 'btn-primary-gradient';
 const CLASSNAME_SECONDARY_GRADIENT = 'btn-secondary-gradient';
@@ -32,6 +33,7 @@ const typeHash = {
   raised: CLASSNAME_RAISED,
   'first-time': CLASSNAME_FIRST_TIME,
   cancel: CLASSNAME_CANCEL,
+  cancelSecond: CLASSNAME_CANCEL_SECOND,
 };
 
 const Button = ({

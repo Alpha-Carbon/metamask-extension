@@ -17,6 +17,12 @@
     color: var(--black);
   }
 
+  & .create-new-vault__show-btn , & .create-new-vault__password-wrap-btn{
+    &>button{
+      color: var(--black);
+    }
+  }
+
   & .create-new-vault__form #password-label,
   .create-new-vault__form #confirm-password-label {
     color: var(--black);
@@ -83,6 +89,14 @@
     color: #22232c;
     position: absolute;
     top: -25px;
+    &:hover{
+      color: var(--secondary-3);
+      & .back-icon{
+        &>path{
+          fill: var(--secondary-3) !important;
+        } 
+      }
+    }
   }
 
   &__selector-label {
@@ -103,12 +117,18 @@
 
 .reveal-seed {
   &__content {
-    padding: 20px;
+    padding: 20px 0px;
+    & .form-control{
+      border-radius: 4px;
+      height: 32px;
+      border: none;
+    }
   }
 
   &__label {
+    @include roundeBold;
+
     padding-bottom: 10px;
-    font-weight: 400;
     display: inline-block;
   }
 
@@ -118,6 +138,7 @@
     color: var(--crimson);
     padding-top: 5px;
   }
+  
 }
 
 .page-container__footer-single-button {

@@ -87,6 +87,7 @@
 
   &:hover {
     // border-color: var(--Blue-500);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), var(--secondary-gradient);
   }
 
   &:active {
@@ -215,6 +216,7 @@
 
   &:hover {
     // border-color: var(--hover-confirm);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), var(--primary-gradient);
   }
 
   &:active {
@@ -416,6 +418,27 @@ input[type="submit"][disabled] {
   color: var(--gray-2);
   background-color: transparent;
   border: 1px solid var(--gray-2);;
+  font-weight: 700;
+
+  &:hover {
+    // border-color: var(--Blue-500);
+  }
+
+  &:active {
+    // background: var(--Blue-000);
+    // border-color: var(--Blue-500);
+  }
+
+  &--disabled,
+  &[disabled] {
+    opacity: 1;
+    color: var(--hover-secondary);
+  }
+}
+
+.btn-cancel-second {
+  color: var(--white);
+  background-color: var(--gray-3);
   font-weight: 700;
 
   &:hover {

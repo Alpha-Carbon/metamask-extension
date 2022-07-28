@@ -17,7 +17,8 @@
       max-width: 742px;
       display: flex;
       flex-direction: column;
-      width: 100%;
+      // width: 100%;
+      width: 85%;
       margin-top: 2%;
     }
 
@@ -69,6 +70,16 @@
   &__create-back {
     margin-top: 44px;
     margin-bottom: 16px;
+      &>a{
+        &:hover{
+          color: var(--white);
+          & .back-icon{
+            &>path{
+              fill: var(--white) !important;
+            } 
+          }
+        }
+      }  
   }
 
   &__header {

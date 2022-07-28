@@ -9,8 +9,7 @@ import { getMetaMaskAccounts } from '../../../selectors';
 import Button from '../../../components/ui/button';
 import { getMostRecentOverviewPage } from '../../../ducks/history/history';
 
-const HELP_LINK =
-  'https://metamask.zendesk.com/hc/en-us/articles/360015489331-Importing-an-Account';
+const HELP_LINK = 'https://alphacarbon.network/';
 
 class JsonImportSubview extends Component {
   state = {
@@ -57,16 +56,14 @@ class JsonImportSubview extends Component {
         />
         <div className="new-account-create-form__buttons">
           <Button
-            type="secondary"
-            large
+            type="cancel"
             className="new-account-create-form__button"
             onClick={() => history.push(mostRecentOverviewPage)}
           >
             {this.context.t('cancel')}
           </Button>
           <Button
-            type="primary"
-            large
+            type="primaryGradient"
             className="new-account-create-form__button"
             onClick={() => this.createNewKeychain()}
             disabled={!enabled}

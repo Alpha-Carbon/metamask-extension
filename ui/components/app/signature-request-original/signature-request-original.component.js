@@ -267,8 +267,7 @@ export default class SignatureRequestOriginal extends Component {
     return (
       <div className="request-signature__footer">
         <Button
-          type="secondary"
-          large
+          type="cancel"
           className="request-signature__footer__cancel-button"
           onClick={async (event) => {
             await cancel(event);
@@ -290,8 +289,7 @@ export default class SignatureRequestOriginal extends Component {
         </Button>
         <Button
           data-testid="request-signature__sign"
-          type="primary"
-          large
+          type="primaryGradient"
           className="request-signature__footer__sign-button"
           disabled={hardwareWalletRequiresConnection}
           onClick={async (event) => {

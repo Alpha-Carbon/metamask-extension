@@ -11,7 +11,6 @@ import { ellipsify } from '../../send.utils';
 import Identicon from '../../../../components/ui/identicon/identicon.component';
 import { getMetaMaskAccountsOrdered } from '../../../../selectors';
 
-
 function mapStateToProps(state) {
   const accounts = getMetaMaskAccountsOrdered(state);
   return {
@@ -29,7 +28,7 @@ function SendTo(accounts) {
   const accountsList = accounts.accounts;
   const selectedAccountName = accountsList.find((item) => {
     return item.address === selectedAddress;
-  })
+  });
 
   return (
     <div className={classnames('send-v2__to-wrap')}>
@@ -45,9 +44,9 @@ function SendTo(accounts) {
               <br />
               <span>{ellipsify(selectedAddress)}</span>
             </>
-          ) :
+          ) : (
             <span>{ellipsify(selectedAddress)}</span>
-          }
+          )}
         </div>
       </div>
       <div

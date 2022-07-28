@@ -11,7 +11,7 @@
   &__header {
     display: flex;
     flex-flow: column;
-    border-bottom: 1px solid var(--geyser);
+    // border-bottom: 1px solid var(--geyser);
     padding: 16px;
     flex: 0 0 auto;
     position: relative;
@@ -126,9 +126,9 @@
 
   &__tab {
     @include Paragraph;
-
+    
     min-width: 5rem;
-    color: var(--dusty-gray);
+    color: var(--gray-1);
     border-bottom: none;
     // margin-right: 16px;
     // flex: 1;
@@ -171,21 +171,26 @@
     overflow-y: auto;
     flex: 1;
     background: var(--background);
+    margin: 0px 16px;
   }
 
   &__warning-container {
-    background: var(--linen);
-    padding: 20px;
+    background: rgba(207, 57 ,57,  0.2);
+    padding: 12px 16px;
+    border-radius: 4px;
     display: flex;
-    align-items: start;
+    align-items: center;
   }
 
   &__warning-message {
+    color: var(--function-2);
     padding-left: 15px;
+    font-size: 12px;
   }
 
   &__warning-title {
-    font-weight: 500;
+    font-weight: 700;
+    font-size: 13px;
   }
 
   &__warning-icon {

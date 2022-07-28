@@ -228,7 +228,8 @@ export default class SendAmountRow extends Component {
     const { tokens } = this.props;
 
     return (
-      !this.onEditTransactionPage() && this.state.isShowingDropdown && (
+      !this.onEditTransactionPage() &&
+      this.state.isShowingDropdown && (
         <div>
           <div
             className="send-v2__asset-dropdown__close-area"

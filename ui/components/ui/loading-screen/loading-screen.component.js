@@ -1,6 +1,6 @@
 import React, { Component, isValidElement } from 'react';
 import PropTypes from 'prop-types';
-import Spinner from '../spinner';
+// import Spinner from '../spinner';
 
 class LoadingScreen extends Component {
   static defaultProps = {
@@ -35,7 +35,11 @@ class LoadingScreen extends Component {
         <div className="loading-overlay__container">
           {this.props.showLoadingSpinner && (
             // <Spinner color="#F7C06C" className="loading-overlay__spinner" />
-            <img className="loading-overlay__spinner" src="./images/alphaCarbon/amino-loading.gif" alt="" />
+            <img
+              className="loading-overlay__spinner"
+              src="./images/alphaCarbon/amino-loading.gif"
+              alt=""
+            />
           )}
           {this.renderMessage()}
         </div>

@@ -130,12 +130,12 @@ export function RecipientWithAddress({
           <div className="sender-to-recipient__name">
             {addressOnly
               ? recipientNickname ||
-              recipientEns ||
-              shortenAddress(checksummedRecipientAddress)
+                recipientEns ||
+                shortenAddress(checksummedRecipientAddress)
               : recipientNickname ||
-              recipientEns ||
-              recipientName ||
-              t('newContract')}
+                recipientEns ||
+                recipientName ||
+                t('newContract')}
           </div>
         </Tooltip>
       </div>

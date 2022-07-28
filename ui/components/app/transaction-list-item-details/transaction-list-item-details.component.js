@@ -44,13 +44,13 @@ export default class TransactionListItemDetails extends PureComponent {
     title: PropTypes.string.isRequired,
     isOtherTitle: PropTypes.string,
     onClose: PropTypes.func.isRequired,
-    // recipientEns: PropTypes.string,
+    recipientEns: PropTypes.string,
     recipientAddress: PropTypes.string,
     rpcPrefs: PropTypes.object,
     senderAddress: PropTypes.string.isRequired,
     tryReverseResolveAddress: PropTypes.func.isRequired,
     // senderNickname: PropTypes.string.isRequired,
-    // recipientNickname: PropTypes.string,
+    recipientNickname: PropTypes.string,
     transactionStatus: PropTypes.func,
     category: PropTypes.string,
     status: PropTypes.string,
@@ -125,9 +125,9 @@ export default class TransactionListItemDetails extends PureComponent {
     const { senderAddress } = this.props;
     this.setState({ addressCopied: true }, () => {
       copyToClipboard(toChecksumHexAddress(senderAddress));
-      setTimeout(() => this.setState({ addressCopied: false }), SECOND)
-    })
-  }
+      setTimeout(() => this.setState({ addressCopied: false }), SECOND);
+    });
+  };
 
   componentDidMount() {
     const { recipientAddress, tryReverseResolveAddress } = this.props;
@@ -139,7 +139,12 @@ export default class TransactionListItemDetails extends PureComponent {
 
   render() {
     const { t } = this.context;
-    const { justCopied, addressCopied, showNicknamePopovers, addressOnly } = this.state;
+    const {
+      justCopied,
+      addressCopied,
+      showNicknamePopovers,
+      addressOnly,
+    } = this.state;
     const {
       transactionGroup,
       primaryCurrency,
@@ -151,7 +156,7 @@ export default class TransactionListItemDetails extends PureComponent {
       isEarliestNonce,
       // senderNickname,
       title,
-      isOtherTitle,
+      // isOtherTitle,
       onClose,
       recipientNickname,
       toName,
@@ -159,7 +164,7 @@ export default class TransactionListItemDetails extends PureComponent {
       transactionStatus: TransactionStatus,
       category,
       status,
-      nativeCurrency,
+      // nativeCurrency,
     } = this.props;
     const {
       primaryTransaction: transaction,
@@ -169,23 +174,25 @@ export default class TransactionListItemDetails extends PureComponent {
 
     let tooltipHtml = <p>{t('copiedExclamation')}</p>;
     if (!addressCopied) {
-      tooltipHtml = <p>
-        {shortenAddress(senderAddress)}
-        <br />
-        {t('copyAddress')}
-      </p>
+      tooltipHtml = (
+        <p>
+          {shortenAddress(senderAddress)}
+          <br />
+          {t('copyAddress')}
+        </p>
+      );
     }
     const checksummedSenderAddress = toChecksumHexAddress(senderAddress);
     const checksummedRecipientAddress = toChecksumHexAddress(recipientAddress);
 
     return (
       <>
-        {showNicknamePopovers &&
+        {showNicknamePopovers && (
           <NicknamePopovers
             onClose={() => this.setState({ showNicknamePopovers: false })}
             address={toChecksumHexAddress(recipientAddress)}
           />
-        }
+        )}
         <Popover onClose={onClose} className="transaction-list-popover">
           <div className="transaction-list-item-details">
             <div className="transaction-list-item-details-title">
@@ -288,13 +295,11 @@ export default class TransactionListItemDetails extends PureComponent {
                     containerClassName="transaction-list-item-details__address-tooltip"
                     html={tooltipHtml}
                   >
-                    <Identicon address={senderAddress}
-                      diameter={20} />
+                    <Identicon address={senderAddress} diameter={20} />
                     <div
                       className="transaction-list-item-details__address-txt"
                       onClick={this.handleCopyFromAddress}
                     >
-
                       {shortenAddress(checksummedSenderAddress)}
                     </div>
                   </Tooltip>
@@ -306,22 +311,21 @@ export default class TransactionListItemDetails extends PureComponent {
                     containerClassName="transaction-list-item-details__address-tooltip"
                     html={t('viewDetail')}
                   >
-                    <Identicon address={recipientAddress}
-                      diameter={20} />
+                    <Identicon address={recipientAddress} diameter={20} />
                     <div
                       className="transaction-list-item-details__address-txt"
                       onClick={() => {
-                        this.setState({ showNicknamePopovers: true })
+                        this.setState({ showNicknamePopovers: true });
                       }}
                     >
                       {addressOnly
                         ? recipientNickname ||
-                        recipientEns ||
-                        shortenAddress(checksummedRecipientAddress)
+                          recipientEns ||
+                          shortenAddress(checksummedRecipientAddress)
                         : recipientNickname ||
-                        recipientEns ||
-                        toName ||
-                        t('newContract')}
+                          recipientEns ||
+                          toName ||
+                          t('newContract')}
                     </div>
                   </Tooltip>
                 </div>
@@ -364,25 +368,27 @@ export default class TransactionListItemDetails extends PureComponent {
               <div className="transaction-list-item-details__cards-container">
                 <TransactionBreakdown
                   nonce={transactionGroup.initialTransaction.txParams.nonce}
-                  isTokenApprove={type === TRANSACTION_TYPES.TOKEN_METHOD_APPROVE}
+                  isTokenApprove={
+                    type === TRANSACTION_TYPES.TOKEN_METHOD_APPROVE
+                  }
                   transaction={transaction}
                   primaryCurrency={primaryCurrency}
                   className="transaction-list-item-details__transaction-breakdown"
                 />
                 {transactionGroup.initialTransaction.type !==
                   TRANSACTION_TYPES.INCOMING && (
-                    <Disclosure title={t('activityLog')} size="small">
-                      <TransactionActivityLog
-                        transactionGroup={transactionGroup}
-                        className="transaction-list-item-details__transaction-activity-log"
-                        onCancel={this.handleCancel}
-                        onRetry={this.handleRetry}
-                        isEarliestNonce={isEarliestNonce}
-                      />
-                    </Disclosure>
-                  )}
+                  <Disclosure title={t('activityLog')} size="small">
+                    <TransactionActivityLog
+                      transactionGroup={transactionGroup}
+                      className="transaction-list-item-details__transaction-activity-log"
+                      onCancel={this.handleCancel}
+                      onRetry={this.handleRetry}
+                      isEarliestNonce={isEarliestNonce}
+                    />
+                  </Disclosure>
+                )}
                 {transactionGroup.initialTransaction?.txParams?.data ? (
-                  <Disclosure title="Transaction data" size="small">
+                  <Disclosure title={t('transactionData')} size="small">
                     <TransactionDecoding
                       title={t('transactionData')}
                       to={transactionGroup.initialTransaction.txParams?.to}
